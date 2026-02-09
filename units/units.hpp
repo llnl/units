@@ -2212,14 +2212,15 @@ namespace constants {
     constexpr precise_measurement H0{
         69.8,
         precise::km / precise::s / (precise::mega * precise::distance::parsec)};
+    /// constant values from https://physics.nist.gov/cgi-bin/cuu
     /// Mass of an electron
-    constexpr precise_measurement me{9.1093837015e-31, precise::kg};
+    constexpr precise_measurement me{9.1093837139e-31, precise::kg};
     /// Mass of a proton
-    constexpr precise_measurement mp{1.67262192369e-27, precise::kg};
+    constexpr precise_measurement mp{1.67262192595e-27, precise::kg};
     /// Mass of a neutron
-    constexpr precise_measurement mn{1.67492749804e-27, precise::kg};
+    constexpr precise_measurement mn{1.67492750056e-27, precise::kg};
     /// Bohr radius
-    constexpr precise_measurement a0{5.29177210903e-11, precise::m};
+    constexpr precise_measurement a0{5.29177210544e-11, precise::m};
     /// Faraday's constant
     constexpr precise_measurement F = Na * e;
 
@@ -2247,11 +2248,11 @@ namespace constants {
     }  // namespace planck
     /// measurements related to an electron or atomic measurements
     namespace atomic {  // https://www.bipm.org/en/publications/si-brochure/table7.html
-        constexpr precise_measurement length{5.29177210903e-11, precise::m};
+        constexpr precise_measurement length=a0;
         constexpr precise_measurement mass = me;
         constexpr precise_measurement time{2.4188843265857e-17, precise::s};
         constexpr precise_measurement charge = e;
-        constexpr precise_measurement energy{4.3597443419e-18, precise::J};
+        constexpr precise_measurement energy{precise::energy::hartree.multiplier(), precise::J};
         constexpr precise_measurement action{
             1.054571817e-34,
             precise::J* precise::s};
@@ -2277,10 +2278,10 @@ namespace constants {
             2.8e-40};
         constexpr uncertain_measurement mp{
             measurement_cast(constants::mp),
-            0.51e-36};
+            0.52e-36};
         constexpr uncertain_measurement mn{
             measurement_cast(constants::mn),
-            0.95e-36};
+            0.85e-36};
         constexpr uncertain_measurement alpha{
             measurement_cast(constants::alpha),
             1.1e-12};
@@ -2299,6 +2300,9 @@ namespace constants {
         constexpr uncertain_measurement H0{
             measurement_cast(constants::H0),
             1.7};
+        constexpr uncertain_measurement a0{
+            measurement_cast(constants::a0),
+            8.2e-21};
     }  // namespace uncertain
 }  // namespace constants
 
