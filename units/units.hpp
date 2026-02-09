@@ -2248,11 +2248,13 @@ namespace constants {
     }  // namespace planck
     /// measurements related to an electron or atomic measurements
     namespace atomic {  // https://www.bipm.org/en/publications/si-brochure/table7.html
-        constexpr precise_measurement length=a0;
+        constexpr precise_measurement length = a0;
         constexpr precise_measurement mass = me;
         constexpr precise_measurement time{2.4188843265857e-17, precise::s};
         constexpr precise_measurement charge = e;
-        constexpr precise_measurement energy{precise::energy::hartree.multiplier(), precise::J};
+        constexpr precise_measurement energy{
+            precise::energy::hartree.multiplier(),
+            precise::J};
         constexpr precise_measurement action{
             1.054571817e-34,
             precise::J* precise::s};
