@@ -1726,7 +1726,8 @@ TEST(defaultUnits, dimensions)
 TEST(defaultUnits, dimensionsReverse)
 {
     EXPECT_EQ(default_unit("[length]"), precise::m);
-    EXPECT_EQ(default_unit(dimensions(default_unit("area"))), default_unit("area"));
+    EXPECT_EQ(
+        default_unit(dimensions(default_unit("area"))), default_unit("area"));
     EXPECT_EQ(default_unit("{length}"), precise::m);
 }
 
