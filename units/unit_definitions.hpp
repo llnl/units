@@ -826,7 +826,7 @@ namespace precise {
             33.5,
             precise::mega* precise::J};  // liter of gasoline equivalent
         constexpr precise_unit foeb{6.05e6, btu_59};
-        constexpr precise_unit hartree{4.3597447222071e-18, J};
+        constexpr precise_unit hartree{4.3597447222060e-18, J};
         constexpr precise_unit tonhour{3.5168528421, kWh};
 
         constexpr precise_unit scf_mol{1.1953, mol};
