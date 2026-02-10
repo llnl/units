@@ -124,3 +124,13 @@ TEST(PU, conversions)
 
     EXPECT_NEAR(convert(0.2, puOhm, puMW, 100.0), 5.0, 0.0001);
 }
+
+TEST(PU, stringConversions)
+{
+    auto u1=unit_from_string("puKilonewton",no_default_units);
+    EXPECT_EQ(u1, precise::pu * precise::kilo*precise::newton);
+
+    auto u2=unit_from_string("%Volt",no_default_units);
+    EXPECT_EQ(u2, precise::pu*precise::V*precise::percent);
+
+}

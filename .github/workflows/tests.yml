@@ -186,3 +186,15 @@ jobs:
       with:
         cmake-version: "4.0"
       if: success() || failure()
+      
+    - name: Check CMake 4.1
+      uses: ./.github/actions/quick_cmake
+      with:
+        cmake-version: "4.1"
+      if: success() || failure()
+      
+    - name: Check CMake 4.2
+      uses: ./.github/actions/quick_cmake
+      with:
+        cmake-version: "4.2"
+      if: success() || failure()
