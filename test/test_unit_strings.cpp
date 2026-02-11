@@ -1703,6 +1703,7 @@ TEST(defaultUnits, unitTypes)
     EXPECT_EQ(default_unit("impedance quantity"), precise::ohm);
     EXPECT_EQ(default_unit("distance"), precise::m);
     EXPECT_EQ(default_unit("Quantity of distance"), precise::m);
+    EXPECT_EQ(default_unit("measure of area"), precise::m.pow(2));
     EXPECT_EQ(default_unit("frequency measure"), precise::Hz);
 }
 
@@ -1720,6 +1721,14 @@ TEST(defaultUnits, dimensions)
     EXPECT_EQ(dimensions(ft), "[length]");
     EXPECT_EQ(dimensions(precise::pu * precise::MW), "[dimensionless]");
     EXPECT_EQ(dimensions(precise::MW.pow(2)), "[unknown]");
+}
+
+TEST(defaultUnits, dimensionsReverse)
+{
+    EXPECT_EQ(default_unit("[length]"), precise::m);
+    EXPECT_EQ(
+        default_unit(dimensions(default_unit("area"))), default_unit("area"));
+    EXPECT_EQ(default_unit("{length}"), precise::m);
 }
 
 TEST(commoditizedUnits, basic)
@@ -1834,6 +1843,7 @@ TEST(defaultUnits, singleCharacter)
     EXPECT_EQ(precise::mol, default_unit("N"));
     EXPECT_EQ(precise::cd, default_unit("J"));
     EXPECT_EQ(precise::K, default_unit("\xC8"));
+    EXPECT_EQ(precise::one, default_unit("l"));
 }
 
 #ifdef ENABLE_UNIT_TESTING
