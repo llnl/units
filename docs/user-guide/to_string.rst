@@ -2,7 +2,7 @@
 Units To Strings
 =======================
 
-All the class in the units library can be given as an argument to a `to_string` function.  This function converts the units or value into a `std::string` that is representative of the unit or measurement.  In all cases the primary aim of the `to_string` is to generate a string that the corresponding `*_from_string` function will recognize and convert back to the original unit.  The secondary aim is to generate string that is human readable in standard notation.  While this is achieved for many common units there is some work left to do to make it better.
+All the classes in the units library can be given as an argument to a `to_string` function.  This function converts the units or value into a `std::string` that is representative of the unit or measurement.  In all cases the primary aim of the `to_string` is to generate a string that the corresponding `*_from_string` function will recognize and convert back to the original unit.  The secondary aim is to generate a string that is human readable in standard notation.  While this is achieved for many common units there is some work left to do to make it better.
 
 For example
 
@@ -29,12 +29,12 @@ Uncertain measurement string conversions make some attempt to honor significant 
 
 Advanced Usage
 ----------------
-The `to_string` function also takes a second argument which is a `std::uint64_t match_flags` in all cases this default to 0,  it is currently unused though will be used in the future to allow some fine tuning of the output in specific cases.  In the near future a flag to allow utf 8 output strings will convert certain units to more common utf8 symbols such as unit Powers and degree symbols, and a few others.  The output string would default to ascii only characters.
+The `to_string` function also takes a second argument which is a `std::uint64_t match_flags` in all cases this defaults to 0,  it is currently unused though it will be used in the future to allow some fine tuning of the output in specific cases.  In the near future a flag to allow UTF-8 output strings will convert certain units to more common UTF-8 symbols such as unit powers and degree symbols, and a few others.  The output string would default to ASCII-only characters.
 
 Stream Operators
 ----------------
 
-Output stream operators are NOT included in the library.  It was debatable to include them or not but there would be a lot of additional overloads that would add quite a bit of code to the header files, that in most cases is not necessary so the decision was made to exclude them.  The `to_string` operations provide most of the capabilities with some additional flexibility, and if needed for a particular use case can be added to the user code in a simple fashion
+Output stream operators are NOT included in the library.  It was debatable whether to include them or not, but there would be a lot of additional overloads that would add quite a bit of code to the header files, that in most cases is not necessary, so the decision was made to exclude them.  The `to_string` operations provide most of the capabilities with some additional flexibility, and if needed for a particular use case can be added to the user code in a simple fashion
 
 .. code-block:: c++
 

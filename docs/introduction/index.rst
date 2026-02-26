@@ -5,18 +5,18 @@ Introduction
 Why?
 -----
 So why have another units library?  This was something we poked at for a while before writing the library.
-There are number of other well designed C++ libraries but none of them met our needs. Some needs are pretty general, and others specific to power systems and electrical engineering.
+There are a number of other well-designed C++ libraries but none of them met our needs. Some needs are pretty general, and others specific to power systems and electrical engineering.
 
 Design Requirements
 ++++++++++++++++++++
 
--   have a units type that can be used in virtual function calls
+-   Have a units type that can be used in virtual function calls
 -   Handle unit conversions
--   handle Per Unit operations and unit conversions
--   handle complex units easily like `$/puMw/hr`
+-   Handle per-unit operations and unit conversions
+-   Handle complex units easily, like `$/puMw/hr`
 -   Operate on strings with conversion to and from strings
 
-Previously the library we were using met these requirements but only for a very limited set of units.  This library functioned but was nearing the limits of maintainability and operation as new units were needed and other conversions were required which required adding direct conversions between the classes of units and the code was getting to be a mess.  So, looking around, many of the existing unit libraries in C++ represent individual units as an individual type.  This works wonderfully if you can know all the types you want to use ahead of time.  In our case, many of the conversions depended on configuration or input files so the units being converted were not known at compile time.  A few were but in general they were not.  That led to an issue of how to do you pass that unit to a function that is meant to hide the internal unit in use, so having a type per unit did not seem functional from a coding or structural perspective.
+Previously, the library we were using met these requirements but only for a very limited set of units.  This library functioned but was nearing the limits of maintainability and operation as new units were needed and other conversions were required which required adding direct conversions between the classes of units and the code was getting to be a mess.  So, looking around, many of the existing unit libraries in C++ represent individual units as individual types.  This works wonderfully if you can know all the types you want to use ahead of time.  In our case, many of the conversions depended on configuration or input files so the units being converted were not known at compile time.  A few were but in general they were not.  That led to an issue of how do you pass that unit to a function that is meant to hide the internal unit in use, so having a type per unit did not seem functional from a coding or structural perspective.
 
 Many of the dimensional analysis libraries, actually all as far as I can tell in C++, do not support string conversions.  There are a few examples in Java or Python, but our code is written in C++ so that didn't seem workable either.  Which led to the conclusion that this library is needed and some additional design considerations.
 
