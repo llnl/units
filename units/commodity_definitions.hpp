@@ -141,6 +141,7 @@ namespace commodities {
             ingot = generatePackagingCode(17),
             slipsheet = generatePackagingCode(18),
             flake = generatePackagingCode(19),
+            // 20 not defined
             // rigid box type
             match_box = generatePackagingCode(21),
             can = generatePackagingCode(22),

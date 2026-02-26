@@ -2343,6 +2343,10 @@ namespace detail {
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
     // get the raw array for testing the r20 database
     const void* r20rawData(size_t& array_size);
+    // get the raw array for testing the x12 database
+    const void* x12rawData(size_t& array_size);
+    // get the raw array for testing the dod database
+    const void* dodrawData(size_t& array_size);
 #endif
 }  // namespace detail
 #endif

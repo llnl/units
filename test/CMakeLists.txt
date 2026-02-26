@@ -29,7 +29,7 @@ set(UNITS_TESTS
 )
 
 if(NOT UNITS_DISABLE_EXTRA_UNIT_STANDARDS)
-    list(APPEND UNITS_TESTS test_r20)
+    list(APPEND UNITS_TESTS test_r20 test_x12 test_dod)
 endif()
 
 set(TEST_FILE_FOLDER ${CMAKE_CURRENT_SOURCE_DIR}/files)
@@ -75,6 +75,13 @@ else()
         )
         if(NOT UNITS_DISABLE_EXTRA_UNIT_STANDARDS)
             target_compile_definitions(test_r20 PUBLIC -DENABLE_UNIT_MAP_ACCESS=1)
+            target_compile_definitions(test_x12 PUBLIC -DENABLE_UNIT_MAP_ACCESS=1)
+            target_compile_definitions(test_dod PUBLIC -DENABLE_UNIT_MAP_ACCESS=1)
+
+            target_compile_definitions(
+       test_x12 PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}"
+    )
+    target_compile_definitions(test_dod PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}")
         endif()
 
         add_unit_test(test_leadingNumbers.cpp)

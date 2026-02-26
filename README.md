@@ -36,15 +36,15 @@ This software was developed for use in [LLNL/GridDyn](https://github.com/LLNL/Gr
 
 ## Purpose
 
-A units library was needed to be able to represent units from a wide range of disciplines and be able to separate them from the numerical values for use in calculations when needed. The main drivers are
+A units library is needed to represent units from a wide range of disciplines and separate them from numerical values for use in calculations when needed. The main drivers are
 
 1. converting units, often represented by strings, to a standardized unit set when dealing with user input and output.
-2. Being able to use the unit as a singular type that could contain any unit, and not introduce a huge number of types to represent all possible units.
+2. Being able to use the unit as a single type that could contain any unit, and not introduce a huge number of types to represent all possible units.
 3. Being able to associate a completely arbitrary unit given by users with a generic interface and support conversions between those user defined units and other units.
 4. The library has its origins in power systems so support for per-unit operations was also lacking in the alternatives.
-5. Capture uncertainty and uncertainty calculations directly with a measurement
+5. Capturing uncertainty and uncertainty calculations directly with a measurement
 
-It was desired that the unit representation be a compact type(<=8 bytes) that is typically passed by value, that can represent a wide assortment of units and arbitrary combinations of units. The primary use of the conversions is at run-time to convert user input/output to/from internal units, it is not to provide strict type safety or dimensional analysis, though it can provide some of that. This library does **NOT** provide compile time checking of units. The units library supports units and operations on units where many of the units in use are unknown at compile time and conversions and definitions are dealt with at run time, and may be of a wide variety of units.
+It was desired that the unit representation be a compact type (<=8 bytes) that is typically passed by value, that can represent a wide assortment of units and arbitrary combinations of units. The primary use of the conversions is at runtime to convert user input/output to/from internal units, it is not to provide strict type safety or dimensional analysis, though it can provide some of that. This library does **NOT** provide compile time checking of units. The units library supports units and operations on units where many of the units in use are unknown at compile time and conversions and definitions are dealt with at runtime, and may be of a wide variety of units.
 
 This library is an engineering library, created to represent a huge variety of units and measurements in a simple data type instead of a proliferation of templates. It supports conversion of units to and from strings. It supports mathematical operations on units and measurements which are `constexpr` where possible. It supports units used in a wide variety of scientific and non-scientific contexts. Supports conversions between different units of the same type as well as some typical assumptions for supporting conversions of a few dissimilar types. In some cases it also has some notion of commodities, and support for existing unit standards for strings and naming.
 
@@ -63,7 +63,7 @@ double GetInputValueAs(const std::string &input, precise_units out)
 
 ```
 
-The return value can be checked for validity as an invalid conversion would result in `constants::invalid_conversion` or `Nan` so can be checked by `std::isnan`
+The return value can be checked for validity as an invalid conversion would result in `constants::invalid_conversion` or `NaN` so can be checked by `std::isnan`
 or
 
 ```cpp
@@ -75,17 +75,17 @@ if (!meas.units().is_convertible(out))
 
 ## Limitations
 
-- The powers represented by units by default are limited see [Unit representation](#unit-representation) and only normal physical units or common operations are supported, this can be modified at compile time to support a much broader range at the expense of size and computation.
+- The powers represented by units by default are limited. See [Unit representation](#unit-representation) and only normal physical units or common operations are supported, this can be modified at compile time to support a much broader range at the expense of size and computation.
 - The library uses floating point and double precision for the multipliers which is generally good enough for most engineering contexts, but does come with the limits and associated loss of precision for long series of calculations on floating point numbers.
-- Currency is supported as a unit but it is not recommended to use this for anything beyond basic financial calculations. So, if you are doing a lot of financial calculations or accounting, use something more specific for currency manipulations. It also does not maintain any notion of currency conversions since those fluctuate in value. It may at some point recognize different currency names though commodities.
-- Fractional unit powers are not supported in general. While some mathematical operations on units are supported any root operations `sqrt` or `cbrt` will only produce valid results if the result is integral powers of the base units. One exception is limited support for √Hz operations in measurements of Amplitude spectral density. A specific definition of a unit representing square root of Hz is available and will work in combination with other units.
-- While conversions of various temperature definitions are supported, there is no generalized support for datums and bias shifts. It may be possible to add some specific cases in the future for common uses cases but the space requirement limits such use. Some of the other libraries have general support for this.
-- A few [equation](https://units.readthedocs.io/en/latest/user-guide/equation_units.html) like units are supported these include logarithms, nepers, and some things like Saffir-Simpson, Beaufort, and Fujita scales for wind, and Richter scales for earthquakes. There is capacity within the framework to add a few more equation like units if a need arises.
-- There are several units where the specific definition differs when used in different domains. The unit `rad` in the nature of radiation absorbed dose is one such unit as it would conflicts with `rad` in terms of radians. So `rad` means radians by default since that is the more common use in electrical engineering. The use of [domains](https://units.readthedocs.io/en/latest/user-guide/unit_domains.html) in the conversion operations can control this to some extent. For example the 'Nuclear' domain specifies that `rad` refers to radiation absorbed dose instead of the angle.
+- Currency is supported as a unit but it is not recommended to use this for anything beyond basic financial calculations. So, if you are doing a lot of financial calculations or accounting, use something more specific for currency manipulations. It also does not maintain any notion of currency conversions since those fluctuate in value. It may at some point recognize different currency names through commodities.
+- Fractional unit powers are not supported in general. While some mathematical operations on units are supported, any root operations `sqrt` or `cbrt` will only produce valid results if the result is integral powers of the base units. One exception is limited support for √Hz operations in measurements of amplitude spectral density. A specific definition of a unit representing square root of Hz is available and will work in combination with other units.
+- While conversions of various temperature definitions are supported, there is no generalized support for datums and bias shifts. It may be possible to add some specific cases in the future for common use cases but the space requirement limits such use. Some of the other libraries have general support for this.
+- A few [equation](https://units.readthedocs.io/en/latest/user-guide/equation_units.html) like units are supported, these include logarithms, nepers, and some things like Saffir-Simpson, Beaufort, and Fujita scales for wind, and Richter scales for earthquakes. There is capacity within the framework to add a few more equation-like units if a need arises.
+- There are several units where the specific definition differs when used in different domains. The unit `rad` in the nature of radiation absorbed dose is one such unit as it would conflict with `rad` in terms of radians. So `rad` means radians by default since that is the more common use in electrical engineering. The use of [domains](https://units.readthedocs.io/en/latest/user-guide/unit_domains.html) in the conversion operations can control this to some extent. For example the 'Nuclear' domain specifies that `rad` refers to radiation absorbed dose instead of the angle.
 
 ## Alternatives
 
-If you are looking for compile time and prevention of unit errors in equations for dimensional analysis one of these libraries might work for you.
+If you are looking for compile-time and prevention of unit errors in equations for dimensional analysis one of these libraries might work for you.
 
 - [boost units](https://www.boost.org/doc/libs/1_79_0/doc/html/boost_units.html) -Zero-overhead dimensional analysis and unit/quantity manipulation and conversion in C++
 - [Units](https://github.com/nholthaus/units) -A compile-time, header-only, dimensional analysis library built on `C++14` with no dependencies.
@@ -97,7 +97,7 @@ If you are looking for compile time and prevention of unit errors in equations f
 - [mpusz/units](https://github.com/mpusz/units) -A compile-time enabled Modern C++ library that provides compile-time dimensional analysis and unit/quantity manipulation. This library is in process for standardization in C++23/26.
 - [bernedom/SI](https://github.com/bernedom/SI) -A header only C++ library that provides type safety and user defined literals for handling physical values defined in the International System of Units
 
-These libraries will work well if the number of units being dealt with is known at compile time. Many also produce zero overhead operations and checking. Therefore in situations where this is possible other libraries are a preferred alternative.
+These libraries will work well if the number of units being dealt with is known at compile time. Many also produce zero-overhead operations and checking. Therefore in situations where this is possible other libraries are a preferred alternative.
 
 ### Reasons to choose this units library over another option
 
@@ -126,10 +126,10 @@ There are only a few types in the library
 
 - `detail::unit_base` is the base representation of physical units and powers. It uses a bitfield to store the base unit representation in a 4-byte representation. It is mostly expected that unit_base will not be used in a standalone context but through one of other types.
 - `unit` is the primary type representing a physical unit it consists of a `float` multiplier along with a `unit_base` and contains this within an 8 byte type. The float has an accuracy of around 7 decimal digits. Units within that tolerance will compare equal.
-- `precise_unit` is the a more accurate type representing a physical unit it consists of a `double` multiplier along with a `unit_base` and contains this within an 16 byte type. The double has an accuracy of around 13 decimal digits. Units within that tolerance will compare equal. The remaining 4 bytes are used to contain a commodity object code.
-- `measurement` is a 16 byte type containing a double value along with a `unit` and mathematical operations can be performed on it usually producing a new measurement.
+- `precise_unit` is a more accurate type representing a physical unit it consists of a `double` multiplier along with a `unit_base` and contains this within an 16-byte type. The double has an accuracy of around 13 decimal digits. Units within that tolerance will compare equal. The remaining 4 bytes are used to contain a commodity object code.
+- `measurement` is a 16-byte type containing a double value along with a `unit` and mathematical operations can be performed on it usually producing a new measurement.
 - `precise_measurement` is similar to measurement except using a double for the quantity and a `precise_unit` as the units.
-- `fixed_measurement` is a 16 byte type containing a double value along with a constant `unit` and mathematical operations can be performed on it usually producing a new `measurement`. The distinction between `fixed_measurement` and `measurement` is that the unit definition of `fixed_measurement` is constant and any assignments get automatically converted, `fixed_measurement`'s are implicitly convertible to a `measurement` of the same value type. fixed_measurement also support some operation with pure numbers by assuming a unit that are not allowed on regular measurement types.
+- `fixed_measurement` is a 16-byte type containing a double value along with a constant `unit` and mathematical operations can be performed on it usually producing a new `measurement`. The distinction between `fixed_measurement` and `measurement` is that the unit definition of `fixed_measurement` is constant and any assignments get automatically converted, `fixed_measurement`'s are implicitly convertible to a `measurement` of the same value type. fixed_measurement also support some operation with pure numbers by assuming a unit that are not allowed on regular measurement types.
 - `fixed_precise_measurement` is similar to `fixed_measurement` except it uses `precise_unit` as a base and uses a double for the measurement instead of a template, and it is 24 bytes instead of 16.
 - `uncertain_measurement` is similar to `measurement` except it uses a 32-bit float for the value and contains an uncertainty field which is also 32-bits. Mathematical operations on `uncertain_measurement`s will propagate the uncertainty and convert it as necessary. The class also includes functions for simple-uncertainty propagation like `simple_subtract` which just sums the uncertainties. The sum-of-squares methods is used in the overloaded math operators. Mathematical operations are supported on the type and it interoperates with measurements.
 
