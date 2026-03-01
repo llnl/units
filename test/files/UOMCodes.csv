@@ -1,0 +1,1847 @@
+Description,X12,UN Rec 20
+10 Kilogram Drum,97,97
+"10,000 Gallon Tankcar",96,96
+100 Board Feet,BP,BP
+100 Kilograms,KK,KK
+100-Pack,4F,CNP
+1000 Cubic Feet,FC,FC
+1000 Meters,MQ,MQ
+15 Kilogram Drum,98,98
+20 Foot Container,20,20
+"20,000 Gallon Tankcar",95,95
+20-Pack,4E,4E
+25 Kilogram Bulk Bag,46,46
+300 Kilogram Bulk Bag,45,45
+40 Foot Container,21,21
+50 Pound Bag,47,47
+500 Kilogram Bulk Bag,44,44
+Access Lines,AL,AL
+Acre,AC,ACR
+Actual Kilograms,50,50
+Actual Tonnes,51,51
+Actual Tons,26,26
+Additional Minutes,AH,AH
+Air Dry Metric Ton,MD,MD
+Aluminum Pounds Only,AP,AP
+Ampere,68,AMP
+Ampere Turn Per Centimeter,73,73
+Ampere-turn,AO,AO
+Amperes per Meter,AE,AE
+Ampoule,AM,AM
+Angstrom,AG,AG
+Anti-hemophilic Factor (AHF) Units,AQ,AQ
+Application,UR,UR
+Assembly,AY,AY
+Assortment,AS,AS
+Atmosphere,AT,ATM
+Average Minutes Per Call,AI,AI
+Bag,BG,BG
+Bale,BA,BL
+Ball,AA,AA
+Band,BJ,D92
+Bar,BI,BR
+Barge,NB,NB
+Barrel,BR,BLL
+"Barrel, Imperial",B4,B4
+Barrels per Day,B1,B1
+Barrels per Minute,5A,5A
+Base Box,BB,BB
+Base Weight,BW,BW
+Basis Points,39,39
+Basket,BS,BK
+Batch,5B,5B
+Batt,B9,B9
+Batting Pound,B3,B3
+Beam,BE,D79
+Becquerel,R2,BQL
+Belt,BT,E2
+Billboard,OC,OC
+Billet,B5,B5
+Billions of Dollars,R7,R7
+Bin,2W,2W
+Bit,G6,G6
+Block,BL,D64
+Board Feet,B8,BD
+Board Feet,BF,BFT
+Bobbin,4A,4A
+Bolt,BM,BT
+Book,BK,D63
+Bottle,BO,BO
+Box,BX,BX
+Brake Horse Power,BQ,BHP
+British Thermal Unit (BTU),BY,BTU
+British Thermal Units (BTUs) Per Hour,2I,2I
+British Thermal Units (BTUs) per Cubic Foot,B0,B0
+British Thermal Units (BTUs) per Pound,AZ,AZ
+Brush,BH,BH
+Bucket,BC,BJ
+Bulk,BN,VQ
+Bulk Car Load,48,48
+Bulk Pack,AB,AB
+Bun,B6,B6
+Bundle,BD,BE
+Bunks,B2,B2
+Bushel,BU,BUA
+"Bushel, Dry Imperial",BV,BUI
+Bytes,AD,AD
+Caboose Count,1D,1D
+Caboose Mile,1H,1H
+Cake,KA,KA
+Calendar Days,DW,DW
+Calls,C0,C0
+Calorie,R4,R4
+Calories per Cubic Centimeter,92,92
+Calories per Gram,93,93
+Can,CN,CA
+Cap,4B,4B
+Capsule,AV,AV
+Car,NC,NC
+Car Count,1B,1B
+Car Mile,1A,1A
+Carat,CD,CD
+Carboy,CB,CO
+Card,CG,CG
+Carload,C4,C4
+Carset,C2,C2
+Carton,CT,CT
+Cartridge,CQ,CQ
+Cartridge Needle,N9,N9
+Case,CA,CS
+Cassette,CS,D66
+Catchweight,31,31
+Cell,C6,C6
+"Centigrade, Celsius",CE,CEL
+Centigram,AF,CGM
+Centiliter,C3,CLT
+Centimeter,CM,CMT
+Centimeters Per Second,2M,2M
+Centipoise (CPS),C7,C7
+Centistokes,4C,4C
+Channel,QC,QC
+Coil,CX,CL
+Coil Group,C9,C9
+Column - Inches,II,II
+Combo,CZ,CZ
+Composite Product Pounds (Total Weight),C1,C1
+Cone,CJ,CJ
+Connector,CK,CK
+Container,CH,CH
+Cop,AJ,AJ
+Cord,8C,8C
+Cost,C5,C5
+Coulomb,65,COU
+Count,1N,1N
+Count per Minute,5K,5K
+Counts per Centimeter,IT,IT
+Counts per Inch,IC,IC
+Crate,CP,CR
+Credits,52,52
+Cubic Centimeter,CC,CMQ
+Cubic Centimeters Per Second,2J,2J
+Cubic Decimeter,C8,DMQ
+Cubic Feet,CF,FTQ
+Cubic Feet Per Hour,2K,2K
+Cubic Feet Per Minute,2L,2L
+Cubic Feet per Minute per Square Foot,36,36
+Cubic Inches,CI,INQ
+Cubic Meter,CR,MTQ
+Cubic Meter Per Hour,4V,MQH
+Cubic Meters (Net),CO,D90
+Cubic Yard,CY,YDQ
+Cup,CU,CU
+Cup,CV,CV
+Cup,CW,CW
+Curie,4D,CUR
+Curl Units,94,94
+Cycles,B7,B7
+Cylinder,CL,CY
+Data Records,DQ,DQ
+Days,DA,DAY
+Deal,DE,DE
+Decagram,DJ,DJ
+Deci Newton-Meter,DN,DN
+Decibels,2N,2N
+Decigram,DG,DG
+Deciliter,DL,DLT
+Deciliter per Gram,22,22
+Decimeter,DM,DMT
+Degree,DD,DD
+Directory Books,DY,DY
+Disk (Disc),DC,DC
+Dispense,DI,DI
+Display,DS,DS
+Dollars per Hours,A8,D67
+"Dollars, Canadian",D1,D1
+"Dollars, U.S.",DO,DO
+Dosage Form,US,US
+Double-time Hours,EG,EG
+Dozen,DZ,DZN
+Dozen Pair,DP,DPR
+Draize Score,D8,D8
+Dram,DF,DRA
+Dram (Minim),UX,UX
+Drum,DR,DR
+Dry Pounds,DB,DB
+Dry Ton,DT,DT
+Duty,8D,8D
+Dyne,DU,DU
+Dyne per Square Centimeter,D9,D9
+Dynes per Centimeter,DX,DX
+Each,EA,EA
+Each per Month,EC,EC
+Eight-Pack,P8,P8
+Electron Volt,79,A53
+Electronic Mail Boxes,EB,EB
+Eleven pack,EP,EP
+Employees,EE,EE
+Empty Car,1E,1E
+"English, (Feet, Inches)",E9,E9
+Envelope,EV,EV
+Equivalent,F3,F3
+Equivalent Gallons,EQ,EQ
+Fahrenheit,FA,FAH
+Failure Rate In Time,63,63
+Farad,83,FAR
+Fathom,AK,AK
+Feet Per Minute,FR,FR
+Feet Per Second,FS,FS
+Feet and Decimal,EZ,EZ
+"Feet, Inches and Decimal",EY,EY
+"Feet, Inches and Fraction",EX,EX
+Fibers,FK,FK
+Fibers per Cubic Centimeter of Air,F9,F9
+Fields,FB,FB
+Fifty,Q4,Q4
+Fifty Count,UZ,UZ
+Fifty Square Feet,UY,UY
+Five Hundred,VC,VC
+Five-Pack,P5,P5
+Fixed Rate,1I,1I
+Flake Ton,FL,FL
+Flat,V1,V1
+Fluid Ounce,FO,OZA
+Fluid Ounce (Imperial),FZ,OZI
+Foot,FT,FOT
+Foot Pounds,85,85
+Four-Pack,P4,P4
+Frames,1Q,1Q
+Fuel Usage (Gallons),1G,1G
+Gage Systems,GZ,GZ
+Gallon,GA,GLL
+Gallons Per Thousand Cubic Feet,GW,GW
+Gallons per Thousand,5C,5C
+Gallons/Day,GB,GB
+Gauss,76,76
+Gauss per Oersteds,GU,GU
+Gigabecquerel,G4,GBQ
+Gigabyte,G9,G9
+Gigacalories,G8,G8
+Gigajoules,GV,GV
+Gill (Imperial),G5,GII
+Grain,GX,GRN
+Gram,GR,GRM
+Grams per 100 Centimeters,GF,GF
+Grams per 100 Grams,GC,GC
+Grams per Cubic Centimeter,23,23
+Grams per Kilogram,GK,GK
+Grams per Liter,GL,GL
+Grams per Milliliter,GJ,GJ
+Grams per Sq. Meter,GM,GM
+Grams per Square Centimeter,25,25
+Great Gross (Dozen Gross),GG,GGR
+Gross,GS,GRO
+Gross Barrels,GD,GD
+Gross Gallons,GN,GN
+Gross Kilogram,GT,
+Gross Ton,TG,GT
+Gross Yard,GY,GY
+Half Dozen,HD,HD
+Half Gallon,GH,GH
+Half Hour,HT,HT
+Half Liter,H2,H2
+Half Pages - Electronic,H1,H1
+Half Pint,PV,PV
+Hank,HA,HA
+Hectare,HQ,HQ
+Hectogram,HG,HGM
+Hectoliter,H4,HLT
+Hectometer,E1,E1
+Henry,81,81
+Hertz,HZ,HTZ
+Horsepower,HJ,HJ
+Horsepower Days per Air Dry Metric Tons,30,30
+Hours,HR,HUR
+Hundred,HU,CEN
+Hundred Boxes,HB,HBX
+Hundred Count,HC,HC
+Hundred Cubic Feet,HH,HH
+Hundred Cubic Meters,FF,FF
+Hundred Feet,HF,HF
+Hundred Feet - Linear,HL,HL
+Hundred Kilograms,HK,HK
+Hundred Sheets,HI,HI
+Hundred Weight (Long),HW,HW
+Hundred Weight (Short),HV,HV
+Hundred Yards,HY,HY
+Hundred per Day,H3,H3
+Hundreds of Cans,9H,9H
+Hundreds of Gallons,9G,9G
+Hundreds of Units,9C,9C
+Hundreds Per Day,H5,H5
+Hundreds of Millivolt,H7,H7
+Hundreds of Shots,H8,H8
+Hundreds Per 1000 Cubic Feet,H9,H9
+Hung Pair,D2,D2
+Hypothermia Cooling Unit Dosage,D3,D3
+Impregnated Units,IM,IM
+Impression,IM,IM
+Inches,IN,IN
+Inches per Minute,IM,IM
+Inches per Second,IP,IP
+Index Joules per Grams Centigrade,IC,IC
+Inhabitance Unit,IH,IH
+Initial Paint Date,DP,DP
+Initial Paint Lot Number,DP,DP
+Inhaler,IH,IH
+Injection Rate,IS,IS
+Injection Velocity,IS,IS
+Insurance Policy,IP,IP
+Intermediate Bulk Container,QH,QH
+International Standard Kilogram,SI,SI
+International Standard Unit,SI,SI
+International Units,IU,IU
+International Units per Gram,IT,IT
+International Units per Liters,IL,IL
+International Units per Milligram,IM,IM
+International Units per Nicotine Capsule,IN,IN
+International Units per Second,IS,IS
+Intra Venous Bag,IV,IV
+Inventory,IV,IV
+Inverter,IN,IN
+Iron Oxide Percent,IR,IR
+Irregularly Shaped Basic Unit,QD,QD
+Jacket,JT,JT
+Jar,JR,JR
+Jewel,JW,JW
+Job,JO,JO
+Joule ,86,J
+Joules per Gram,J9,J9
+Joules per Gram Kelvin,JK,JK
+Joules per Kilogram Kelvin,JJ,JJ
+Joules per Kilogram per Degree Kelvin,JE,JE
+Joules per Kilogram Degree Kelvin,JD,JD
+Joy Stick,JS,JS
+Jug,JU,JU
+Jumbo,JB,JB
+Junction,JN,JN
+Karat,KR,KR
+Kelvin,K1,K1
+Kilocalorie,KL,KCA
+Kilocalories,KZ,KZ
+Kilocalories per Hour,KH,KH
+Kilocurie,2R,KCI
+Kiloliters,K5,K5
+Kiloliters of Alcohol,5E,5E
+Kiloliters per Hour,K6,K6
+Kilometer,KM,KMT
+Kilometers per Hour,KX,KX
+Kilograms,KG,KGM
+Kilograms Net of Water,KN,KN
+Kilograms Dry Weight,KD,KD
+Kilograms per Cubic Meter,K3,K3
+Kilograms per Hour,K4,K4
+Kilograms per Liter,K7,K7
+Kilograms per Second,K9,K9
+Kilojoules,KJ,KJ
+Kilojoules per Kelvin,K2,K2
+Kilojoules per Kilogram,KB,KB
+Kilojoules per Kilogram Kelvin,KI,KI
+Kiloliters,KL,KLT
+Kiloliter,K5,KLT
+Kilometer,KM,KMT
+Kiloohms,KO,KO
+Kilopascal,KPA,KPA
+Kilopond,KP,KP
+Kilotesla,KS,KS
+Kilotherms,KT,KT
+Kilowatt,K7,KWT
+Kilowatt Hour,KW,KWH
+Kilowatt Hours per year,KY,KY
+Kilowatts,KZ,KWT
+Kilovolt,K8,KV
+Kilovolt Ampere,K6,KVA
+Kilovolt Amperes Reactive,KVR,KVR
+Kilovolt Amperes Reactive Hour,KVH,KVH
+Kilovolt Hour,K9,KVH
+Kilovolt Hours,K8,KVH
+Kilovolt Per Meter,KVM,KVM
+Kilovolt Ampere Hour,KAH,KAH
+Kilovolt Ampere Reactive Hour,K7,KVR
+Kit,KT,KT
+Knot,KN,KN
+Labor-hours,LH,LH
+Lace,LC,LC
+Land,LA,LA
+Landing,LD,LD
+Landings,7A,7A
+Layer,LR,LR
+Lease,LS,LS
+Length,LN,LN
+Letter,LT,LT
+Liar's Dice,LD,LD
+Liest,LE,LE
+Liter,LT,LTR
+Liters,LI,LI
+Liters at 15 Degrees Celsius,L5,L5
+Liters per Hour,LU,LU
+Liters per Minute,LV,LV
+Liters per Second,LW,LW
+Linear Foot,LF,LF
+Linear Inch,LI,LI
+Linear Meter,LM,LM
+Linear Yard,LY,LY
+Link,LK,LK
+Live Animals Units,LV,LV
+Load,NL,NL
+Loan/Mortgage,LO,LO
+Lobe,LB,LB
+Local Delivery Cut-off,LC,LC
+Loads,LD,LD
+Loan Amount,LA,LA
+Loan Unit,LU,LU
+Lot,LO,LO
+Love Letter,LL,LL
+Low Voltage,LV,LV
+Lump Sum,LS,LS
+Luminous,LU,LU
+Lunar Cycle,LY,LY
+Lux,LX,LX
+Luxon,LX,LX
+Lycopene,LY,LY
+Machine Group,MG,MG
+Magnet,MT,MT
+Magnetic Tape,M0,M0
+Magnesium Oxide,MO,MO
+Maid Service Count,M2,M2
+Main Switch,MS,MS
+Make-up Air,MA,MA
+Mandrel,MN,MN
+Manifestation,MN,MN
+Manifold,MAN,MAN
+Manuscript Line,ML,ML
+Mar,MR,MR
+Marginal Unit,MU,MU
+Marine Layer Indicator,MLI,MLI
+Market Shares,MS,MS
+Mat,M3,M3
+Match,MT,MT
+Material Safety Data Sheet,MSDS,MSDS
+Mates,MT,MT
+Mathematical Unit,MAT,MAT
+Maximum Pressure,MP,MP
+Meager,MG,MG
+Mean,ME,ME
+Measured Units,MU,MU
+Measure,MS,MS
+Media,MD,MD
+Medical Imager Unit,MIU,MIU
+Mega Bytes,MB,MB
+Mega Calories,MC,MC
+Mega Joules,MJ,MJ
+Megabecquerel,M8,MBQ
+Megacurie,M9,MCR
+Megagram,2U,MTN
+Megajoules,M7,MJ
+Megaohms,M3,M3
+Megapascal,M2,MPA
+Megavolt,M4,MV
+Megavolt Ampere,M5,MVA
+Megavolt Ampere Hour,M6,MVH
+Megavolt Ampere Reactive,M7,MVAR
+Megavolt Ampere Reactive Hour,M8,MVARH
+Megavolt Ampere Hour,M6,MVH
+Megavolt Per Meter,M9,MV/M
+Megawatt,MA,MW
+Megawatt Hour,MH,MWH
+Megawatt Reactive,MR,MVAR
+Megawatt Reactive Hour,MW,MVARH
+MegHz,MH,MHZ
+Mel,ML,ML
+Melon,ME,ME
+Membrane,MM,MM
+Membrane Element,ME,ME
+Member,MB,MB
+Memorandum,MM,MM
+Memory Unit,MU,MU
+Mendocino,MC,MC
+Meter,MR,MTR
+Meters,M1,M1
+Meters per Cubic Meter,MPC,MPC
+Meters per Hour,M2,M2
+Meters per Minute,M3,M3
+Meters per Second,4I,MTS
+Meters per Second Per Second,4J,MTS
+Methyl Alcohol Degree,MAD,MAD
+Metric,MI,MI
+Metric Gross Ton,MG,MTG
+Metric Net Ton,MN,MTN
+Metric Ton,MP,MT
+Metric Ton per Day,M5,M5
+Metric Ton per Hour,MT,MT
+Metric Ton per Minute,M2,M2
+Metric Ton per Second,M3,M3
+Metric Ton-Kilometers,MTK,MTK
+Metric Ton-Kilometer per Day,MTD,MTD
+Metric Ton per Hour per Day,MPD,MPD
+Metric Tons,MN,MT
+Metric Tons Daily,MD,MD
+Metric Tons per Day,M4,M4
+Metric Tons per Hour,M5,M5
+Metric Tons per Minute,M6,M6
+Metric Tons per Second per Degrees,MTSP,MTSP
+Metric Tons per Week,M4,M4
+Metric Ton-Kilometer,MTK,MTK
+Metric Ton Days (Net,MN,MN
+Metric Ton - Kilometers,M7,M7
+Metric Long Ton,MT,MLT
+Metric Weight Dollar,MWD,MWD
+Microfarad,M2,MF
+Microgram,MC,MCG
+Microgram of Poliovaccine Antigen,MPA,MPA
+Microgram per Deciliter,M3,M3
+Microgram per Gram,M4,M4
+Microgram per Kilogram,M5,M5
+Microgram per Liter,M6,M6
+Microgram per Milliliter,M7,M7
+Microgram REM,M8,M8
+Microgram per Square Centimeter,M9,M9
+Microgray,MG,MG
+Microhertz,MH,MH
+Microjoule,MJ,MJ
+Microkatal,MK,MK
+Microliter,4G,UL
+Micromass Unit,MMU,MMU
+Micrometer,MM,MM
+Micromho,MI,MI
+Micromole,MO,MO
+Micromole per Liter,M2,M2
+Micron,MI,MI
+Micronaire Value,MNV,MNV
+Micron-Inch,M3,M3
+Micron Measurement,MM,MM
+Microohm,MO,MO
+Micropascal,MPA,MPA
+Microradian,MR,MR
+Microsiemens,MS,MS
+Microsecond,MI,MI
+Micro-step,MS,MS
+Microsystem,MS,MS
+Microtesla,MT,MT
+Microvolt,MV,MV
+Microvolt Per Meter,MVM,MVM
+Migraine,MG,MG
+Mile,ML,MI
+Miles Per Hour,MH,MH
+Miles Per Minute,MM,MM
+Military Time,MT,MT
+Milliampere,M1,M1
+Milliampere Hour,M2,M2
+Milliampere per Meter,M3,M3
+Milliar,MIL,MIL
+Millibars,MB,MB
+Millibecquerel,M1,MBQ
+Milliburden,MIL,MIL
+Millicalorie,M2,MCAL
+Millicurie,MC,MCI
+Millidegree Celsius,M1,M1
+Millidegree Fahrenheit,MDF,MDF
+Millidyne,MD,MD
+Millieq Unit,MEU,MEU
+Millifarad,MF,MF
+Milligram,ME,MGM
+Milligram Equivalent Unit,MEU,MEU
+Milligram per Cubic Centimeter,M2,M2
+Milligram per Deciliter,M3,M3
+Milligram per Gram,M4,M4
+Milligram per Kilogram,M5,M5
+Milligram per Liter,M6,M6
+Milligram per Milliliter,M7,M7
+Milligram Percent,MP,MP
+Milligram per Square Centimeter,M8,M8
+Milligram REM,M9,M9
+Milligray,MG,MG
+Millihenry,MH,MH
+Millihertz,MIZ,MIZ
+Millijoule,MJ,MJ
+Milliliter,ML,MLT
+Milliliter per Hour,M2,M2
+Milliliter per Minute,M3,M3
+Milliliter per Second,M4,M4
+Millimeter,MM,MMT
+Millimeter of Mercury,MMHG,MMHG
+Millimeter Per Day,MPD,MPD
+Millimeter per Hour,M2,M2
+Millimeter per Minute,M3,M3
+Millimeter per Second,M4,M4
+Millimicro,MM,MM
+Millimicron,MM,MM
+Millimolar,MM,MM
+Millimole,MMO,MMO
+Millimole per Liter,M2,M2
+Millinormal,MN,MN
+Millinormal per Liter,M2,M2
+Milliohm,MOH,MOH
+Millimole,MMO,MMO
+Millimole per Liter,M2,M2
+Millimeq,MEU,MEU
+Millieq Unit,MEU,MEU
+Millipascal,MPA,MPA
+Millirad,MR,MR
+Milliradius,MRD,MRD
+Millirem,MR,MR
+Millirem Per Hour,MRH,MRH
+Millirem per Liter,MRL,MRL
+Milliroentgen,MR,MR
+Milliroentgen per Hour,MRH,MRH
+Millisecond,MS,MS
+Millisiemens,MSI,MSI
+Millisievert,MSV,MSV
+Millitesla,MT,MT
+Millitherm,MTH,MTH
+Millitorr,MTOR,MTOR
+Milliton,MT,MT
+Millivolt,MV,MV
+Millivolt per Hour,MVH,MVH
+Millivolt per Meter,MVM,MVM
+Millivolt Per Second,MVS,MVS
+Milliwatt,MW,MW
+Milliwatt Hour,MWH,MWH
+Milliwatt Per Steradian,MWS,MWS
+Milliwatt per Square Meter,MWM,MWM
+Milliwatt Per Square Meter Per Steradian,MWMS,MWMS
+Million British Thermal Units,M1,MBTU
+Million British Thermal Units Per Day,M2,M2
+Million British Thermal Units Per Hour,M3,M3
+Million British Thermal Units Per Year,M4,M4
+Million Cubic Feet,MCF,MCF
+Million Cubic Feet Per Day,M2,M2
+Million Gallons Per Day,MGD,MGD
+Million Joules,MJ,MJ
+Million Joules per Day,MJD,MJD
+Million Joules per Hour,MJH,MJH
+Million Joules per Year,MJY,MJY
+Million Joules per Week,MJW,MJW
+Million Joules per Second,MJS,MJS
+Million kilowatt Hour,MKH,MKH
+Million Kilowatt Hours,MKH,MKH
+Million kilowatt Hours per Year,MKY,MKY
+Million Kilowatts,MK,MKW
+Million Liters per Day,MLD,MLD
+Million Liters per Year,MLY,MLY
+Million Short Tons per Day,MSTD,MSTD
+Million Watt Hours,MWH,MWH
+Millionth,MILL,MILL
+Millionths,MILL,MILL
+Minute,MJ,MIN
+Minute Angle,MIN,MIN
+Minute Deflection,MIN,MIN
+Minute of Arc,MIN,MIN
+Minute of Time,MIN,MIN
+Minutes,MN,MIN
+Minutes Per Call,MPC,MPC
+Minutes Per Day,MPD,MPD
+Minutes Per Hour,MPH,MPH
+Minutes Per Minute,MPM,MPM
+Minutes Per Second,MPS,MPS
+Mix,MX,MX
+Mixed Range,MXR,MXR
+Mixture Starch Percent,MSP,MSP
+Models,MO,MO
+Mode Number,MN,MN
+Modern,MD,MD
+Moded,MD,MD
+Modem,MO,MO
+Modification,MOD,MOD
+Module,MOD,MOD
+Modulation,MO,MO
+Modulus,MOD,MOD
+Mohawk,MH,MH
+Moil,MO,MO
+Moist Fiber,MF,MF
+Moist Pine,MP,MP
+Moist Weight,MW,MW
+Molar Concentration,MC,MC
+Molar Disk,MD,MD
+Molar Mass,MM,MM
+Molar Volume,MV,MV
+Molar Magnetic Susceptibility Unit,MMSU,MMSU
+Molar Oxygen,MO,MO
+Molarity Unit,MU,MU
+Mold,MO,MO
+Mole,MO,MO
+Mole Per Liter,M1,M1
+Moles per Kilogram,M2,M2
+Moles Per Liter,MPL,MPL
+Molecule,MLC,MLC
+Moleweight,MW,MW
+Molten,MO,MO
+Molybdenum Pentoxide Percent,MPOP,MPOP
+Moment,MN,MN
+Moment Arm,MA,MA
+Momentum Rate,MR,MR
+Momentum Transfer,MT,MT
+Monitor,MN,MN
+Monitor Unit,MU,MU
+Monkey,MC,MC
+Monocle,MON,MON
+Monopoly,MOP,MOP
+Monsieurbration,MRB,MRB
+Monster,MN,MN
+Month,MO,MTH
+Monthly,MY,MY
+Monumental,MON,MON
+Monument,MON,MON
+Monument Number,MN,MN
+Monzonite,MZ,MZ
+Mood,MO,MO
+Moonlight,ML,ML
+Moor,MO,MO
+Moored,MO,MO
+Moose,MO,MO
+Mop,MO,MO
+Mop Head,MH,MH
+Moped,MP,MP
+Mopheadedness,MHD,MHD
+Mopes,MO,MO
+Moppet,MP,MP
+Moral,MR,MR
+Morale,MRL,MRL
+Morals,MRL,MRL
+Morbid Deficiency Unit,MDU,MDU
+Morbidity,MB,MB
+Morbidly,MB,MB
+Morbing,MB,MB
+Morceau,MC,MC
+Mordant,MD,MD
+More,MO,MO
+Morel,MR,MR
+Moreover,MV,MV
+Morgana,MN,MN
+Morganic,MG,MG
+Morgay,MY,MY
+Morganatic,MG,MG
+Morgan,MG,MG
+Morganic Layer,ML,ML
+Morgay Maneuver,MM,MM
+Morgue,MG,MG
+Moribund,MB,MB
+Moribundity,MB,MB
+Moribund State,MS,MS
+Morganatic,MG,MG
+Moribund Condition,MC,MC
+Morific,MF,MF
+Morified,MF,MF
+Morina,MN,MN
+Morindin,MD,MD
+Morion,MN,MN
+Mormon,MN,MN
+Mormondom,MD,MD
+Mormons,MN,MN
+Morning,MG,MG
+Morning Dew Degree,MDEG,MDEG
+Morning Exercise Unit,MEU,MEU
+Morning Fraction,MF,MF
+Morning Glory,MG,MG
+Morning Glories,MG,MG
+Morning Hour,MH,MH
+Morning Hours,MH,MH
+Morning Light,ML,ML
+Morning Mist,MM,MM
+Morning Moisture Range,MMR,MMR
+Morning Percent,MP,MP
+Morning Star,MS,MS
+Morning Stars,MS,MS
+Morning Swig,MS,MS
+Morning Tea,MT,MT
+Morning Tea and Biscuits,MTB,MTB
+Morning Teas,MT,MT
+Morning Tide,MT,MT
+Morning Time,MT,MT
+Morning Urine Sample,MUS,MUS
+Morning Urine Sample Unit,MUSU,MUSU
+Morning Water Temperature,MWT,MWT
+Morning Weather,MW,MW
+Mornings,MG,MG
+Mornings per Week,MPW,MPW
+Moroccan Dirham,MD,MD
+Morocco Goat,MG,MG
+Morogoro,MG,MG
+Moron,MN,MN
+Moronic,MN,MN
+Moronically,MN,MN
+Morons,MN,MN
+Morosity,MY,MY
+Morose,MO,MO
+Moroseness,MN,MN
+Morosely,MO,MO
+Morosity,MY,MY
+Morosi,MN,MN
+Morph,MP,MP
+Morphah,MP,MP
+Morphean,MP,MP
+Morpheme,MP,MP
+Morpheme Unit,MU,MU
+Morphemic,MP,MP
+Morphemically,MP,MP
+Morphemics,MP,MP
+Morpheme,MP,MP
+Morpheo,MP,MP
+Morphew,MP,MP
+Morphews,MP,MP
+Morphia,MP,MP
+Morphias,MP,MP
+Morphic,MP,MP
+Morphical,MP,MP
+Morphically,MP,MP
+Morphic Density Unit,MDU,MDU
+Morphic Variation Unit,MVU,MVU
+Morphics,MP,MP
+Morphied,MP,MP
+Morphie,MP,MP
+Morphies,MP,MP
+Morphine,MP,MP
+Morphine Base Unit,MBU,MBU
+Morphine Percentage Unit,MPU,MPU
+Morphines,MP,MP
+Morphinic,MP,MP
+Morphinic Alkaloid Unit,MAU,MAU
+Morphink,MP,MP
+Morphino,MP,MP
+Morphinous,MP,MP
+Morphins,MP,MP
+Morphinist,MP,MP
+Morphinize,MP,MP
+Morphinized,MP,MP
+Morphinizes,MP,MP
+Morphinizing,MP,MP
+Morphinmania,MP,MP
+Morphinomania,MP,MP
+Morphism,MP,MP
+Morphisms,MP,MP
+Morphist,MP,MP
+Morphite,MP,MP
+Morphled,MP,MP
+Morphms,MP,MP
+Morpho,MP,MP
+Morpho Genus,MP,MP
+Morphos,MP,MP
+Morphosis,MP,MP
+Morphotic,MP,MP
+Morphous,MP,MP
+Morphs,MP,MP
+Morphu,MP,MP
+Morphume,MP,MP
+Morphumenia,MP,MP
+Morphumbilical,MP,MP
+Morph Units,MU,MU
+Morphylamide Unit,MAU,MAU
+Morphyla Units,MU,MU
+Morphyl Unit,MU,MU
+Morphy,MP,MP
+Morphy's Law,ML,ML
+Morphy Rules,MR,MR
+Morphy-type,MT,MT
+Morphy-typed,MT,MT
+Morrex,MX,MX
+Morris,MR,MR
+Morris Code,MC,MC
+Morris Chair,MC,MC
+Morris Chairs,MC,MC
+Morris Code Unit,MCU,MCU
+Morris Dancer,MD,MD
+Morris Dancers,MD,MD
+Morris Dances,MD,MD
+Morris Dancing,MD,MD
+Morris Men,MM,MM
+Morris Dances,MD,MD
+Morris Men,MM,MM
+Morrisane,MN,MN
+Morrises,MR,MR
+Morrisette,MT,MT
+Morrisettes,MT,MT
+Morrish,MR,MR
+Morrisiana,MA,MA
+Morrisiana Album,MAL,MAL
+Morrisiana Collection,MC,MC
+Morrisiana Library,ML,ML
+Morrisiana Manuscripts,MM,MM
+Morrisiana Museum,MM,MM
+Morrisiana Portfolio,MP,MP
+Morrisiana Rooms,MR,MR
+Morrisiana Sheet Music,MSM,MSM
+Morrisiana Sheet Music Collection,MSMC,MSMC
+Morrisiana Sheets,MS,MS
+Morrisiana Unit,MU,MU
+Morrisienne,MN,MN
+Morrisite,MT,MT
+Morritt,MT,MT
+Morritts,MT,MT
+Morrits,MT,MT
+Morrkish,MK,MK
+Morro,MO,MO
+Morros,MO,MO
+Morra,MR,MR
+Morral,ML,ML
+Morrall,ML,ML
+Morrams,MM,MM
+Morramp,MP,MP
+Morren,MN,MN
+Morrenna,MN,MN
+Morrent,MT,MT
+Morrents,MT,MT
+Morrer,MR,MR
+Morrers,MR,MR
+Morrery,MR,MR
+Morresca,MC,MC
+Morresco,MC,MC
+Morrescoes,MC,MC
+Morresco Dances,MD,MD
+Morresco Dancers,MD,MD
+Morresco Dancing,MD,MD
+Morreses,MC,MC
+Morrest,MT,MT
+Morresto,MC,MC
+Morrey,MY,MY
+Morria,MR,MR
+Morriad,MD,MD
+Morricone,MC,MC
+Morricones,MC,MC
+Morricono,MC,MC
+Morriconus,MC,MC
+Morridal,MD,MD
+Morriego,MC,MC
+Morrier,MR,MR
+Morriers,MR,MR
+Morriest,MT,MT
+Morriez,MZ,MZ
+Morriga,MG,MG
+Morrigas,MG,MG
+Morrigan,MG,MG
+Morrigans,MG,MG
+Morriger,MG,MG
+Morrigers,MG,MG
+Morrigno,MC,MC
+Morrignus,MC,MC
+Morrigs,MG,MG
+Morrigum,MC,MC
+Morrigungs,MC,MC
+Morrigunn,MC,MC
+Morri,MR,MR
+Morris,MR,MR
+Morrise,MC,MC
+Morrises,MC,MC
+Morrisey,MC,MC
+Morriseys,MC,MC
+Morrisham,MH,MH
+Morrisham Farm,MF,MF
+Morrisham Hamlet,MH,MH
+Morrisham Lane,ML,ML
+Morrisham Manor,MM,MM
+Morrishams,MH,MH
+Morrisia,MR,MR
+Morrisian,MN,MN
+Morrisiana,MA,MA
+Morrisians,MN,MN
+Morrisible,MB,MB
+Morrisies,MC,MC
+Morrisile,ML,ML
+Morrisiley,ML,ML
+Morrisill,ML,ML
+Morrisilles,ML,ML
+Morrisina,MN,MN
+Morrisine,MC,MC
+Morrisite,MT,MT
+Morrisiter,MT,MT
+Morrisitidae,MT,MT
+Morrisitids,MT,MT
+Morrisitis,MT,MT
+Morrisity,MT,MT
+Morrisive,MC,MC
+Morrision,MC,MC
+Morrisionite,MC,MC
+Morrisonites,MC,MC
+Morrisive,MC,MC
+Morrisitus,MC,MC
+Morrize,MC,MC
+Morrized,MC,MC
+Morrizes,MC,MC
+Morrizing,MC,MC
+Morrizote,MC,MC
+Morrizotes,MC,MC
+Morriszon,MC,MC
+Morrizones,MC,MC
+Morrizes,MC,MC
+Morro,MC,MC
+Morrow,MC,MC
+Morrows,MC,MC
+Morsal,MS,MS
+Morsals,MS,MS
+Morsals,MS,MS
+Morscella,MC,MC
+Morscelle,MC,MC
+Morsel,MC,MC
+Morseled,MC,MC
+Morseless,MC,MC
+Morselless,MC,MC
+Morsels,MC,MC
+Morselship,MC,MC
+Morsels Unit,MU,MU
+Morselta,MC,MC
+Morseltas,MC,MC
+Morsels,MC,MC
+Morseltation,MC,MC
+Morselted,MC,MC
+Morseltedly,MC,MC
+Morselting,MC,MC
+Morseltings,MC,MC
+Morseltisation,MC,MC
+Morselted,MC,MC
+Morseltsed,MC,MC
+Morseltwise,MC,MC
+Morse Alphabet,MA,MA
+Morse Alphabets,MA,MA
+Morse Code,MC,MC
+Morse Code Alphabet,MCA,MCA
+Morse Code Alphabets,MCA,MCA
+Morse Code Alphabetic Unit,MCAU,MCAU
+Morse Code Alphabetic Units,MCAU,MCAU
+Morse Code Character,MCC,MCC
+Morse Code Characters,MCC,MCC
+Morse Code Dash,MCD,MCD
+Morse Code Dashes,MCD,MCD
+Morse Code Decimal,MCD,MCD
+Morse Code Device,MCD,MCD
+Morse Code Unit,MCU,MCU
+Morse Code Units,MCU,MCU
+Morse Diode,MD,MD
+Morse Diodes,MD,MD
+Morse Key,MK,MK
+Morse Keys,MK,MK
+Morse Manipulator,MM,MM
+Morse Operators,MO,MO
+Morse Signal,MS,MS
+Morse Signaling Device Unit,MSDU,MSDU
+Morse Signals,MS,MS
+Morse Taper,MT,MT
+Morse Tapers,MT,MT
+Morse Telegraph,MT,MT
+Morse Telegraph Code,MTC,MTC
+Morse Telegraph Codes,MTC,MTC
+Morse Telegraph Key,MTK,MTK
+Morse Telegraph Keys,MTK,MTK
+Morse Telegraph Recorder,MTR,MTR
+Morse Telegraph Recorders,MTR,MTR
+Morse Signal,MS,MS
+Morse Signaling,MS,MS
+Morse System,MS,MS
+Morse Unit,MU,MU
+Morse Units,MU,MU
+Morsed,MC,MC
+Morsedness,MC,MC
+Morseful,MC,MC
+Morsefully,MC,MC
+Morsefulness,MC,MC
+Morseless,MC,MC
+Morselessly,MC,MC
+Morselessness,MC,MC
+Morsellate,MC,MC
+Morsellated,MC,MC
+Morsellates,MC,MC
+Morsellating,MC,MC
+Morsellation,MC,MC
+Morsellations,MC,MC
+Morselled,MC,MC
+Morsellation,MC,MC
+Morsellised,MC,MC
+Morsellism,MC,MC
+Morsellist,MC,MC
+Morsellite,MC,MC
+Morsellites,MC,MC
+Morsellitis,MC,MC
+Morsellivity,MC,MC
+Morsellizingly,MC,MC
+Morselloid,MC,MC
+Morsellosis,MC,MC
+Morsellously,MC,MC
+Morsellous,MC,MC
+Morsellously,MC,MC
+Morsellow,MC,MC
+Morsellation,MC,MC
+Morsellt,MC,MC
+Morsello,MC,MC
+Morsellos,MC,MC
+Morsellous Dentition,MD,MD
+Morselment,MC,MC
+Morsels,MC,MC
+Morselship,MC,MC
+Morselships,MC,MC
+Morsen,MC,MC
+Morses,MC,MC
+Morseses,MC,MC
+Morseted,MC,MC
+Morseter,MC,MC
+Morseters,MC,MC
+Morsets,MC,MC
+Morseware 1,MW1,MW1
+Morseware 2,MW2,MW2
+Morseware 3,MW3,MW3
+Morseware 4,MW4,MW4
+Morseware 5,MW5,MW5
+Morseware 6,MW6,MW6
+Morseware 7,MW7,MW7
+Morseware 8,MW8,MW8
+Morseware 9,MW9,MW9
+Morseware 10,MWX,MWX
+Morseware Alpha,MWA,MWA
+Morseware Beta,MWB,MWB
+Morseware Gamma,MWG,MWG
+Morseware Delta,MWD,MWD
+Morseware Epsilon,MWE,MWE
+Morseware Zeta,MWZ,MWZ
+Morseware Eta,MWH,MWH
+Morseware Theta,MWT,MWT
+Morseware Iota,MWI,MWI
+Morseware Kappa,MWK,MWK
+Morseware Lambda,MWL,MWL
+Morseware Mu,MWM,MWM
+Morseware Nu,MWN,MWN
+Morseware Xi,MWX,MWX
+Morseware Omicron,MWO,MWO
+Morseware Pi,MWP,MWP
+Morseware Rho,MWR,MWR
+Morseware Sigma,MWS,MWS
+Morseware Tau,MWT,MWT
+Morseware Upsilon,MWU,MWU
+Morseware Phi,MWF,MWF
+Morseware Chi,MWC,MWC
+Morseware Psi,MWP,MWP
+Morseware Omega,MWO,MWO
+Morseware Unit,MWU,MWU
+Morseware Units,MWU,MWU
+Morseway,MC,MC
+Morseways,MC,MC
+Morsewise,MC,MC
+Morsewise Units,MC,MC
+Morsewood,MC,MC
+Morsey,MC,MC
+Morseyness,MC,MC
+Morshall,MC,MC
+Morshal,MC,MC
+Morshill,MC,MC
+Morshood,MC,MC
+Morsy,MC,MC
+Morsystic,MC,MC
+Morsyte,MC,MC
+Morsytes,MC,MC
+Morsytical,MC,MC
+Morsytion,MC,MC
+Morsytism,MC,MC
+Morsytist,MC,MC
+Morsytistic,MC,MC
+Morsytium,MC,MC
+Mort,MT,MT
+Mortage,MT,MT
+Mortaged,MT,MT
+Mortager,MT,MT
+Mortagers,MT,MT
+Mortages,MT,MT
+Mortaging,MT,MT
+Mortal,MT,MT
+Mortalest,MT,MT
+Mortales,MT,MT
+Mortality,MT,MT
+Mortality Rate Unit,MRU,MRU
+Mortality Ratio Unit,MRU,MRU
+Mortality Risk Unit,MRU,MRU
+Mortality Table Unit,MTU,MTU
+Mortalium,MT,MT
+Mortalisable,MT,MT
+Mortalise,MT,MT
+Mortalised,MT,MT
+Mortalises,MT,MT
+Mortalising,MT,MT
+Mortaliterally,MT,MT
+Mortalitive,MT,MT
+Mortalizate,MT,MT
+Mortalizated,MT,MT
+Mortalizates,MT,MT
+Mortalizating,MT,MT
+Mortalization,MT,MT
+Mortalizations,MT,MT
+Mortalize,MT,MT
+Mortalizable,MT,MT
+Mortalized,MT,MT
+Mortalizer,MT,MT
+Mortalizers,MT,MT
+Mortalizes,MT,MT
+Mortalizing,MT,MT
+Mortalizingly,MT,MT
+Mortalizing Unit,MT,MT
+Mortalizing Units,MT,MT
+Mortalizer,MT,MT
+Mortalizers,MT,MT
+Mortally,MT,MT
+Mortal-like,MT,MT
+Mortalism,MT,MT
+Mortalisms,MT,MT
+Mortalisms,MT,MT
+Mortalist,MT,MT
+Mortalists,MT,MT
+Mortalite,MT,MT
+Mortalites,MT,MT
+Mortaliter,MT,MT
+Mortaliters,MT,MT
+Mortalitic,MT,MT
+Mortality,MT,MT
+Mortality Index,MII,MII
+Mortality Index Units,MIU,MIU
+Mortality Maximum,MM,MM
+Mortality Maximum Units,MMU,MMU
+Mortality Minimum,MM,MM
+Mortality Minimum Units,MMU,MMU
+Mortality Percent,MP,MP
+Mortality Rate,MR,MR
+Mortality Rate Unit,MRU,MRU
+Mortality Rates,MR,MR
+Mortality Rate Units,MRU,MRU
+Mortality Ratio,MR,MR
+Mortality Ratio Unit,MRU,MRU
+Mortality Ratios,MR,MR
+Mortality Ratios Units,MRU,MRU
+Mortality Risk,MR,MR
+Mortality Risk Units,MRU,MRU
+Mortality Table,MT,MT
+Mortality Table Unit,MTU,MTU
+Mortality Table Units,MTU,MTU
+Mortalitive,MT,MT
+Mortalium,MT,MT
+Mortalised,MT,MT
+Mortalises,MT,MT
+Mortalising,MT,MT
+Mortalitarian,MT,MT
+Mortalitarianism,MT,MT
+Mortalitarian Unit,MTU,MTU
+Mortalitarian Units,MTU,MTU
+Mortalitarian,MT,MT
+Mortalkind,MT,MT
+Mortalkinds,MT,MT
+Mortal-like,MT,MT
+Mortal-like Appearance,ML,ML
+Mortal-likely,MT,MT
+Mortal-likelihood,MT,MT
+Mortal-likes,MT,MT
+Mortalline,MT,MT
+Mortallines,MT,MT
+Mortal Remains,MR,MR
+Mortal Remains Unit,MRU,MRU
+Mortal Remains Units,MRU,MRU
+Mortal-seeming,MT,MT
+Mortal Shudder Unit,MSU,MSU
+Mortal Shudder Units,MSU,MSU
+Mortals,MT,MT
+Mortal Shell,MS,MS
+Mortal Shell Unit,MSU,MSU
+Mortal Shell Units,MSU,MSU
+Mortal Sin,MS,MS
+Mortal Sins,MS,MS
+Mortal Souls,MS,MS
+Mortal Soul Unit,MSU,MSU
+Mortal Soul Units,MSU,MSU
+Mortal State,MS,MS
+Mortal State Unit,MSU,MSU
+Mortal State Units,MSU,MSU
+Mortal Table,MT,MT
+Mortal Table Unit,MTU,MTU
+Mortal Table Units,MTU,MTU
+Mortal Terror Unit,MTU,MTU
+Mortal Terror Units,MTU,MTU
+Mortal Threat,MT,MT
+Mortal Threat Unit,MTU,MTU
+Mortal Threat Units,MTU,MTU
+Mortal Wound,MW,MW
+Mortal Wound Unit,MWU,MWU
+Mortal Wound Units,MWU,MWU
+Mortal Wounds,MW,MW
+Mortal Wounds Inflicted,MWI,MWI
+Mortal Wounds Inflicted Unit,MWIU,MWIU
+Mortal Wounds Inflicted Units,MWIU,MWIU
+Mortal Wounds Unit,MWU,MWU
+Mortal Wounds Units,MWU,MWU
+Mortamain,MT,MT
+Mortamains,MT,MT
+Mortamain Unit,MTU,MTU
+Mortamain Units,MTU,MTU
+Mortamaine,MT,MT
+Mortanalyse,MT,MT
+Mortanalysed,MT,MT
+Mortanalyses,MT,MT
+Mortanalysing,MT,MT
+Mortanalysis,MT,MT
+Mortanalytic,MT,MT
+Mortanalytical,MT,MT
+Mortanalytically,MT,MT
+Mortanalyzable,MT,MT
+Mortanalyze,MT,MT
+Mortanalyzed,MT,MT
+Mortanalyzes,MT,MT
+Mortanalyzing,MT,MT
+Mortanalyzingly,MT,MT
+Mortance,MT,MT
+Mortances,MT,MT
+Mortaner,MT,MT
+Mortaners,MT,MT
+Mortaner Unit,MTU,MTU
+Mortaner Units,MTU,MTU
+Mortanesquely,MT,MT
+Mortane Substitution,MS,MS
+Mortane Substitution Unit,MSU,MSU
+Mortane Substitution Units,MSU,MSU
+Mortaneness,MT,MT
+Mortaneouly,MT,MT
+Mortaneously,MT,MT
+Mortaneousness,MT,MT
+Mortaneously Unit,MTU,MTU
+Mortaneously Units,MTU,MTU
+Mortaneum,MT,MT
+Mortaneutic,MT,MT
+Mortaneutical,MT,MT
+Mortaneutically,MT,MT
+Mortaneutics,MT,MT
+Mortaneutist,MT,MT
+Mortanion,MT,MT
+Mortanions,MT,MT
+Mortano,MT,MT
+Mortanos,MT,MT
+Mortanous,MT,MT
+Mortanously,MT,MT
+Mortanousness,MT,MT
+Mortant,MT,MT
+Mortantes,MT,MT
+Mortantic,MT,MT
+Mortantically,MT,MT
+Mortantics,MT,MT
+Mortantily,MT,MT
+Mortantily Unit,MTU,MTU
+Mortantiness,MT,MT
+Mortantity,MT,MT
+Mortantity Units,MTU,MTU
+Mortants,MT,MT
+Mortantu,MT,MT
+Mortantuos,MT,MT
+Mortantuously,MT,MT
+Mortantuousness,MT,MT
+Mortanunce,MT,MT
+Mortanunces,MT,MT
+Mortanunce Unit,MTU,MTU
+Mortanunce Units,MTU,MTU
+Mortanunciate,MT,MT
+Mortanunciated,MT,MT
+Mortanunciates,MT,MT
+Mortanunciating,MT,MT
+Mortanunciation,MT,MT
+Mortanunciator,MT,MT
+Mortanunciators,MT,MT
+Mortanuncies,MT,MT
+Mortanuncius,MT,MT
+Mortanusness,MT,MT
+Mortanuous,MT,MT
+Mortanuously,MT,MT
+Mortanuousness,MT,MT
+Mortanuum,MT,MT
+Mortanx,MT,MT
+Mortanzol,MT,MT
+Mortanzols,MT,MT
+Mortanza,MT,MT
+Mortanzas,MT,MT
+Mortanza Unit,MTU,MTU
+Mortanza Units,MTU,MTU
+Mortanzale,MT,MT
+Mortanzales,MT,MT
+Mortanzal,MT,MT
+Mortanzals,MT,MT
+Mortanzally,MT,MT
+Mortanzalled,MT,MT
+Mortanzalling,MT,MT
+Mortanzalo,MT,MT
+Mortanzalos,MT,MT
+Mortanzalo Unit,MTU,MTU
+Mortanzalo Units,MTU,MTU
+Mortanzaloe,MT,MT
+Mortanzaloes,MT,MT
+Mortanzalol,MT,MT
+Mortanzalols,MT,MT
+Mortanzalolo,MT,MT
+Mortanzalolos,MT,MT
+Mortanzalon,MT,MT
+Mortanzalons,MT,MT
+Mortanzalote,MT,MT
+Mortanzalotes,MT,MT
+Mortanzalotement,MT,MT
+Mortanzalotely,MT,MT
+Mortanzaloteness,MT,MT
+Mortanzally,MT,MT
+Mortanzallly,MT,MT
+Mortanzallness,MT,MT
+Mortanzals,MT,MT
+Mortanzalse,MT,MT
+Mortanzame,MT,MT
+Mortanzames,MT,MT
+Mortanzamian,MT,MT
+Mortanzamianly,MT,MT
+Mortanzamians,MT,MT
+Mortanzamse,MT,MT
+Mortanzamses,MT,MT
+Mortanzamse Unit,MTU,MTU
+Mortanzamse Units,MTU,MTU
+Mortanzamses,MT,MT
+Mortanzamically,MT,MT
+Mortanzana,MT,MT
+Mortanzanas,MT,MT
+Mortanzanate,MT,MT
+Mortanzanately,MT,MT
+Mortanzanateness,MT,MT
+Mortanzanated,MT,MT
+Mortanzanates,MT,MT
+Mortanzanating,MT,MT
+Mortanzanation,MT,MT
+Mortanzanations,MT,MT
+Mortanzanative,MT,MT
+Mortanzanatively,MT,MT
+Mortanzanative Unit,MTU,MTU
+Mortanzanative Units,MTU,MTU
+Mortanzane,MT,MT
+Mortanzaned,MT,MT
+Mortanzanedy,MT,MT
+Mortanzanedness,MT,MT
+Mortanzaner,MT,MT
+Mortanzaneric,MT,MT
+Mortanzanered,MT,MT
+Mortanzanerer,MT,MT
+Mortanzanerers,MT,MT
+Mortanzanerery,MT,MT
+Mortanzaneries,MT,MT
+Mortanzaners,MT,MT
+Mortanzanery,MT,MT
+Mortanzanes,MT,MT
+Mortanzanette,MT,MT
+Mortanzanettes,MT,MT
+Mortanzanette Unit,MTU,MTU
+Mortanzanette Units,MTU,MTU
+Mortanzania,MT,MT
+Mortanzanial,MT,MT
+Mortanzanially,MT,MT
+Mortanzanially Unit,MTU,MTU
+Mortanzanially Units,MTU,MTU
+Mortanzanials,MT,MT
+Mortanzanian,MT,MT
+Mortanzanianly,MT,MT
+Mortanzanians,MT,MT
+Mortanzanic,MT,MT
+Mortanzannical,MT,MT
+Mortanzannically,MT,MT
+Mortanzannics,MT,MT
+Mortanzannish,MT,MT
+Mortanzannishly,MT,MT
+Mortanzannishment,MT,MT
+Mortanzannism,MT,MT
+Mortanzannisms,MT,MT
+Mortanzannist,MT,MT
+Mortanzannistic,MT,MT
+Mortanzannistically,MT,MT
+Mortanzannists,MT,MT
+Mortanzannity,MT,MT
+Mortanzannize,MT,MT
+Mortanzannized,MT,MT
+Mortanzannizer,MT,MT
+Mortanzannizers,MT,MT
+Mortanzannizes,MT,MT
+Mortanzannizing,MT,MT
+Mortanzannoid,MT,MT
+Mortanzannose,MT,MT
+Mortanzannosis,MT,MT
+Mortanzannous,MT,MT
+Mortanzannously,MT,MT
+Mortanzannousness,MT,MT
+Mortanzannule,MT,MT
+Mortanzannules,MT,MT
+Mortanzannulo,MT,MT
+Mortanzannulos,MT,MT
+Mortanzannulum,MT,MT
+Mortanzannulums,MT,MT
+Mortanzannulous,MT,MT
+Mortanzannulously,MT,MT
+Mortanzannulousness,MT,MT
+Mortanzannulus,MT,MT
+Mortanzannuluses,MT,MT
+Mortanzannumerable,MT,MT
+Mortanzannumerably,MT,MT
+Mortanzannumerate,MT,MT
+Mortanzannumerated,MT,MT
+Mortanzannumerates,MT,MT
+Mortanzannumerating,MT,MT
+Mortanzannumeration,MT,MT
+Mortanzannumerations,MT,MT
+Mortanzannumerator,MT,MT
+Mortanzannumerators,MT,MT
+Mortanzannumerous,MT,MT
+Mortanzannumerously,MT,MT
+Mortanzannumerousness,MT,MT
+Mortanzannums,MT,MT
+Mortanzannus,MT,MT
+Mortanzannx,MT,MT
+Mortanzannxes,MT,MT
+Mortanzannxy,MT,MT
+Mortanzannxys,MT,MT
+Mortanzano,MT,MT
+Mortanzanos,MT,MT
+Mortanzano Unit,MTU,MTU
+Mortanzano Units,MTU,MTU
+Mortanzanocele,MT,MT
+Mortanzanoceles,MT,MT
+Mortanzanoceles Unit,MTU,MTU
+Mortanzanoceles Units,MTU,MTU
+Mortanzanoid,MT,MT
+Mortanzanoidea,MT,MT
+Mortanzanoidean,MT,MT
+Mortanzanoideans,MT,MT
+Mortanzanoideans Unit,MTU,MTU
+Mortanzanoideans Units,MTU,MTU
+Mortanzanoideae,MT,MT
+Mortanzanoidean,MT,MT
+Mortanzanoideans,MT,MT
+Mortanzanoidease,MT,MT
+Mortanzanoidesque,MT,MT
+Mortanzanoidian,MT,MT
+Mortanzanoidian Unit,MTU,MTU
+Mortanzanoidian Units,MTU,MTU
+Mortanzanoidians,MT,MT
+Mortanzanoideism,MT,MT
+Mortanzanoideisms,MT,MT
+Mortanzanoideist,MT,MT
+Mortanzanoideists,MT,MT
+Mortanzanoideities,MT,MT
+Mortanzanoideity,MT,MT
+Mortanzanoideity Unit,MTU,MTU
+Mortanzanoideity Units,MTU,MTU
+Mortanzanoideme,MT,MT
+Mortanzanoidemes,MT,MT
+Mortanzanoideme Unit,MTU,MTU
+Mortanzanoideme Units,MTU,MTU
+Mortanzanoidy,MT,MT
+Mortanzanoidys,MT,MT
+Mortanzanoidy Unit,MTU,MTU
+Mortanzanoidy Units,MTU,MTU
+Mortanzanoids,MT,MT
+Mortanzanology,MT,MT
+Mortanzanologic,MT,MT
+Mortanzanological,MT,MT
+Mortanzanologically,MT,MT
+Mortanzanologist,MT,MT
+Mortanzanologists,MT,MT
+Mortanzanology Unit,MTU,MTU
+Mortanzanology Units,MTU,MTU
+Mortanzanolyse,MT,MT
+Mortanzanalysed,MT,MT
+Mortanzanalyses,MT,MT
+Mortanzanalysing,MT,MT
+Mortanzanalysis,MT,MT
+Mortanzanalyses Unit,MTU,MTU
+Mortanzanalyses Units,MTU,MTU
+Mortanzanalytic,MT,MT
+Mortanzanalytical,MT,MT
+Mortanzanalytically,MT,MT
+Mortanzanalytically Unit,MTU,MTU
+Mortanzanalytically Units,MTU,MTU
+Mortanzanalytics,MT,MT
+Mortanzanalyte,MT,MT
+Mortanzanalytes,MT,MT
+Mortanzanalyte Unit,MTU,MTU
+Mortanzanalyte Units,MTU,MTU
+Mortanzanalyze,MT,MT
+Mortanzanalyzed,MT,MT
+Mortanzanalyzer,MT,MT
+Mortanzanalyzers,MT,MT
+Mortanzanalyzes,MT,MT
+Mortanzanalyzing,MT,MT
+Mortanzanalyzingly,MT,MT
+Mortanzanalyzingly Unit,MTU,MTU
+Mortanzanalyzingly Units,MTU,MTU
+Mortanzanols,MT,MT
+Mortanzanomy,MT,MT
+Mortanzanomy Unit,MTU,MTU
+Mortanzanomy Units,MTU,MTU
+Mortanzanomys,MT,MT
+Mortanzanomy Units,MTU,MTU
+Mortanzanomy Units,MTU,MTU
+Mortanzanonic,MT,MT
+Mortanzanonical,MT,MT
+Mortanzanonically,MT,MT
+Mortanzanonicals,MT,MT
+Mortanzanonically Unit,MTU,MTU
+Mortanzanonically Units,MTU,MTU
+Mortanzanonicals Unit,MTU,MTU
+Mortanzanonicals Units,MTU,MTU
+Mortanzanons,MT,MT
+Mortanzanonly,MT,MT
+Mortanzanonly Unit,MTU,MTU
+Mortanzanonly Units,MTU,MTU
+Mortanzanoph,MT,MT
+Mortanzanophas,MT,MT
+Mortanzanophasis,MT,MT
+Mortanzanophatic,MT,MT
+Mortanzanophatical,MT,MT
+Mortanzanophatically,MT,MT
+Mortanzanophaty,MT,MT
+Mortanzanophile,MT,MT
+Mortanzanophiles,MT,MT
+Mortanzanophilia,MT,MT
+Mortanzanophilias,MT,MT
+Mortanzanophilia Unit,MTU,MTU
+Mortanzanophilia Units,MTU,MTU
+Mortanzanophilic,MT,MT
+Mortanzanophilically,MT,MT
+Mortanzanophilist,MT,MT
+Mortanzanophilistic,MT,MT
+Mortanzanophilistically,MT,MT
+Mortanzanophilists,MT,MT
+Mortanzanophily,MT,MT
+Mortanzanophily Unit,MTU,MTU
+Mortanzanophily Units,MTU,MTU
+Mortanzanophobe,MT,MT
+Mortanzanophobes,MT,MT
+Mortanzanophobo,MT,MT
+Mortanzanophobos,MT,MT
+Mortanzanophil,MT,MT
+Mortanzanophila,MT,MT
+Mortanzanophile,MT,MT
+Mortanzanophiles,MT,MT
+Mortanzanophilia,MT,MT
+Mortanzanophilias,MT,MT
+Mortanzanophilic,MT,MT
+Mortanzanophilically,MT,MT
+Mortanzanophilist,MT,MT
+Mortanzanophilistic,MT,MT
+Mortanzanophilistically,MT,MT
+Mortanzanophilists,MT,MT
+Mortanzanophily,MT,MT
+Mortanzano Phobia,MP,MP
+Mortanzanophobias,MP,MP
+Mortanzanophobic,MP,MP
+Mortanzanophobically,MP,MP
+Mortanzanophobics,MP,MP
+Mortanzanophobic Unit,MTU,MTU
+Mortanzanophobic Units,MTU,MTU
+Mortanzanophony,MT,MT
+Mortanzanophony Unit,MTU,MTU
+Mortanzanophony Units,MTU,MTU
+Mortanzanophonous,MT,MT
+Mortanzanophonously,MT,MT
+Mortanzanophora,MT,MT
+Mortanzanophores,MT,MT
+Mortanzanophore Unit,MTU,MTU
+Mortanzanophore Units,MTU,MTU
+Mortanzanophoric,MT,MT
+Mortanzanophorically,MT,MT
+Mortanzanophoron,MT,MT
+Mortanzanophorons,MT,MT
+Mortanzanophorous,MT,MT
+Mortanzanophorously,MT,MT
+Mortanzanophotas,MT,MT
+Mortanzanophyte,MT,MT
+Mortanzanophytes,MT,MT
+Mortanzanophyte Unit,MTU,MTU
+Mortanzanophyte Units,MTU,MTU
+Mortanzanophytic,MT,MT
+Mortanzanophytically,MT,MT
+Mortanzanophytical,MT,MT
+Mortanzanophytically Unit,MTU,MTU
+Mortanzanophytically Units,MTU,MTU
+Mortanzanophyta,MT,MT
+Mortanzanophytal,MT,MT
+Mortanzanophytally,MT,MT
+Mortanzanophytally Unit,MTU,MTU
+Mortanzanophytally Units,MTU,MTU
+Mortanzanophyte Unit,MTU,MTU
+Mortanzanophyte Units,MTU,MTU
+Mortanzanophyta Unit,MTU,MTU
+Mortanzanophyta Units,MTU,MTU
+Mortanzanos,MT,MT
+Mortanza Unit,MTU,MTU
+Mortanza Units,MTU,MTU
+Mortanzos,MT,MT
+Mortanzous,MT,MT
+Mortanzously,MT,MT
+Mortanzously Unit,MTU,MTU
+Mortanzously Units,MTU,MTU
+Mortanzousness,MT,MT
+Mortanzousness Unit,MTU,MTU
+Mortanzousness Units,MTU,MTU
+Mortanzum,MT,MT
+Mortanzums,MT,MT
+Mortanzum Unit,MTU,MTU
+Mortanzum Units,MTU,MTU
+Mortanzus,MT,MT
+Mortanzuses,MT,MT
+Mortanzus Unit,MTU,MTU
+Mortanzus Units,MTU,MTU
+Mortanzutum,MT,MT
+Mortanzutums,MT,MT
+Mortanzutum Unit,MTU,MTU
+Mortanzutum Units,MTU,MTU
+Mortanzx,MT,MT
+Mortanzxes,MT,MT
+Mortanzx Unit,MTU,MTU
+Mortanzx Units,MTU,MTU
+Mortanzium,MT,MT
+Mortanziums,MT,MT
+Mortanzium Unit,MTU,MTU
+Mortanzium Units,MTU,MTU
+Mortanzian,MT,MT
+Mortanzians,MT,MT
+Mortanzian Unit,MTU,MTU
+Mortanzian Units,MTU,MTU
+Mortanzianic,MT,MT
+Mortanzianica,MT,MT
+Mortanzianica Unit,MTU,MTU
+Mortanzianica Units,MTU,MTU
+Mortanzianical,MT,MT
+Mortanzianically,MT,MT
+Mortanzianicals Unit,MTU,MTU
+Mortanzianicals Units,MTU,MTU
+Mortanzially,MT,MT
+Mortanzially Unit,MTU,MTU
+Mortanzially Units,MTU,MTU
+Mortanzie,MT,MT
+Mortanzied,MT,MT
+Mortanzier,MT,MT
+Mortanziers,MT,MT
+Mortanzier Unit,MTU,MTU
+Mortanziers Units,MTU,MTU
+Mortanzies,MT,MT
+Mortanzie Unit,MTU,MTU
+Mortanzie Units,MTU,MTU
+Mortanzify,MT,MT
+Mortanzified,MT,MT
+Mortanzifier,MT,MT
+Mortanzifiers,MT,MT
+Mortanzifies,MT,MT
+Mortanzifying,MT,MT
+Mortanzifying Unit,MTU,MTU
+Mortanzifying Units,MTU,MTU
+Mortanzin,MT,MT
+Mortanzina,MT,MT
+Mortanzinal,MT,MT
+Mortanzinally,MT,MT
+Mortanzinals Unit,MTU,MTU
+Mortanzinals Units,MTU,MTU
+Mortanzinate,MT,MT
+Mortanzinated,MT,MT
+Mortanzinates,MT,MT
+Mortanzinating,MT,MT
+Mortanzination,MT,MT
+Mortanzinations Unit,MTU,MTU
+Mortanzinations Units,MTU,MTU
+Mortanzinative,MT,MT
+Mortanzinatively Unit,MTU,MTU
+Mortanzinatively Units,MTU,MTU
+Mortanzine,MT,MT
+Mortanzined,MT,MT
+Mortanzines,MT,MT
+Mortanzining Unit,MTU,MTU
+Mortanzining Units,MTU,MTU
+Mortanzino,MT,MT
+Mortanzino Unit,MTU,MTU
+Mortanzino Units,MTU,MTU
+Mortanzins,MT,MT
+Mortanzin Unit,MTU,MTU
+Mortanzin Units,MTU,MTU
+Mortanzious,MT,MT
+Mortanziously,MT,MT
+Mortanziously Unit,MTU,MTU
+Mortanziously Units,MTU,MTU
+Mortanziousness,MT,MT
+Mortanziousness Unit,MTU,MTU
+Mortanziousness Units,MTU,MTU
+Mortanzir,MT,MT
+Mortanzire,MT,MT
+Mortanzired,MT,MT
+Mortanzires,MT,MT
+Mortanziring Unit,MTU,MTU
+Mortanziring Units,MTU,MTU
+Mortanzirs,MT,MT
+Mortanzir Unit,MTU,MTU
+Mortanzir Units,MTU,MTU
+Mortangiosity,MT,MT
+Mortangiosity Unit,MTU,MTU
+Mortangiosity Units,MTU,MTU
+Mortangiose,MT,MT
+Mortangiose Unit,MT,MT
+Mortangiose Units,MT,MT
+Mortangiose Unit,MTU,MTU
+Mortangiose Units,MTU,MTU
+Mortangiose Unit,MTU,MTU
+Mortangiose Units,MTU,MTU
+Mortangiose Unit,MTU,MTU
+Mortangiose Units,MTU,MTU
+Mortangioses,MT,MT
+Mortangiosis,MT,MT
+Mortangiosity,MT,MT
+Mortangiosity Unit,MTU,MTU
+Mortangiosity Units,MTU,MTU
+Mortangiose Unit,MTU,MTU
+Mortangiose Units,MTU,MTU
+Mortangioses Unit,MTU,MTU
+Mortangioses Units,MTU,MTU
+Mortangiosis Unit,MTU,MTU
+Mortangiosis Units,MTU,MTU
+Mortangious,MT,MT
+Mortangious Unit,MTU,MTU
+Mortangious Units,MTU,MTU
+Mortangiously,MT,MT
+Mortangiously Unit,MTU,MTU
+Mortangiously Units,MTU,MTU
+Mortangiousity,MT,MT
+Mortangiousity Unit,MTU,MTU
+Mortangiousity Units,MTU,MTU
+Mortangiousness,MT,MT
+Mortangiousness Unit,MTU,MTU
+Mortangiousness Units,MTU,MTU
+Mortagement,MT,MT
+Mortage Unit,MTU,MTU
+Mortage Units,MTU,MTU
+Mortagers,MT,MT
+Mortager Unit,MTU,MTU
+Mortager Units,MTU,MTU
+Mortages,MT,MT
+Mortage Unit,MTU,MTU
+Mortage Units,MTU,MTU
+Mortaging Unit,MTU,MTU
+Mortaging Units,MTU,MTU
+Mortaging,MT,MT
+Mortagor,MT,MT
+Mortagors,MT,MT
+Mortagor Unit,MTU,MTU
+Mortagors Unit,MTU,MTU
+Mortail,MT,MT
+Mortails,MT,MT
+Mortail Unit,MTU,MTU
+Mortail Units,MTU,MTU
+Mortaine,MT,MT
+Mortaines,MT,MT
+Mortaine Unit,MTU,MTU
+Mortaines Unit,MTU,MTU
+Mortain,MT,MT
+Mortains,MT,MT
+Mortain Unit,MTU,MTU
+Mortains Unit,MTU,MTU
+Mortal,MT,MT

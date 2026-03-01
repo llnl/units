@@ -16,7 +16,7 @@ SPDX-License-Identifier: BSD-3-Clause
 namespace UNITS_NAMESPACE {
 namespace precise {
     using unitD = std::tuple<const char*, const char*, precise_unit>;
-    static UNITS_CPP14_CONSTEXPR_OBJECT std::array<unitD, 2088> r20_units = {{
+    static UNITS_CPP14_CONSTEXPR_OBJECT std::array<unitD, 2097> r20_units = {{
         unitD{"05", "lift", {1.0, count, commodities::packaging::lift}},
         unitD{
             "06",
@@ -196,6 +196,11 @@ namespace precise {
         unitD{"4W", "ton (US) per hour", ton / hr},
         unitD{"4X", "kilolitre per hour", kilo* L / hr},
         unitD{
+            "50",
+            "actual kilograms",
+            {1.0, kg, commodities::packaging::actual}},
+        unitD{"51", "actual tonnes", {1.0, ton, commodities::packaging::actual}},
+        unitD{
             "53",
             "theoretical kilogram",
             {1.0, kg, commodities::packaging::theoretical}},
@@ -232,6 +237,7 @@ namespace precise {
         unitD{"64", "pound per square inch, gauge", lbf / in.pow(2)},
         unitD{"66", "oersted", cgs::oersted},
         unitD{"69", "test specific scale", generate_custom_unit(333)},
+        unitD{"70", "volt", V},
         unitD{"71", "volt ampere per pound", V* A / lb},
         unitD{"72", "watt per pound", W / lb},
         unitD{
@@ -437,6 +443,7 @@ namespace precise {
         unitD{"ACT", "activity", count / s},
         unitD{"AD", "byte", data::byte},
         unitD{"AE", "ampere per metre", A / m},
+        unitD{"AG", "ANGSTROM", distance::angstrom},
         unitD{"AH", "additional minute", minute},
         unitD{
             "AI",
@@ -449,6 +456,7 @@ namespace precise {
         unitD{"AMH", "ampere hour", A* hr},
         unitD{"AMP", "ampere", A},
         unitD{"ANN", "year", yr},
+        unitD{"AO", "Ampere-turn", A* count},
         unitD{"AP", "aluminium pound only", {1.0, lb, commodities::aluminum}},
         unitD{"APZ", "troy ounce", troy::oz},
         unitD{"AQ", "anti-hemophilic factor (AHF) unit", clinical::AHF},
@@ -968,6 +976,7 @@ namespace precise {
             "DPC",
             "dozen piece",
             {12.0, count, commodities::packaging::piece}},
+            unitD{ "DO","dollar U.S.",{1.0,currency,commodities::currencies::dollar} },
         unitD{"DPR", "dozen pair", precise_unit(24.0, count)},
         unitD{
             "DPT",
@@ -1975,6 +1984,7 @@ namespace precise {
             "KJ",
             "kilosegment",
             {1.0, kilo* count, commodities::packaging::segment}},
+        unitD{ "KK","100 Kilograms",{100.0,kg} },
         unitD{"KJO", "kilojoule", kilo* J},
         unitD{"KL", "kilogram per metre", kg / m},
         unitD{
@@ -3085,7 +3095,9 @@ namespace precise {
             "usage per telecommunication line average",
             count / precise_unit(1.0, one, commodities::linesofservice)},
         unitD{"UH", "ten thousand yard", {10000.0, yd}},
+        unitD{ "UL","unitless",one },
         unitD{"UM", "million unit", mega* count},
+        unitD{"UN", "unit", {1.0, count, commodities::packaging::unit}},
         unitD{"VA", "volt - ampere per kilogram", V* A / kg},
         unitD{"VI", "vial", precise_unit(count, commodities::packaging::vial)},
         unitD{"VLT", "volt", V},

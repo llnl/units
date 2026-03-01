@@ -226,6 +226,9 @@ namespace commodities {
             side = generatePackagingCode(119),
             trailer = generatePackagingCode(120),
 
+            // 0
+            unit = generatePackagingCodeAlternate(1),
+            //2
             lift = generatePackagingCodeAlternate(3),
             ration = generatePackagingCodeAlternate(4),
             stick = generatePackagingCodeAlternate(5),
@@ -239,6 +242,7 @@ namespace commodities {
             bin = generatePackagingCodeAlternate(12),
             bulk_bag = generatePackagingCodeAlternate(13),
             bag = generatePackagingCodeAlternate(14),
+            //15
             ball = generatePackagingCodeAlternate(16),
             bulk_pack = generatePackagingCodeAlternate(17),
             capsule = generatePackagingCodeAlternate(18),
@@ -267,13 +271,15 @@ namespace commodities {
             wheel = generatePackagingCodeAlternate(38),
             wrap = generatePackagingCodeAlternate(39),
             hanging_container = generatePackagingCodeAlternate(40),
+                //41
             cast = generatePackagingCodeAlternate(42),
             lift_van = generatePackagingCodeAlternate(43),
             carset = generatePackagingCodeAlternate(44),
             display = generatePackagingCodeAlternate(45),
             card = generatePackagingCodeAlternate(46),
+            //47
             cone = generatePackagingCodeAlternate(48),
-            //
+            coil_group = generatePackagingCodeAlternate(49),
             cylinder = generatePackagingCodeAlternate(50),
             combo = generatePackagingCodeAlternate(51),
             lot = generatePackagingCodeAlternate(52),
@@ -284,7 +290,7 @@ namespace commodities {
             beam = generatePackagingCodeAlternate(57),
             band = generatePackagingCodeAlternate(58),
             sleeve = generatePackagingCodeAlternate(59),
-            //
+           
             disk = generatePackagingCodeAlternate(60),
             deal = generatePackagingCodeAlternate(61),
             dispenser = generatePackagingCodeAlternate(62),
@@ -351,7 +357,6 @@ namespace commodities {
             batch = generatePackagingCodeAlternate(119),
             pump = generatePackagingCodeAlternate(120),
             stage = generatePackagingCodeAlternate(121),
-            coil_group = generatePackagingCodeAlternate(121),
             cartridge = generatePackagingCodeAlternate(122),
             small_case = generatePackagingCodeAlternate(123),
             leave = generatePackagingCodeAlternate(124),

@@ -188,6 +188,7 @@ TEST(x12, csv_r20_mapping_verification)
         if (fields.size() < 3) continue;
         
         // Extract columns (Description, X12, UN Rec 20)
+        std::string description = fields[0];
         std::string x12_code = fields[1];
         std::string r20_code = fields[2];
         
@@ -219,14 +220,20 @@ TEST(x12, csv_r20_mapping_verification)
                           << to_string(r20_unit) << '\n';
             }
         }
+        else if ((!is_valid(x12_unit)) && (!is_valid(r20_unit))) {
+         //   std::cout << "Both X12 code " << x12_code << " and R20 code "
+          //            << r20_code << " are invalid "<< description<<'\n';
+            ++mismatches;
+
+        }
         else if (!is_valid(x12_unit))
         {
             ++mismatches;
-            std::cout << "Invalid X12 unit for code: " << x12_code << '\n';
+          //  std::cout << "Invalid X12 unit for code: " << x12_code << " supposed to match R20:"<<r20_code<<" "<< description << '\n';
         }
         else if (!is_valid(r20_unit)) {
             ++mismatches;
-            std::cout << "Invalid R20 unit for code: " << r20_code << '\n';
+         //   std::cout << "Invalid R20 unit for code: " << r20_code <<" "<< description << '\n';;
         }
     }
     

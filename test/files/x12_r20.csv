@@ -34,7 +34,7 @@ Application,UR,UR
 Assembly,AY,AY
 Assortment,AS,AS
 Atmosphere,AT,ATM
-Average Minutes Per Call,Al,Al
+Average Minutes Per Call,AI,AI
 Bag,BG,BG
 Bale,BA,BL
 Ball,AA,AA
@@ -88,7 +88,7 @@ Caboose Count,1D,1D
 Caboose Mile,1H,1H
 Cake,KA,KA
 Calendar Days,DW,DW
-Calls,CO,CO
+Calls,C0,C0
 Calorie,R4,R4
 Calories per Cubic Centimeter,92,92
 Calories per Gram,93,93
