@@ -229,7 +229,7 @@ TEST(x12, csv_r20_mapping_verification)
         else if (!is_valid(x12_unit))
         {
             ++mismatches;
-          //  std::cout << "Invalid X12 unit for code: " << x12_code << " supposed to match R20:"<<r20_code<<" "<< description << '\n';
+           std::cout << "missing X12:" << x12_code << " supposed to match R20:"<<r20_code<<" - "<< description << '\n';
         }
         else if (!is_valid(r20_unit)) {
             ++mismatches;
