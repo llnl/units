@@ -1782,8 +1782,8 @@ namespace puconversion {
                                             // //R=V/I
                 return 1.0 / val;
             }
-        } else if (start.has_same_base(
-                       puMW.base_units())) {  // P=IV, or P=V^2/R
+        } else if (start.has_same_base(puMW.base_units())) {  // P=IV, or
+                                                              // P=V^2/R
             if (result.has_same_base(
                     puA.base_units())) {  // IV assuming voltage=1.0 pu or
                 return val;
