@@ -158,6 +158,7 @@ TEST(x12, csv_r20_mapping_verification)
     std::string line;
     int matches{0};
     int mismatches{0};
+    int missing{ 0 };
     
     // Skip header
     std::getline(csv_file, line);
@@ -229,6 +230,7 @@ TEST(x12, csv_r20_mapping_verification)
         else if (!is_valid(x12_unit))
         {
             ++mismatches;
+            ++missing;
            std::cout << "missing X12:" << x12_code << " supposed to match R20:"<<r20_code<<" - "<< description << '\n';
         }
         else if (!is_valid(r20_unit)) {
@@ -241,6 +243,7 @@ TEST(x12, csv_r20_mapping_verification)
     
     std::cout << matches << " X12->R20 mappings verified successfully\n";
     std::cout << mismatches << " X12->R20 mappings failed validation\n";
+    std::cout << missing << " X12->R20 mappings are missing\n";
 }
 
 #endif
