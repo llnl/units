@@ -875,7 +875,7 @@ namespace precise {
         unitD{"MT", "METRIC LONG TON", mass::tonne},
         unitD{"MU", "millicurie", milli* cgs::curie},
         unitD{"MV", "ITEMS", count},
-        unitD{"MW", "metric ton kilograms", tonne},
+        unitD{"MW", "metric ton kilograms", mass::tonne},
         unitD{"MX", "MIXED", {1.0, count, commodities::packaging::mixed}},
         unitD{
             "MY",

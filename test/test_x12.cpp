@@ -182,8 +182,7 @@ TEST(x12, csv_r20_mapping_verification)
         bool in_quotes = false;
         std::string current_field;
 
-        for (size_t i = 0; i < line.length(); ++i) {
-            char c = line[i];
+        for (auto c:line){
             if (c == '"') {
                 in_quotes = !in_quotes;
             } else if (c == ',' && !in_quotes) {
