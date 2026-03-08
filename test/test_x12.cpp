@@ -8,15 +8,15 @@ SPDX-License-Identifier: BSD-3-Clause
 #include "test.hpp"
 #include "units/units.hpp"
 
-#include <iostream>
-#include <string>
-#include <tuple>
-#include <fstream>
-#include <sstream>
-#include <map>
-#include <vector>
 #include <algorithm>
 #include <cctype>
+#include <fstream>
+#include <iostream>
+#include <map>
+#include <sstream>
+#include <string>
+#include <tuple>
+#include <vector>
 
 using unitD = std::tuple<const char*, const char*, units::precise_unit>;
 #ifdef ENABLE_UNIT_MAP_ACCESS
@@ -146,41 +146,42 @@ TEST(x12, csv_r20_mapping_verification)
     std::size_t r20_count{0};
     const void* r20_ptr = units::detail::r20rawData(r20_count);
     const auto* r20data = reinterpret_cast<const unitD*>(r20_ptr);
-    
+
     // Build lookup map for R20 units by code
     std::map<std::string, units::precise_unit> r20_lookup;
     for (size_t ii = 0; ii < r20_count; ++ii) {
-        r20_lookup[std::string(std::get<0>(r20data[ii]))] = std::get<2>(r20data[ii]);
+        r20_lookup[std::string(std::get<0>(r20data[ii]))] =
+            std::get<2>(r20data[ii]);
     }
-    
+
     // Open and parse CSV file
-    
+
     std::string csv_path = TEST_FILE_FOLDER "/x12_r20.csv";
     std::ifstream csv_file(csv_path);
-    
+
     if (!csv_file.is_open()) {
         GTEST_SKIP() << "CSV file not found: " << csv_path;
         return;
     }
-    
+
     std::string line;
     int matches{0};
     int mismatches{0};
-    int missing{ 0 };
-    
+    int missing{0};
+
     // Skip header
     std::getline(csv_file, line);
-    
+
     while (std::getline(csv_file, line)) {
         if (line.empty()) continue;
-        
+
         // Parse CSV line (handle quoted fields)
         std::vector<std::string> fields;
         std::stringstream ss(line);
         std::string field;
         bool in_quotes = false;
         std::string current_field;
-        
+
         for (size_t i = 0; i < line.length(); ++i) {
             char c = line[i];
             if (c == '"') {
@@ -193,61 +194,60 @@ TEST(x12, csv_r20_mapping_verification)
             }
         }
         fields.push_back(current_field);
-        
+
         if (fields.size() < 3) continue;
-        
+
         // Extract columns (Description, X12, UN Rec 20)
         std::string description = fields[0];
         std::string x12_code = fields[1];
         std::string r20_code = fields[2];
-        
+
         // Trim whitespace
         x12_code.erase(0, x12_code.find_first_not_of(" \t"));
         x12_code.erase(x12_code.find_last_not_of(" \t") + 1);
         r20_code.erase(0, r20_code.find_first_not_of(" \t"));
         r20_code.erase(r20_code.find_last_not_of(" \t") + 1);
-        
+
         if (x12_code.empty() || r20_code.empty()) continue;
-        
+
         // Look up units
         auto x12_unit = units::x12_unit(x12_code);
         auto r20_unit = units::r20_unit(r20_code);
-        
-        if (r20_code == "XXXX")
-        {
-            r20_unit=units::precise::one;
+
+        if (r20_code == "XXXX") {
+            r20_unit = units::precise::one;
         }
         // Check if they match or are equivalent
         if (is_valid(x12_unit) && is_valid(r20_unit)) {
-            if (x12_unit == r20_unit || r20_unit==units::precise::one) {
+            if (x12_unit == r20_unit || r20_unit == units::precise::one) {
                 ++matches;
             } else {
                 ++mismatches;
-                std::cout << "Mismatch for X12:" << x12_code << " (R20:" << r20_code
+                std::cout << "Mismatch for X12:" << x12_code
+                          << " (R20:" << r20_code
                           << "): " << to_string(x12_unit) << " vs "
                           << to_string(r20_unit) << '\n';
             }
-        }
-        else if ((!is_valid(x12_unit)) && (!is_valid(r20_unit))) {
-            std::cout << "Both X12:" << x12_code << " and R20:"
-                      << r20_code << " are invalid "<< description<<'\n';
+        } else if ((!is_valid(x12_unit)) && (!is_valid(r20_unit))) {
+            std::cout << "Both X12:" << x12_code << " and R20:" << r20_code
+                      << " are invalid " << description << '\n';
             ++mismatches;
 
-        }
-        else if (!is_valid(x12_unit))
-        {
+        } else if (!is_valid(x12_unit)) {
             ++mismatches;
             ++missing;
-           std::cout << "missing X12:" << x12_code << " supposed to match R20:"<<r20_code<<" - "<< description << '\n';
-        }
-        else if (!is_valid(r20_unit)) {
+            std::cout << "missing X12:" << x12_code
+                      << " supposed to match R20:" << r20_code << " - "
+                      << description << '\n';
+        } else if (!is_valid(r20_unit)) {
             ++mismatches;
-            std::cout << "Invalid R20:" << r20_code <<" "<< description << "  X12:" << x12_code<<'\n';
+            std::cout << "Invalid R20:" << r20_code << " " << description
+                      << "  X12:" << x12_code << '\n';
         }
     }
-    
+
     csv_file.close();
-    
+
     std::cout << matches << " X12->R20 mappings verified successfully\n";
     std::cout << mismatches << " X12->R20 mappings failed validation\n";
     std::cout << missing << " X12->R20 mappings are missing\n";
@@ -262,9 +262,8 @@ TEST(x12, units)
 
     EXPECT_EQ(
         units::x12_unit("17"),
-        units::precise_unit(100.0, units::precise::lb, units::commodities::packaging::drum));
+        units::precise_unit(
+            100.0, units::precise::lb, units::commodities::packaging::drum));
 
     EXPECT_FALSE(is_valid(units::x12_unit("chaos")));
 }
-
-

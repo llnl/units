@@ -79,9 +79,11 @@ else()
             target_compile_definitions(test_dod PUBLIC -DENABLE_UNIT_MAP_ACCESS=1)
 
             target_compile_definitions(
-       test_x12 PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}"
-    )
-    target_compile_definitions(test_dod PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}")
+                test_x12 PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}"
+            )
+            target_compile_definitions(
+                test_dod PUBLIC -DTEST_FILE_FOLDER="${TEST_FILE_FOLDER}"
+            )
         endif()
 
         add_unit_test(test_leadingNumbers.cpp)

@@ -152,7 +152,7 @@ namespace commodities {
             basket = generatePackagingCode(27),
             tank = generatePackagingCode(28),
             bottlecrate = generatePackagingCode(29),
-            
+
             // rigid drum 30-39
             tub = generatePackagingCode(30),
             ampoule = generatePackagingCode(31),
@@ -160,23 +160,23 @@ namespace commodities {
             jerrycan = generatePackagingCode(33),
             drum = generatePackagingCode(34),
             vat = generatePackagingCode(35),
-            //36
-            //37
+            // 36
+            // 37
             cylindrical_tank = generatePackagingCode(38),
-            //39
+            // 39
             // rigid bulb 40-49
-            //40
+            // 40
             jug = generatePackagingCode(41),
             bulbous_bottle = generatePackagingCode(42),
             carboy = generatePackagingCode(43),
             barrel = generatePackagingCode(44),
             large_barrel = generatePackagingCode(45),
             keg = generatePackagingCode(46),
-            jar =generatePackagingCode(47),
-            //48
+            jar = generatePackagingCode(47),
+            // 48
             // 49
             // rigid other 50-59
-            //50
+            // 50
             bucket = generatePackagingCode(51),
             coffin = generatePackagingCode(54),
             base_box = generatePackagingCode(55),
@@ -193,7 +193,7 @@ namespace commodities {
             displacement = generatePackagingCode(70),
             lump = generatePackagingCode(71),
             linear = generatePackagingCode(72),
-            estimated=generatePackagingCode(73),
+            estimated = generatePackagingCode(73),
             // 74
             // units library is using 75-89 as descriptors
             minimum = generatePackagingCode(75),
@@ -232,7 +232,7 @@ namespace commodities {
             tankcar = generatePackagingCode(106),
             tanktruck = generatePackagingCode(107),
             split_tank_truck = generatePackagingCode(108),
-                //109= generatePackagingCode(109),
+            // 109= generatePackagingCode(109),
             // 110 - 120 organizational packaging
             group = generatePackagingCode(110),
             piece = generatePackagingCode(111),
@@ -245,14 +245,14 @@ namespace commodities {
             mat = generatePackagingCode(118),
             side = generatePackagingCode(119),
             trailer = generatePackagingCode(120),
-            shipset=generatePackagingCode(121),
+            shipset = generatePackagingCode(121),
             mixed = generatePackagingCode(122),
             parts = generatePackagingCode(123),
-            //ag product blocks
-            clove=generatePackagingCode(124),
-            bunch=generatePackagingCode(125),
-            heart=generatePackagingCode(126),
-            loaf=generatePackagingCode(127),
+            // ag product blocks
+            clove = generatePackagingCode(124),
+            bunch = generatePackagingCode(125),
+            heart = generatePackagingCode(126),
+            loaf = generatePackagingCode(127),
 
             container = generatePackagingCodeAlternate(0),
             unit = generatePackagingCodeAlternate(1),
@@ -278,7 +278,7 @@ namespace commodities {
             vial = generatePackagingCodeAlternate(20),
             bunk = generatePackagingCodeAlternate(21),
             billet = generatePackagingCodeAlternate(22),
-            
+
             shipment = generatePackagingCodeAlternate(23),
             board = generatePackagingCodeAlternate(24),
             segment = generatePackagingCodeAlternate(25),
@@ -289,14 +289,14 @@ namespace commodities {
             suppository = generatePackagingCodeAlternate(30),
             syringe = generatePackagingCodeAlternate(31),
             straw = generatePackagingCodeAlternate(32),
-            
-            ocular_insert_system=generatePackagingCodeAlternate(33),
+
+            ocular_insert_system = generatePackagingCodeAlternate(33),
             treatment = generatePackagingCodeAlternate(34),
             tablet = generatePackagingCodeAlternate(35),
             patch = generatePackagingCodeAlternate(36),
             trouche = generatePackagingCodeAlternate(37),
             lozenge = generatePackagingCodeAlternate(38),
-            
+
             wrap = generatePackagingCodeAlternate(39),
             hanging_container = generatePackagingCodeAlternate(40),
             wafer = generatePackagingCodeAlternate(41),
@@ -318,7 +318,7 @@ namespace commodities {
             beam = generatePackagingCodeAlternate(57),
             band = generatePackagingCodeAlternate(58),
             sleeve = generatePackagingCodeAlternate(59),
-           
+
             disk = generatePackagingCodeAlternate(60),
             deal = generatePackagingCodeAlternate(61),
             dispenser = generatePackagingCodeAlternate(62),
@@ -494,7 +494,7 @@ namespace commodities {
         protein = generateKnownCode(325255),
         creatinine = generateKnownCode(2566225),
         cartridge_needle = generateStringCode("ctndl"),
-        pillow=generateStringCode("pillw"),
+        pillow = generateStringCode("pillw"),
         // computer
         pixel = generateStringCode("pixel"),
         dots = generateStringCode("dots_"),
@@ -502,7 +502,7 @@ namespace commodities {
         frame = generateStringCode("frame"),
         errors = generateStringCode("error"),
         character = generateStringCode("ascii"),
-        packet=generateStringCode("packt"),
+        packet = generateStringCode("packt"),
         word = generateStringCode("word_"),
         flop = generateStringCode("flop_"),
         lines_of_code = generateStringCode("loc__"),
@@ -518,9 +518,9 @@ namespace commodities {
         screen = generateStringCode("scrn_"),
         accounting = generateKnownCode(1516115),
         electronic_mail_box = generateStringCode("email"),
-        photo=generateStringCode("photo"),
-        application=generateStringCode("app__"),
-       //projects
+        photo = generateStringCode("photo"),
+        application = generateStringCode("app__"),
+        // projects
         project = generateStringCode("proj_"),
         program = generateStringCode("prog_"),
         task = generateStringCode("task_"),

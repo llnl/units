@@ -136,7 +136,9 @@ TEST(dod, units)
 
     EXPECT_EQ(
         units::dod_unit("UF"),
-        units::precise::count / units::precise_unit(1.0, units::precise::one, units::commodities::linesofservice));
+        units::precise::count /
+            units::precise_unit(
+                1.0, units::precise::one, units::commodities::linesofservice));
 
     EXPECT_FALSE(is_valid(units::dod_unit("chaos")));
 }
