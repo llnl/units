@@ -26,7 +26,7 @@ CMake variables
 -  `UNITS_DOMAIN`:  Specify a default domain to use for string conversions.  Can be either a name from the domains namespace such as `domains::surveying` or one of 'COOKING', 'ASTRONOMY', 'NUCLEAR', 'SURVEYING', 'USE_CUSTOMARY', 'CLIMATE', or 'UCUM'.
 -  `UNITS_DEFAULT_MATCH_FLAGS`: Specify an integer value for the default match flags to be used for conversion
 -  `UNITS_DISABLE_NON_ENGLISH_UNITS`: the library includes a number of non-english units that can be converted from strings, these can be disabled by setting `UNITS_DISABLE_NON_ENGLISH_UNITS` to ON or setting the definition in the C++ code.
--  `UNITS_DISABLE_EXTRA_UNIT_STANDARDS`: If set to `ON` disables UN recommendation 12, X12(not implemented yet), DOD(not implemented yet), from being included in the compilation and generated from strings.
+-  `UNITS_DISABLE_EXTRA_UNIT_STANDARDS`: If set to `ON` disables UN Recommendation 20, X12(not implemented yet), DOD(not implemented yet), from being included in the compilation and generated from strings.
 -  `UNITS_BUILD_PYTHON_LIBRARY`: If set to true builds the python wrapper to the units library using nanobind
 -  `UNITS_PYTHON_INSTALL_SHARED_LIBRARY`: If set to true and `UNITS_BUILD_SHARED_LIBRARY` is also true will install the shared library alongside the python wrapper binary
 -  `UNITS_PYTHON_ONLY_INSTALL`: defaults to true if built with scikit otherwise false, if true only installs the components required for the python library otherwise normal installation occurs

@@ -3253,7 +3253,7 @@ std::array<std::pair<const char*, precise_unit>, 233>
 
 // Mostly from https://en.wikipedia.org/wiki/International_System_of_Units
 UNITS_CPP14_CONSTEXPR_OBJECT
-std::array<std::pair<const char*, precise_unit>, 251> defined_measurement_types{
+std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
     {
         {"", precise::defunit},
         {"arb", precise::defunit},
@@ -3502,6 +3502,7 @@ std::array<std::pair<const char*, precise_unit>, 251> defined_measurement_types{
         {"fuelconsumption", precise::km / precise::L},
         {"information", precise::bit},
         {"unitless", precise::one},
+        {"dimensionless", precise::one},
         {"numeric", precise::one},
         {"currency", precise::currency},
         {"value", precise::currency},
