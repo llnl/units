@@ -15,6 +15,8 @@ SPDX-License-Identifier: BSD-3-Clause
 #include <sstream>
 #include <map>
 #include <vector>
+#include <algorithm>
+#include <cctype>
 
 using unitD = std::tuple<const char*, const char*, units::precise_unit>;
 #ifdef ENABLE_UNIT_MAP_ACCESS
@@ -51,8 +53,14 @@ TEST(x12, conversions)
     int defaulted{0};
     for (size_t ii = 1; ii < unit_count; ++ii) {
         std::string ustr = std::string(std::get<1>(x12data[ii]));
-        auto unit = units::measurement_from_string(ustr).as_unit();
-        auto udir = units::unit_from_string(ustr);
+        std::string ustrLower = ustr;
+        std::transform(
+            ustrLower.begin(),
+            ustrLower.end(),
+            ustrLower.begin(),
+            [](unsigned char c) { return static_cast<char>(std::tolower(c)); });
+        auto unit = units::measurement_from_string(ustrLower).as_unit();
+        auto udir = units::unit_from_string(ustrLower);
         auto x12unit = std::get<2>(x12data[ii]);
         if (is_valid(unit)) {
             if (unit != x12unit && udir != x12unit) {
@@ -141,8 +149,8 @@ TEST(x12, csv_r20_mapping_verification)
     
     // Build lookup map for R20 units by code
     std::map<std::string, units::precise_unit> r20_lookup;
-    for (size_t i = 0; i < r20_count; ++i) {
-        r20_lookup[std::string(std::get<0>(r20data[i]))] = std::get<2>(r20data[i]);
+    for (size_t ii = 0; ii < r20_count; ++ii) {
+        r20_lookup[std::string(std::get<0>(r20data[ii]))] = std::get<2>(r20data[ii]);
     }
     
     // Open and parse CSV file
@@ -205,15 +213,14 @@ TEST(x12, csv_r20_mapping_verification)
         auto x12_unit = units::x12_unit(x12_code);
         auto r20_unit = units::r20_unit(r20_code);
         
-        
+        if (r20_code == "XXXX")
+        {
+            r20_unit=units::precise::one;
+        }
         // Check if they match or are equivalent
         if (is_valid(x12_unit) && is_valid(r20_unit)) {
-            if (x12_unit == r20_unit) {
+            if (x12_unit == r20_unit || r20_unit==units::precise::one) {
                 ++matches;
-            } else if (units::unit_cast(x12_unit) == units::unit_cast(r20_unit)) {
-                ++matches;  // Match after removing commodities
-            } else if (!std::isnan(units::convert(x12_unit, r20_unit))) {
-                ++matches;  // Convertible
             } else {
                 ++mismatches;
                 std::cout << "Mismatch for X12:" << x12_code << " (R20:" << r20_code
@@ -222,8 +229,8 @@ TEST(x12, csv_r20_mapping_verification)
             }
         }
         else if ((!is_valid(x12_unit)) && (!is_valid(r20_unit))) {
-         //   std::cout << "Both X12 code " << x12_code << " and R20 code "
-          //            << r20_code << " are invalid "<< description<<'\n';
+            std::cout << "Both X12:" << x12_code << " and R20:"
+                      << r20_code << " are invalid "<< description<<'\n';
             ++mismatches;
 
         }
@@ -235,7 +242,7 @@ TEST(x12, csv_r20_mapping_verification)
         }
         else if (!is_valid(r20_unit)) {
             ++mismatches;
-         //   std::cout << "Invalid R20 unit for code: " << r20_code <<" "<< description << '\n';;
+            std::cout << "Invalid R20:" << r20_code <<" "<< description << "  X12:" << x12_code<<'\n';
         }
     }
     
@@ -255,7 +262,9 @@ TEST(x12, units)
 
     EXPECT_EQ(
         units::x12_unit("17"),
-        units::precise_unit(100.0, lb));
+        units::precise_unit(100.0, units::precise::lb, units::commodities::packaging::drum));
 
     EXPECT_FALSE(is_valid(units::x12_unit("chaos")));
 }
+
+

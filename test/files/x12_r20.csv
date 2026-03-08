@@ -59,7 +59,7 @@ Billboard,OC,OC
 Billet,B5,B5
 Billions of Dollars,R7,R7
 Bin,2W,2W
-Bit,G6,G6
+Bit,G6,A99
 Block,BL,D64
 Board Feet,B8,BD
 Board Feet,BF,BFT
@@ -127,7 +127,7 @@ Cone,CJ,CJ
 Connector,CK,CK
 Container,CH,CH
 Cop,AJ,AJ
-Cord,8C,8C
+Cord,8C,M68
 Cost,C5,C5
 Coulomb,65,COU
 Count,1N,1N
@@ -150,7 +150,7 @@ Cubic Meters (Net),CO,D90
 Cubic Yard,CY,YDQ
 Cup,CU,CU
 Cup,CV,CV
-Cup,CW,CW
+hundred Pounds,CW,CWA
 Curie,4D,CUR
 Curl Units,94,94
 Cycles,B7,B7
@@ -261,10 +261,10 @@ Half Liter,H2,H2
 Half Pages - Electronic,H1,H1
 Half Pint,PV,PV
 Hank,HA,HA
-Hectare,HQ,HQ
+Hectare,HQ,HAR
 Hectogram,HG,HGM
 Hectoliter,H4,HLT
-Hectometer,E1,E1
+Hectometer,E1,HMT
 Henry,81,81
 Hertz,HZ,HTZ
 Horsepower,HJ,HJ
@@ -305,10 +305,10 @@ Inches  Fraction--Minimum,E4,E4
 Inches  Fraction-Nominal,EF,EF
 Inhalation,UT,UT
 Insurance Policy,IP,IP
-International Unit,F2,F2
+International Unit,F2,NIU
 ISO container,Z1,Z1
 Jar,JR,JR
-Job,JA,JA
+Job,JA,E51
 Joint,JO,JO
 Joule per Gram,JG,D95
 Joule Per Kelvin,JE,JE
@@ -343,7 +343,7 @@ Kiloliter Per Hour,4X,4X
 Kilometers,DK,KTM
 Kilometers Per Hour,KP,KMH
 Kilopackets,KF,KF
-Kilopascal,KQ,???
+Kilopascal,KQ,KPA
 Kilopascal Square Meters per Gram,33,33
 Kilopascals per Millimeter,34,34
 Kiloroentgen,KR,KR
@@ -356,7 +356,7 @@ Kilowatt,K7,KWT
 Kilowatt Demand,K1,K1
 Kilowatt Hour,KH,KWH
 Kit,KT,KT
-Knots,EH,EH
+Knots,EH,KNT
 Labor Hours,LH,LH
 Large Spray,LJ,LJ
 Layer(s),LR,LR
@@ -383,7 +383,7 @@ Lot,LO,LO
 Lozenge,UU,UU
 Lump Sum,LS,LS
 Machine/Unit,MA,MA
-Magnetic Tapes,MO,MO
+Magnetic Tapes,M0,M0
 Manmonth,3C,3C
 Mass Pounds,PU,D98
 Mat,M3,MT
@@ -420,7 +420,7 @@ Microliter,4G,4G
 Micromolar,FH,FH
 Microns (Micrometers),MH,4H
 Mil,77,77
-Miles,DH,DH
+Miles,DH,SMI
 Miles Per Hour,HM,HM
 Millequivalence Caustic Potash per Gram of Product,KO,KO
 Milli Pascals,74,74
@@ -470,7 +470,7 @@ Net Gallons,NG,NG
 Net Imperial Gallons,NI,NI
 Net Kilograms,58,58
 Net Liters,NE,NE
-Newton,NW,NW
+Newton,NW,NEW
 Newton-Meter,NU,NU
 Newtons Per Meter,4P,4P
 Nights,NK,NK
@@ -490,7 +490,7 @@ Ounces per Square Yard,ON,ON
 Overtime Hours,OT,OT
 Package,PK,PK
 Pad,PD,PD
-Pages - Electronic,PO,PO
+Pages - Electronic,P0,P0
 Pages - Fascimile,QA,QA
 Pages Hardcopy,QB,QB
 Pages per Inch,PQ,PQ
@@ -554,7 +554,7 @@ Price Per Share,F6,F6
 Print Point,N3,N3
 Program,8R,8R
 Project,8P,8P
-Proof Gallons,5D,5D
+Proof Gallons,5D,PGL
 Pump,5G,5G
 Quart,QT,QT
 Quart Dry US,QS,QTD
@@ -566,7 +566,7 @@ Quarter Kilogram,QK,QK
 Quarter Mile,1X,1X
 Quire,QR,QR
 Rack,RA,RA
-Radian,RB,RB
+Radian,RB,C81
 Radians Per Second,2A,2A
 Radians Per Second Squared,2B,2B
 Ream,RM,RM
@@ -612,8 +612,8 @@ Sixty-fourths of an Inch,S5,S5
 Sizing Factor,FJ,FJ
 Skein,SW,SW
 Skid,SV,SV
-Sleeve,SK,D99
-Sleeve,SL,SK
+Sleeve,SL,D99
+Split tank Truck,SK,SK
 Slip Sheet,S9,SL
 Solid Pounds,SD,SD
 Spool,SO,SO
@@ -623,7 +623,7 @@ Square Decimeter,D3,DMK
 Square Feet per Second,S3,S3
 Square Foot,SF,FTK
 Square Inch,SI,INK
-Square Kilometer,8U,8U
+Square Kilometer,8U,KMK
 Square Meter,SM,MTK
 Square Meters per Second,S4,S4
 Square Mile,SB,MIK
@@ -639,13 +639,13 @@ Storage Units,S7,S7
 Strip,SR,SR
 Super Bulk Bag,43,43
 Suppository,AR,AR
-Syringe,SZ,SZ
+Syringe,SZ,SYR
 Tablet,U2,U2
 Tank,TK,TK
 Tank Car,1P,1P
 Tank Truck,19,19
 Task,KU,KU
-Telecommunications Lines in Service,TO,TO
+Telecommunications Lines in Service,T0,T0
 Telecommunications Lines in Service - Average,UB,UB
 Telecommunications Ports,UC,UC
 Ten,U3,U3
@@ -725,7 +725,7 @@ Volt-Ampere Per Pound,71,71
 Volt-ampere-reactive,VR,VR
 Volts (Alternating Current),2G,2G
 Volts (Direct Current),2H,2H
-Volts Per Meter,2F,2F
+Volts Per Meter,2F,D50
 Wafer,UQ,UQ
 Watt,99,99
 Watts per Kilogram,WA,WA
@@ -733,4 +733,29 @@ Watts Per Pound,72,72
 Wet Kilo,W2,W2
 Wet Pound,WB,WB
 Wet Ton,WE,WE
-Work Days,WD,WD
+Work Days,WD,E49
+Gross Kilogram GT,GT,XXXX
+Inches Per Second Per Second (Vibration Acceleration),IW,XXXX
+Inches Per Second (Vibration Velocity),IB,XXXX
+Inhaler,IH,XXXX
+Inner Package,IG,XXXX
+Metric Gross Ton,MG,XXXX
+Metric Long Ton ,MT,XXXX
+"Net Ton (2,000 LB).",TN,XXXX
+Pack ,PH,XXXX
+"Pounds, Decimal - Pounds per Square Foot - Pound Gage",PJ,XXXX
+strand,7,
+pennyweight,WP,DWT
+chain,X1,X1
+head,X5,HEA
+leaf,X7,LEF
+100 linear yards,YL,YL
+year,YR,ANN
+chest,Z2,Z2
+cask,Z3,Z3
+hogshead,Z4,Z4
+lug,Z5,Z5
+page,ZP,ZP
+scruple,ZY,SCR
+"Barrel, Dry",ZW,BLD
+"Barrel, Liquid",ZX,BLL

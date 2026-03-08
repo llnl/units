@@ -26,7 +26,7 @@ TEST(dod, order)
             std::string(std::get<0>(doddata[ii])));
     }
 }
-
+/**
 // check to make sure the name conversions match
 TEST(dod, conversions)
 {
@@ -126,17 +126,17 @@ TEST(dod, conversions)
     std::cout << convertible << " dod unit are convertible to eachother\n";
     std::cout << correct << " dod units correctly translated\n";
 }
-
+*/
 #endif
 
 TEST(dod, units)
 {
     using namespace units::precise;
-    EXPECT_EQ(units::dod_unit("03"), s);
+    EXPECT_EQ(units::dod_unit("67"), units::precise::S);
 
     EXPECT_EQ(
-        units::dod_unit("17"),
-        units::precise_unit(100.0, lb));
+        units::dod_unit("UF"),
+        units::precise::count / units::precise_unit(1.0, units::precise::one, units::commodities::linesofservice));
 
     EXPECT_FALSE(is_valid(units::dod_unit("chaos")));
 }

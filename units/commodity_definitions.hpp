@@ -141,7 +141,7 @@ namespace commodities {
             ingot = generatePackagingCode(17),
             slipsheet = generatePackagingCode(18),
             flake = generatePackagingCode(19),
-            // 20 not defined
+            briquet = generatePackagingCode(20),
             // rigid box type
             match_box = generatePackagingCode(21),
             can = generatePackagingCode(22),
@@ -152,21 +152,31 @@ namespace commodities {
             basket = generatePackagingCode(27),
             tank = generatePackagingCode(28),
             bottlecrate = generatePackagingCode(29),
-
+            
             // rigid drum 30-39
+            tub = generatePackagingCode(30),
             ampoule = generatePackagingCode(31),
             bottle = generatePackagingCode(32),
             jerrycan = generatePackagingCode(33),
             drum = generatePackagingCode(34),
             vat = generatePackagingCode(35),
+            //36
+            //37
             cylindrical_tank = generatePackagingCode(38),
+            //39
             // rigid bulb 40-49
+            //40
             jug = generatePackagingCode(41),
             bulbous_bottle = generatePackagingCode(42),
             carboy = generatePackagingCode(43),
             barrel = generatePackagingCode(44),
             large_barrel = generatePackagingCode(45),
+            keg = generatePackagingCode(46),
+            jar =generatePackagingCode(47),
+            //48
+            // 49
             // rigid other 50-59
+            //50
             bucket = generatePackagingCode(51),
             coffin = generatePackagingCode(54),
             base_box = generatePackagingCode(55),
@@ -178,11 +188,20 @@ namespace commodities {
             bale = generatePackagingCode(65),
             net = generatePackagingCode(66),
             filmpack = generatePackagingCode(67),
+            pouch = generatePackagingCode(68),
             // 70-79 reserved
             displacement = generatePackagingCode(70),
             lump = generatePackagingCode(71),
             linear = generatePackagingCode(72),
-            // units library is using 80-89 as descriptors
+            estimated=generatePackagingCode(73),
+            // 74
+            // units library is using 75-89 as descriptors
+            minimum = generatePackagingCode(75),
+            nominal = generatePackagingCode(76),
+            maximum = generatePackagingCode(77),
+            average = generatePackagingCode(78),
+            topical = generatePackagingCode(79),
+            //
             actual = generatePackagingCode(80),
             theoretical = generatePackagingCode(81),
             net_quantity = generatePackagingCode(82),
@@ -213,6 +232,7 @@ namespace commodities {
             tankcar = generatePackagingCode(106),
             tanktruck = generatePackagingCode(107),
             split_tank_truck = generatePackagingCode(108),
+                //109= generatePackagingCode(109),
             // 110 - 120 organizational packaging
             group = generatePackagingCode(110),
             piece = generatePackagingCode(111),
@@ -225,10 +245,18 @@ namespace commodities {
             mat = generatePackagingCode(118),
             side = generatePackagingCode(119),
             trailer = generatePackagingCode(120),
+            shipset=generatePackagingCode(121),
+            mixed = generatePackagingCode(122),
+            parts = generatePackagingCode(123),
+            //ag product blocks
+            clove=generatePackagingCode(124),
+            bunch=generatePackagingCode(125),
+            heart=generatePackagingCode(126),
+            loaf=generatePackagingCode(127),
 
-            // 0
+            container = generatePackagingCodeAlternate(0),
             unit = generatePackagingCodeAlternate(1),
-            //2
+            bag = generatePackagingCodeAlternate(2),
             lift = generatePackagingCodeAlternate(3),
             ration = generatePackagingCodeAlternate(4),
             stick = generatePackagingCodeAlternate(5),
@@ -238,11 +266,11 @@ namespace commodities {
             leaf = generatePackagingCodeAlternate(9),
             large_spray = generatePackagingCodeAlternate(10),
 
-            container = generatePackagingCodeAlternate(11),
+            bundle = generatePackagingCodeAlternate(11),
             bin = generatePackagingCodeAlternate(12),
             bulk_bag = generatePackagingCodeAlternate(13),
-            bag = generatePackagingCodeAlternate(14),
-            //15
+            small_tin = generatePackagingCodeAlternate(14),
+            flat = generatePackagingCodeAlternate(15),
             ball = generatePackagingCodeAlternate(16),
             bulk_pack = generatePackagingCodeAlternate(17),
             capsule = generatePackagingCodeAlternate(18),
@@ -250,34 +278,34 @@ namespace commodities {
             vial = generatePackagingCodeAlternate(20),
             bunk = generatePackagingCodeAlternate(21),
             billet = generatePackagingCodeAlternate(22),
-            bundle = generatePackagingCodeAlternate(23),
+            
+            shipment = generatePackagingCodeAlternate(23),
             board = generatePackagingCodeAlternate(24),
             segment = generatePackagingCodeAlternate(25),
             spool = generatePackagingCodeAlternate(26),
             strip = generatePackagingCodeAlternate(27),
             skid = generatePackagingCodeAlternate(28),
             skein = generatePackagingCodeAlternate(29),
-            shipment = generatePackagingCodeAlternate(30),
+            suppository = generatePackagingCodeAlternate(30),
             syringe = generatePackagingCodeAlternate(31),
             straw = generatePackagingCodeAlternate(32),
-            suppository = generatePackagingCodeAlternate(33),
-
-            small_tin = generatePackagingCodeAlternate(34),
-
-            treatment = generatePackagingCodeAlternate(35),
-            tablet = generatePackagingCodeAlternate(36),
-            patch = generatePackagingCodeAlternate(37),
-
-            wheel = generatePackagingCodeAlternate(38),
+            
+            ocular_insert_system=generatePackagingCodeAlternate(33),
+            treatment = generatePackagingCodeAlternate(34),
+            tablet = generatePackagingCodeAlternate(35),
+            patch = generatePackagingCodeAlternate(36),
+            trouche = generatePackagingCodeAlternate(37),
+            lozenge = generatePackagingCodeAlternate(38),
+            
             wrap = generatePackagingCodeAlternate(39),
             hanging_container = generatePackagingCodeAlternate(40),
-                //41
+            wafer = generatePackagingCodeAlternate(41),
             cast = generatePackagingCodeAlternate(42),
             lift_van = generatePackagingCodeAlternate(43),
             carset = generatePackagingCodeAlternate(44),
             display = generatePackagingCodeAlternate(45),
             card = generatePackagingCodeAlternate(46),
-            //47
+            wheel = generatePackagingCodeAlternate(47),
             cone = generatePackagingCodeAlternate(48),
             coil_group = generatePackagingCodeAlternate(49),
             cylinder = generatePackagingCodeAlternate(50),
@@ -307,9 +335,9 @@ namespace commodities {
             envelope = generatePackagingCodeAlternate(72),
             blank = generatePackagingCodeAlternate(73),
             head = generatePackagingCodeAlternate(74),
-            jar = generatePackagingCodeAlternate(75),
+            slice = generatePackagingCodeAlternate(75),
             joint = generatePackagingCodeAlternate(76),
-            keg = generatePackagingCodeAlternate(77),
+            portion = generatePackagingCodeAlternate(77),
             barge = generatePackagingCodeAlternate(78),
             field = generatePackagingCodeAlternate(79),
             pallet = generatePackagingCodeAlternate(80),
@@ -439,6 +467,8 @@ namespace commodities {
         freight = 56226,
         labor = generateStringCode("labor"),
         overtime = generateStringCode("extra"),
+        doubletime = generateStringCode("2x___"),
+        employee = generateStringCode("empl_"),
         visit = generateStringCode("visit"),
         steam = generateStringCode("steam"),
         credit = generateStringCode("cred_"),
@@ -448,6 +478,13 @@ namespace commodities {
         trip = generateStringCode("trip_"),
         use = generateStringCode("use__"),
         policy = generateStringCode("geico"),
+        night = generateStringCode("night"),
+        weekend = generateStringCode("wkend"),
+        stops = generateStringCode("stops"),
+        metric = generateStringCode("metrc"),
+        peak = generateStringCode("peak_"),
+        fold = generateStringCode("fold_"),
+        seat = generateStringCode("seat_"),
         // clinical
         tissue = generateKnownCode(52632250),
         cell = generateStringCode("cell_"),
@@ -456,7 +493,8 @@ namespace commodities {
         Korsakov = generateKnownCode(26262656),
         protein = generateKnownCode(325255),
         creatinine = generateKnownCode(2566225),
-
+        cartridge_needle = generateStringCode("ctndl"),
+        pillow=generateStringCode("pillw"),
         // computer
         pixel = generateStringCode("pixel"),
         dots = generateStringCode("dots_"),
@@ -464,6 +502,7 @@ namespace commodities {
         frame = generateStringCode("frame"),
         errors = generateStringCode("error"),
         character = generateStringCode("ascii"),
+        packet=generateStringCode("packt"),
         word = generateStringCode("word_"),
         flop = generateStringCode("flop_"),
         lines_of_code = generateStringCode("loc__"),
@@ -479,6 +518,15 @@ namespace commodities {
         screen = generateStringCode("scrn_"),
         accounting = generateKnownCode(1516115),
         electronic_mail_box = generateStringCode("email"),
+        photo=generateStringCode("photo"),
+        application=generateStringCode("app__"),
+       //projects
+        project = generateStringCode("proj_"),
+        program = generateStringCode("prog_"),
+        task = generateStringCode("task_"),
+        session = generateStringCode("sessn"),
+        locations = generateStringCode("place"),
+        duty = generateStringCode("duty_"),
         // emmissions
         cloud_cover = generateKnownCode(58339544),
         // communications
@@ -486,6 +534,9 @@ namespace commodities {
         person = generateKnownCode(561485),
         impression = generateKnownCode(4616518),
         service = generateStringCode("serve"),
+        billboard = generateStringCode("board"),
+        channel = generateStringCode("chan_"),
+        transactions = generateStringCode("trxn_"),
         // food
         capsaicin = generateKnownCode(623452),
         cigarette = generateHarmonizedCode(24, 02, 20),
@@ -507,6 +558,7 @@ namespace commodities {
         yen = generateCurrencyCode("JPY"),
         pound = generateCurrencyCode("GBP"),
         ruble = generateCurrencyCode("RUB"),
+        credits = generateCurrencyCode("XXX"),
     };
 
     enum chemicals : std::uint32_t {
