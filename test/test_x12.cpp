@@ -140,7 +140,7 @@ TEST(x12, conversions)
 }
 
 // Load CSV file and verify X12->R20 mappings match
-TEST(x12, csv_r20_mapping_verification)
+TEST(x12, X12R20MappingVerification)
 {
     // Load raw data for R20
     std::size_t r20_count{0};
