@@ -165,6 +165,8 @@ TEST(unitOps, valid)
     EXPECT_FALSE(is_valid(invalid));
     EXPECT_TRUE(is_valid(defunit));
     EXPECT_TRUE(is_valid(V));
+    EXPECT_TRUE(is_valid(
+        unit(10.0, invalid.base_units())));
     EXPECT_TRUE(is_valid(unit(std::numeric_limits<double>::quiet_NaN(), m)));
     EXPECT_FALSE(is_valid(
         unit(std::numeric_limits<double>::quiet_NaN(), invalid.base_units())));
@@ -590,6 +592,8 @@ TEST(preciseUnitOps, valid)
     EXPECT_FALSE(is_valid(precise::invalid));
     EXPECT_TRUE(is_valid(precise::defunit));
     EXPECT_TRUE(is_valid(precise::V));
+    EXPECT_TRUE(is_valid(
+        precise_unit(10.0, precise::invalid.base_units())));
     EXPECT_TRUE(is_valid(
         precise_unit(std::numeric_limits<double>::quiet_NaN(), precise::m)));
     EXPECT_FALSE(is_valid(precise_unit(
