@@ -6224,5 +6224,3 @@ namespace detail {
 
 // NOLINTEND(misc-use-anonymous-namespace,misc-use-internal-linkage,misc-include-cleaner)
 }  // namespace UNITS_NAMESPACE
-
-
