@@ -893,7 +893,8 @@ class precise_unit {
             // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
             (commodity_ == 0) ?
                 other.commodity_ :
-                ((other.commodity_ == 0) ? commodity_ :  // NOLINT(readability-avoid-nested-conditional-operator)
+                ((other.commodity_ == 0) ?
+                     commodity_ :  // NOLINT(readability-avoid-nested-conditional-operator)
                                            commodity_ | other.commodity_),
         };
     }
@@ -914,8 +915,12 @@ class precise_unit {
             base_units_ / other.base_units_,
             // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
             (commodity_ == 0) ?
-                ((other.commodity_ == 0) ? 0 : ~other.commodity_) :  // NOLINT(readability-avoid-nested-conditional-operator)
-                ((other.commodity_ == 0) ? commodity_ :  // NOLINT(readability-avoid-nested-conditional-operator)
+                ((other.commodity_ == 0) ?
+                     0 :
+                     ~other
+                          .commodity_) :  
+                ((other.commodity_ == 0) ?
+                     commodity_ :  
                                            commodity_ & (~other.commodity_)),
         };
     }
