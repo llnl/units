@@ -732,7 +732,13 @@ NB_MODULE(units_llnl_ext, mod)
                             units::precise::generate_custom_count_unit(
                                   static_cast<std::uint16_t>(value));
                     } else {
-                        def = def * (units::default_unit(key).pow(value));
+                        const auto base_unit = units::default_unit(key);
+                        if (!units::is_valid(base_unit)) {
+                            throw std::invalid_argument(
+                                "Invalid dimension key in composition: " +
+                                key);
+                        }
+                        def = def * (base_unit.pow(value));
                     }
                 }
                 new (dim) Dimension{def};
@@ -934,6 +940,20 @@ NB_MODULE(units_llnl_ext, mod)
         "default_unit",
         &units::default_unit,
         "get the default unit to use for a particular type of measurement");
+#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
+    mod.def(
+        "x12_unit",
+        &units::x12_unit,
+        "generate a Unit from an ANSI X12 unit code string");
+    mod.def(
+        "dod_unit",
+        &units::dod_unit,
+        "generate a Unit from a US DOD unit code string");
+    mod.def(
+        "r20_unit",
+        &units::r20_unit,
+        "generate a Unit from an UN recommendation 20 unit code string");
+#endif
     mod.def(
         "add_user_defined_unit",
         [](const char* unit_name, const units::precise_unit& unit_definition) {
