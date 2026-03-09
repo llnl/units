@@ -37,6 +37,7 @@ Checks: "
   -readability-magic-numbers,
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
+  -readability-avoid-nested-conditional-operator,
   performance-*
   "
 
@@ -71,6 +72,7 @@ WarningsAsErrors: "
   -readability-magic-numbers,
   -readability-identifier-length,
   -readability-function-cognitive-complexity,
+  -readability-avoid-nested-conditional-operator,
   performance-*
   "
 

@@ -500,7 +500,6 @@ namespace detail {
     template<typename X>
     constexpr X power_const_small(X val, int power)
     {
-        // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
         return (power == 1) ? val : ((power == -1) ? X{1.0} / val : X{1.0});
     }
 
@@ -508,10 +507,9 @@ namespace detail {
     template<typename X>
     constexpr X power_const(X val, int power)
     {
-        // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
         return (power > 1) ? sqr_power(power_const(val, power / 2)) *
                 (power % 2 == 0 ? X{1.0} : val) :
-            (power < -1) ?  // NOLINT(readability-avoid-nested-conditional-operator)
+            (power < -1) ?
                 X{1.0} /
                 (sqr_power(power_const(val, (-power) / 2)) *
                  ((-power) % 2 == 0 ? X{1.0} : val)) :
