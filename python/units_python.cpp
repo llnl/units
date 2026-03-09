@@ -946,6 +946,10 @@ NB_MODULE(units_llnl_ext, mod)
         &units::x12_unit,
         "generate a Unit from an ANSI X12 unit code string");
     mod.def(
+        "x12_unit_string",
+        &units::x12_unit_string,
+        "generate an ANSI X12 unit code string from a matching Unit");
+    mod.def(
         "dod_unit",
         &units::dod_unit,
         "generate a Unit from a US DOD unit code string");
@@ -953,6 +957,10 @@ NB_MODULE(units_llnl_ext, mod)
         "r20_unit",
         &units::r20_unit,
         "generate a Unit from an UN recommendation 20 unit code string");
+    mod.def(
+        "r20_unit_string",
+        &units::r20_unit_string,
+        "generate an UN recommendation 20 unit code string from a matching Unit");
 #endif
     mod.def(
         "add_user_defined_unit",

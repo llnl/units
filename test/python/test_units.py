@@ -273,3 +273,17 @@ def test_deepcopy_object():
     assert v2.value1 == v.value1
     v.value1 = u.Unit("50 m")
     assert v2.value1 == u.Unit("10 m")
+
+
+def test_x12_unit_string_round_trip():
+    code = u.x12_unit_string(u.x12_unit("17"))
+    assert code != ""
+    assert u.x12_unit(code).is_exactly_the_same(u.x12_unit("17"))
+    assert u.x12_unit_string(u.Unit("error")) == ""
+
+
+def test_r20_unit_string_round_trip():
+    code = u.r20_unit_string(u.r20_unit("A65"))
+    assert code != ""
+    assert u.r20_unit(code).is_exactly_the_same(u.r20_unit("A65"))
+    assert u.r20_unit_string(u.Unit("error")) == ""

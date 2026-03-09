@@ -2134,10 +2134,14 @@ UNITS_EXPORT void enableCustomCommodities();
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
 /// generate a unit from a string as defined by the X12 standard
 UNITS_EXPORT precise_unit x12_unit(const std::string& x12_string);
+/// generate an X12 unit code string from a matching precise_unit
+UNITS_EXPORT std::string x12_unit_string(const precise_unit& unit);
 /// generate a unit from a string as defined by the US DOD
 UNITS_EXPORT precise_unit dod_unit(const std::string& dod_string);
 /// generate a unit from a string as defined by the r20 standard
 UNITS_EXPORT precise_unit r20_unit(const std::string& r20_string);
+/// generate an r20 unit code string from a matching precise_unit
+UNITS_EXPORT std::string r20_unit_string(const precise_unit& unit);
 #endif
 
 #endif  // UNITS_HEADER_ONLY

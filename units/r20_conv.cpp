@@ -14,6 +14,7 @@ SPDX-License-Identifier: BSD-3-Clause
 #include <unordered_map>
 
 namespace UNITS_NAMESPACE {
+
 namespace precise {
     using unitD = std::tuple<const char*, const char*, precise_unit>;
     static UNITS_CPP14_CONSTEXPR_OBJECT std::array<unitD, 2188> r20_units = {{
@@ -3330,6 +3331,29 @@ precise_unit r20_unit(const std::string& r20_string)
         return std::get<2>(*ind);
     }
     return precise::invalid;
+}
+
+// Configurable fallback code returned when no R20 unit code matches.
+constexpr const char* invalid_unit_code = "";
+std::string r20_unit_string(const precise_unit& unit)
+{
+    // Prefer exact identity; fall back to rounded equality for parsed values.
+    auto ind = std::find_if(
+        precise::r20_units.begin(),
+        precise::r20_units.end(),
+        [&unit](const precise::unitD& u_set) {
+            return std::get<2>(u_set).is_exactly_the_same(unit);
+        });
+    if (ind == precise::r20_units.end()) {
+        ind = std::find_if(
+            precise::r20_units.begin(),
+            precise::r20_units.end(),
+            [&unit](const precise::unitD& u_set) {
+                return std::get<2>(u_set) == unit;
+            });
+    }
+    return (ind == precise::r20_units.end()) ? std::string(invalid_unit_code) :
+                                                std::string(std::get<0>(*ind));
 }
 
 #ifdef ENABLE_UNIT_MAP_ACCESS
