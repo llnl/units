@@ -724,7 +724,8 @@ class fixed_measurement {
 
   private:
     double value_{0.0};  //!< the unit value
-    const unit units_;  //!< a fixed unit of measurement  // NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
+    const unit units_;  //!< a fixed unit of measurement
 };
 
 /// Design requirement this must fit in space of 2 doubles for a 4 byte base
@@ -1716,7 +1717,8 @@ class fixed_precise_measurement {
 
   private:
     double value_{0.0};  //!< the quantity of units measured
-    const precise_unit units_;  //!< the units associated with the quantity  // NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
+    const precise_unit units_;  //!< the units associated with the quantity
 };
 
 /// Check if the measurement is a valid_measurement

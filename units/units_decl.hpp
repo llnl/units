@@ -67,7 +67,7 @@ namespace detail {
     class unit_data {
       public:
         /** Ordinal enumeration of the data fields in the unit_data object */
-        enum base {
+        enum base : std::uint8_t {
             Meter = 0,
             Second = 1,
             Kilogram = 2,
@@ -212,7 +212,7 @@ namespace detail {
                 radians_ * power,
                 per_unit_,
                 (power % 2 == 0) ? 0U : i_flag_,
-                (power % 2 == 0) ? ((i_flag_ && e_flag_) ? 0U : e_flag_) :
+                (power % 2 == 0) ? (e_flag_ & static_cast<unsigned int>(!i_flag_)) :
                                    e_flag_,
                 equation_};
         }
@@ -499,6 +499,7 @@ namespace detail {
     template<typename X>
     constexpr X power_const_small(X val, int power)
     {
+        // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
         return (power == 1) ? val : ((power == -1) ? X{1.0} / val : X{1.0});
     }
 
@@ -506,6 +507,7 @@ namespace detail {
     template<typename X>
     constexpr X power_const(X val, int power)
     {
+        // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
         return (power > 1) ? sqr_power(power_const(val, power / 2)) *
                 (power % 2 == 0 ? X{1.0} : val) :
             (power < -1) ? X{1.0} /
@@ -888,6 +890,7 @@ class precise_unit {
         return {
             multiplier() * other.multiplier(),
             base_units_ * other.base_units_,
+            // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
             (commodity_ == 0) ?
                 other.commodity_ :
                 ((other.commodity_ == 0) ? commodity_ :
@@ -909,6 +912,7 @@ class precise_unit {
         return {
             multiplier() / other.multiplier(),
             base_units_ / other.base_units_,
+            // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
             (commodity_ == 0) ?
                 ((other.commodity_ == 0) ? 0 : ~other.commodity_) :
                 ((other.commodity_ == 0) ? commodity_ :
@@ -1111,7 +1115,7 @@ class precise_unit {
 };
 
 /// Check if a unit down cast is lossless
-inline constexpr bool is_unit_cast_lossless(const precise_unit& val)
+constexpr bool is_unit_cast_lossless(const precise_unit& val)
 {
     return val.multiplier() ==
         static_cast<double>(static_cast<float>(val.multiplier()));
@@ -1171,7 +1175,7 @@ inline bool isinf(const unit& utest)
 @param power the integral power, can be positive or negative
 @return a new unit with the appropriate value
 */
-inline constexpr unit pow(const unit& u, int power)
+constexpr unit pow(const unit& u, int power)
 {
     return u.pow(power);
 }
@@ -1181,7 +1185,7 @@ inline constexpr unit pow(const unit& u, int power)
 @param power the integral power, can be positive or negative
 @return a new precise unit with the appropriate value
 */
-inline constexpr precise_unit pow(const precise_unit& u, int power)
+constexpr precise_unit pow(const precise_unit& u, int power)
 {
     return u.pow(power);
 }

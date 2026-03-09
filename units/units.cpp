@@ -5,13 +5,22 @@ See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
 #include "units.hpp"
+#include "units/commodity_definitions.hpp"
+#include "units/unit_definitions.hpp"
+#include "units/units_decl.hpp"
 #include "units_conversion_maps.hpp"
 
 #include <algorithm>
 #include <array>
 #include <atomic>
 #include <cctype>
+#include <cmath>
+#include <cstddef>
+#include <cstdint>
+#include <cstdlib>
 #include <cstring>
+#include <exception>
+#include <functional>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
@@ -34,6 +43,7 @@ references http://people.csail.mit.edu/jaffer/MIXF/MIXF-08
 */
 
 namespace UNITS_NAMESPACE {
+// NOLINTBEGIN(misc-use-anonymous-namespace,misc-use-internal-linkage,misc-include-cleaner)
 
 template<typename X>
 X numericalRoot(X value, int power)
@@ -133,7 +143,7 @@ fixed_precise_measurement root(const fixed_precise_measurement& fpm, int power)
 static int order(const unit& val)
 {
     auto bd = val.base_units();
-    int order = std::labs(bd.meter()) + std::labs(bd.kelvin()) +
+    const int order = std::labs(bd.meter()) + std::labs(bd.kelvin()) +
         std::labs(bd.kg()) + std::labs(bd.count()) + std::labs(bd.ampere()) +
         std::labs(bd.second()) + std::labs(bd.currency()) +
         std::labs(bd.radian()) + std::labs(bd.candela()) + std::labs(bd.mole());
@@ -336,7 +346,7 @@ static std::string getMultiplierString(double multiplier, bool numOnly = false)
             return std::string(1UL, si->second);
         }
     }
-    int P = 18;  // the desired precision
+    const int P = 18;  // the desired precision
     std::stringstream ss;
 
     ss << std::setprecision(P) << multiplier;
@@ -464,8 +474,8 @@ static std::string generateUnitSequence(double mux, std::string seq)
     if (mloc < pwerloc) {
         return getMultiplierString(mux, noPrefix) + seq;
     }
-    int offset = (seq[pwerloc + 1] != '(') ? 1 : 2;
-    int pw = stoi(seq.substr(pwerloc + offset, mloc - pwerloc - offset + 1));
+    const int offset = (seq[pwerloc + 1] != '(') ? 1 : 2;
+    const int pw = stoi(seq.substr(pwerloc + offset, mloc - pwerloc - offset + 1));
     std::string muxstr;
     switch (pw) {
         case -1:
@@ -1279,7 +1289,7 @@ static std::string probeUnitBase(
         auto prefix = generateUnitSequence(1.0 / ext.multiplier(), fnd);
         if (isNumericalStartCharacter(prefix.front())) {
             size_t cut{0};
-            double mx = getDoubleFromString(prefix, &cut);
+            const double mx = getDoubleFromString(prefix, &cut);
 
             auto str = getMultiplierString(1.0 / mx, true) + probe.second +
                 "/" + prefix.substr(cut);
@@ -1415,7 +1425,7 @@ static std::string
 
     if (un.is_equation()) {
         auto ubase = un.base_units();
-        int num = precise::custom::eq_type(ubase);
+        const int num = precise::custom::eq_type(ubase);
         std::string cxstr = "EQXUN[" + std::to_string(num) + "]";
 
         auto urem = un / precise_unit(precise::custom::equation_unit(num));
@@ -1450,7 +1460,7 @@ static std::string
     // check if it is a custom unit of some kind
     if (precise::custom::is_custom_unit(un.base_units())) {
         auto ubase = un.base_units();
-        int num = precise::custom::custom_unit_number(ubase);
+        const int num = precise::custom::custom_unit_number(ubase);
         std::string cxstr = "CXUN[" + std::to_string(num) + "]";
         auto urem = un;
         if (precise::custom::is_custom_unit_inverted(ubase)) {
@@ -1469,7 +1479,7 @@ static std::string
     // check for custom count units
     if (precise::custom::is_custom_count_unit(un.base_units())) {
         auto ubase = un.base_units();
-        int num = precise::custom::custom_count_unit_number(ubase);
+        const int num = precise::custom::custom_count_unit_number(ubase);
         std::string cxstr = "CXCUN[" + std::to_string(num) + "]";
         auto urem = un;
         if (precise::custom::is_custom_count_unit_inverted(ubase)) {
@@ -1573,7 +1583,7 @@ static std::string
         auto prefix = generateUnitSequence(1.0 / un.multiplier(), fnd);
         if (isNumericalStartCharacter(prefix.front())) {
             size_t cut{0};
-            double mx = getDoubleFromString(prefix, &cut);
+            const double mx = getDoubleFromString(prefix, &cut);
             return getMultiplierString(1.0 / mx, true) + "/" +
                 prefix.substr(cut);
         }
@@ -1914,7 +1924,7 @@ static double getStrictSIPrefixMultiplier(char p)
 
 static constexpr uint16_t charindex(char ch1, char ch2)
 {
-    return ch1 * 256 + ch2;
+    return (ch1 * 256) + ch2;
 }
 
 /// Generate the prefix multiplier for SI units and binary prefixes
@@ -2071,7 +2081,7 @@ static double getNumberBlock(const std::string& ustring, size_t& index) noexcept
     if (!std::isnan(val) && index < ustring.size()) {
         if (ustring[index] == '^') {
             size_t nindex{0};
-            double pval = getNumberBlock(ustring.substr(index + 1), nindex);
+            const double pval = getNumberBlock(ustring.substr(index + 1), nindex);
             if (!std::isnan(pval)) {
                 index += nindex + 1;
                 return std::pow(val, pval);
@@ -2107,7 +2117,7 @@ double generateLeadingNumber(const std::string& ustring, size_t& index) noexcept
                 if (looksLikeNumber(ustring, index + 1) ||
                     ustring[index + 1] == '(') {
                     size_t oindex{0};
-                    double res =
+                    const double res =
                         getNumberBlock(ustring.substr(index + 1), oindex);
                     if (!std::isnan(res)) {
                         if (ustring[index] == '/') {
@@ -2126,7 +2136,7 @@ double generateLeadingNumber(const std::string& ustring, size_t& index) noexcept
                 break;
             case '(': {
                 size_t oindex{0};
-                double res = getNumberBlock(ustring.substr(index), oindex);
+                const double res = getNumberBlock(ustring.substr(index), oindex);
                 if (!std::isnan(res)) {
                     val *= res;
                     index = oindex + index + 1;
@@ -2242,7 +2252,7 @@ static double readNumericalWords(const std::string& ustring, size_t& index)
                 val = std::get<1>(wp);
                 index = std::get<2>(wp);
                 if (index < lcstring.size()) {
-                    double val_p2 =
+                    const double val_p2 =
                         readNumericalWords(lcstring.substr(index), index_sub);
                     if (!std::isnan(val_p2)) {
                         if (val_p2 >= val) {
@@ -2274,7 +2284,7 @@ static double readNumericalWords(const std::string& ustring, size_t& index)
                 }
             }
             // read the previous part
-            double val_p2 =
+            const double val_p2 =
                 readNumericalWords(lcstring.substr(0, loc), index_sub);
             if (std::isnan(val_p2) || index_sub < loc) {
                 index = index_sub;
@@ -2298,7 +2308,7 @@ static double readNumericalWords(const std::string& ustring, size_t& index)
                 if (lcstring[index] == '-') {
                     ++index;
                 }
-                double toTen = read1To10(lcstring, index);
+                const double toTen = read1To10(lcstring, index);
                 if (!std::isnan(toTen)) {
                     val += toTen;
                 }
@@ -2344,7 +2354,8 @@ namespace detail {
             int power,
             std::uint64_t flags)
         {
-            return addUnitPower(str, unit, power, flags);
+            addUnitPower(str, unit, power, flags);
+            return;
         }
     }  // namespace testing
 }  // namespace detail
@@ -2429,7 +2440,7 @@ static inline bool
         false;
 }
 
-enum class modifier : int {
+enum class modifier : std::uint8_t {
     start_tail = 0,
     start_replace = 1,
     anywhere_tail = 2,
@@ -2989,7 +3000,7 @@ static bool
         // LCOV_EXCL_STOP
     }
     while (index >= 0) {
-        char current = unit[index];
+        const char current = unit[index];
         --index;
         if (index >= 0 && unit[index] == '\\') {
             --index;
@@ -3027,7 +3038,7 @@ static bool
     segmentcheck(const std::string& unit, char closeSegment, size_t& index)
 {
     while (index < unit.size()) {
-        char current = unit[index];
+        const char current = unit[index];
         ++index;
         if (current == closeSegment) {
             return true;
@@ -3292,7 +3303,7 @@ static precise_unit
 static std::uint64_t getCurrentDomain(std::uint64_t match_flags)
 {
     static constexpr std::uint64_t flagMask{0xFFULL};
-    std::uint64_t dmn = match_flags & flagMask;
+    const std::uint64_t dmn = match_flags & flagMask;
 
     return (dmn == 0ULL) ? unitsDomain : dmn;
 }
@@ -3933,9 +3944,9 @@ static bool checkExponentOperations(const std::string& unit_string)
     // check all power operations
     auto cx = unit_string.find_first_of('^');
     while (cx != std::string::npos) {
-        bool ndigit = isDigitCharacter(unit_string[cx - 1]);
+        const bool ndigit = isDigitCharacter(unit_string[cx - 1]);
         ++cx;
-        char c = unit_string[cx];
+        const char c = unit_string[cx];
         if (!isDigitCharacter(c)) {
             if (c == '-') {
                 if (!isDigitCharacter(unit_string[cx + 1])) {
@@ -4027,7 +4038,7 @@ static bool checkValidUnitString(
         }
         cx = cx2;
     }
-    bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
+    const bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
     if (!skipcodereplacement) {
         for (const auto& seq : invalidSequences) {
             if (unit_string.find(seq) != std::string::npos) {
@@ -4037,7 +4048,7 @@ static bool checkValidUnitString(
 
         size_t index = 0;
         while (index < unit_string.size()) {
-            char current = unit_string[index];
+            const char current = unit_string[index];
             switch (current) {
                 case '{':
                 case '(':
@@ -4256,7 +4267,7 @@ static bool unicodeReplacement(std::string& unit_string)
     for (const auto& ucode : ucodeReplacements) {
         auto fnd = unit_string.find(ucode.first);
         while (fnd != std::string::npos) {
-            std::size_t codelength = strlen(ucode.first);
+            const std::size_t codelength = strlen(ucode.first);
             if (codelength == 1 && fnd > 0 &&
                 static_cast<unsigned char>(unit_string[fnd - 1]) > 0xC0) {
                 // skip the conversion in this case as it is likely a unicode
@@ -4292,13 +4303,13 @@ static void checkPowerOf10(std::string& unit_string)
                 auto powerstr = unit_string.substr(fndP + 3);
                 if (looksLikeInteger(powerstr)) {
                     try {
-                        int power = std::stoi(powerstr);
+                        const int power = std::stoi(powerstr);
                         if (std::labs(power) <= 38) {
                             unit_string.replace(fndP, 3, "1e");
                         }
                     }
                     catch (const std::out_of_range&) {
-                        // if it is a really big number we obviously skip it
+                        // If it overflows int, keep the original string unchanged.
                     }
                 }
             }
@@ -4406,7 +4417,7 @@ static bool checkShortUnits(std::string& unit_string, std::uint64_t match_flags)
 static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
 {
     auto slen = unit_string.size();
-    bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
+    const bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
     static UNITS_CPP14_CONSTEXPR_OBJECT std::array<ckpair, 4>
         earlyCodeReplacements{{
             ckpair{"degree", "deg"},
@@ -4465,7 +4476,7 @@ static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
     bool changed = false;
     bool skipMultiply = false;
     std::size_t skipMultiplyInsertionAfter{std::string::npos};
-    char tail = unit_string.back();
+    const char tail = unit_string.back();
     if (tail == '^' || tail == '*' || tail == '/') {
         unit_string.pop_back();
         changed = true;
@@ -4523,6 +4534,7 @@ static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
                 if (ploc != std::string::npos) {
                     auto fdiv = unit_string.find_first_of('/', reploc);
                     std::size_t ndiv{0};
+                    // NOLINTNEXTLINE(cppcoreguidelines-avoid-do-while)
                     do {
                         ndiv = unit_string.find_first_of('/', fdiv + 1);
                         if (ploc < ndiv) {
@@ -5366,7 +5378,7 @@ static precise_unit
         auto res = convert(b_unit, a_unit);
         if (!std::isnan(res)) {
             return {
-                a_unit.multiplier() + a_unit.multiplier() * res,
+                a_unit.multiplier() + (a_unit.multiplier() * res),
                 a_unit.base_units()};
         }
     }
@@ -5452,7 +5464,7 @@ static precise_unit unit_from_string_internal(
             unit_string[1] != '/') {  // this catches 1/ which should be
                                       // handled differently
             size_t index{0};
-            double front = generateLeadingNumber(unit_string, index);
+            const double front = generateLeadingNumber(unit_string, index);
             if (std::isnan(front)) {  // out of range
                 return precise::invalid;
             }
@@ -5564,7 +5576,7 @@ static precise_unit unit_from_string_internal(
                                            (a_unit * b_unit);
     }
     // flag that is used to circumvent a few checks
-    bool containsPer =
+    const bool containsPer =
         (findWordOperatorSep(unit_string, "per") != std::string::npos);
 
     sep = findOperatorSep(unit_string, "^");
@@ -5573,7 +5585,7 @@ static precise_unit unit_from_string_internal(
         if (unit_string[sep + 1] == '(') {
             ++sep;
         }
-        char c1 = unit_string[sep + 1];
+        const char c1 = unit_string[sep + 1];
         int power{+1};
         if (c1 == '-' || c1 == '+') {
             ++sep;
@@ -5944,7 +5956,7 @@ precise_measurement measurement_from_string(
     if (loc >= measurement_string.length()) {
         return {val, precise::one};
     }
-    bool checkCurrency = (loc == 0);
+    const bool checkCurrency = (loc == 0);
     auto ustring = measurement_string.substr(loc);
     auto validString = checkValidUnitString(ustring, match_flags);
     auto un = (validString) ?
@@ -6079,7 +6091,7 @@ std::string dimensions(const precise_unit& units)
         return "[dimensionless]";
     }
 
-    precise_unit base(1.0, units.base_units());
+    const precise_unit base(1.0, units.base_units());
     for (const auto& mt : defined_measurement_types) {
         if (base == mt.second) {
             return std::string("[") + mt.first + "]";
@@ -6111,6 +6123,8 @@ precise_unit default_unit(std::string unit_type)
                 return precise::cd;
             case 'l':
                 return precise::one;
+            default:
+                break;
         }
     }
     std::transform(
@@ -6202,4 +6216,5 @@ namespace detail {
 }  // namespace detail
 #endif
 
+// NOLINTEND(misc-use-anonymous-namespace,misc-use-internal-linkage,misc-include-cleaner)
 }  // namespace UNITS_NAMESPACE
