@@ -509,8 +509,7 @@ namespace detail {
     {
         return (power > 1) ? sqr_power(power_const(val, power / 2)) *
                 (power % 2 == 0 ? X{1.0} : val) :
-            (power < -1) ?
-                X{1.0} /
+            (power < -1) ? X{1.0} /
                 (sqr_power(power_const(val, (-power) / 2)) *
                  ((-power) % 2 == 0 ? X{1.0} : val)) :
                            power_const_small(val, power);
@@ -895,7 +894,7 @@ class precise_unit {
                 other.commodity_ :
                 ((other.commodity_ == 0) ?
                      commodity_ :  // NOLINT(readability-avoid-nested-conditional-operator)
-                                           commodity_ | other.commodity_),
+                     commodity_ | other.commodity_),
         };
     }
     /// Multiplication operator with a lower precision unit
@@ -915,12 +914,8 @@ class precise_unit {
             base_units_ / other.base_units_,
             // NOLINTNEXTLINE(readability-avoid-nested-conditional-operator)
             (commodity_ == 0) ?
-                ((other.commodity_ == 0) ?
-                     0 :
-                     ~other
-                          .commodity_) :  
-                ((other.commodity_ == 0) ?
-                     commodity_ :  
+                ((other.commodity_ == 0) ? 0 : ~other.commodity_) :
+                ((other.commodity_ == 0) ? commodity_ :
                                            commodity_ & (~other.commodity_)),
         };
     }
