@@ -74,7 +74,8 @@ double convert(double val, const UX& start, const UX2& result)
     }
     if ((start.has_e_flag() || result.has_e_flag()) &&
         start.has_same_base(result.base_units())) {
-        const double converted_val = detail::convertFlaggedUnits(val, start, result);
+        const double converted_val =
+            detail::convertFlaggedUnits(val, start, result);
         if (!std::isnan(converted_val)) {
             return converted_val;
         }
@@ -125,7 +126,8 @@ double convert(double val, const UX& start, const UX2& result)
     }
     // deal with some counting conversions
     if (base_start.equivalent_non_counting(base_result)) {
-        const double converted_val = detail::convertCountingUnits(val, start, result);
+        const double converted_val =
+            detail::convertCountingUnits(val, start, result);
         if (!std::isnan(converted_val)) {
             return converted_val;
         }
@@ -330,14 +332,12 @@ class measurement {
     constexpr measurement operator+() const { return {value_, units_}; }
     constexpr measurement operator-() const { return {-value_, units_}; }
     // double multiplier
-    friend constexpr measurement
-        operator*(double val, const measurement& meas)
+    friend constexpr measurement operator*(double val, const measurement& meas)
     {
         return meas * val;
     }
     // divide measurement into a double
-    friend constexpr measurement
-        operator/(double val, const measurement& meas)
+    friend constexpr measurement operator/(double val, const measurement& meas)
     {
         return {val / meas.value_, meas.units_.inv()};
     }
@@ -724,7 +724,9 @@ class fixed_measurement {
 
   private:
     double value_{0.0};  //!< the unit value
-    const unit units_;  //!< a fixed unit of measurement  // NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
+    const unit
+        units_;  //!< a fixed unit of measurement  //
+                 //!< NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
 };
 
 /// Design requirement this must fit in space of 2 doubles for a 4 byte base
@@ -867,7 +869,8 @@ class uncertain_measurement {
     UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         simple_product(const uncertain_measurement& other) const
     {
-        const float ntol = (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
+        const float ntol =
+            (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
         const float nval = value_ * other.value_;
         return {nval, nval * ntol, units_ * other.units()};
     }
@@ -911,7 +914,8 @@ class uncertain_measurement {
     UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         simple_divide(const uncertain_measurement& other) const
     {
-        const float ntol = (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
+        const float ntol =
+            (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
         const float nval = value_ / other.value_;
         return {nval, nval * ntol, units_ / other.units()};
     }
@@ -1716,7 +1720,9 @@ class fixed_precise_measurement {
 
   private:
     double value_{0.0};  //!< the quantity of units measured
-    const precise_unit units_;  //!< the units associated with the quantity  // NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
+    const precise_unit
+        units_;  //!< the units associated with the quantity  //
+                 //!< NOLINT(cppcoreguidelines-avoid-const-or-ref-data-members)
 };
 
 /// Check if the measurement is a valid_measurement
