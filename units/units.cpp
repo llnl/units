@@ -2355,7 +2355,6 @@ namespace detail {
             std::uint64_t flags)
         {
             addUnitPower(str, unit, power, flags);
-            return;
         }
     }  // namespace testing
 }  // namespace detail
@@ -2745,7 +2744,7 @@ static bool bracketModifiers(std::string& unit_string)
     auto ploc = unit_string.find_first_of('-', 1);
     if (ploc != std::string::npos) {
         auto cloc = unit_string.find_first_of("-[({_", ploc + 1);
-        std::string tstring = (cloc != std::string::npos) ?
+        const std::string tstring = (cloc != std::string::npos) ?
             unit_string.substr(ploc + 1, cloc - ploc - 1) :
             unit_string.substr(ploc + 1);
         auto modloc = modifiers.find(tstring);
@@ -4310,6 +4309,7 @@ static void checkPowerOf10(std::string& unit_string)
                     }
                     catch (const std::out_of_range&) {
                         // If it overflows int, keep the original string unchanged.
+                        static_cast<void>(powerstr);
                     }
                 }
             }
@@ -5181,7 +5181,7 @@ static precise_unit unit_to_the_power_of(
         }
     }
     if (partialPowerSegment) {
-        std::string ustring = unit_string.substr(
+        const std::string ustring = unit_string.substr(
             static_cast<size_t>(index) + 2,
             unit_string.size() - static_cast<size_t>(index) - 3);
         retunit = unit_from_string_internal(
@@ -6218,3 +6218,5 @@ namespace detail {
 
 // NOLINTEND(misc-use-anonymous-namespace,misc-use-internal-linkage,misc-include-cleaner)
 }  // namespace UNITS_NAMESPACE
+
+
