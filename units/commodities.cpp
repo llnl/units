@@ -5,17 +5,12 @@ See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
 #include "commodity_conversion_maps.hpp"
+#include "commodity_definitions.hpp"
 #include "units.hpp"
-#include <algorithm>
-#include <array>
 #include <atomic>
 #include <cctype>
-#include <cstring>
-#include <iomanip>
-#include <iostream>
-#include <sstream>
+#include <cstdint>
 #include <string>
-#include <tuple>
 #include <unordered_map>
 
 /*

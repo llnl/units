@@ -21,6 +21,7 @@ Checks: "
   -bugprone-easily-swappable-parameters,
   misc-*,
   -misc-no-recursion,
+  -misc-use-anonymous-namespace
   cppcoreguidelines-*,
   -cppcoreguidelines-narrowing-conversions,
   -cppcoreguidelines-avoid-magic-numbers,
@@ -59,6 +60,7 @@ WarningsAsErrors: "
   -bugprone-easily-swappable-parameters,
   misc-*,
   -misc-no-recursion,
+  -misc-use-anonymous-namespace
   cppcoreguidelines-*,
   -cppcoreguidelines-narrowing-conversions,
   -cppcoreguidelines-avoid-magic-numbers,
