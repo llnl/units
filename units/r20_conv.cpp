@@ -2469,7 +2469,7 @@ namespace precise {
         unitD{"MTS", "metre per second", m / s},
         unitD{"MV", "number of mults", count},
         unitD{"MVA", "megavolt - ampere", mega * V * A},
-        unitD{"MW", "metric ton kilograms", tonne},
+        unitD{"MW", "metric ton kilograms", mass::tonne},
         unitD{"MWH", "megawatt hour", mega * W * hr},
         unitD{"MX", "mixed", {1.0, count, commodities::packaging::mixed}},
         unitD{
