@@ -1,0 +1,2344 @@
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+10 Kilogram Drum
+10,000 Gallon Tankcar
+100 Board Feet
+100 Kilograms
+1000 Cubic Feet
+1000 Meters
+100-Pack
+15 Kilogram Drum
+20 Foot Container
+20,000 Gallon Tankcar
+20-Pack
+25 Kilogram Bulk Bag
+300 Kilogram Bulk Bag
+40 Foot Container
+50 Pound Bag
+500 Kilogram Bulk Bag
+Access Lines
+Acre
+Actual Kilograms
+Actual Tonnes
+Actual Tons
+Additional Minutes
+Air Dry Metric Ton
+Aluminum Pounds Only
+Ampere
+Ampere Turn Per Centimeter
+Amperes per Meter
+Ampere-turn
+Ampoule
+Angstrom
+Anti-hemophilic Factor (AHF) Units
+Application
+Assembly
+Assortment
+Atmosphere
+Average Minutes Per Call
+Bag
+Bale
+Ball
+Band
+Bar
+Barge
+Barrel
+Barrel, Imperial
+Barrels per Day
+Barrels per Minute
+Base Box
+Base Weight
+Basis Points
+Basket
+Batch
+Batt
+Batting Pound
+Beam
+Becquerel
+Belt
+
+X12
+97
+96
+BP
+KK
+FC
+MQ
+4F
+98
+20
+95
+4E
+46
+45
+21
+47
+44
+AL
+AC
+50
+51
+26
+AH
+MD
+AP
+68
+73
+AE
+AO
+AM
+AG
+AQ
+UR
+AY
+AS
+AT
+AI
+BG
+BA
+AA
+BJ
+BI
+NB
+BR
+B4
+B1
+5A
+BB
+BW
+39
+BS
+5B
+B9
+B3
+BE
+R2
+BT
+
+UN Rec 20
+97
+96
+BP
+KK
+FC
+MQ
+CNP
+98
+20
+95
+4E
+46
+45
+21
+47
+44
+AL
+ACR
+50
+51
+26
+AH
+MD
+AP
+AMP
+73
+AE
+AO
+AM
+AG
+AQ
+UR
+AY
+AS
+ATM
+AI
+BG
+BL
+AA
+D92
+BR
+NB
+BLL
+B4
+B1
+5A
+BB
+BW
+39
+BK
+5B
+B9
+B3
+D79
+BQL
+E2
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Billboard
+Billet
+Billions of Dollars
+Bin
+Bit
+Block
+Board Feet
+Board Feet
+Bobbin
+Bolt
+Book
+Bottle
+Box
+Brake Horse Power
+British Thermal Unit (BTU)
+British Thermal Units (BTUs) per Cubic Foot
+British Thermal Units (BTUs) Per Hour
+British Thermal Units (BTUs) per Pound
+Brush
+Bucket
+Bulk
+Bulk Car Load
+Bulk Pack
+Bun
+Bundle
+Bunks
+Bushel
+Bushel, Dry Imperial
+Bytes
+Caboose Count
+Caboose Mile
+Cake
+Calendar Days
+Calls
+Calorie
+Calories per Cubic Centimeter
+Calories per Gram
+Can
+Cap
+Capsule
+Car
+Car Count
+Car Mile
+Carat
+Carboy
+Card
+Carload
+Carset
+Carton
+Cartridge
+Cartridge Needle
+Case
+Cassette
+Catchweight
+Cell
+Centigrade, Celsius
+
+X12
+OC
+B5
+R7
+2W
+G6
+BL
+B8
+BF
+4A
+BM
+BK
+BO
+BX
+BQ
+BY
+B0
+2I
+AZ
+BH
+BC
+BN
+48
+AB
+B6
+BD
+B2
+BU
+BV
+AD
+1D
+1H
+KA
+DW
+C0
+R4
+92
+93
+CN
+4B
+AV
+NC
+1B
+1A
+CD
+CB
+CG
+C4
+C2
+CT
+CQ
+N9
+CA
+CS
+31
+C6
+CE
+
+UN Rec 20
+OC
+B5
+R7
+2W
+G6
+D64
+BD
+BFT
+4A
+BT
+D63
+BO
+BX
+BHP
+BTU
+B0
+2I
+AZ
+BH
+BJ
+VQ
+48
+AB
+B6
+BE
+B2
+BUA
+BUI
+AD
+1D
+1H
+KA
+DW
+C0
+R4
+92
+93
+CA
+4B
+AV
+NC
+1B
+1A
+CD
+CO
+CG
+C4
+C2
+CT
+CQ
+N9
+CS
+D66
+31
+C6
+CEL
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Centigram
+Centiliter
+Centimeter
+Centimeters Per Second
+Centipoise (CPS)
+Centistokes
+Channel
+Coil
+Coil Group
+Column - Inches
+Combo
+Composite Product Pounds (Total Weight)
+Cone
+Connector
+Container
+Cop
+Cord
+Cost
+Coulomb
+Count
+Count per Minute
+Counts per Centimeter
+Counts per Inch
+Crate
+Credits
+Cubic Centimeter
+Cubic Centimeters Per Second
+Cubic Decimeter
+Cubic Feet
+Cubic Feet Per Hour
+Cubic Feet Per Minute
+Cubic Feet per Minute per Square Foot
+Cubic Inches
+Cubic Meter
+Cubic Meter Per Hour
+Cubic Meters (Net)
+Cubic Yard
+Cup
+Cup
+Cup
+Curie
+Curl Units
+Cycles
+Cylinder
+Data Records
+Days
+Deal
+Decagram
+Deci Newton-Meter
+Decibels
+Decigram
+Deciliter
+Deciliter per Gram
+Decimeter
+Degree
+Directory Books
+
+X12
+AF
+C3
+CM
+2M
+C7
+4C
+QC
+CX
+C9
+II
+CZ
+C1
+CJ
+CK
+CH
+AJ
+8C
+C5
+65
+1N
+5K
+IT
+IC
+CP
+52
+CC
+2J
+C8
+CF
+2K
+2L
+36
+CI
+CR
+4V
+CO
+CY
+CU
+CV
+CW
+4D
+94
+B7
+CL
+DQ
+DA
+DE
+DJ
+DN
+2N
+DG
+DL
+22
+DM
+DD
+DY
+
+UN Rec 20
+CGM
+CLT
+CMT
+2M
+C7
+4C
+QC
+CL
+C9
+II
+CZ
+C1
+CJ
+CK
+CH
+AJ
+8C
+C5
+COU
+1N
+5K
+IT
+IC
+CR
+52
+CMQ
+2J
+DMQ
+FTQ
+2K
+2L
+36
+INQ
+MTQ
+MQH
+D90
+YDQ
+CU
+CV
+CW
+CUR
+94
+B7
+CY
+DQ
+DAY
+DE
+DJ
+DN
+2N
+DG
+DLT
+22
+DMT
+DD
+DY
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Disk (Disc)
+Dispense
+Display
+Dollars per Hours
+Dollars, Canadian
+Dollars, U.S.
+Dosage Form
+Double-time Hours
+Dozen
+Dozen Pair
+Draize Score
+Dram
+Dram (Minim)
+Drum
+Dry Pounds
+Dry Ton
+Duty
+Dyne
+Dyne per Square Centimeter
+Dynes per Centimeter
+Each
+Each per Month
+Eight-Pack
+Electron Volt
+Electronic Mail Boxes
+Eleven pack
+Employees
+Empty Car
+English, (Feet, Inches)
+Envelope
+Equivalent
+Equivalent Gallons
+Fahrenheit
+Failure Rate In Time
+Farad
+Fathom
+Feet and Decimal
+Feet Per Minute
+Feet Per Second
+Feet, Inches and Decimal
+Feet, Inches and Fraction
+Fibers
+Fibers per Cubic Centimeter of Air
+Fields
+Fifty
+Fifty Count
+Fifty Square Feet
+Five Hundred
+Five-Pack
+Fixed Rate
+Flake Ton
+Flat
+Fluid Ounce
+Fluid Ounce (Imperial)
+Foot
+Foot Pounds
+
+X12
+DC
+DI
+DS
+A8
+D1
+DO
+US
+EG
+DZ
+DP
+D8
+DF
+UX
+DR
+DB
+DT
+8D
+DU
+D9
+DX
+EA
+EC
+P8
+79
+EB
+EP
+EE
+1E
+E9
+EV
+F3
+EQ
+FA
+63
+83
+AK
+EZ
+FR
+FS
+EY
+EX
+FK
+F9
+FB
+Q4
+UZ
+UY
+VC
+P5
+1I
+FL
+V1
+FO
+FZ
+FT
+85
+
+UN Rec 20
+DC
+DI
+DS
+D67
+D1
+DO
+US
+EG
+DZN
+DPR
+D8
+DRA
+UX
+DR
+DB
+DT
+8D
+DU
+D9
+DX
+EA
+EC
+P8
+A53
+EB
+EP
+EE
+1E
+E9
+EV
+F3
+EQ
+FAH
+63
+FAR
+AK
+EZ
+FR
+FS
+EY
+EX
+FK
+F9
+FB
+Q4
+UZ
+UY
+VC
+P5
+1I
+FL
+V1
+OZA
+OZI
+FOT
+85
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Four-Pack
+Frames
+Fuel Usage (Gallons)
+Gage Systems
+Gallon
+Gallons per Thousand
+Gallons Per Thousand Cubic Feet
+Gallons/Day
+Gauss
+Gauss per Oersteds
+Gigabecquerel
+Gigabyte
+Gigacalories
+Gigajoules
+Gill (Imperial)
+Grain
+Gram
+Grams per 100 Centimeters
+Grams per 100 Grams
+Grams per Cubic Centimeter
+Grams per Kilogram
+Grams per Liter
+Grams per Milliliter
+Grams per Sq. Meter
+Grams per Square Centimeter
+Great Gross (Dozen Gross)
+Gross
+Gross Barrels
+Gross Gallons
+Gross Ton
+Gross Yard
+Half Dozen
+Half Gallon
+Half Hour
+Half Liter
+Half Pages - Electronic
+Half Pint
+Hank
+Hectare
+Hectogram
+Hectoliter
+Hectometer
+Henry
+Hertz
+Horsepower
+Horsepower Days per Air Dry Metric Tons
+Hours
+Hundred
+Hundred Boxes
+Hundred Count
+Hundred Cubic Feet
+Hundred Cubic Meters
+Hundred Feet
+Hundred Feet - Linear
+Hundred Kilograms
+Hundred Sheets
+
+X12
+P4
+1Q
+1G
+GZ
+GA
+5C
+GW
+GB
+76
+GU
+G4
+G9
+G8
+GV
+G5
+GX
+GR
+GF
+GC
+23
+GK
+GL
+GJ
+GM
+25
+GG
+GS
+GD
+GN
+TG
+GY
+HD
+GH
+HT
+H2
+H1
+PV
+HA
+HQ
+HG
+H4
+E1
+81
+HZ
+HJ
+30
+HR
+HU
+HB
+HC
+HH
+FF
+HF
+HL
+HK
+HI
+
+UN Rec 20
+P4
+1Q
+1G
+GZ
+GLL
+5C
+GW
+GB
+76
+GU
+GBQ
+G9
+G8
+GV
+GII
+GRN
+GRM
+GF
+GC
+23
+GK
+GL
+GJ
+GM
+25
+GGR
+GRO
+GD
+GN
+GT
+GY
+HD
+GH
+HT
+H2
+H1
+PV
+HA
+HQ
+HGM
+HLT
+E1
+81
+HTZ
+HJ
+30
+HUR
+CEN
+HBX
+HC
+HH
+FF
+HF
+HL
+HK
+HI
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Hundred Square Feet
+Hundred Troy Ounces
+Hundred Weight (Long)
+Hundred Weight (Short)
+Hundred Yards
+Hundredth of a Carat
+Hydraulic Horse Power
+Imperial Gallons
+Imperial Gallons Per Minute
+Impressions
+Inch
+Inch Pound
+Inches of Water
+Inches per Minute
+Inches Per Second (Linear Speed)
+Inches Per Second Per Second (Acceleration)
+Inches, Decimal--Actual
+Inches, Decimal--Average
+Inches, Decimal-Minimum
+Inches, Decimal--Nominal
+Inches, Fraction--Actual
+Inches, Fraction--Average
+Inches, Fraction--Minimum
+Inches, Fraction-Nominal
+Inhalation
+Insurance Policy
+International Unit
+ISO container
+Jar
+Job
+Joint
+Joule per Gram
+Joule Per Kelvin
+Joule Per Kilogram
+Joules
+Jug
+Jumbo
+Keg
+Kelvin
+Kilo Pounds Per Square Inch (KSI)
+Kilobecquerel
+Kilobyte
+Kilocharacters
+Kilocurie
+Kilogauss
+Kilogram
+Kilogram Per Square Centimeter
+Kilograms Decimal
+Kilograms per Air Dry Metric Tons
+Kilograms per Cubic Meter
+Kilograms Per Kilogram of Product
+Kilograms Per Liter of Product
+Kilograms per Millimeter
+Kilograms per Millimeter Squared (KG/MM2)
+Kilograms Per Piece of Product
+Kilograms per Square Meter
+
+X12
+HS
+HO
+HW
+HV
+HY
+HE
+5J
+GI
+G3
+IM
+IN
+IA
+IF
+IL
+IU
+IV
+E8
+E7
+EM
+ED
+E5
+E3
+E4
+EF
+UT
+IP
+F2
+Z1
+JR
+JA
+JO
+JG
+JE
+J2
+86
+JU
+JB
+KE
+KV
+84
+2Q
+2P
+KB
+2R
+78
+KG
+D5
+KD
+32
+KC
+3H
+3F
+KW
+K9
+3I
+28
+
+UN Rec 20
+HS
+HO
+CWI
+HV
+HY
+HE
+5J
+GLI
+G3
+IM
+INH
+IA
+IF
+IL
+IU
+IV
+E8
+E7
+EM
+ED
+E5
+E3
+E4
+EF
+UT
+IP
+F2
+Z1
+JR
+JA
+JO
+D95
+JE
+J2
+JOU
+JG
+JB
+KG
+KEL
+84
+2Q
+2P
+KB
+2R
+78
+KGM
+D5
+KD
+32
+KMQ
+3H
+B35
+KW
+K9
+3I
+28
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Kilograms per Square Meter, Kilograms, Decimal
+Kilograms/Meter
+Kilograms/Millimeter Width
+Kiloliter
+Kiloliter Per Hour
+Kilometers
+Kilometers Per Hour
+Kilopackets
+Kilopascal
+Kilopascal Square Meters per Gram
+Kilopascals per Millimeter
+Kiloroentgen
+Kilosegments
+Kilovolt Amperes
+Kilovolt Amperes Reactive
+Kilovolt Amperes Reactive Demand
+Kilovolt Amperes Reactive Hour
+Kilowatt
+Kilowatt Demand
+Kilowatt Hour
+Kit
+Knots
+Labor Hours
+Large Spray
+Layer(s)
+Length
+Lifetime
+Linear Centimeter
+Linear Foot
+Linear Inch
+Linear Meter
+Linear Yard
+Linear Yards Per Pound
+Link
+Liquid Pounds
+Lite
+Liter
+Liters Per Day
+Liters Per Minute
+Load
+Locations
+Locomotive Count
+Locomotive Mile
+Long Ton
+Lot
+Lozenge
+Lump Sum
+Machine/Unit
+Magnetic Tapes
+Manmonth
+Mass Pounds
+Mat
+Meal
+Mega Joule per Kilogram
+Mega Pascals
+Megabecquerel
+
+X12
+KM
+KL
+KI
+K6
+4X
+DK
+KP
+KF
+KQ
+33
+34
+KR
+KJ
+K4
+K5
+K2
+K3
+K7
+K1
+KH
+KT
+EH
+LH
+LJ
+LR
+LN
+LL
+LC
+LF
+LI
+LM
+LY
+LX
+LK
+LP
+LE
+LT
+LQ
+L2
+NL
+EJ
+1C
+1K
+LG
+LO
+UU
+LS
+MA
+M0
+3C
+PU
+M3
+Q3
+JK
+M8
+4N
+
+UN Rec 20
+KM
+KL
+KI
+K6
+4X
+KTM
+KMH
+KF
+KPA
+33
+34
+KR
+KJ
+KVA
+K5
+K2
+K3
+KWT
+K1
+KWH
+KT
+EH
+LH
+LJ
+LR
+LN
+LL
+LC
+LF
+LI
+LM
+LY
+LX
+LK
+LP
+LE
+LTR
+LQ
+L2
+NL
+EJ
+1C
+1K
+LTN
+LO
+UU
+LS
+MA
+M0
+3C
+D98
+MT
+Q3
+JK
+MPA
+4N
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Megabyte
+Megagram
+Megagrams Per Hour
+Megahertz
+Megajoule
+Megajoule/Cubic Meter
+Mesh
+Message Hours
+Messages
+Meter
+Meters Per Minute
+Meters Per Second
+Meters Per Second Per Second
+Metric
+Metric Ton
+Metric Ton Kilograms
+Metrick Net Ton
+Mho
+Micro Inch
+Micro Mho
+Microcurie
+Microfarad
+Microfiche Sheet
+Microgram
+Micrograms per Cubic Meter
+Microliter
+Micromolar
+Microns (Micrometers)
+Mil
+Miles
+Miles Per Hour
+Millequivalence Caustic Potash per Gram of Product
+Milli Pascals
+Milliamperes
+Millibar
+Millicurie
+Milliequivalent
+Milligram
+Milligram per Sq. Ft. per Side
+Milligrams per Cubic Meter
+Milligrams per Hour
+Milligrams per Kilogram
+Milligrams per Liter
+Milligrams Per Square Inch
+Milligrams per Square Meter
+Milliliter
+Milliliter per Minute
+Milliliter per Second
+Milliliters per Kilogram
+Milliliters per Square Centimeter Second
+Millimeter
+Millimeter H2O
+Millimeter-Actual
+Millimeter-Average
+Millimeter-minimum
+Millimeter-Nominal
+
+X12
+4L
+2U
+2V
+N6
+3B
+JM
+57
+NH
+NF
+MR
+2X
+4I
+4J
+MI
+MP
+MW
+MN
+NQ
+M7
+NR
+M5
+4O
+G7
+MC
+GQ
+4G
+FH
+MH
+77
+DH
+HM
+KO
+74
+4K
+M6
+MU
+UW
+ME
+MF
+GP
+4M
+NA
+M1
+MK
+GO
+ML
+41
+40
+KX
+35
+MM
+HP
+M2
+MY
+MZ
+MB
+
+UN Rec 20
+4L
+2U
+2V
+MHZ
+3B
+JM
+57
+NH
+NF
+MTR
+2X
+MTS
+MSK
+MI
+TNE
+MW
+NT
+NQ
+M7
+NR
+M5
+4O
+G7
+MC
+GQ
+4G
+FH
+4H
+77
+DH
+HM
+KO
+74
+4K
+MBR
+MCU
+UW
+MGM
+MF
+GP
+4M
+NA
+M1
+MK
+GO
+MLT
+41
+40
+KX
+35
+MMT
+HP
+M2
+MY
+MZ
+MB
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Millimeters of Mercury
+Million British Thermal Units per One Thousand Cubic Feet
+Million BTU's
+Million Cubic Feet
+Million Particles Per Cubic Foot
+Million Units
+Millions of Dollars
+Milliroentgen
+Millivolts
+Minim
+Minutes
+Minutes or Messages
+Mixed
+MMSCF/Day
+MOL
+Monetary Value
+Months
+Nautical Mile
+Net Barrels
+Net Gallons
+Net Imperial Gallons
+Net Kilograms
+Net Liters
+Newton
+Newton-Meter
+Newtons Per Meter
+Nights
+Nine-Pack
+Number of Lines
+Number of Mults
+Number of Screens
+Ocular Insert System
+Oersteds
+Ohm
+Ounce - Av
+Ounce Foot
+Ounce Inch
+Ounces per Square Foot
+Ounces per Square Foot per 0.01 Inch
+Ounces per Square Yard
+Overtime Hours
+Package
+Pad
+Pages - Electronic
+Pages - Fascimile
+Pages - Hardcopy
+Pages per Inch
+Pail
+Pair
+Pair Inches
+Pallet (Lift)
+Pallet/Unit Load
+Panel
+Parts
+Parts Per Billion
+Parts Per Million
+
+X12
+HN
+M9
+BZ
+FM
+FD
+UM
+R6
+2Y
+2Z
+F4
+MJ
+AN
+MX
+5E
+F5
+M4
+MO
+NM
+ND
+NG
+NI
+58
+NE
+NW
+NU
+4P
+NK
+P9
+N2
+MV
+NJ
+AU
+66
+82
+OZ
+4R
+4Q
+37
+38
+ON
+OT
+PK
+PD
+P0
+QA
+QB
+PQ
+PA
+PR
+PB
+PF
+PL
+OA
+N7
+61
+59
+
+UN Rec 20
+HN
+M9
+BZ
+FM
+FD
+UM
+R6
+2Y
+2Z
+F4
+MIN
+AN
+MX
+5E
+F5
+M4
+MON
+NMI
+ND
+NG
+NI
+58
+NE
+NW
+NU
+4P
+NK
+P9
+N2
+MV
+NJ
+AU
+66
+OHM
+OZ
+4R
+4Q
+37
+38
+ON
+OT
+PK
+PD
+P0
+QA
+QB
+PQ
+PL
+PR
+PB
+PF
+D97
+OA
+N7
+61
+59
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Parts per Thousand
+Pascal
+Peaks per Inch (PPI)
+Peck, Dry Imperial
+Peck, Dry U.S.
+Pen Calories
+Pen Grams (Protein)
+Percent
+Percent Per 1000 Hours
+Percent Topical Only
+Percent Volume
+Percent Weight
+Person
+Photographs
+Pica
+Picofarad
+Piece
+Pint
+Pint U.S. Dry
+Pint, Imperial
+Pitch
+Plate
+Poise
+Pouch
+Pound
+Pounds Equivalent
+Pounds Gross
+Pounds Net
+Pounds per 1000 Square Feet
+Pounds Per Air-Dry Metric Ton
+Pounds per Cubic Foot
+Pounds Per Cubic Inch
+Pounds per Foot
+Pounds per Gallon
+Pounds Per Hour
+Pounds per Inch of Length
+Pounds per Inch of Width
+Pounds Per Piece of Product
+Pounds Per Pound of Product
+Pounds per Ream
+Pounds per Sq. Ft.
+Pounds per Sq. Inch
+Pounds per Square Inch Absolute
+Pounds Per Square Inch Gauge
+Pounds per Thousand
+Pounds-Percentage
+Powder-Filled Vials
+Price Per Share
+Print Point
+Program
+Project
+Proof Gallons
+Pump
+Quart
+Quart, Dry U.S.
+Quart, Imperial
+
+X12
+NX
+4S
+IK
+PZ
+PY
+N1
+N4
+P1
+62
+UV
+VP
+60
+IE
+QE
+R1
+4T
+PC
+PT
+Q2
+PX
+PI
+PP
+89
+V2
+LB
+PE
+PG
+PN
+29
+NY
+87
+LA
+P2
+GE
+4U
+PO
+PW
+3G
+3E
+RP
+FP
+PS
+80
+64
+5F
+PM
+AW
+F6
+N3
+8R
+8P
+5D
+5G
+QT
+QS
+QU
+
+UN Rec 20
+NX
+PAL
+IK
+PZ
+PY
+N1
+N4
+P1
+62
+UV
+VP
+60
+IE
+QE
+R1
+4T
+C62
+PT
+PTD
+PTI
+PI
+PG
+89
+V2
+LBR
+PE
+D96
+PN
+29
+NY
+87
+LA
+P2
+GE
+4U
+PO
+PW
+3G
+3E
+RP
+FP
+PS
+80
+64
+5F
+PM
+AW
+F6
+N3
+8R
+8P
+5D
+5G
+QT
+QTD
+QTI
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Quarter (Time)
+Quarter Dozen
+Quarter Hours
+Quarter Kilogram
+Quarter Mile
+Quire
+Rack
+Radian
+Radians Per Second
+Radians Per Second Squared
+Ream
+Ream-Metric Measure
+Reel
+Resets
+Revenue Ton Miles
+Revolutions per Minute
+Ring
+Rod (area) - 16.25 Square Yards
+Rod (length) - 5.5 Yards
+Roentgen
+Roentgen Equivalent in Man (REM)
+Roll
+Roll-Metric Measure
+Round
+Run
+Running or Operating Hours
+Sack
+Sandwich
+Saybold Universal Second
+Season
+Section
+Segment
+Seismic Level
+Seismic Line
+Semester
+Session
+Sessions
+Set
+Seven-Pack
+Shares
+Sheet
+Sheet-Metric Measure
+Shelf Package
+Ship Set
+Shipment
+Short Ton
+Siemens
+Sitas
+Six-Pack
+Sixty-fourths of an Inch
+Sizing Factor
+Skein
+Skid
+Sleeve
+Sleeve
+Slip Sheet
+
+X12
+Q1
+QD
+QH
+QK
+1X
+QR
+RA
+RB
+2A
+2B
+RM
+RN
+RE
+RS
+RT
+R3
+RG
+RC
+RD
+2C
+R8
+RL
+RK
+RO
+RU
+RH
+SJ
+SA
+90
+1O
+SE
+SG
+5P
+5Q
+S1
+8S
+S6
+ST
+P7
+D2
+SH
+SS
+SP
+2D
+SX
+NS
+67
+56
+P6
+S5
+FJ
+SW
+SV
+SK
+SL
+S9
+
+UN Rec 20
+Q1
+QD
+QH
+QK
+1X
+QR
+RA
+RB
+2A
+2B
+RM
+RN
+RL
+RS
+RT
+RPM
+RG
+RC
+RD
+2C
+R8
+RO
+RK
+D65
+RU
+RH
+SA
+D7
+90
+1O
+SE
+SG
+5P
+5Q
+S1
+8S
+S6
+SET
+P7
+D2
+ST
+SS
+SP
+2D
+SX
+STN
+SIE
+56
+P6
+S5
+FJ
+SW
+SV
+D99
+SK
+SL
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Solid Pounds
+Spool
+Square
+Square Centimeter
+Square Decimeter
+Square Feet per Second
+Square Foot
+Square Inch
+Square Kilometer
+Square Meter
+Square Meters per Second
+Square Mile
+Square Millimeter
+Square Rod
+Square Yard
+Stage
+Standard Advertising Units (SAUs)
+Standard Cubic Foot
+Stokes
+Stops
+Storage Units
+Strip
+Super Bulk Bag
+Suppository
+Syringe
+Tablet
+Tank
+Tank Car
+Tank Truck
+Task
+Telecommunications Lines in Service
+Telecommunications Lines in Service - Average
+Telecommunications Ports
+Ten
+Ten Square Feet
+Ten Square Yards
+Ten Thousand Yards
+Ten-pack
+Tenth Cubic Foot
+Tenth Hours
+Tenth Minutes
+Test Specific Scale
+Theoretical Kilograms
+Theoretical Pounds
+Theoretical Tonnes
+Theoretical Tons
+Therms
+Thirty-Six
+Thounsand Linear Yards
+Thounsands of Dollars
+Thousand
+Thousand Bags
+Thousand Casings
+Thousand Cubic Feet
+Thousand Cubic Feet Per Day
+Thousand Cubic Meters
+
+X12
+SD
+SO
+SQ
+SC
+D3
+S3
+SF
+SI
+8U
+SM
+S4
+SB
+MS
+SN
+SY
+5H
+S8
+5I
+91
+IS
+S7
+SR
+43
+AR
+SZ
+U2
+TK
+1P
+19
+KU
+T0
+UB
+UC
+U3
+TR
+TF
+UH
+TP
+TA
+UE
+UD
+69
+53
+24
+54
+27
+TD
+Q6
+TU
+R5
+TH
+T4
+T5
+TZ
+F1
+R9
+
+UN Rec 20
+SD
+SO
+SQ
+CMK
+DMK
+S3
+FTK
+INK
+8U
+MTK
+S4
+MIK
+MMK
+SN
+YDK
+5H
+S8
+5I
+91
+IS
+S7
+SR
+43
+AR
+SZ
+U2
+TK
+1P
+19
+KU
+T0
+UB
+UC
+U3
+TR
+TF
+UH
+TP
+TA
+UE
+UD
+69
+53
+24
+54
+27
+TD
+Q6
+D14
+R5
+MIL
+T4
+T5
+TZ
+F1
+R9
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Description
+Thousand Feet
+Thousand Feet (Board)
+Thousand Feet (Linear)
+Thousand Gallons
+Thousand Impressions
+Thousand Kilograms
+Thousand Kilowatt Hours
+Thousand Linear Inches
+Thousand Linear Meters
+Thousand Pieces
+Thousand pounds gross
+Thousand Sheets
+Thousand Sq. Centimeters
+Thousand Square Feet
+Thousand Square Inches
+Thousandths of an Inch
+Three Pack
+Ton Miles
+Ton Per Hour
+Torr
+Total Car Count
+Total Car Mile
+Tote
+Track Foot
+Train
+Train Mile
+Transactions
+Transdermal Patch
+Tray
+Treatments
+Trimester
+Troche
+Troy Ounce
+Troy Pound
+Truckload
+Tube
+Twenty
+Twenty-Five
+Twenty-Four
+Two Hundred Fifty
+Two Pack
+U.S. Gallons Per Minute
+Unit
+Unitless
+Usage per Telecommunications Line - Average
+Vehicle
+Vial
+Visit
+Volt
+Volt-ampere per Kilogram
+Volt-Ampere Per Pound
+Volt-ampere-reactive
+Volts (Alternating Current)
+Volts (Direct Current)
+Volts Per Meter
+Wafer
+
+X12
+TQ
+TM
+TL
+T6
+T7
+TV
+T9
+T8
+TT
+T3
+T1
+TW
+TJ
+TS
+TI
+T2
+P3
+1J
+4W
+UA
+1L
+1M
+TE
+FE
+NN
+1F
+1R
+FG
+TY
+U1
+S2
+UP
+TO
+TX
+TC
+TB
+AX
+Q5
+Q7
+U5
+OP
+G2
+UN
+UL
+UF
+NV
+VI
+VS
+70
+VA
+71
+VR
+2G
+2H
+2F
+UQ
+
+UN Rec 20
+TQ
+MBF
+TL
+T6
+T7
+TV
+MWH
+T8
+TT
+T3
+T1
+TW
+TJ
+TS
+TI
+T2
+P3
+1J
+4W
+UA
+1L
+1M
+TE
+FE
+NN
+1F
+1R
+FG
+PU
+U1
+S2
+UP
+APZ
+LBT
+TC
+TU
+AX
+Q5
+Q7
+U5
+OP
+G2
+UN
+UL
+UF
+NV
+VI
+VS
+70
+VA
+71
+VR
+2G
+2H
+2F
+UQ
+
+ANSI X12 - UN Recommendation 20
+Unit of Measure Cross Reference
+Watt
+Watts per Kilogram
+Watts Per Pound
+Wet Kilo
+Wet Pound
+Wet Ton
+Work Days
+
+Description
+
+X12
+99
+WA
+72
+W2
+WB
+WE
+WD
+
+In X-12 Only
+Gross Kilogram
+Inches Per Second Per Second (Vibration Acceleration)
+Inches Per Second (Vibration Velocity)
+Inhaler
+Inner Package
+Metric Gross Ton
+Metric Long Ton
+Net Ton (2,000 LB).
+Metric Gross Ton
+Metric Long Ton
+Pack
+Pounds, Decimal - Pounds per Square Foot - Pound Gage
+
+GT
+IW
+IB
+IH
+IG
+MG
+MT
+TN
+MG
+MT
+PH
+PJ
+
+UN Rec 20
+99
+WA
+72
+W2
+WB
+WE
+WD

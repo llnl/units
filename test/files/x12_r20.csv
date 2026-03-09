@@ -1,0 +1,761 @@
+Description,X12,UN Rec 20
+10 Kilogram Drum,97,97
+10000 Gallon Tankcar,96,96
+100 Board Feet,BP,BP
+100 Kilograms,KK,KK
+1000 Cubic Feet,FC,FC
+1000 Meters,MQ,MQ
+100-Pack,4F,CNP
+15 Kilogram Drum,98,98
+20 Foot Container,20,20
+20000 Gallon Tankcar,95,95
+20-Pack,4E,4E
+25 Kilogram Bulk Bag,46,46
+300 Kilogram Bulk Bag,45,45
+40 Foot Container,21,21
+50 Pound Bag,47,47
+500 Kilogram Bulk Bag,44,44
+Access Lines,AL,AL
+Acre,AC,ACR
+Actual Kilograms,50,50
+Actual Tonnes,51,51
+Actual Tons,26,26
+Additional Minutes,AH,AH
+Air Dry Metric Ton,MD,MD
+Aluminum Pounds Only,AP,AP
+Ampere,68,AMP
+Ampere Turn Per Centimeter,73,73
+Amperes per Meter,AE,AE
+Ampere-turn,AO,AO
+Ampoule,AM,AM
+Angstrom,AG,AG
+Anti-hemophilic Factor (AHF) Units,AQ,AQ
+Application,UR,UR
+Assembly,AY,AY
+Assortment,AS,AS
+Atmosphere,AT,ATM
+Average Minutes Per Call,AI,AI
+Bag,BG,BG
+Bale,BA,BL
+Ball,AA,AA
+Band,BJ,D92
+Bar,BI,BR
+Barge,NB,NB
+Barrel,BR,BLL
+Barrel  Imperial,B4,B4
+Barrels per Day,B1,B1
+Barrels per Minute,5A,5A
+Base Box,BB,BB
+Base Weight,BW,BW
+Basis Points,39,39
+Basket,BS,BK
+Batch,5B,5B
+Batt,B9,B9
+Batting Pound,B3,B3
+Beam,BE,D79
+Becquerel,R2,BQL
+Belt,BT,E2
+Billboard,OC,OC
+Billet,B5,B5
+Billions of Dollars,R7,R7
+Bin,2W,2W
+Bit,G6,A99
+Block,BL,D64
+Board Feet,B8,BD
+Board Feet,BF,BFT
+Bobbin,4A,4A
+Bolt,BM,BT
+Book,BK,D63
+Bottle,BO,BO
+Box,BX,BX
+Brake Horse Power,BQ,BHP
+British Thermal Unit (BTU),BY,BTU
+British Thermal Units (BTUs) per Cubic Foot,BO,BO
+British Thermal Units (BTUs) Per Hour,21,21
+British Thermal Units (BTUs) per Pound,AZ,AZ
+Brush,BH,BH
+Bucket,BC,BJ
+Bulk,BN,VQ
+Bulk Car Load,48,48
+Bulk Pack,AB,AB
+Bun,B6,B6
+Bundle,BD,BE
+Bunks,B2,B2
+Bushel,BU,BUA
+Bushel  Dry Imperial,BV,BUI
+Bytes,AD,AD
+Caboose Count,1D,1D
+Caboose Mile,1H,1H
+Cake,KA,KA
+Calendar Days,DW,DW
+Calls,C0,C0
+Calorie,R4,R4
+Calories per Cubic Centimeter,92,92
+Calories per Gram,93,93
+Can,CN,CA
+Cap,4B,4B
+Capsule,AV,AV
+Car,NC,NC
+Car Count,1B,1B
+Car Mile,1A,1A
+Carat,CD,CD
+Carboy,CB,CO
+Card,CG,CG
+Carload,C4,C4
+Carset,C2,C2
+Carton,CT,CT
+Cartridge,CQ,CQ
+Cartridge Needle,N9,N9
+Case,CA,CS
+Cassette,CS,D66
+Catchweight,31,31
+Cell,C6,C6
+Centigrade,CE,CEL
+Centigram,AF,CGM
+Centiliter,C3,CLT
+Centimeter,CM,CMT
+Centimeters Per Second,2M,2M
+Centipoise (CPS),C7,C7
+Centistokes,4C,4C
+Channel,QC,QC
+Coil,CX,CL
+Coil Group,C9,C9
+Column Inches,,11
+Combo,CZ,CZ
+Composite Product Pounds (Total Weight),C1,C1
+Cone,CJ,CJ
+Connector,CK,CK
+Container,CH,CH
+Cop,AJ,AJ
+Cord,8C,M68
+Cost,C5,C5
+Coulomb,65,COU
+Count,1N,1N
+Count per Minute,5K,5K
+Counts per Centimeter,IT,IT
+Counts per Inch,IC,IC
+Crate,CP,CR
+Credits,52,52
+Cubic Centimeter,CC,CMQ
+Cubic Centimeters Per Second,2J,2J
+Cubic Decimeter,C8,DMQ
+Cubic Feet,CF,FTQ
+Cubic Feet Per Hour,2K,2K
+Cubic Feet Per Minute,2L,2L
+Cubic Feet per Minute per Square Foot,36,36
+Cubic Inches,CI,INQ
+Cubic Meter,CR,MTQ
+Cubic Meter Per Hour,4V,MQH
+Cubic Meters (Net),CO,D90
+Cubic Yard,CY,YDQ
+Cup,CU,CU
+Cup,CV,CV
+hundred Pounds,CW,CWA
+Curie,4D,CUR
+Curl Units,94,94
+Cycles,B7,B7
+Cylinder,CL,CY
+Data Records,DQ,DQ
+Days,DA,DAY
+Deal,DE,DE
+Decagram,DJ,DJ
+Deci Newton-Meter,DN,DN
+Decibels,2N,2N
+Decigram,DG,DG
+Deciliter,DL,DLT
+Deciliter per Gram,22,22
+Decimeter,DM,DMT
+Degree,DD,DD
+Directory Books,DY,DY
+Disk (Disc),DC,DC
+Dispense,DI,DI
+Display,DS,DS
+Dollars per Hours,A8,D67
+Dollars  Canadian,D1,D1
+Dollars  U.S.,DO,DO
+Dosage Form,US,US
+Double-time Hours,EG,EG
+Dozen,DZ,DZN
+Dozen Pair,DP,DPR
+Draize Score,D8,D8
+Dram,DF,DRA
+Dram (Minim),UX,UX
+Drum,DR,DR
+Dry Pounds,DB,DB
+Dry Ton,DT,DT
+Duty,8D,8D
+Dyne,DU,DU
+Dyne per Square Centimeter,D9,D9
+Dynes per Centimeter,DX,DX
+Each,EA,EA
+Each per Month,EC,EC
+Eight-Pack,P8,P8
+Electron Volt,79,A53
+Electronic Mail Boxes,EB,EB
+Eleven pack,EP,EP
+Employees,EE,EE
+Empty Car,1E,1E
+"English  (Feet, Inches)",E9,E9
+Envelope,EV,EV
+Equivalent,F3,F3
+Equivalent Gallons,EQ,EQ
+Fahrenheit,FA,FAH
+Failure Rate In Time,63,63
+Farad,83,FAR
+Fathom,AK,AK
+Feet and Decimal,EZ,EZ
+Feet Per Minute,FR,FR
+Feet Per Second,FS,FS
+Feet  Inches and Decimal,EY,EY
+Feet  Inches and Fraction,EX,EX
+Fibers,FK,FK
+Fibers per Cubic Centimeter of Air,F9,F9
+Fields,FB,FB
+Fifty,Q4,Q4
+Fifty Count,UZ,UZ
+Fifty Square Feet,UY,UY
+Five Hundred,VC,VC
+Five-Pack,P5,P5
+Fixed Rate,11,11
+Flake Ton,FL,FL
+Flat,V1,V1
+Fluid Ounce,FO,OZA
+Fluid Ounce (Imperial),FZ,OZI
+Foot,FT,FOT
+Foot Pounds,85,85
+Four-Pack,P4,P4
+Frames,1Q,1Q
+Fuel Usage (Gallons),1G,1G
+Gage Systems,GZ,GZ
+Gallon,GA,GLL
+Gallons per Thousand,5C,5C
+Gallons Per Thousand Cubic Feet,GW,GW
+Gallons/Day,GB,GB
+Gauss,76,76
+Gauss per Oersteds,GU,GU
+Gigabecquerel,G4,GBQ
+Gigabyte,G9,G9
+Gigacalories,G8,G8
+Gigajoules,GV,GV
+Gill (Imperial),G5,GII
+Grain,GX,GRN
+Gram,GR,GRM
+Grams per 100 Centimeters,GF,GF
+Grams per 100 Grams,GC,GC
+Grams per Cubic Centimeter,23,23
+Grams per Kilogram,GK,GK
+Grams per Liter,GL,GL
+Grams per Milliliter,GJ,GJ
+Grams per Sq. Meter,GM,GM
+Grams per Square Centimeter,25,25
+Great Gross (Dozen Gross),GG,GGR
+Gross,GS,GRO
+Gross Barrels,GD,GD
+Gross Gallons,GN,GN
+Gross Ton,TG,GT
+Gross Yard,GY,GY
+Half Dozen,HD,HD
+Half Gallon,GH,GH
+Half Hour,HT,HT
+Half Liter,H2,H2
+Half Pages - Electronic,H1,H1
+Half Pint,PV,PV
+Hank,HA,HA
+Hectare,HQ,HAR
+Hectogram,HG,HGM
+Hectoliter,H4,HLT
+Hectometer,E1,HMT
+Henry,81,81
+Hertz,HZ,HTZ
+Horsepower,HJ,HJ
+Horsepower Days per Air Dry Metric Tons,30,30
+Hours,HR,HUR
+Hundred,HU,CEN
+Hundred Boxes,HB,HBX
+Hundred Count,HC,HC
+Hundred Cubic Feet,HH,HH
+Hundred Cubic Meters,FF,FF
+Hundred Feet,HF,HF
+Hundred Feet - Linear,HL,HL
+Hundred Kilograms,HK,HK
+Hundred Sheets,HI,HI
+Hundred Square Feet,HS,HS
+Hundred Troy Ounces,HO,HO
+Hundred Weight (Long),HW,CWI
+Hundred Weight (Short),HV,HV
+Hundred Yards,HY,HY
+Hundredth of a Carat,HE,HE
+Hydraulic Horse Power,5J,5J
+Imperial Gallons,GI,GLI
+Imperial Gallons Per Minute,G3,G3
+Impressions,IM,IM
+Inch,IN,INH
+Inch Pound,IA,IA
+Inches of Water,IF,IF
+Inches per Minute,IL,IL
+Inches Per Second (Linear Speed),IU,IU
+Inches Per Second Per Second (Acceleration),IV,IV
+Inches  Decimal--Actual,E8,E8
+Inches  Decimal--Average,E7,E7
+Inches  Decimal-Minimum,EM,EM
+Inches  Decimal--Nominal,ED,ED
+Inches  Fraction--Actual,E5,E5
+Inches  Fraction--Average,E3,E3
+Inches  Fraction--Minimum,E4,E4
+Inches  Fraction-Nominal,EF,EF
+Inhalation,UT,UT
+Insurance Policy,IP,IP
+International Unit,F2,NIU
+ISO container,Z1,Z1
+Jar,JR,JR
+Job,JA,E51
+Joint,JO,JO
+Joule per Gram,JG,D95
+Joule Per Kelvin,JE,JE
+Joule Per Kilogram,J2,J2
+Joules,86,JOU
+Jug,JU,JG
+Jumbo,JB,JB
+Keg,KE,KG
+Kelvin,KV,KEL
+Kilo Pounds Per Square Inch (KSI),84,84
+Kilobecquerel,2Q,2Q
+Kilobyte,2P,2P
+Kilocharacters,KB,KB
+Kilocurie,2R,2R
+Kilogauss,78,78
+Kilogram,KG,KGM
+Kilogram Per Square Centimeter,D5,D5
+Kilograms Decimal,KD,KD
+Kilograms per Air Dry Metric Tons,32,32
+Kilograms per Cubic Meter,KC,KMQ
+Kilograms Per Kilogram of Product,3H,3H
+Kilograms Per Liter of Product,3F,B35
+Kilograms per Millimeter,KW,KW
+Kilograms per Millimeter Squared (KG/MM2),K9,K9
+Kilograms Per Piece of Product,31,31
+Kilograms per Square Meter,28,28
+Kilograms per Square Meter,KM,KM
+Kilograms/Meter,KL,KL
+Kilograms/Millimeter Width,KI,KI
+Kiloliter,K6,K6
+Kiloliter Per Hour,4X,4X
+Kilometers,DK,KTM
+Kilometers Per Hour,KP,KMH
+Kilopackets,KF,KF
+Kilopascal,KQ,KPA
+Kilopascal Square Meters per Gram,33,33
+Kilopascals per Millimeter,34,34
+Kiloroentgen,KR,KR
+Kilosegments,KJ,KJ
+Kilovolt Amperes,K4,KVA
+Kilovolt Amperes Reactive,K5,K5
+Kilovolt Amperes Reactive Demand,K2,K2
+Kilovolt Amperes Reactive Hour,K3,K3
+Kilowatt,K7,KWT
+Kilowatt Demand,K1,K1
+Kilowatt Hour,KH,KWH
+Kit,KT,KT
+Knots,EH,KNT
+Labor Hours,LH,LH
+Large Spray,LJ,LJ
+Layer(s),LR,LR
+Length,LN,LN
+Lifetime,LL,LL
+Linear Centimeter,LC,LC
+Linear Foot,LF,LF
+Linear Inch,LI,LI
+Linear Meter,LM,LM
+Linear Yard,LY,LY
+Linear Yards Per Pound,LX,LX
+Link,LK,LK
+Liquid Pounds,LP,LP
+Lite,LE,LE
+Liter,LT,LTR
+Liters Per Day,LQ,LQ
+Liters Per Minute,L2,L2
+Load,NL,NL
+Locations,EJ,EJ
+Locomotive Count,1C,1C
+Locomotive Mile,1K,1K
+Long Ton,LG,LTN
+Lot,LO,LO
+Lozenge,UU,UU
+Lump Sum,LS,LS
+Machine/Unit,MA,MA
+Magnetic Tapes,M0,M0
+Manmonth,3C,3C
+Mass Pounds,PU,D98
+Mat,M3,MT
+Meal,Q3,Q3
+Mega Joule per Kilogram,JK,JK
+Mega Pascals,M8,MPA
+Megabecquerel,4N,4N
+Megabyte,4L,4L
+Megagram,2U,2U
+Megagrams Per Hour,2V,2V
+Megahertz,N6,MHZ
+Megajoule,3B,3B
+Megajoule/Cubic Meter,JM,JM
+Mesh,57,57
+Message Hours,NH,NH
+Messages,NF,NF
+Meter,MR,MTR
+Meters Per Minute,2X,2X
+Meters Per Second,4I,MTS
+Meters Per Second Per Second,4J,MSK
+Metric,MI,MI
+Metric Ton,MP,TNE
+Metric Ton Kilograms,MW,MW
+Metrick Net Ton,MN,NT
+Mho,NQ,NQ
+Micro Inch,M7,M7
+Micro Mho,NR,NR
+Microcurie,M5,M5
+Microfarad,4O,4O
+Microfiche Sheet,G7,G7
+Microgram,MC,MC
+Micrograms per Cubic Meter,GQ,GQ
+Microliter,4G,4G
+Micromolar,FH,FH
+Microns (Micrometers),MH,4H
+Mil,77,77
+Miles,DH,SMI
+Miles Per Hour,HM,HM
+Millequivalence Caustic Potash per Gram of Product,KO,KO
+Milli Pascals,74,74
+Milliamperes,4K,4K
+Millibar,M6,MBR
+Millicurie,MU,MCU
+Milliequivalent,UW,UW
+Milligram,ME,MGM
+Milligram per Sq. Ft. per Side,MF,MF
+Milligrams per Cubic Meter,GP,GP
+Milligrams per Hour,4M,4M
+Milligrams per Kilogram,NA,NA
+Milligrams per Liter,M1,M1
+Milligrams Per Square Inch,MK,MK
+Milligrams per Square Meter,GO,GO
+Milliliter,ML,MLT
+Milliliter per Minute,41,41
+Milliliter per Second,40,40
+Milliliters per Kilogram,KX,KX
+Milliliters per Square Centimeter Second,35,35
+Millimeter,MM,MMT
+Millimeter H2O,HP,HP
+Millimeter-Actual,M2,M2
+Millimeter-Average,MY,MY
+Millimeter-minimum,MZ,MZ
+Millimeter-Nominal,MB,MB
+Millimeters of Mercury,HN,HN
+Million British Thermal Units per One Thousand Cubic Feet,M9,M9
+Million BTU's,BZ,BZ
+Million Cubic Feet,FM,FM
+Million Particles Per Cubic Foot,FD,FD
+Million Units,UM,UM
+Millions of Dollars,R6,R6
+Milliroentgen,2Y,2Y
+Millivolts,2Z,2Z
+Minim,F4,F4
+Minutes,MJ,MIN
+Minutes or Messages,AN,AN
+Mixed,MX,MX
+MMSCF/Day,5E,5E
+MOL,F5,F5
+Monetary Value,M4,M4
+Months,MO,MON
+Nautical Mile,NM,NMI
+Net Barrels,ND,ND
+Net Gallons,NG,NG
+Net Imperial Gallons,NI,NI
+Net Kilograms,58,58
+Net Liters,NE,NE
+Newton,NW,NEW
+Newton-Meter,NU,NU
+Newtons Per Meter,4P,4P
+Nights,NK,NK
+Nine-Pack,P9,P9
+Number of Lines,N2,N2
+Number of Mults,MV,MV
+Number of Screens,NJ,NJ
+Ocular Insert System,AU,AU
+Oersteds,66,66
+Ohm,82,OHM
+Ounce - Av,OZ,OZ
+Ounce Foot,4R,4R
+Ounce Inch,4Q,4Q
+Ounces per Square Foot,37,37
+Ounces per Square Foot per 0.01 Inch,38,38
+Ounces per Square Yard,ON,ON
+Overtime Hours,OT,OT
+Package,PK,PK
+Pad,PD,PD
+Pages - Electronic,P0,P0
+Pages - Fascimile,QA,QA
+Pages Hardcopy,QB,QB
+Pages per Inch,PQ,PQ
+Pail,PA,PL
+Pair,PR,PR
+Pair Inches,PB,PB
+Pallet (Lift),PF,PF
+Pallet/Unit Load,PL,D97
+Panel,OA,OA
+Parts,N7,N7
+Parts Per Billion,61,61
+Parts Per Million,59,59
+Parts per Thousand,NX,NX
+Pascal,4S,PAL
+Peaks per Inch (PPI),IK,IK
+Peck Dry Imperial,PZ,PZ
+Peck Dry US,PY,PY
+Pen Calories,N1,N1
+Pen Grams (Protein),N4,N4
+Percent,P1,P1
+Percent Per 1000 Hours,62,62
+Percent Topical Only,UV,UV
+Percent Volume,VP,VP
+Percent Weight,60,60
+Person,IE,IE
+Photographs,QE,QE
+Pica,R1,R1
+Picofarad,4T,4T
+Piece,PC,C62
+Pint,PT,PT
+Pint U.S. Dry,Q2,PTD
+Pint Imperial,PX,PTI
+Pitch,PI,PI
+Plate,PP,PG
+Poise,89,89
+Pouch,V2,V2
+Pound,LB,LBR
+Pounds Equivalent,PE,PE
+Pounds Gross,PG,D96
+Pounds Net,PN,PN
+Pounds per 1000 Square Feet,29,29
+Pounds Per Air-Dry Metric Ton,NY,NY
+Pounds per Cubic Foot,87,87
+Pounds Per Cubic Inch,LA,LA
+Pounds per Foot,P2,P2
+Pounds per Gallon,GE,GE
+Pounds Per Hour,4U,4U
+Pounds per Inch of Length,PO,PO
+Pounds per Inch of Width,PW,PW
+Pounds Per Piece of Product,3G,3G
+Pounds Per Pound of Product,3E,3E
+Pounds per Ream,RP,RP
+Pounds per Sq. Ft.,FP,FP
+Pounds per Sq. Inch,PS,PS
+Pounds per Square Inch Absolute,80,80
+Pounds Per Square Inch Gauge,64,64
+Pounds per Thousand,5F,5F
+Pounds-Percentage,PM,PM
+Powder-Filled Vials,AW,AW
+Price Per Share,F6,F6
+Print Point,N3,N3
+Program,8R,8R
+Project,8P,8P
+Proof Gallons,5D,PGL
+Pump,5G,5G
+Quart,QT,QT
+Quart Dry US,QS,QTD
+Quart Imperial,QU,QTI
+Quarter (Time),Q1,Q1
+Quarter Dozen,QD,QD
+Quarter Hours,QH,QH
+Quarter Kilogram,QK,QK
+Quarter Mile,1X,1X
+Quire,QR,QR
+Rack,RA,RA
+Radian,RB,C81
+Radians Per Second,2A,2A
+Radians Per Second Squared,2B,2B
+Ream,RM,RM
+Ream-Metric Measure,RN,RN
+Reel,RE,RL
+Resets,RS,RS
+Revenue Ton Miles,RT,RT
+Revolutions per Minute,R3,RPM
+Ring,RG,RG
+Rod (area) 16.25 Square Yards,RC,RC
+Rod (length) -5.5 Yards,RD,RD
+Roentgen,2C,2C
+Roentgen Equivalent in Man (REM),R8,R8
+Roll,RL,RO
+Roll-Metric Measure,RK,RK
+Round,RO,D65
+Run,RU,RU
+Running or Operating Hours,RH,RH
+Sack,SJ,SA
+Sandwich,SA,D7
+Saybold Universal Second,90,90
+Season,10,10
+Section,SE,SE
+Segment,SG,SG
+Seismic Level,5P,5P
+Seismic Line,5Q,5Q
+Semester,S1,S1
+Session,8S,8S
+Sessions,S6,S6
+Set,ST,SET
+Seven-Pack,P7,P7
+Shares,D2,D2
+Sheet,SH,ST
+Sheet-Metric Measure,SS,SS
+Shelf Package,SP,SP
+Ship Set,2D,2D
+Shipment,SX,SX
+Short Ton,NS,STN
+Siemens,67,SIE
+Sitas,56,56
+Six-Pack,P6,P6
+Sixty-fourths of an Inch,S5,S5
+Sizing Factor,FJ,FJ
+Skein,SW,SW
+Skid,SV,SV
+Sleeve,SL,D99
+Split tank Truck,SK,SK
+Slip Sheet,S9,SL
+Solid Pounds,SD,SD
+Spool,SO,SO
+Square,SQ,SQ
+Square Centimeter,SC,CMK
+Square Decimeter,D3,DMK
+Square Feet per Second,S3,S3
+Square Foot,SF,FTK
+Square Inch,SI,INK
+Square Kilometer,8U,KMK
+Square Meter,SM,MTK
+Square Meters per Second,S4,S4
+Square Mile,SB,MIK
+Square Millimeter,MS,MMK
+Square Rod,SN,SN
+Square Yard,SY,YDK
+Stage,5H,5H
+Standard Advertising Units (SAUS),S8,S8
+Standard Cubic Foot,51,51
+Stokes,91,91
+Stops,IS,IS
+Storage Units,S7,S7
+Strip,SR,SR
+Super Bulk Bag,43,43
+Suppository,AR,AR
+Syringe,SZ,SYR
+Tablet,U2,U2
+Tank,TK,TK
+Tank Car,1P,1P
+Tank Truck,19,19
+Task,KU,KU
+Telecommunications Lines in Service,T0,T0
+Telecommunications Lines in Service - Average,UB,UB
+Telecommunications Ports,UC,UC
+Ten,U3,U3
+Ten Square Feet,TR,TR
+Ten Square Yards,TF,TF
+Ten Thousand Yards,UH,UH
+Ten-pack,TP,TP
+Tenth Cubic Foot,TA,TA
+Tenth Hours,UE,UE
+Tenth Minutes,UD,UD
+Test Specific Scale,69,69
+Theoretical Kilograms,53,53
+Theoretical Pounds,24,24
+Theoretical Tonnes,54,54
+Theoretical Tons,27,27
+Therms,TD,TD
+Thirty-Six,Q6,Q6
+Thousand Linear Yards,TU,D14
+Thousands of Dollars,R5,R5
+Thousand,TH,MIL
+Thousand Bags,T4,T4
+Thousand Casings,T5,T5
+Thousand Cubic Feet,TZ,TZ
+Thousand Cubic Feet Per Day,F1,F1
+Thousand Cubic Meters,R9,R9
+Thousand Feet,TQ,TQ
+Thousand Feet (Board),TM,MBF
+Thousand Feet (Linear),TL,TL
+Thousand Gallons,T6,T6
+Thousand Impressions,T7,T7
+Thousand Kilograms,TV,TV
+Thousand Kilowatt Hours,T9,MWH
+Thousand Linear Inches,T8,T8
+Thousand Linear Meters,TT,TT
+Thousand Pieces,T3,T3
+Thousand pounds gross,T1,T1
+Thousand Sheets,TW,TW
+Thousand Sq. Centimeters,TJ,TJ
+Thousand Square Feet,TS,TS
+Thousand Square Inches,TI,TI
+Thousandths of an Inch,T2,T2
+Three Pack,P3,P3
+Ton Miles,1J,1J
+Ton Per Hour,4W,4W
+Torr,UA,UA
+Total Car Count,1L,1L
+Total Car Mile,1M,1M
+Tote,TE,TE
+Track Foot,FE,FE
+Train,NN,NN
+Train Mile,1F,1F
+Transactions,1R,1R
+Transdermal Patch,FG,FG
+Tray,TY,PU
+Treatments,U1,U1
+Trimester,S2,S2
+Troche,UP,UP
+Troy Ounce,TO,APZ
+Troy Pound,TX,LBT
+Truckload,TC,TC
+Tube,TB,TU
+Twenty,AX,AX
+Twenty-Five,Q5,Q5
+Twenty-Four,Q7,Q7
+Two Hundred Fifty,U5,U5
+Two Pack,OP,OP
+U.S. Gallons Per Minute,G2,G2
+Unit,UN,UN
+Unitless,UL,UL
+Usage per Telecommunications Line - Average,UF,UF
+Vehicle,NV,NV
+Vial,VI,VI
+Visit,VS,VS
+Volt,70,70
+Volt-ampere per Kilogram,VA,VA
+Volt-Ampere Per Pound,71,71
+Volt-ampere-reactive,VR,VR
+Volts (Alternating Current),2G,2G
+Volts (Direct Current),2H,2H
+Volts Per Meter,2F,D50
+Wafer,UQ,UQ
+Watt,99,99
+Watts per Kilogram,WA,WA
+Watts Per Pound,72,72
+Wet Kilo,W2,W2
+Wet Pound,WB,WB
+Wet Ton,WE,WE
+Work Days,WD,E49
+Gross Kilogram GT,GT,XXXX
+Inches Per Second Per Second (Vibration Acceleration),IW,XXXX
+Inches Per Second (Vibration Velocity),IB,XXXX
+Inhaler,IH,XXXX
+Inner Package,IG,XXXX
+Metric Gross Ton,MG,XXXX
+Metric Long Ton ,MT,XXXX
+"Net Ton (2,000 LB).",TN,XXXX
+Pack ,PH,XXXX
+"Pounds, Decimal - Pounds per Square Foot - Pound Gage",PJ,XXXX
+strand,7,
+pennyweight,WP,DWT
+chain,X1,X1
+head,X5,HEA
+leaf,X7,LEF
+100 linear yards,YL,YL
+year,YR,ANN
+chest,Z2,Z2
+cask,Z3,Z3
+hogshead,Z4,Z4
+lug,Z5,Z5
+page,ZP,ZP
+scruple,ZY,SCR
+"Barrel, Dry",ZW,BLD
+"Barrel, Liquid",ZX,BLL

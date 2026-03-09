@@ -169,6 +169,7 @@ namespace commodities {
         // other common unit blocks
         {people, "people"},
         {vehicle, "vehicle"},
+        {billboard, "billboard"},
 
         // clinical
         {tissue, "tissue"},

@@ -204,7 +204,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<std::pair<unit, const char*>, 55>
 /// definitions for the default units for specific types of measurmeents
 UNITS_CPP14_CONSTEXPR_OBJECT std::array<
     std::pair<const char*, precise_unit>,
-    1213>
+    1216>
     defined_unit_strings_si{
         {{"", precise::defunit},
          {"[]", precise::defunit},
@@ -384,6 +384,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"mole", precise::mol},
          {"M", precise::laboratory::molarity},
          {"molar", precise::laboratory::molarity},
+         {"molarmass", precise::g / precise::mol},
          {"Molar", precise::laboratory::molarity},
          {"eq", precise::mol},
          {"Eq", precise::mol},
@@ -934,6 +935,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
                                                                      // ascii
          {"count", precise::count},
          {"unit", precise::count},
+         {"each", precise::count},
+         {"pack", precise::count},
          {"pair", precise_unit(2.0, precise::count)},
          {"dozen", precise_unit(12.0, precise::count)},
          {"bakersdozen", precise_unit(13.0, precise::count)},
@@ -1558,7 +1561,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
 
 UNITS_CPP14_CONSTEXPR_OBJECT std::array<
     std::pair<const char*, precise_unit>,
-    1181>
+    1183>
     defined_unit_strings_customary{
         {{"candle", precise::other::candle},
          {"candle_it", precise::lm / precise::sr},
@@ -2410,6 +2413,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"gr", precise::i::grain},
          {"[GR]", precise::i::grain},
          {"grain", precise::i::grain},
+         {"grain_ap", precise_unit(1.0 / 5760.0, precise::apothecaries::pound)},
+         {"grain_tr", precise_unit(1.0 / 5760.0, precise::troy::pound)},
          {"oz_av", precise::av::ounce},
          {"oz_i", precise::av::ounce},
          {"OZ_AV", precise::av::ounce},
