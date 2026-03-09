@@ -20,8 +20,8 @@ SPDX-License-Identifier: BSD-3-Clause
 #include <cstdlib>
 #include <cstring>
 #include <exception>
-#include <functional>
 #include <fstream>
+#include <functional>
 #include <iomanip>
 #include <iostream>
 #include <limits>
@@ -475,7 +475,8 @@ static std::string generateUnitSequence(double mux, std::string seq)
         return getMultiplierString(mux, noPrefix) + seq;
     }
     const int offset = (seq[pwerloc + 1] != '(') ? 1 : 2;
-    const int pw = stoi(seq.substr(pwerloc + offset, mloc - pwerloc - offset + 1));
+    const int pw =
+        stoi(seq.substr(pwerloc + offset, mloc - pwerloc - offset + 1));
     std::string muxstr;
     switch (pw) {
         case -1:
@@ -2081,7 +2082,8 @@ static double getNumberBlock(const std::string& ustring, size_t& index) noexcept
     if (!std::isnan(val) && index < ustring.size()) {
         if (ustring[index] == '^') {
             size_t nindex{0};
-            const double pval = getNumberBlock(ustring.substr(index + 1), nindex);
+            const double pval =
+                getNumberBlock(ustring.substr(index + 1), nindex);
             if (!std::isnan(pval)) {
                 index += nindex + 1;
                 return std::pow(val, pval);
@@ -2136,7 +2138,8 @@ double generateLeadingNumber(const std::string& ustring, size_t& index) noexcept
                 break;
             case '(': {
                 size_t oindex{0};
-                const double res = getNumberBlock(ustring.substr(index), oindex);
+                const double res =
+                    getNumberBlock(ustring.substr(index), oindex);
                 if (!std::isnan(res)) {
                     val *= res;
                     index = oindex + index + 1;
@@ -4037,7 +4040,8 @@ static bool checkValidUnitString(
         }
         cx = cx2;
     }
-    const bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
+    const bool skipcodereplacement =
+        ((match_flags & skip_code_replacements) != 0);
     if (!skipcodereplacement) {
         for (const auto& seq : invalidSequences) {
             if (unit_string.find(seq) != std::string::npos) {
@@ -4308,7 +4312,8 @@ static void checkPowerOf10(std::string& unit_string)
                         }
                     }
                     catch (const std::out_of_range&) {
-                        // If it overflows int, keep the original string unchanged.
+                        // If it overflows int, keep the original string
+                        // unchanged.
                         static_cast<void>(powerstr);
                     }
                 }
@@ -4417,7 +4422,8 @@ static bool checkShortUnits(std::string& unit_string, std::uint64_t match_flags)
 static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
 {
     auto slen = unit_string.size();
-    const bool skipcodereplacement = ((match_flags & skip_code_replacements) != 0);
+    const bool skipcodereplacement =
+        ((match_flags & skip_code_replacements) != 0);
     static UNITS_CPP14_CONSTEXPR_OBJECT std::array<ckpair, 4>
         earlyCodeReplacements{{
             ckpair{"degree", "deg"},
