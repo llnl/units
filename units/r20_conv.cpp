@@ -3353,7 +3353,7 @@ std::string r20_unit_string(const precise_unit& unit)
             });
     }
     return (ind == precise::r20_units.end()) ? std::string(invalid_unit_code) :
-                                                std::string(std::get<0>(*ind));
+                                               std::string(std::get<0>(*ind));
 }
 
 #ifdef ENABLE_UNIT_MAP_ACCESS

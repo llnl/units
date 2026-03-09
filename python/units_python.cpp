@@ -735,8 +735,7 @@ NB_MODULE(units_llnl_ext, mod)
                         const auto base_unit = units::default_unit(key);
                         if (!units::is_valid(base_unit)) {
                             throw std::invalid_argument(
-                                "Invalid dimension key in composition: " +
-                                key);
+                                "Invalid dimension key in composition: " + key);
                         }
                         def = def * (base_unit.pow(value));
                     }

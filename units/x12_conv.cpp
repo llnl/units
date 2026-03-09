@@ -14,7 +14,6 @@ SPDX-License-Identifier: BSD-3-Clause
 
 namespace UNITS_NAMESPACE {
 
-
 namespace precise {
     using unitD = std::tuple<const char*, const char*, precise_unit>;
     static UNITS_CPP14_CONSTEXPR_OBJECT std::array<unitD, 812> x12_units{{
@@ -1892,7 +1891,7 @@ std::string x12_unit_string(const precise_unit& unit)
             });
     }
     return (ind == precise::x12_units.end()) ? std::string(invalid_unit_code) :
-                                                std::string(std::get<0>(*ind));
+                                               std::string(std::get<0>(*ind));
 }
 
 precise_unit dod_unit(const std::string& dod_string)
