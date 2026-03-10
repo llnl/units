@@ -13,7 +13,6 @@ SPDX-License-Identifier: BSD-3-Clause
 #include <cstring>
 #include <string>
 #include <tuple>
-#include <unordered_map>
 
 namespace UNITS_NAMESPACE {
 
