@@ -6,8 +6,8 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 #include "commodity_conversion_maps.hpp"
 #include "commodity_definitions.hpp"
-#include "units_decl.hpp"
 #include "units.hpp"
+#include "units_decl.hpp"
 #include <algorithm>
 #include <atomic>
 #include <cctype>
