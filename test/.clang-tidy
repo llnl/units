@@ -53,7 +53,7 @@ WarningsAsErrors: "
   -misc-include_cleaner,
   "
 
-HeaderFilterRegex: "*test.*cpp"
+HeaderFilterRegex: "test.*hpp"
 
 AnalyzeTemporaryDtors: false
 CheckOptions:
