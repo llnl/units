@@ -6,10 +6,13 @@ SPDX-License-Identifier: BSD-3-Clause
 */
 #include "commodity_conversion_maps.hpp"
 #include "commodity_definitions.hpp"
+#include "units_decl.hpp"
 #include "units.hpp"
+#include <algorithm>
 #include <atomic>
 #include <cctype>
 #include <cstdint>
+#include <cstdlib>
 #include <string>
 #include <unordered_map>
 
@@ -191,7 +194,7 @@ namespace hashcodes {
     static constexpr std::uint32_t firstH{37}; /* also prime */
 }  // namespace hashcodes
 
-uint32_t stringHash(const std::string& str)
+static uint32_t stringHash(const std::string& str)
 {
     std::uint32_t hash{hashcodes::firstH};
     for (auto c : str) {
