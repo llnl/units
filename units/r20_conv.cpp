@@ -5,7 +5,9 @@ See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
 #include "units.hpp"
-
+#include "units/commodity_definitions.hpp"
+#include "units/unit_definitions.hpp"
+#include "units/units_decl.hpp"
 #include <algorithm>
 #include <array>
 #include <cstring>
@@ -3338,6 +3340,7 @@ constexpr const char* invalid_unit_code = "";
 std::string r20_unit_string(const precise_unit& unit)
 {
     // Prefer exact identity; fall back to rounded equality for parsed values.
+    // NOLINTNEXTLINE (readability-qualified-auto)
     auto ind = std::find_if(
         precise::r20_units.begin(),
         precise::r20_units.end(),
