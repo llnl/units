@@ -5,7 +5,9 @@ See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
 #include "units.hpp"
-
+#include "units/commodity_definitions.hpp"
+#include "units/unit_definitions.hpp"
+#include "units/units_decl.hpp"
 #include <algorithm>
 #include <array>
 #include <cstring>
