@@ -1878,6 +1878,7 @@ constexpr const char* invalid_unit_code = "";
 std::string x12_unit_string(const precise_unit& unit)
 {
     // Prefer exact identity; fall back to rounded equality for parsed values.
+    // NOLINTNEXTLINE (readability-qualified-auto)
     auto ind = std::find_if(
         precise::x12_units.begin(),
         precise::x12_units.end(),
