@@ -482,7 +482,9 @@ class fixed_measurement {
     /// assignment operator treat it the same as a measurement
     fixed_measurement& operator=(const fixed_measurement& val) noexcept
     {
-        value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        if (this != &val) {
+            value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        }
         return *this;
     }
 
@@ -1462,7 +1464,9 @@ class fixed_precise_measurement {
     fixed_precise_measurement&
         operator=(const fixed_precise_measurement& val) noexcept
     {
-        value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        if (this != &val) {
+            value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        }
         return *this;
     }
 
@@ -1888,7 +1892,8 @@ UNITS_EXPORT std::uint64_t setDefaultFlags(std::uint64_t defaultFlags);
 UNITS_EXPORT std::uint64_t getDefaultFlags();
 namespace detail {
     constexpr std::uint64_t minPartionSizeShift{37UL};
-}
+} // namespace detail
+
 /** The unit conversion flag are some modifiers for the string conversion
 operations, some are used internally some are meant for external use, though all
 are possible to use externally
