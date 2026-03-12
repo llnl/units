@@ -263,7 +263,7 @@ TEST(fuzzFailures, rtripSingleProblems)
     auto u1 = unit_from_string(cdata);
     if (!is_error(u1)) {
         auto str = to_string(u1);
-        std::cout << str << std::endl;
+        std::cout << str << '\n';
         auto u2 = unit_from_string(str);
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {

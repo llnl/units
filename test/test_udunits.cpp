@@ -20,7 +20,7 @@ TEST(UDUNITS, acceptedNameSymbols)
 {
     tinyxml2::XMLDocument doc;
     auto err = doc.LoadFile(TEST_FILE_FOLDER "/UDUNITS2/udunits2-accepted.xml");
-    ASSERT_FALSE(err) << err << std::endl;
+    ASSERT_FALSE(err) << err << '\n';
     auto cs = doc.FirstChildElement("unit-system")->FirstChildElement("unit");
     int failConvert = 0;
     while (cs != nullptr) {
@@ -76,7 +76,7 @@ TEST(UDUNITS, acceptedAlias)
 {
     tinyxml2::XMLDocument doc;
     auto err = doc.LoadFile(TEST_FILE_FOLDER "/UDUNITS2/udunits2-accepted.xml");
-    ASSERT_FALSE(err) << err << std::endl;
+    ASSERT_FALSE(err) << err << '\n';
     auto cs = doc.FirstChildElement("unit-system")->FirstChildElement("unit");
     int failConvert{0};
     while (cs != nullptr) {
@@ -139,7 +139,7 @@ TEST(UDUNITS, derivedNameSymbols)
 {
     tinyxml2::XMLDocument doc;
     auto err = doc.LoadFile(TEST_FILE_FOLDER "/UDUNITS2/udunits2-derived.xml");
-    ASSERT_FALSE(err) << err << std::endl;
+    ASSERT_FALSE(err) << err << '\n';
     auto cs = doc.FirstChildElement("unit-system")->FirstChildElement("unit");
     int failConvert = 0;
     while (cs != nullptr) {
@@ -200,7 +200,7 @@ TEST(UDUNITS, derivedAlias)
 {
     tinyxml2::XMLDocument doc;
     auto err = doc.LoadFile(TEST_FILE_FOLDER "/UDUNITS2/udunits2-derived.xml");
-    ASSERT_FALSE(err) << err << std::endl;
+    ASSERT_FALSE(err) << err << '\n';
     auto cs = doc.FirstChildElement("unit-system")->FirstChildElement("unit");
     int failConvert = 0;
     while (cs != nullptr) {
@@ -265,7 +265,7 @@ TEST(UDUNITS, commonAlias)
 {
     tinyxml2::XMLDocument doc;
     auto err = doc.LoadFile(TEST_FILE_FOLDER "/UDUNITS2/udunits2-common.xml");
-    ASSERT_FALSE(err) << err << std::endl;
+    ASSERT_FALSE(err) << err << '\n';
     auto cs = doc.FirstChildElement("unit-system")->FirstChildElement("unit");
     int failConvert{0};
     int mismatchUnit{0};

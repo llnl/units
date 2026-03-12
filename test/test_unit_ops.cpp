@@ -391,9 +391,9 @@ while (diff < 2.75e-6)
 
     std::cout << "diff (" << diff << ") compares "
               << ((u1 == u2) ? std::string("equal") : std::string("not equal"))
-<< std::endl; std::cout << "diff (-" << diff << ") compares "
+<< '\n'; std::cout << "diff (-" << diff << ") compares "
               << ((u1 == u2) ? std::string("equal") : std::string("not equal"))
-<< std::endl;
+<< '\n';
 
     diff += 1e-8;
 }
@@ -764,9 +764,9 @@ auto u2 = unit(start + diff, V);
 auto u3 = unit(start - diff, V);
 
 std::cout << "diff (" << diff << ") compares "
-<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << std::endl;
+<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << '\n';
 std::cout << "diff (-" << diff << ") compares "
-<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << std::endl;
+<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << '\n';
 
 diff += 1e-8;
 }

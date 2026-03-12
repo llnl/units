@@ -401,7 +401,7 @@ void display_counts()
     std::cout << "success_count :" << success_count.load() << '\n';
     std::cout << "failed_count :" << fail_count.load() << '\n';
     std::cout << "==================================================="
-              << std::endl;
+              << '\n';
 }
 
 // Handles an HTTP server connection
