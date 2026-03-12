@@ -18,7 +18,7 @@ namespace detail {
         static constexpr int32_t min_val =
             -(static_cast<int32_t>(1U << Bits) / 2);
         static constexpr int32_t max_val =
-            static_cast<int32_t>(1U << Bits) / 2 - 1;
+            (static_cast<int32_t>(1U << Bits) / 2) - 1;
         template<class T>
         static constexpr bool plus_overflows(const T& a, const T& b)
         {
