@@ -177,8 +177,6 @@ TEST(x12, X12R20MappingVerification)
 
         // Parse CSV line (handle quoted fields)
         std::vector<std::string> fields;
-        std::stringstream ss(line);
-        std::string field;
         bool in_quotes = false;
         std::string current_field;
 
@@ -265,4 +263,7 @@ TEST(x12, units)
             100.0, units::precise::lb, units::commodities::packaging::drum));
 
     EXPECT_FALSE(is_valid(units::x12_unit("chaos")));
+
+    EXPECT_EQ(units::x12_unit_string(units::x12_unit("17")), "17");
+    EXPECT_EQ(units::x12_unit_string(units::precise::invalid), "");
 }

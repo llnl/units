@@ -5,7 +5,9 @@ See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
 #include "units.hpp"
-
+#include "units/commodity_definitions.hpp"
+#include "units/unit_definitions.hpp"
+#include "units/units_decl.hpp"
 #include <algorithm>
 #include <array>
 #include <cstring>
@@ -1869,6 +1871,30 @@ precise_unit x12_unit(const std::string& x12_string)
         return std::get<2>(*ind);
     }
     return precise::invalid;
+}
+
+// Configurable fallback code returned when no X12 unit code matches.
+constexpr const char* invalid_unit_code = "";
+std::string x12_unit_string(const precise_unit& unit)
+{
+    // Prefer exact identity; fall back to rounded equality for parsed values.
+    // NOLINTNEXTLINE (readability-qualified-auto)
+    auto ind = std::find_if(
+        precise::x12_units.begin(),
+        precise::x12_units.end(),
+        [&unit](const precise::unitD& u_set) {
+            return std::get<2>(u_set).is_exactly_the_same(unit);
+        });
+    if (ind == precise::x12_units.end()) {
+        ind = std::find_if(
+            precise::x12_units.begin(),
+            precise::x12_units.end(),
+            [&unit](const precise::unitD& u_set) {
+                return std::get<2>(u_set) == unit;
+            });
+    }
+    return (ind == precise::x12_units.end()) ? std::string(invalid_unit_code) :
+                                               std::string(std::get<0>(*ind));
 }
 
 precise_unit dod_unit(const std::string& dod_string)

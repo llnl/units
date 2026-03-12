@@ -400,8 +400,7 @@ void display_counts()
     std::cout << "bad requests :" << bad_request_count.load() << '\n';
     std::cout << "success_count :" << success_count.load() << '\n';
     std::cout << "failed_count :" << fail_count.load() << '\n';
-    std::cout << "==================================================="
-              << std::endl;
+    std::cout << "===================================================" << '\n';
 }
 
 // Handles an HTTP server connection

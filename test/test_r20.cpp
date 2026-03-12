@@ -140,4 +140,10 @@ TEST(r20, units)
             1.0, mass::tonne, units::commodities::packaging::theoretical));
 
     EXPECT_FALSE(is_valid(units::r20_unit("chaos")));
+
+    auto r20_code = units::r20_unit_string(units::r20_unit("A65"));
+    EXPECT_FALSE(r20_code.empty());
+    EXPECT_TRUE(
+        units::r20_unit(r20_code).is_exactly_the_same(units::r20_unit("A65")));
+    EXPECT_EQ(units::r20_unit_string(units::precise::invalid), "");
 }

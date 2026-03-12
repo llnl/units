@@ -14,6 +14,7 @@ Checks: "
   modernize*,
   -modernize-pass-by-value,
   -modernize-use-trailing-return-type,
+  -modernize-type-traits,
   clang-analyzer-*,
   bugprone-*,
   -bugprone-narrowing-conversions,
@@ -24,7 +25,8 @@ Checks: "
   readability-*,
   -readability-magic-numbers,
   -readability-identifier-length,
-  performance-*
+  -readability-avoid-nested-conditional-operator,
+  performance-*,
   "
 
 WarningsAsErrors: "
@@ -32,12 +34,13 @@ WarningsAsErrors: "
   google-*,
   -google-runtime-int,
   -google-runtime-references,
-  -google-build-using-namespace
+  -google-build-using-namespace,
   llvm-include-order,
   llvm-namespace-comment,
   modernize*,
   -modernize-pass-by-value,
   -modernize-use-trailing-return-type,
+  -modernize-type-traits,
   clang-analyzer-*,
   bugprone-*,
   -bugprone-narrowing-conversions,
@@ -46,12 +49,12 @@ WarningsAsErrors: "
   readability-*,
   -readability-magic-numbers,
   -readability-identifier-length,
-  performance-*
+  -readability-avoid-nested-conditional-operator,
+  performance-*,
   "
 
-HeaderFilterRegex: "*test.*cpp"
+HeaderFilterRegex: "test.*cpp"
 
-AnalyzeTemporaryDtors: false
 CheckOptions:
   - key: cert-dcl59-cpp.HeaderFileExtensions
     value: h,hh,hpp,hxx

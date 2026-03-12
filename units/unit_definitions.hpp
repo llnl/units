@@ -546,7 +546,7 @@ namespace precise {
     namespace japan {
         constexpr precise_unit shaku{10.0 / 33.0, m};
         constexpr precise_unit sun{0.1, shaku};
-        constexpr precise_unit ken{1.0 + 9.0 / 11.0, m};
+        constexpr precise_unit ken{1.0 + (9.0 / 11.0), m};
         constexpr precise_unit tsubo{100.0 / 30.25, m* m};
         constexpr precise_unit sho{2401.0 / 1331.0, L};
         constexpr precise_unit kan{15.0 / 4.0, kg};
@@ -667,8 +667,8 @@ namespace precise {
     /// additional mass units
     namespace mass {
         constexpr precise_unit quintal{100.0, kg};
-        constexpr precise_unit ton_assay{29.0 + 1. / 6.0, g};
-        constexpr precise_unit longton_assay{32.0 + 2.0 / 3.0, g};
+        constexpr precise_unit ton_assay{29.0 + (1.0 / 6.0), g};
+        constexpr precise_unit longton_assay{32.0 + (2.0 / 3.0), g};
         constexpr precise_unit Da{1.6605388628e-27, kg};
         constexpr precise_unit u = Da;
         constexpr precise_unit tonne{1000.0, kg};
@@ -865,8 +865,8 @@ namespace precise {
         constexpr detail::unit_data custom_unit(std::uint16_t customX)
         {
             return {
-                7 - 4 * bShift(customX, 8U),  // 3 or 7
-                -2 + 3 * bShift(customX, 7U),  // -2 or 1
+                7 - (4 * bShift(customX, 8U)),  // 3 or 7
+                -2 + (3 * bShift(customX, 7U)),  // -2 or 1
                 // 7 or 0  sometimes custom unit/time is used
                 7 * bShift(customX, 9U),
                 // -3 or -4  this is probably the most important for
@@ -877,7 +877,7 @@ namespace precise {
                 detail::maxNeg(detail::bitwidth::mole),  // this also is set so
                                                          // that 1/-2 = -2 for a
                                                          // 2 bit signed number
-                -2 + 2 * bShift(customX, 5U),
+                -2 + (2 * bShift(customX, 5U)),
                 -2 * bShift(customX, 3U),
                 0,
                 0,
@@ -1027,7 +1027,7 @@ namespace precise {
                 1};
         }
         /// Generate the equation type used the unit
-        inline constexpr int eq_type(const detail::unit_data& UT)
+        constexpr int eq_type(const detail::unit_data& UT)
         {
             return ((UT.radian() != 0) ? 16 : 0) + ((UT.count() != 0) ? 8 : 0) +
                 (UT.is_per_unit() ? 4 : 0) + (UT.has_i_flag() ? 2 : 0) +
@@ -1118,7 +1118,7 @@ namespace precise {
             if (!UT.is_equation()) {
                 return val;
             }
-            int logtype = custom::eq_type(UT);
+            const int logtype = custom::eq_type(UT);
             switch (logtype) {
                 case 0:
                 case 10:
@@ -1196,7 +1196,7 @@ namespace precise {
             if (!UT.is_equation()) {
                 return val;
             }
-            int logtype = custom::eq_type(UT);
+            const int logtype = custom::eq_type(UT);
             if ((logtype < 16) && (val <= 0.0)) {
                 return constants::invalid_conversion;
             }
@@ -1235,9 +1235,9 @@ namespace precise {
                 case 15:
                     return 0.5 * (std::log)(val);
                 case 16:  // API Gravity
-                    return 141.5 / (val)-131.5;
+                    return (141.5 / val) - 131.5;
                 case 17:  // degree Baume Light
-                    return 140.0 / val - 130;
+                    return (140.0 / val) - 130;
                 case 18:  // degree Baume Heavy
                     return 145.0 * (1.0 - 1.0 / val);
                 case 22:  // saffir simpson hurricane scale from wind speed
@@ -1265,9 +1265,9 @@ namespace precise {
                 case 27:  // prism diopter
                     return 100.0 * std::tan(val);
                 case 29:  // moment magnitude scale
-                    return 2.0 / 3.0 * std::log10(val) - 10.7;
+                    return ((2.0 / 3.0) * std::log10(val)) - 10.7;
                 case 30:  // energy magnitude scale
-                    return 2.0 / 3.0 * std::log10(val) - 3.2;
+                    return ((2.0 / 3.0) * std::log10(val)) - 3.2;
                 default:
                     return val;
             }
@@ -1462,14 +1462,14 @@ constexpr unit invalid{
     detail::unit_data{nullptr}};
 
 /// Check if a precise unit is a default unit
-constexpr inline bool is_default(const precise_unit& utest)
+constexpr bool is_default(const precise_unit& utest)
 {
     return (
         utest.multiplier() == 1.0 &&
         (utest.base_units() == defunit.base_units()));
 }
 /// Check if a unit is a default unit
-constexpr inline bool is_default(const unit& utest)
+constexpr bool is_default(const unit& utest)
 {
     return (
         utest.multiplier() == 1.0 &&
@@ -1484,32 +1484,30 @@ constexpr unit ratio = one;
 constexpr unit percent = unit_cast(precise::percent);
 
 /// Check if the unit has an error (NaN multiplier or error base units)
-constexpr inline bool is_error(const precise_unit& utest)
+constexpr bool is_error(const precise_unit& utest)
 {
     return (
         utest.multiplier() != utest.multiplier() ||
         utest.base_units() == precise::error.base_units());
 }
 /// Check if the unit has an error  (NaN multiplier or error base units)
-constexpr inline bool is_error(const unit& utest)
+constexpr bool is_error(const unit& utest)
 {
     return (
         utest.multiplier() != utest.multiplier() ||
         utest.base_units() == error.base_units());
 }
 /// Check if the unit is a valid unit
-constexpr inline bool is_valid(const precise_unit& utest)
+constexpr bool is_valid(const precise_unit& utest)
 {
-    return !(
-        (utest.multiplier() != utest.multiplier()) &&
-        (utest.base_units() == precise::invalid.base_units()));
+    return (utest.multiplier() == utest.multiplier()) ||
+        (utest.base_units() != precise::invalid.base_units());
 }
 /// Check if the unit is a valid unit
-constexpr inline bool is_valid(const unit& utest)
+constexpr bool is_valid(const unit& utest)
 {
-    return !(
-        (utest.multiplier() != utest.multiplier()) &&
-        (utest.base_units() == invalid.base_units()));
+    return (utest.multiplier() == utest.multiplier()) ||
+        (utest.base_units() != invalid.base_units());
 }
 
 // SI prefixes as units
@@ -1877,7 +1875,7 @@ namespace detail {
                  0.0,
                  2.0 * constants::pi,
                  4.0 * constants::pi * constants::pi}};
-            int muxIndex =
+            const int muxIndex =
                 rad_result - rad_start + 2;  // +2 is to shift the index
             if (muxIndex < 0 || muxIndex > 4) {
                 return constants::invalid_conversion;

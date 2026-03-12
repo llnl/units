@@ -82,7 +82,10 @@ TEST(PreciseMeasurement, countAddition)
     auto m3 = 1.0 * precise::Bq;
 
     auto m4 = m1 + m2 + m3;
+    EXPECT_TRUE(is_valid(m4));
     auto str = to_string(m4);
+    // string  should probably be 3 Hz but that may change
+    EXPECT_LT(str.size(), 6);
 }
 
 TEST(MeasurementToString, one)

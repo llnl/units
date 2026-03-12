@@ -165,6 +165,7 @@ TEST(unitOps, valid)
     EXPECT_FALSE(is_valid(invalid));
     EXPECT_TRUE(is_valid(defunit));
     EXPECT_TRUE(is_valid(V));
+    EXPECT_TRUE(is_valid(unit(10.0, invalid.base_units())));
     EXPECT_TRUE(is_valid(unit(std::numeric_limits<double>::quiet_NaN(), m)));
     EXPECT_FALSE(is_valid(
         unit(std::numeric_limits<double>::quiet_NaN(), invalid.base_units())));
@@ -390,9 +391,9 @@ while (diff < 2.75e-6)
 
     std::cout << "diff (" << diff << ") compares "
               << ((u1 == u2) ? std::string("equal") : std::string("not equal"))
-<< std::endl; std::cout << "diff (-" << diff << ") compares "
+<< '\n'; std::cout << "diff (-" << diff << ") compares "
               << ((u1 == u2) ? std::string("equal") : std::string("not equal"))
-<< std::endl;
+<< '\n';
 
     diff += 1e-8;
 }
@@ -590,6 +591,7 @@ TEST(preciseUnitOps, valid)
     EXPECT_FALSE(is_valid(precise::invalid));
     EXPECT_TRUE(is_valid(precise::defunit));
     EXPECT_TRUE(is_valid(precise::V));
+    EXPECT_TRUE(is_valid(precise_unit(10.0, precise::invalid.base_units())));
     EXPECT_TRUE(is_valid(
         precise_unit(std::numeric_limits<double>::quiet_NaN(), precise::m)));
     EXPECT_FALSE(is_valid(precise_unit(
@@ -762,9 +764,9 @@ auto u2 = unit(start + diff, V);
 auto u3 = unit(start - diff, V);
 
 std::cout << "diff (" << diff << ") compares "
-<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << std::endl;
+<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << '\n';
 std::cout << "diff (-" << diff << ") compares "
-<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << std::endl;
+<< ((u1 == u2) ? std::string("equal") : std::string("not equal")) << '\n';
 
 diff += 1e-8;
 }

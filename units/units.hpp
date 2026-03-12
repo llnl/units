@@ -74,7 +74,8 @@ double convert(double val, const UX& start, const UX2& result)
     }
     if ((start.has_e_flag() || result.has_e_flag()) &&
         start.has_same_base(result.base_units())) {
-        double converted_val = detail::convertFlaggedUnits(val, start, result);
+        const double converted_val =
+            detail::convertFlaggedUnits(val, start, result);
         if (!std::isnan(converted_val)) {
             return converted_val;
         }
@@ -100,13 +101,13 @@ double convert(double val, const UX& start, const UX2& result)
             // puXX already
             return val;
         }
-        double converted_val = puconversion::knownConversions(
+        const double converted_val = puconversion::knownConversions(
             val, start.base_units(), result.base_units());
         if (!std::isnan(converted_val)) {
             return converted_val;
         }
     } else if (start.is_per_unit() || result.is_per_unit()) {
-        double genBase =
+        const double genBase =
             puconversion::assumedBase(unit_cast(start), unit_cast(result));
         if (!std::isnan(genBase)) {
             return convert(val, start, result, genBase);
@@ -125,7 +126,8 @@ double convert(double val, const UX& start, const UX2& result)
     }
     // deal with some counting conversions
     if (base_start.equivalent_non_counting(base_result)) {
-        double converted_val = detail::convertCountingUnits(val, start, result);
+        const double converted_val =
+            detail::convertCountingUnits(val, start, result);
         if (!std::isnan(converted_val)) {
             return converted_val;
         }
@@ -137,7 +139,7 @@ double convert(double val, const UX& start, const UX2& result)
         return 1.0 / (val * start.multiplier() * result.multiplier());
     }
     if (start.has_e_flag() || result.has_e_flag()) {
-        double converted_val =
+        const double converted_val =
             detail::extraValidConversions(val, start, result);
         if (!std::isnan(converted_val)) {
             return converted_val;
@@ -172,7 +174,7 @@ double convert(double val, const UX& start, const UX2& result, double baseValue)
     if (start.is_per_unit() == result.is_per_unit()) {
         if ((start.has_e_flag() || result.has_e_flag()) &&
             start.has_same_base(result.base_units())) {
-            double converted_val =
+            const double converted_val =
                 detail::convertFlaggedUnits(val, start, result, baseValue);
             if (!std::isnan(converted_val)) {
                 return converted_val;
@@ -330,14 +332,12 @@ class measurement {
     constexpr measurement operator+() const { return {value_, units_}; }
     constexpr measurement operator-() const { return {-value_, units_}; }
     // double multiplier
-    friend constexpr inline measurement
-        operator*(double val, const measurement& meas)
+    friend constexpr measurement operator*(double val, const measurement& meas)
     {
         return meas * val;
     }
     // divide measurement into a double
-    friend constexpr inline measurement
-        operator/(double val, const measurement& meas)
+    friend constexpr measurement operator/(double val, const measurement& meas)
     {
         return {val / meas.value_, meas.units_.inv()};
     }
@@ -426,20 +426,20 @@ static_assert(
         2 * detail::bitwidth::base_byte_count + sizeof(double),
     "Measurement class is too large");
 
-constexpr inline measurement operator*(double val, const unit& unit_base)
+constexpr measurement operator*(double val, const unit& unit_base)
 {
     return {val, unit_base};
 }
-constexpr inline measurement operator*(const unit& unit_base, double val)
+constexpr measurement operator*(const unit& unit_base, double val)
 {
     return {val, unit_base};
 }
 
-constexpr inline measurement operator/(double val, const unit& unit_base)
+constexpr measurement operator/(double val, const unit& unit_base)
 {
     return {val, unit_base.inv()};
 }
-constexpr inline measurement operator/(const unit& unit_base, double val)
+constexpr measurement operator/(const unit& unit_base, double val)
 {
     return {1.0 / val, unit_base};
 }
@@ -482,7 +482,10 @@ class fixed_measurement {
     /// assignment operator treat it the same as a measurement
     fixed_measurement& operator=(const fixed_measurement& val) noexcept
     {
-        value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        if (this != &val) {
+            value_ =
+                (units_ == val.units()) ? val.value() : val.value_as(units_);
+        }
         return *this;
     }
 
@@ -701,22 +704,22 @@ class fixed_measurement {
 
     // + and - are allowed for fixed_measurement since the units are known
     /// friend operators for math operators
-    friend constexpr inline fixed_measurement
+    friend constexpr fixed_measurement
         operator+(double v1, const fixed_measurement& v2)
     {
         return {v1 + v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_measurement
+    friend constexpr fixed_measurement
         operator-(double v1, const fixed_measurement& v2)
     {
         return {v1 - v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_measurement
+    friend constexpr fixed_measurement
         operator*(double v1, const fixed_measurement& v2)
     {
         return {v1 * v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_measurement
+    friend constexpr fixed_measurement
         operator/(double v1, const fixed_measurement& v2)
     {
         return {v1 / v2.value(), v2.units().inv()};
@@ -724,6 +727,7 @@ class fixed_measurement {
 
   private:
     double value_{0.0};  //!< the unit value
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
     const unit units_;  //!< a fixed unit of measurement
 };
 
@@ -855,10 +859,10 @@ class uncertain_measurement {
      * of squares(rss) method*/
     uncertain_measurement operator*(const uncertain_measurement& other) const
     {
-        float tval1 = uncertainty_ / value_;
-        float tval2 = other.uncertainty_ / other.value_;
-        float ntol = std::sqrt(tval1 * tval1 + tval2 * tval2);
-        float nval = value_ * other.value_;
+        const float tval1 = uncertainty_ / value_;
+        const float tval2 = other.uncertainty_ / other.value_;
+        const float ntol = std::sqrt((tval1 * tval1) + (tval2 * tval2));
+        const float nval = value_ * other.value_;
         return {nval, nval * ntol, units_ * other.units()};
     }
 
@@ -867,8 +871,9 @@ class uncertain_measurement {
     UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         simple_product(const uncertain_measurement& other) const
     {
-        float ntol = uncertainty_ / value_ + other.uncertainty_ / other.value_;
-        float nval = value_ * other.value_;
+        const float ntol =
+            (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
+        const float nval = value_ * other.value_;
         return {nval, nval * ntol, units_ * other.units()};
     }
     /** Multiply with another measurement
@@ -898,10 +903,10 @@ class uncertain_measurement {
      * root sum of squares(rss) method*/
     uncertain_measurement operator/(const uncertain_measurement& other) const
     {
-        float tval1 = uncertainty_ / value_;
-        float tval2 = other.uncertainty_ / other.value_;
-        float ntol = std::sqrt(tval1 * tval1 + tval2 * tval2);
-        float nval = value_ / other.value_;
+        const float tval1 = uncertainty_ / value_;
+        const float tval2 = other.uncertainty_ / other.value_;
+        const float ntol = std::sqrt((tval1 * tval1) + (tval2 * tval2));
+        const float nval = value_ / other.value_;
         return {nval, nval * ntol, units_ / other.units()};
     }
 
@@ -911,8 +916,9 @@ class uncertain_measurement {
     UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         simple_divide(const uncertain_measurement& other) const
     {
-        float ntol = uncertainty_ / value_ + other.uncertainty_ / other.value_;
-        float nval = value_ / other.value_;
+        const float ntol =
+            (uncertainty_ / value_) + (other.uncertainty_ / other.value_);
+        const float nval = value_ / other.value_;
         return {nval, nval * ntol, units_ / other.units()};
     }
 
@@ -941,29 +947,29 @@ class uncertain_measurement {
      * root sum of squares(rss) method*/
     uncertain_measurement operator+(const uncertain_measurement& other) const
     {
-        auto cval = static_cast<float>(convert(other.units_, units_));
-        float ntol = std::sqrt(
-            uncertainty_ * uncertainty_ +
-            cval * cval * other.uncertainty_ * other.uncertainty_);
-        return {value_ + cval * other.value_, ntol, units_};
+        const auto cval = static_cast<float>(convert(other.units_, units_));
+        const float ntol = std::sqrt(
+            (uncertainty_ * uncertainty_) +
+            (cval * cval * other.uncertainty_ * other.uncertainty_));
+        return {value_ + (cval * other.value_), ntol, units_};
     }
 
     uncertain_measurement simple_add(const uncertain_measurement& other) const
     {
-        auto cval = static_cast<float>(convert(other.units_, units_));
-        float ntol = uncertainty_ + other.uncertainty_ * cval;
-        return {value_ + cval * other.value_, ntol, units_};
+        const auto cval = static_cast<float>(convert(other.units_, units_));
+        const float ntol = uncertainty_ + (other.uncertainty_ * cval);
+        return {value_ + (cval * other.value_), ntol, units_};
     }
 
     /** compute a unit subtraction and calculate the new uncertainties using the
      * root sum of squares(rss) method*/
     uncertain_measurement operator-(const uncertain_measurement& other) const
     {
-        auto cval = static_cast<float>(convert(other.units_, units_));
-        float ntol = std::sqrt(
-            uncertainty_ * uncertainty_ +
-            cval * cval * other.uncertainty_ * other.uncertainty_);
-        return {value_ - cval * other.value_, ntol, units_};
+        const auto cval = static_cast<float>(convert(other.units_, units_));
+        const float ntol = std::sqrt(
+            (uncertainty_ * uncertainty_) +
+            (cval * cval * other.uncertainty_ * other.uncertainty_));
+        return {value_ - (cval * other.value_), ntol, units_};
     }
 
     /** compute a unit subtraction and calculate the new uncertainties using the
@@ -971,20 +977,20 @@ class uncertain_measurement {
     uncertain_measurement
         simple_subtract(const uncertain_measurement& other) const
     {
-        auto cval = static_cast<float>(convert(other.units_, units_));
-        float ntol = uncertainty_ + other.uncertainty_ * cval;
-        return {value_ - cval * other.value_, ntol, units_};
+        const auto cval = static_cast<float>(convert(other.units_, units_));
+        const float ntol = uncertainty_ + (other.uncertainty_ * cval);
+        return {value_ - (cval * other.value_), ntol, units_};
     }
 
     uncertain_measurement operator+(const measurement& other) const
     {
-        auto cval = static_cast<float>(other.value_as(units_));
+        const auto cval = static_cast<float>(other.value_as(units_));
         return {value_ + cval, uncertainty_, units_};
     }
 
     uncertain_measurement operator-(const measurement& other) const
     {
-        auto cval = static_cast<float>(other.value_as(units_));
+        const auto cval = static_cast<float>(other.value_as(units_));
         return {value_ - cval, uncertainty_, units_};
     }
     // add unary operators
@@ -1010,7 +1016,7 @@ class uncertain_measurement {
     /// Convert a unit to have a new base
     uncertain_measurement convert_to(const unit& newUnits) const
     {
-        auto cval = static_cast<float>(convert(units_, newUnits));
+        const auto cval = static_cast<float>(convert(units_, newUnits));
         return {cval * value_, uncertainty_ * cval, newUnits};
     }
     /// Get the underlying units value
@@ -1144,69 +1150,69 @@ class uncertain_measurement {
 
     // + and - are allowed for fixed_measurement since the units are known
     /// friend operators for math operators
-    friend inline uncertain_measurement
+    friend uncertain_measurement
         operator+(const measurement& v1, const uncertain_measurement& v2)
     {
-        double cval = convert(v2.units_, v1.units());
-        double ntol = v2.uncertainty() * cval;
+        const double cval = convert(v2.units_, v1.units());
+        const double ntol = v2.uncertainty() * cval;
         return uncertain_measurement(
-            v1.value() + cval * v2.value(), ntol, v1.units());
+            v1.value() + (cval * v2.value()), ntol, v1.units());
     }
-    friend inline uncertain_measurement
+    friend uncertain_measurement
         operator-(const measurement& v1, const uncertain_measurement& v2)
     {
-        double cval = convert(v2.units_, v1.units());
-        double ntol = v2.uncertainty() * cval;
+        const double cval = convert(v2.units_, v1.units());
+        const double ntol = v2.uncertainty() * cval;
         return uncertain_measurement(
-            v1.value() - cval * v2.value(), ntol, v1.units());
+            v1.value() - (cval * v2.value()), ntol, v1.units());
     }
-    friend constexpr inline uncertain_measurement
+    friend constexpr uncertain_measurement
         operator*(const measurement& v1, const uncertain_measurement& v2)
     {
         return v2.operator*(v1);
     }
 
-    friend UNITS_CPP14_CONSTEXPR_METHOD inline uncertain_measurement
+    friend UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         operator/(const measurement& v1, const uncertain_measurement& v2)
     {
-        double ntol = v2.uncertainty() / v2.value();
-        double nval = v1.value() / v2.value();
+        const double ntol = v2.uncertainty() / v2.value();
+        const double nval = v1.value() / v2.value();
         return uncertain_measurement(nval, nval * ntol, v1.units() / v2.units_);
     }
 
-    friend constexpr inline uncertain_measurement
+    friend constexpr uncertain_measurement
         operator*(double v1, const uncertain_measurement& v2)
     {
         return v2.operator*(v1);
     }
 
-    friend constexpr inline uncertain_measurement
+    friend constexpr uncertain_measurement
         operator*(float v1, const uncertain_measurement& v2)
     {
         return v2.operator*(v1);
     }
 
-    friend UNITS_CPP14_CONSTEXPR_METHOD inline uncertain_measurement
+    friend UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         operator/(double v1, const uncertain_measurement& v2)
     {
-        double ntol = v2.uncertainty() / v2.value();
-        double nval = v1 / v2.value();
+        const double ntol = v2.uncertainty() / v2.value();
+        const double nval = v1 / v2.value();
         return uncertain_measurement(nval, nval * ntol, v2.units_.inv());
     }
 
-    friend UNITS_CPP14_CONSTEXPR_METHOD inline uncertain_measurement
+    friend UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         operator/(float v1, const uncertain_measurement& v2)
     {
-        float ntol = v2.uncertainty_ / v2.value_;
-        float nval = v1 / v2.value_;
+        const float ntol = v2.uncertainty_ / v2.value_;
+        const float nval = v1 / v2.value_;
         return {nval, nval * ntol, v2.units_.inv()};
     }
 
-    friend UNITS_CPP14_CONSTEXPR_METHOD inline uncertain_measurement
+    friend UNITS_CPP14_CONSTEXPR_METHOD uncertain_measurement
         operator/(int v1, const uncertain_measurement& v2)
     {
-        float ntol = v2.uncertainty_ / v2.value_;
-        float nval = static_cast<float>(v1) / v2.value_;
+        const float ntol = v2.uncertainty_ / v2.value_;
+        const float nval = static_cast<float>(v1) / v2.value_;
         return {nval, nval * ntol, v2.units_.inv()};
     }
 
@@ -1341,12 +1347,12 @@ class precise_measurement {
     }
     bool operator>=(const precise_measurement& other) const
     {
-        double val = other.value_as(units_);
+        const double val = other.value_as(units_);
         return (value_ > val) ? true : valueEqualityCheck(val);
     }
     bool operator<=(const precise_measurement& other) const
     {
-        double val = other.value_as(units_);
+        const double val = other.value_as(units_);
         return (value_ < val) ? true : valueEqualityCheck(val);
     }
     /// Get the numerical value as a particular unit type
@@ -1364,13 +1370,13 @@ class precise_measurement {
             units::convert(value_, units_, desired_units);
     }
     // double multiplier
-    friend constexpr inline precise_measurement
+    friend constexpr precise_measurement
         operator*(double val, const precise_measurement& meas)
     {
         return meas * val;
     }
     // divide measurement into a double
-    friend constexpr inline precise_measurement
+    friend constexpr precise_measurement
         operator/(double val, const precise_measurement& meas)
     {
         return {val / meas.value_, meas.units_.inv()};
@@ -1388,23 +1394,23 @@ class precise_measurement {
     }
 };
 
-constexpr inline precise_measurement
+constexpr precise_measurement
     operator*(double val, const precise_unit& unit_base)
 {
     return {val, unit_base};
 }
-constexpr inline precise_measurement
+constexpr precise_measurement
     operator*(const precise_unit& unit_base, double val)
 {
     return {val, unit_base};
 }
 
-constexpr inline precise_measurement
+constexpr precise_measurement
     operator/(double val, const precise_unit& unit_base)
 {
     return {val, unit_base.inv()};
 }
-constexpr inline precise_measurement
+constexpr precise_measurement
     operator/(const precise_unit& unit_base, double val)
 {
     return {1.0 / val, unit_base};
@@ -1459,7 +1465,10 @@ class fixed_precise_measurement {
     fixed_precise_measurement&
         operator=(const fixed_precise_measurement& val) noexcept
     {
-        value_ = (units_ == val.units()) ? val.value() : val.value_as(units_);
+        if (this != &val) {
+            value_ =
+                (units_ == val.units()) ? val.value() : val.value_as(units_);
+        }
         return *this;
     }
 
@@ -1693,22 +1702,22 @@ class fixed_precise_measurement {
     };
 
     /// friend operators for math operators
-    friend constexpr inline fixed_precise_measurement
+    friend constexpr fixed_precise_measurement
         operator+(double v1, const fixed_precise_measurement& v2)
     {
         return {v1 + v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_precise_measurement
+    friend constexpr fixed_precise_measurement
         operator-(double v1, const fixed_precise_measurement& v2)
     {
         return {v1 - v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_precise_measurement
+    friend constexpr fixed_precise_measurement
         operator*(double v1, const fixed_precise_measurement& v2)
     {
         return {v1 * v2.value(), v2.units()};
     }
-    friend constexpr inline fixed_precise_measurement
+    friend constexpr fixed_precise_measurement
         operator/(double v1, const fixed_precise_measurement& v2)
     {
         return {v1 / v2.value(), v2.units().inv()};
@@ -1716,38 +1725,39 @@ class fixed_precise_measurement {
 
   private:
     double value_{0.0};  //!< the quantity of units measured
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-const-or-ref-data-members)
     const precise_unit units_;  //!< the units associated with the quantity
 };
 
 /// Check if the measurement is a valid_measurement
-constexpr inline bool is_valid(const measurement& meas)
+constexpr bool is_valid(const measurement& meas)
 {
     return is_valid(meas.units()) && !is_error(meas.units()) &&
         (meas.value() == meas.value());
 }
 /// Check if the precise_measurement is a valid_measurement
-constexpr inline bool is_valid(const precise_measurement& meas)
+constexpr bool is_valid(const precise_measurement& meas)
 {
     return is_valid(meas.units()) && !is_error(meas.units()) &&
         (meas.value() == meas.value());
 }
 
 /// Check if the fixed_measurement is a valid_measurement
-constexpr inline bool is_valid(const fixed_measurement& meas)
+constexpr bool is_valid(const fixed_measurement& meas)
 {
     return is_valid(meas.units()) && !is_error(meas.units()) &&
         (meas.value() == meas.value());
 }
 
 /// Check if the fixed_precise_measurement is a valid_measurement
-constexpr inline bool is_valid(const fixed_precise_measurement& meas)
+constexpr bool is_valid(const fixed_precise_measurement& meas)
 {
     return is_valid(meas.units()) && !is_error(meas.units()) &&
         (meas.value() == meas.value());
 }
 
 /// Check if the uncertain_measurement is a valid_measurement
-constexpr inline bool is_valid(const uncertain_measurement& meas)
+constexpr bool is_valid(const uncertain_measurement& meas)
 {
     return is_valid(meas.units()) && !is_error(meas.units()) &&
         meas.value_f() == meas.value_f() &&
@@ -1884,7 +1894,8 @@ UNITS_EXPORT std::uint64_t setDefaultFlags(std::uint64_t defaultFlags);
 UNITS_EXPORT std::uint64_t getDefaultFlags();
 namespace detail {
     constexpr std::uint64_t minPartionSizeShift{37UL};
-}
+}  // namespace detail
+
 /** The unit conversion flag are some modifiers for the string conversion
 operations, some are used internally some are meant for external use, though all
 are possible to use externally
@@ -2134,10 +2145,14 @@ UNITS_EXPORT void enableCustomCommodities();
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
 /// generate a unit from a string as defined by the X12 standard
 UNITS_EXPORT precise_unit x12_unit(const std::string& x12_string);
+/// generate an X12 unit code string from a matching precise_unit
+UNITS_EXPORT std::string x12_unit_string(const precise_unit& unit);
 /// generate a unit from a string as defined by the US DOD
 UNITS_EXPORT precise_unit dod_unit(const std::string& dod_string);
 /// generate a unit from a string as defined by the r20 standard
 UNITS_EXPORT precise_unit r20_unit(const std::string& r20_string);
+/// generate an r20 unit code string from a matching precise_unit
+UNITS_EXPORT std::string r20_unit_string(const precise_unit& unit);
 #endif
 
 #endif  // UNITS_HEADER_ONLY

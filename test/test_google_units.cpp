@@ -103,7 +103,7 @@ TEST(googleUnits, unitNames)
         }
         if (invalidMatches > 0) {
             std::cout << "Unable to match " << invalidMatches << " units "
-                      << std::endl;
+                      << '\n';
         }
     }
 }
