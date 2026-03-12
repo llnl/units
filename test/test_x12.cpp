@@ -177,8 +177,6 @@ TEST(x12, X12R20MappingVerification)
 
         // Parse CSV line (handle quoted fields)
         std::vector<std::string> fields;
-        std::stringstream ss(line);
-        std::string field;
         bool in_quotes = false;
         std::string current_field;
 
