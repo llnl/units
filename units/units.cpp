@@ -286,6 +286,9 @@ static precise_unit unit_from_string_internal(
 // forward declaration of the quick find function
 static precise_unit
     unit_quick_match(std::string unit_string, std::uint64_t match_flags);
+#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
+static precise_unit checkNamedUnitCode(const std::string& unit_string);
+#endif
 // forward declaration of the function to check for custom units
 static precise_unit checkForCustomUnit(const std::string& unit_string);
 
@@ -4975,6 +4978,22 @@ static precise_unit
     }
     return precise::invalid;
 }
+
+#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
+static precise_unit checkNamedUnitCode(const std::string& unit_string)
+{
+    if (unit_string.compare(0, 4, "X12:") == 0) {
+        return x12_unit(unit_string.substr(4));
+    }
+    if (unit_string.compare(0, 4, "DOD:") == 0) {
+        return dod_unit(unit_string.substr(4));
+    }
+    if (unit_string.compare(0, 4, "R20:") == 0) {
+        return r20_unit(unit_string.substr(4));
+    }
+    return precise::invalid;
+}
+#endif
 /** Under the assumption units were mashed together to for some new work or
 spaces were used as multiplies this function will progressively try to split
 apart units and combine them.
@@ -5423,6 +5442,12 @@ static precise_unit unit_from_string_internal(
         return precise::invalid;
     }
     precise_unit retunit;
+#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
+    retunit = checkNamedUnitCode(unit_string);
+    if (is_valid(retunit)) {
+        return retunit;
+    }
+#endif
     if ((match_flags & case_insensitive) == 0) {
         // if not a ci matching process just do a quick scan first
         retunit = get_unit(unit_string, match_flags);
