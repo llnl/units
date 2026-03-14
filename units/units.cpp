@@ -287,8 +287,9 @@ static precise_unit unit_from_string_internal(
 static precise_unit
     unit_quick_match(std::string unit_string, std::uint64_t match_flags);
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-static precise_unit
-    checkNamedUnitCode(const std::string& unit_string, std::uint64_t match_flags);
+static precise_unit checkNamedUnitCode(
+    const std::string& unit_string,
+    std::uint64_t match_flags);
 #endif
 // forward declaration of the function to check for custom units
 static precise_unit checkForCustomUnit(const std::string& unit_string);
@@ -4981,8 +4982,9 @@ static precise_unit
 }
 
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-static precise_unit
-    checkNamedUnitCode(const std::string& unit_string, std::uint64_t match_flags)
+static precise_unit checkNamedUnitCode(
+    const std::string& unit_string,
+    std::uint64_t match_flags)
 {
     std::string codeString = unit_string;
     if ((match_flags & case_insensitive) != 0) {
