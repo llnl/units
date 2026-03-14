@@ -287,7 +287,8 @@ static precise_unit unit_from_string_internal(
 static precise_unit
     unit_quick_match(std::string unit_string, std::uint64_t match_flags);
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-static precise_unit checkNamedUnitCode(const std::string& unit_string);
+static precise_unit
+    checkNamedUnitCode(const std::string& unit_string, std::uint64_t match_flags);
 #endif
 // forward declaration of the function to check for custom units
 static precise_unit checkForCustomUnit(const std::string& unit_string);
@@ -4980,16 +4981,25 @@ static precise_unit
 }
 
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-static precise_unit checkNamedUnitCode(const std::string& unit_string)
+static precise_unit
+    checkNamedUnitCode(const std::string& unit_string, std::uint64_t match_flags)
 {
-    if (unit_string.compare(0, 4, "X12:") == 0) {
-        return x12_unit(unit_string.substr(4));
+    std::string codeString = unit_string;
+    if ((match_flags & case_insensitive) != 0) {
+        std::transform(
+            codeString.begin(),
+            codeString.end(),
+            codeString.begin(),
+            ::toupper);
     }
-    if (unit_string.compare(0, 4, "DOD:") == 0) {
-        return dod_unit(unit_string.substr(4));
+    if (codeString.compare(0, 4, "X12:") == 0) {
+        return x12_unit(codeString.substr(4));
     }
-    if (unit_string.compare(0, 4, "R20:") == 0) {
-        return r20_unit(unit_string.substr(4));
+    if (codeString.compare(0, 4, "DOD:") == 0) {
+        return dod_unit(codeString.substr(4));
+    }
+    if (codeString.compare(0, 4, "R20:") == 0) {
+        return r20_unit(codeString.substr(4));
     }
     return precise::invalid;
 }
@@ -5450,7 +5460,7 @@ static precise_unit unit_from_string_internal(
         }
     }
 #ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-    retunit = checkNamedUnitCode(unit_string);
+    retunit = checkNamedUnitCode(unit_string, match_flags);
     if (is_valid(retunit)) {
         return retunit;
     }
