@@ -147,3 +147,11 @@ TEST(r20, units)
         units::r20_unit(r20_code).is_exactly_the_same(units::r20_unit("A65")));
     EXPECT_EQ(units::r20_unit_string(units::precise::invalid), "");
 }
+
+TEST(r20, prefixedUnitsFromString)
+{
+    auto parsed = units::unit_from_string("R20:A65");
+    EXPECT_TRUE(parsed.is_exactly_the_same(units::r20_unit("A65")));
+
+    EXPECT_FALSE(is_valid(units::unit_from_string("R20:chaos")));
+}

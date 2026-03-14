@@ -142,3 +142,11 @@ TEST(dod, units)
 
     EXPECT_FALSE(is_valid(units::dod_unit("chaos")));
 }
+
+TEST(dod, prefixedUnitsFromString)
+{
+    auto parsed = units::unit_from_string("DOD:67");
+    EXPECT_TRUE(parsed.is_exactly_the_same(units::dod_unit("67")));
+
+    EXPECT_FALSE(is_valid(units::unit_from_string("DOD:chaos")));
+}

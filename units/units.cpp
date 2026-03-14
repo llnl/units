@@ -5442,12 +5442,6 @@ static precise_unit unit_from_string_internal(
         return precise::invalid;
     }
     precise_unit retunit;
-#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
-    retunit = checkNamedUnitCode(unit_string);
-    if (is_valid(retunit)) {
-        return retunit;
-    }
-#endif
     if ((match_flags & case_insensitive) == 0) {
         // if not a ci matching process just do a quick scan first
         retunit = get_unit(unit_string, match_flags);
@@ -5455,6 +5449,12 @@ static precise_unit unit_from_string_internal(
             return retunit;
         }
     }
+#ifndef UNITS_DISABLE_EXTRA_UNIT_STANDARDS
+    retunit = checkNamedUnitCode(unit_string);
+    if (is_valid(retunit)) {
+        return retunit;
+    }
+#endif
     if (cleanUnitString(unit_string, match_flags)) {
         retunit = get_unit(unit_string, match_flags);
         if (is_valid(retunit)) {
