@@ -267,3 +267,11 @@ TEST(x12, units)
     EXPECT_EQ(units::x12_unit_string(units::x12_unit("17")), "17");
     EXPECT_EQ(units::x12_unit_string(units::precise::invalid), "");
 }
+
+TEST(x12, prefixedUnitsFromString)
+{
+    auto parsed = units::unit_from_string("X12:17");
+    EXPECT_TRUE(parsed.is_exactly_the_same(units::x12_unit("17")));
+
+    EXPECT_FALSE(is_valid(units::unit_from_string("X12:chaos")));
+}
