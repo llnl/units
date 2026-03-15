@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2019-2025,
+Copyright (c) 2019-2026,
 Lawrence Livermore National Security, LLC;
 See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
