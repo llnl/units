@@ -55,12 +55,14 @@ namespace domains = ::units::domains;
 namespace precise = ::units::precise;
 
 namespace constants {
-inline constexpr auto pi = ::units::constants::pi;
-inline constexpr auto tau = ::units::constants::tau;
-inline constexpr auto invalid_conversion = ::units::constants::invalid_conversion;
-inline constexpr auto infinity = ::units::constants::infinity;
-inline constexpr auto standard_gravity = ::units::constants::standard_gravity;
-inline constexpr auto speed_of_light = ::units::constants::speed_of_light;
+    inline constexpr auto pi = ::units::constants::pi;
+    inline constexpr auto tau = ::units::constants::tau;
+    inline constexpr auto invalid_conversion =
+        ::units::constants::invalid_conversion;
+    inline constexpr auto infinity = ::units::constants::infinity;
+    inline constexpr auto standard_gravity =
+        ::units::constants::standard_gravity;
+    inline constexpr auto speed_of_light = ::units::constants::speed_of_light;
 }  // namespace constants
 
 inline constexpr auto A = ::units::A;
@@ -88,4 +90,4 @@ inline constexpr auto one = ::units::one;
 inline constexpr auto rad = ::units::rad;
 inline constexpr auto s = ::units::s;
 inline constexpr auto sec = ::units::s;
-}
+}  // namespace units
