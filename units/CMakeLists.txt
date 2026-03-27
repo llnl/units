@@ -226,8 +226,7 @@ if(UNITS_BUILD_CXX_MODULE)
     target_link_libraries(module PUBLIC ${UNITS_LC_PROJECT_NAME}::units)
     target_compile_features(module PUBLIC cxx_std_20)
     set_target_properties(
-        module PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD}
-                          CXX_STANDARD_REQUIRED ON
+        module PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD} CXX_STANDARD_REQUIRED ON
     )
     target_sources(
         module PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ${units_module_files}
