@@ -207,7 +207,9 @@ else()
     endif()
 
     if(UNITS_INSTALL_PACKAGE_TESTS)
-        set(UNITS_PACKAGE_SEARCH_LOC)
+        set(UNITS_PACKAGE_SEARCH_LOC
+            "-DUNITS_PACKAGE_LOCATION=${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR}/cmake/${UNITS_LC_PROJECT_NAME}"
+        )
 
         if(NOT MSVC)
             set(package_test_command --test-command "${CMAKE_CTEST_COMMAND}")

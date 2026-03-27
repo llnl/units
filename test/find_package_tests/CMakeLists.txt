@@ -22,7 +22,15 @@ if(NOT DEFINED UNITS_BUILD_CXX_MODULE)
 endif()
 
 # Test the HELICS CMake package config
-find_package(${UNITS_TARGET} 0.9 REQUIRED)
+if(DEFINED UNITS_PACKAGE_LOCATION)
+    find_package(
+        ${UNITS_TARGET} 0.9 REQUIRED
+        PATHS "${UNITS_PACKAGE_LOCATION}"
+        NO_DEFAULT_PATH
+    )
+else()
+    find_package(${UNITS_TARGET} 0.9 REQUIRED)
+endif()
 
 # add some tests inside of the CMake
 
