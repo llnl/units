@@ -24,9 +24,7 @@ endif()
 # Test the HELICS CMake package config
 if(DEFINED UNITS_PACKAGE_LOCATION)
     find_package(
-        ${UNITS_TARGET} 0.9 REQUIRED
-        PATHS "${UNITS_PACKAGE_LOCATION}"
-        NO_DEFAULT_PATH
+        ${UNITS_TARGET} 0.9 REQUIRED PATHS "${UNITS_PACKAGE_LOCATION}" NO_DEFAULT_PATH
     )
 else()
     find_package(${UNITS_TARGET} 0.9 REQUIRED)
