@@ -94,7 +94,7 @@ jobs:
             -DUNITS_INSTALL_PACKAGE_TESTS=ON \
             -DUNITS_BUILD_SHARED_LIBRARY=ON \
             -DUNITS_BUILD_CXX_MODULE=ON \
-            -DCMAKE_CXX_STANDARD=23 \
+            -DCMAKE_CXX_STANDARD=20 \
             -DCMAKE_INSTALL_PREFIX=/home/runner/work/install
 
       - name: Build
