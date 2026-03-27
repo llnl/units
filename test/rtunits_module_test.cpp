@@ -9,14 +9,14 @@ import units;
 
 int main()
 {
-    auto volume = 1250.0 * units::cm.pow(3);
-    auto liters = 1.25 * units::L;
+    auto volume = 1250.0 * cm.pow(3);
+    auto liters = 1.25 * L;
     if (volume != liters) {
         return -1;
     }
 
-    auto parsed = units::measurement_from_string("10 m/s");
-    if (parsed.value_as(units::km / units::hr) != 36.0) {
+    auto parsed = measurement_from_string("10 m/s");
+    if (parsed.value_as(km / hr) != 36.0) {
         return -2;
     }
 

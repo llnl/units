@@ -11,11 +11,10 @@ import units;
 
 int main()
 {
-    auto speed = 10.0 * units::m / units::s;
-    auto speed2 = units::measurement_from_string("36 km/hr");
+    auto speed = 10.0 * m / s;
+    auto speed2 = measurement_from_string("36 km/hr");
 
-    if (speed2.value_as(units::m / units::s) == 10.0 &&
-        speed.units() == (units::m / units::s)) {
+    if (speed2.value_as(m / s) == 10.0 && speed.units() == (m / s)) {
         std::cout << "PASS\n";
     } else {
         std::cout << "FAIL\n";

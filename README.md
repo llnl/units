@@ -196,8 +196,8 @@ import units;
 
 int main()
 {
-    auto speed = 12.0 * units::m / units::s;
-    return (speed.units() == units::m / units::s) ? 0 : 1;
+    auto speed = 12.0 * m / s;
+    return (speed.units() == m / s) ? 0 : 1;
 }
 ```
 
