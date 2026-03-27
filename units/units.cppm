@@ -58,27 +58,27 @@ namespace precise = ::units::precise;
 
 using ::units::A;
 using ::units::C;
-using ::units::Hz;
-using ::units::J;
-using ::units::K;
-using ::units::L;
-using ::units::N;
-using ::units::V;
-using ::units::W;
 using ::units::cm;
 using ::units::ft;
 using ::units::g;
 using ::units::h;
 using ::units::hr;
+using ::units::Hz;
+using ::units::J;
+using ::units::K;
 using ::units::kg;
 using ::units::km;
+using ::units::L;
 using ::units::m;
 using ::units::min;
 using ::units::mm;
 using ::units::mol;
+using ::units::N;
 using ::units::ohm;
 using ::units::one;
 using ::units::rad;
 using ::units::s;
 using ::units::sec;
-}
+using ::units::V;
+using ::units::W;
+}  // namespace units
