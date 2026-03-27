@@ -36,6 +36,16 @@ aliases:
       make install
       ctest -V -R find-package-tests
 
+  - &run_module_installer_tests
+    name: run_module_installer_tests
+    command: |
+      mkdir -p build
+      cd build
+      eval cmake .. -G Ninja ${CMAKE_FLAGS}
+      ninja -j 4
+      ninja install
+      ctest -V -R find-package-tests
+
 jobs:
   unitsTSan:
     machine:
@@ -112,6 +122,15 @@ jobs:
       - run: *setup_units
       - run: *run_installer_tests
 
+  unitsInstall-module:
+    docker:
+      - image: helics/buildenv:sanitizers-19
+    environment:
+      CMAKE_FLAGS: '-DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_STANDARD=20 -DUNITS_ENABLE_TESTS=ON -DUNITS_INSTALL_PACKAGE_TESTS=ON -DUNITS_BUILD_SHARED_LIBRARY=ON -DUNITS_BUILD_CXX_MODULE=ON'
+    steps:
+      - checkout
+      - run: *run_module_installer_tests
+
 workflows:
   version: 2
   units_test:
@@ -121,4 +140,5 @@ workflows:
       #      - unitsTSan
       - unitsInstall
       - unitsInstall-alt
+      - unitsInstall-module
       - unitsFuzz

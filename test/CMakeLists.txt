@@ -156,6 +156,17 @@ else()
     set_target_properties(examples_test PROPERTIES FOLDER "Tests")
     add_test(examples_test ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/examples_test)
 
+    if(UNITS_BUILD_CXX_MODULE)
+        add_executable(test_rtunits_module rtunits_module_test.cpp)
+        target_compile_features(test_rtunits_module PRIVATE cxx_std_20)
+        target_link_libraries(
+            test_rtunits_module PRIVATE ${UNITS_LC_PROJECT_NAME}::module
+                                         compile_flags_target
+        )
+        set_target_properties(test_rtunits_module PROPERTIES FOLDER "Tests")
+        add_test(test_rtunits_module ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test_rtunits_module)
+    endif()
+
     if(WIN32)
         add_executable(examples_test_windows examples_test_windows.cpp)
         target_link_libraries(
@@ -221,6 +232,7 @@ else()
                     ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" -A
                     "${CMAKE_GENERATOR_PLATFORM}" ${UNITS_PACKAGE_SEARCH_LOC}
                     "-DUNITS_BUILD_SHARED_LIBRARY=${UNITS_BUILD_SHARED_LIBRARY}"
+                    "-DUNITS_BUILD_CXX_MODULE=${UNITS_BUILD_CXX_MODULE}"
                     "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
                     "-DUNITS_TARGET=${UNITS_LC_PROJECT_NAME}"
                     "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
@@ -234,6 +246,7 @@ else()
                 COMMAND
                     ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" ${UNITS_PACKAGE_SEARCH_LOC}
                     "-DUNITS_BUILD_SHARED_LIBRARY=${UNITS_BUILD_SHARED_LIBRARY}"
+                    "-DUNITS_BUILD_CXX_MODULE=${UNITS_BUILD_CXX_MODULE}"
                     "-DUNITS_TARGET=${UNITS_LC_PROJECT_NAME}"
                     "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
                     "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"

@@ -184,6 +184,23 @@ The second part is a few cpp files that can add some additional functionality. T
 
 It builds by default with the static library. Using `UNIT_BUILD_SHARED_LIBRARY` or `BUILD_SHARED_LIBS` will build the shared library instead. Either one can be used with CMake as a `units::units` target. The header only library target is also generated `units::header_only`. The shared/static library has a CMake target `units::units`.
 
+An experimental C++20 module wrapper can also be enabled with `-DUNITS_BUILD_CXX_MODULE=ON` when configuring with CMake 3.28 or newer. This adds a `units::module` target that exports the module name `units` from `units/units.cppm`.
+
+```cmake
+target_link_libraries(my_app PRIVATE units::module)
+target_compile_features(my_app PRIVATE cxx_std_20)
+```
+
+```cpp
+import units;
+
+int main()
+{
+    auto speed = 12.0 * units::m / units::s;
+    return (speed.units() == units::m / units::s) ? 0 : 1;
+}
+```
+
 ## Try it out
 
 If you want to try out the string conversion components. There is server running that can do the string conversions
