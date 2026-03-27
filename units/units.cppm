@@ -11,5 +11,6 @@ module;
 export module units;
 
 // The implementation stays in the global module fragment so legacy headers
-// remain usable. The named module exports a stable namespace alias for importers.
+// remain usable. The named module exports a stable namespace alias for
+// importers.
 export using namespace UNITS_NAMESPACE;

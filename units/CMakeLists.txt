@@ -226,8 +226,7 @@ if(UNITS_BUILD_CXX_MODULE)
     target_link_libraries(module PUBLIC ${UNITS_LC_PROJECT_NAME}::units)
     target_compile_features(module PUBLIC cxx_std_20)
     target_sources(
-        module
-        PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ${units_module_files}
+        module PUBLIC FILE_SET cxx_modules TYPE CXX_MODULES FILES ${units_module_files}
     )
     add_library(${UNITS_LC_PROJECT_NAME}::module ALIAS module)
 
@@ -235,9 +234,8 @@ if(UNITS_BUILD_CXX_MODULE)
        AND NOT UNITS_BINARY_ONLY_INSTALL
        AND NOT UNITS_PYTHON_ONLY_INSTALL
     )
-        install(
-            TARGETS module ${UNITS_LIBRARY_EXPORT_COMMAND}
-            FILE_SET cxx_modules DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${UNITS_LC_PROJECT_NAME}
+        install(TARGETS module ${UNITS_LIBRARY_EXPORT_COMMAND} FILE_SET cxx_modules
+                DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${UNITS_LC_PROJECT_NAME}
         )
     endif()
 endif()
