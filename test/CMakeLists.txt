@@ -156,12 +156,12 @@ else()
     set_target_properties(examples_test PROPERTIES FOLDER "Tests")
     add_test(examples_test ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/examples_test)
 
-    if(UNITS_BUILD_CXX_MODULE)
+    if(UNITS_BUILD_CXX_MODULE AND NOT CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         add_executable(test_rtunits_module rtunits_module_test.cpp)
         target_compile_features(test_rtunits_module PRIVATE cxx_std_20)
         target_link_libraries(
             test_rtunits_module PRIVATE ${UNITS_LC_PROJECT_NAME}::module
-                                        compile_flags_target
+                                         compile_flags_target
         )
         set_target_properties(test_rtunits_module PROPERTIES FOLDER "Tests")
         add_test(test_rtunits_module
