@@ -29,7 +29,7 @@ CMake variables
 -  `UNITS_DISABLE_EXTRA_UNIT_STANDARDS`: If set to `ON` disables UN Recommendation 20, X12(not implemented yet), DOD(not implemented yet), from being included in the compilation and generated from strings.
 -  `UNITS_BUILD_PYTHON_LIBRARY`: If set to true builds the python wrapper to the units library using nanobind
 -  `UNITS_BUILD_CXX_MODULE`: If set to `ON` and building with CMake 3.28 or newer, generates an experimental C++20 module target `units::module` that can be consumed with `import units;`
-   and exposes the imported unit declarations directly
+   and re-exports a curated public API in the `units::` namespace
 -  `UNITS_PYTHON_INSTALL_SHARED_LIBRARY`: If set to true and `UNITS_BUILD_SHARED_LIBRARY` is also true will install the shared library alongside the python wrapper binary
 -  `UNITS_PYTHON_ONLY_INSTALL`: defaults to true if built with scikit otherwise false, if true only installs the components required for the python library otherwise normal installation occurs
 -  `UNITS_NAMESPACE`:  The top level namespace of the library, defaults to `units`.
