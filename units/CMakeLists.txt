@@ -224,7 +224,9 @@ endif()
 if(UNITS_BUILD_CXX_MODULE)
     add_library(module)
     target_link_libraries(
-        module PUBLIC ${UNITS_LC_PROJECT_NAME}::units PRIVATE compile_flags_target
+        module
+        PUBLIC ${UNITS_LC_PROJECT_NAME}::units
+        PRIVATE compile_flags_target
     )
     target_compile_features(module PUBLIC cxx_std_20)
     set_target_properties(
