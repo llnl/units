@@ -201,6 +201,16 @@ int main()
 }
 ```
 
+The module currently guarantees a curated public surface in the `units::` namespace, including:
+
+- Core types and functions such as `unit`, `precise_unit`, `measurement`, `precise_measurement`, `convert`, `quick_convert`, `unit_from_string`, `measurement_from_string`, and `to_string`
+- All seven SI base units by symbol or common name: `m`/`meter`, `kg`/`kilogram`, `s`/`second`, `A`/`Ampere`, `K`/`Kelvin`, `mol`, and `cd`
+- Common SI and SI-derived units: `rad`, `Hz`, `N`, `J`, `W`, `V`, `ohm`, `Pa`, `C`, `cm`, `mm`, `km`, `L`, `g`, `degC`, and `degF`
+- Common non-SI and scalar units: `minute`, `h`, `hr`, `ft`/`foot`, `in`/`inch`, `mile`, `lb`, `gal`, `deg`, `mph`, `count`, and `currency`
+- Main prefixes as scalar units: `milli`, `micro`, `nano`, `pico`, `kilo`, `mega`, and `giga`
+
+Additional units remain available through the traditional headers, especially in `units::precise` and its subnamespaces.
+
 ## Try it out
 
 If you want to try out the string conversion components. There is server running that can do the string conversions
