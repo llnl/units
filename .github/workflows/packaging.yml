@@ -101,10 +101,12 @@ jobs:
             -DUNITS_ENABLE_TESTS=ON \
             -DUNITS_INSTALL_PACKAGE_TESTS=ON \
             -DUNITS_BUILD_SHARED_LIBRARY=ON \
-            -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_LINKER_TYPE=LLD -DCMAKE_CXX_FLAGS=-stdlib=libc++
             -DUNITS_BUILD_CXX_MODULE=ON \
             -DCMAKE_CXX_STANDARD=23 \
-            -DCMAKE_INSTALL_PREFIX=/home/runner/work/install
+            -DCMAKE_INSTALL_PREFIX=/home/runner/work/install \
+            -DCMAKE_CXX_COMPILER=clang++ \
+            -DCMAKE_LINKER_TYPE=LLD \
+            -DCMAKE_CXX_FLAGS=-stdlib=libc++
 
       - name: Build
         run: cmake --build build -j2
