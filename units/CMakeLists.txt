@@ -228,7 +228,7 @@ if(UNITS_BUILD_CXX_MODULE)
         PUBLIC ${UNITS_LC_PROJECT_NAME}::units
         PRIVATE compile_flags_target
     )
-    target_compile_features(module PUBLIC cxx_std_20)
+    target_compile_features(module PUBLIC cxx_std_${CMAKE_CXX_STANDARD})
     set_target_properties(
         module PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD} CXX_STANDARD_REQUIRED ON
     )
