@@ -1434,19 +1434,19 @@ namespace precise {
     constexpr precise_unit rpm = other::rpm;
 }  // namespace precise
 
-constexpr unit meter = unit_cast(precise::meter);
-constexpr unit m = meter;
-constexpr unit kilogram = unit_cast(precise::kg);
-constexpr unit kg = kilogram;
-constexpr unit second = unit_cast(precise::second);
-constexpr unit s = second;
+UNITS_MODULE_INLINE constexpr unit meter = unit_cast(precise::meter);
+UNITS_MODULE_INLINE constexpr unit m = meter;
+UNITS_MODULE_INLINE constexpr unit kilogram = unit_cast(precise::kg);
+UNITS_MODULE_INLINE constexpr unit kg = kilogram;
+UNITS_MODULE_INLINE constexpr unit second = unit_cast(precise::second);
+UNITS_MODULE_INLINE constexpr unit s = second;
 
-constexpr unit Ampere = unit_cast(precise::Ampere);
-constexpr unit A = Ampere;
+UNITS_MODULE_INLINE constexpr unit Ampere = unit_cast(precise::Ampere);
+UNITS_MODULE_INLINE constexpr unit A = Ampere;
 
-constexpr unit Kelvin = unit_cast(precise::Kelvin);
-constexpr unit K = Kelvin;
-constexpr unit mol = unit_cast(precise::mol);
+UNITS_MODULE_INLINE constexpr unit Kelvin = unit_cast(precise::Kelvin);
+UNITS_MODULE_INLINE constexpr unit K = Kelvin;
+UNITS_MODULE_INLINE constexpr unit mol = unit_cast(precise::mol);
 constexpr unit cd = unit_cast(precise::cd);
 
 constexpr unit currency = unit_cast(precise::currency);
@@ -1454,7 +1454,7 @@ constexpr unit count = unit_cast(precise::count);
 constexpr unit pu = unit_cast(precise::pu);
 constexpr unit iflag = unit_cast(precise::iflag);
 constexpr unit eflag = unit_cast(precise::eflag);
-constexpr unit rad = unit_cast(precise::rad);
+UNITS_MODULE_INLINE constexpr unit rad = unit_cast(precise::rad);
 
 constexpr unit defunit = unit_cast(precise::defunit);
 constexpr unit invalid{
@@ -1477,7 +1477,7 @@ constexpr bool is_default(const unit& utest)
 }
 
 /// Define a unitless number
-constexpr unit one;
+UNITS_MODULE_INLINE constexpr unit one;
 constexpr unit infinite = unit_cast(precise::infinite);
 constexpr unit error = unit_cast(precise::error);
 constexpr unit ratio = one;
@@ -1527,17 +1527,17 @@ constexpr unit peta{1e15, one};
 constexpr unit exa{1e18, one};
 
 // SI Derived units:
-constexpr unit Hz = unit_cast(precise::Hz);
+UNITS_MODULE_INLINE constexpr unit Hz = unit_cast(precise::Hz);
 
 constexpr unit volt = unit_cast(precise::volt);
-constexpr unit V = volt;
-constexpr unit newton = unit_cast(precise::newton);
+UNITS_MODULE_INLINE constexpr unit V = volt;
+UNITS_MODULE_INLINE constexpr unit newton = unit_cast(precise::newton);
 constexpr unit Pa = unit_cast(precise::Pa);
-constexpr unit joule = unit_cast(precise::joule);
-constexpr unit watt = unit_cast(precise::watt);
-constexpr unit coulomb = unit_cast(precise::coulomb);
+UNITS_MODULE_INLINE constexpr unit joule = unit_cast(precise::joule);
+UNITS_MODULE_INLINE constexpr unit watt = unit_cast(precise::watt);
+UNITS_MODULE_INLINE constexpr unit coulomb = unit_cast(precise::coulomb);
 constexpr unit farad = unit_cast(precise::farad);
-constexpr unit ohm = unit_cast(precise::ohm);
+UNITS_MODULE_INLINE constexpr unit ohm = unit_cast(precise::ohm);
 constexpr unit siemens = unit_cast(precise::siemens);
 constexpr unit weber = unit_cast(precise::weber);
 constexpr unit tesla = unit_cast(precise::tesla);
@@ -1549,10 +1549,10 @@ constexpr unit gray = unit_cast(precise::gray);
 constexpr unit sievert = unit_cast(precise::sievert);
 constexpr unit katal = unit_cast(precise::katal);
 
-constexpr unit N = newton;
-constexpr unit J = joule;
-constexpr unit W = watt;
-constexpr unit C = coulomb;
+UNITS_MODULE_INLINE constexpr unit N = newton;
+UNITS_MODULE_INLINE constexpr unit J = joule;
+UNITS_MODULE_INLINE constexpr unit W = watt;
+UNITS_MODULE_INLINE constexpr unit C = coulomb;
 constexpr unit F = farad;
 constexpr unit S = siemens;
 constexpr unit Wb = weber;
@@ -1572,15 +1572,15 @@ constexpr unit bar = unit_cast(precise::bar);
 // Distance units
 constexpr unit inch = unit_cast(precise::in);
 constexpr unit in = inch;
-constexpr unit foot = unit_cast(precise::ft);
-constexpr unit ft = foot;
+UNITS_MODULE_INLINE constexpr unit foot = unit_cast(precise::ft);
+UNITS_MODULE_INLINE constexpr unit ft = foot;
 
 constexpr unit yard = unit_cast(precise::yd);
 constexpr unit yd = yard;
 constexpr unit mile = unit_cast(precise::mile);
-constexpr unit cm = unit_cast(precise::cm);
-constexpr unit km = unit_cast(precise::km);
-constexpr unit mm = unit_cast(precise::mm);
+UNITS_MODULE_INLINE constexpr unit cm = unit_cast(precise::cm);
+UNITS_MODULE_INLINE constexpr unit km = unit_cast(precise::km);
+UNITS_MODULE_INLINE constexpr unit mm = unit_cast(precise::mm);
 constexpr unit nm = unit_cast(precise::nm);
 
 //  Area units
@@ -1589,8 +1589,8 @@ constexpr unit acre = unit_cast(precise::acre);
 constexpr unit minute = unit_cast(precise::minute);
 constexpr unit ms = unit_cast(precise::ms);
 constexpr unit ns = unit_cast(precise::ns);
-constexpr unit hr = unit_cast(precise::hr);
-constexpr unit h = unit_cast(precise::h);
+UNITS_MODULE_INLINE constexpr unit hr = unit_cast(precise::hr);
+UNITS_MODULE_INLINE constexpr unit h = unit_cast(precise::h);
 constexpr unit yr = unit_cast(precise::yr);
 // angle measure
 constexpr unit deg = unit_cast(precise::deg);
@@ -1800,12 +1800,12 @@ constexpr unit btu = unit_cast(precise::btu);
 constexpr unit kWh = unit_cast(precise::kWh);
 constexpr unit MWh = unit_cast(precise::MWh);
 // Volume units
-constexpr unit L = unit_cast(precise::L);
+UNITS_MODULE_INLINE constexpr unit L = unit_cast(precise::L);
 // gallon not galileo
 constexpr unit gal = unit_cast(precise::gal);
 // Weight units
 
-constexpr unit g = unit_cast(precise::g);
+UNITS_MODULE_INLINE constexpr unit g = unit_cast(precise::g);
 constexpr unit mg = unit_cast(precise::mg);
 constexpr unit lb = unit_cast(precise::lb);
 constexpr unit ton = unit_cast(precise::ton);

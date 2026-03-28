@@ -53,41 +53,27 @@ using ::units::operator/;
 
 namespace domains = ::units::domains;
 namespace precise = ::units::precise;
-
-namespace constants {
-    inline constexpr auto pi = ::units::constants::pi;
-    inline constexpr auto tau = ::units::constants::tau;
-    inline constexpr auto invalid_conversion =
-        ::units::constants::invalid_conversion;
-    inline constexpr auto infinity = ::units::constants::infinity;
-    inline constexpr auto standard_gravity =
-        ::units::constants::standard_gravity;
-    inline constexpr auto speed_of_light = ::units::constants::speed_of_light;
-}  // namespace constants
-
-inline constexpr auto A = ::units::A;
-inline constexpr auto C = ::units::C;
-inline constexpr auto Hz = ::units::Hz;
-inline constexpr auto J = ::units::J;
-inline constexpr auto K = ::units::K;
-inline constexpr auto L = ::units::L;
-inline constexpr auto N = ::units::N;
-inline constexpr auto V = ::units::V;
-inline constexpr auto W = ::units::W;
-inline constexpr auto cm = ::units::cm;
-inline constexpr auto ft = ::units::ft;
-inline constexpr auto g = ::units::g;
-inline constexpr auto h = ::units::h;
-inline constexpr auto hr = ::units::hr;
-inline constexpr auto kg = ::units::kg;
-inline constexpr auto km = ::units::km;
-inline constexpr auto m = ::units::m;
-inline constexpr auto min = ::units::min;
-inline constexpr auto mm = ::units::mm;
-inline constexpr auto mol = ::units::mol;
-inline constexpr auto ohm = ::units::ohm;
-inline constexpr auto one = ::units::one;
-inline constexpr auto rad = ::units::rad;
-inline constexpr auto s = ::units::s;
-inline constexpr auto sec = ::units::s;
+using ::units::A;
+using ::units::C;
+using ::units::Hz;
+using ::units::J;
+using ::units::K;
+using ::units::L;
+using ::units::N;
+using ::units::V;
+using ::units::W;
+using ::units::cm;
+using ::units::ft;
+using ::units::g;
+using ::units::h;
+using ::units::hr;
+using ::units::kg;
+using ::units::km;
+using ::units::m;
+using ::units::mm;
+using ::units::mol;
+using ::units::ohm;
+using ::units::one;
+using ::units::rad;
+using ::units::s;
 }  // namespace units

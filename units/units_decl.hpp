@@ -27,6 +27,12 @@ SPDX-License-Identifier: BSD-3-Clause
 #define UNITS_BASE_TYPE uint32_t
 #endif
 
+#if __cplusplus >= 201703L
+#define UNITS_MODULE_INLINE inline
+#else
+#define UNITS_MODULE_INLINE static
+#endif
+
 namespace UNITS_NAMESPACE {
 namespace detail {
 
