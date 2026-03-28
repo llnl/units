@@ -349,12 +349,16 @@ namespace precise {
             day* eflag};  // mean tropical year
         UNITS_MODULE_INLINE constexpr precise_unit aj{365.25, day};  // julian
                                                                      // year
-        UNITS_MODULE_INLINE constexpr precise_unit ag{365.2425, day};  // gregorian
-                                                                       // year
+        UNITS_MODULE_INLINE constexpr precise_unit ag{
+            365.2425,
+            day};  // gregorian
+                   // year
         UNITS_MODULE_INLINE constexpr precise_unit year =
             yr;  // standard year for SI
-        UNITS_MODULE_INLINE constexpr precise_unit mos{29.53059, day};  // synodal
-                                                                        // month
+        UNITS_MODULE_INLINE constexpr precise_unit mos{
+            29.53059,
+            day};  // synodal
+                   // month
         UNITS_MODULE_INLINE constexpr precise_unit moj{
             1.0 / 12.0,
             aj};  // mean julian month
@@ -921,12 +925,16 @@ namespace precise {
 
         UNITS_MODULE_INLINE constexpr precise_unit kcal{4184.0, J};
         UNITS_MODULE_INLINE constexpr precise_unit cal_4{4.204, J};
-        UNITS_MODULE_INLINE constexpr precise_unit cal_15{4.18580, J};  // calorie
-                                                                        // at 15
-                                                                        // degC
-        UNITS_MODULE_INLINE constexpr precise_unit cal_20{4.18190, J};  // calorie
-                                                                        // at 20
-                                                                        // degC
+        UNITS_MODULE_INLINE constexpr precise_unit cal_15{
+            4.18580,
+            J};  // calorie
+                 // at 15
+                 // degC
+        UNITS_MODULE_INLINE constexpr precise_unit cal_20{
+            4.18190,
+            J};  // calorie
+                 // at 20
+                 // degC
         UNITS_MODULE_INLINE constexpr precise_unit cal_mean{
             4.19002,
             J};  // mean calorie
@@ -934,11 +942,15 @@ namespace precise {
             4.1868,
             J};  // international table
                  // calorie
-        UNITS_MODULE_INLINE constexpr precise_unit cal_th{4.184, J};  // thermochemical
-                                                                      // calorie
+        UNITS_MODULE_INLINE constexpr precise_unit cal_th{
+            4.184,
+            J};  // thermochemical
+                 // calorie
 
-        UNITS_MODULE_INLINE constexpr precise_unit btu_th{1054.350, J};  // thermochemical
-                                                                         // btu
+        UNITS_MODULE_INLINE constexpr precise_unit btu_th{
+            1054.350,
+            J};  // thermochemical
+                 // btu
         UNITS_MODULE_INLINE constexpr precise_unit btu_39{1059.67, J};
         UNITS_MODULE_INLINE constexpr precise_unit btu_59{1054.804, J};
         UNITS_MODULE_INLINE constexpr precise_unit btu_60{1054.68, J};
