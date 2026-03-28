@@ -237,16 +237,14 @@ else()
         )
 
         if(DEFINED CMAKE_CXX_FLAGS AND NOT CMAKE_CXX_FLAGS STREQUAL "")
-            list(
-                APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
-                       "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
+            list(APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
+                 "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
             )
         endif()
 
         if(DEFINED CMAKE_LINKER_TYPE AND NOT CMAKE_LINKER_TYPE STREQUAL "")
-            list(
-                APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
-                       "-DCMAKE_LINKER_TYPE=${CMAKE_LINKER_TYPE}"
+            list(APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
+                 "-DCMAKE_LINKER_TYPE=${CMAKE_LINKER_TYPE}"
             )
         endif()
 
