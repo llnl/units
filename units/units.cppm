@@ -51,8 +51,6 @@ using ::units::unit_from_string;
 using ::units::operator*;
 using ::units::operator/;
 
-namespace domains = ::units::domains;
-namespace precise = ::units::precise;
 using ::units::A;
 using ::units::C;
 using ::units::cm;
