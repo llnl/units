@@ -115,6 +115,11 @@ cmake_dependent_option(
 )
 
 cmake_dependent_option(
+    UNITS_BUILD_CXX_MODULE "Build an experimental C++20 module wrapper target" OFF
+    "NOT CMAKE_VERSION VERSION_LESS 3.28;NOT UNITS_HEADER_ONLY" OFF
+)
+
+cmake_dependent_option(
     UNITS_PYTHON_ONLY_INSTALL "Only install the python library" SKBUILD
     "UNITS_BUILD_PYTHON_LIBRARY" OFF
 )

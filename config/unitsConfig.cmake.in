@@ -2,6 +2,7 @@
 # It defines the following variables
 #  UNITS_INCLUDE_DIRS - include directories for units library
 #  UNITS_LIBRARIES    - libraries to link against
+#  UNITS_MODULE       - C++20 module target, when installed
 #  UNITS_WEBSERVER   - the units webserver executable
 #  UNITS_CONVERT  - the units conversion utility
 
@@ -16,5 +17,6 @@ endif()
 
 # These are IMPORTED targets created by FooBarTargets.cmake
 set(UNITS_LIBRARIES units::units)
+set(UNITS_MODULE units::module)
 set(UNITS_WEBSERVER units::units_webserver)
 set(UNITS_CONVERT units::units_convert)

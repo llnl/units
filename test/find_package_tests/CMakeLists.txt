@@ -17,8 +17,18 @@ if(NOT UNITS_TARGET)
     set(UNITS_TARGET units)
 endif()
 
+if(NOT DEFINED UNITS_BUILD_CXX_MODULE)
+    set(UNITS_BUILD_CXX_MODULE OFF)
+endif()
+
 # Test the HELICS CMake package config
-find_package(${UNITS_TARGET} 0.9 REQUIRED)
+if(DEFINED UNITS_PACKAGE_LOCATION)
+    find_package(
+        ${UNITS_TARGET} 0.9 REQUIRED PATHS "${UNITS_PACKAGE_LOCATION}" NO_DEFAULT_PATH
+    )
+else()
+    find_package(${UNITS_TARGET} 0.9 REQUIRED)
+endif()
 
 # add some tests inside of the CMake
 
@@ -43,3 +53,17 @@ target_compile_definitions(
 )
 add_test(NAME header_only-exe COMMAND header_only-exe)
 set_property(TEST header_only-exe PROPERTY PASS_REGULAR_EXPRESSION "PASS")
+
+if(UNITS_BUILD_CXX_MODULE AND TARGET ${UNITS_TARGET}::module)
+    add_executable(module-test-exe ../pkg_test_code/module.cpp)
+    target_link_libraries(module-test-exe ${UNITS_TARGET}::module)
+    if(CMAKE_CXX_STANDARD)
+        set_property(TARGET module-test-exe PROPERTY CXX_STANDARD ${CMAKE_CXX_STANDARD})
+        set_property(TARGET module-test-exe PROPERTY CXX_STANDARD_REQUIRED ON)
+    else()
+        target_compile_features(module-test-exe PRIVATE cxx_std_20)
+    endif()
+
+    add_test(NAME module-test-exe COMMAND module-test-exe)
+    set_property(TEST module-test-exe PROPERTY PASS_REGULAR_EXPRESSION "PASS")
+endif()
