@@ -225,6 +225,31 @@ else()
             set(UNITS_PACKAGE_TEST_BUILD_TYPE Release)
         endif()
 
+        set(UNITS_PACKAGE_TEST_CMAKE_ARGS
+            ${UNITS_PACKAGE_SEARCH_LOC}
+            "-DUNITS_BUILD_SHARED_LIBRARY=${UNITS_BUILD_SHARED_LIBRARY}"
+            "-DUNITS_BUILD_CXX_MODULE=${UNITS_BUILD_CXX_MODULE}"
+            "-DUNITS_TARGET=${UNITS_LC_PROJECT_NAME}"
+            "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
+            "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
+            "-DCMAKE_CXX_EXTENSIONS=${CMAKE_CXX_EXTENSIONS}"
+            "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+        )
+
+        if(DEFINED CMAKE_CXX_FLAGS AND NOT CMAKE_CXX_FLAGS STREQUAL "")
+            list(
+                APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
+                       "-DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}"
+            )
+        endif()
+
+        if(DEFINED CMAKE_LINKER_TYPE AND NOT CMAKE_LINKER_TYPE STREQUAL "")
+            list(
+                APPEND UNITS_PACKAGE_TEST_CMAKE_ARGS
+                       "-DCMAKE_LINKER_TYPE=${CMAKE_LINKER_TYPE}"
+            )
+        endif()
+
         file(MAKE_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/find_package_tests")
 
         if(MSVC AND ${CMAKE_VERSION} VERSION_GREATER 3.12.9)
@@ -234,13 +259,7 @@ else()
                 NAME find-package-testsA
                 COMMAND
                     ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" -A
-                    "${CMAKE_GENERATOR_PLATFORM}" ${UNITS_PACKAGE_SEARCH_LOC}
-                    "-DUNITS_BUILD_SHARED_LIBRARY=${UNITS_BUILD_SHARED_LIBRARY}"
-                    "-DUNITS_BUILD_CXX_MODULE=${UNITS_BUILD_CXX_MODULE}"
-                    "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
-                    "-DUNITS_TARGET=${UNITS_LC_PROJECT_NAME}"
-                    "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
-                    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+                    "${CMAKE_GENERATOR_PLATFORM}" ${UNITS_PACKAGE_TEST_CMAKE_ARGS}
                     "${CMAKE_CURRENT_SOURCE_DIR}/find_package_tests"
                 WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/find_package_tests"
             )
@@ -248,13 +267,8 @@ else()
             add_test(
                 NAME find-package-testsA
                 COMMAND
-                    ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}" ${UNITS_PACKAGE_SEARCH_LOC}
-                    "-DUNITS_BUILD_SHARED_LIBRARY=${UNITS_BUILD_SHARED_LIBRARY}"
-                    "-DUNITS_BUILD_CXX_MODULE=${UNITS_BUILD_CXX_MODULE}"
-                    "-DUNITS_TARGET=${UNITS_LC_PROJECT_NAME}"
-                    "-DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}"
-                    "-DCMAKE_CXX_STANDARD=${CMAKE_CXX_STANDARD}"
-                    "-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+                    ${CMAKE_COMMAND} -G "${CMAKE_GENERATOR}"
+                    ${UNITS_PACKAGE_TEST_CMAKE_ARGS}
                     "${CMAKE_CURRENT_SOURCE_DIR}/find_package_tests"
                 WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/find_package_tests"
             )
