@@ -4,22 +4,20 @@ Lawrence Livermore National Security, LLC;
 See the top-level NOTICE for additional details. All rights reserved.
 SPDX-License-Identifier: BSD-3-Clause
 */
-
-#include UNITS_LIB_HEADER
+import units;
 
 #include <iostream>
 
 int main()
 {
-    using namespace units;
-    units::measurement b(50.0, m);
-    units::measurement c(25.0, ft);
-    auto k = b * c;
+    auto speed = 10.0 * units::m / units::s;
+    auto speed2 = units::measurement_from_string("36 km/hr");
 
-    if (k.units().has_same_base(m.pow(2))) {
+    if (speed2.value_as(units::m / units::s) == 10.0 &&
+        speed.units() == (units::m / units::s)) {
         std::cout << "PASS\n";
     } else {
-        std::cout << "FAILE\n";
+        std::cout << "FAIL\n";
     }
     return 0;
 }

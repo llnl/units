@@ -27,6 +27,12 @@ SPDX-License-Identifier: BSD-3-Clause
 #define UNITS_BASE_TYPE uint32_t
 #endif
 
+#if __cplusplus >= 201703L
+#define UNITS_MODULE_INLINE inline
+#else
+#define UNITS_MODULE_INLINE static
+#endif
+
 namespace UNITS_NAMESPACE {
 namespace detail {
 
@@ -38,19 +44,23 @@ namespace detail {
     namespace bitwidth {
         // this allows 4 or 8 bytes in the type, all sizes other than 8 default
         // to 4 bytes
-        constexpr uint32_t base_size = sizeof(UNITS_BASE_TYPE) == 8 ? 8 : 4;
-        constexpr std::size_t base_byte_count =
+        UNITS_MODULE_INLINE constexpr uint32_t base_size =
+            sizeof(UNITS_BASE_TYPE) == 8 ? 8 : 4;
+        UNITS_MODULE_INLINE constexpr std::size_t base_byte_count =
             static_cast<std::size_t>(base_size);
-        constexpr uint32_t meter{(base_size == 8) ? 8 : 4};
-        constexpr uint32_t second{(base_size == 8) ? 8 : 4};
-        constexpr uint32_t kilogram{(base_size == 8) ? 6 : 3};
-        constexpr uint32_t ampere{(base_size == 8) ? 6 : 3};
-        constexpr uint32_t candela{(base_size == 8) ? 4 : 2};
-        constexpr uint32_t kelvin{(base_size == 8) ? 6 : 3};
-        constexpr uint32_t mole{(base_size == 8) ? 4 : 2};
-        constexpr uint32_t radian{(base_size == 8) ? 6 : 3};
-        constexpr uint32_t currency{(base_size == 8) ? 6 : 2};
-        constexpr uint32_t count{(base_size == 8) ? 6 : 2};
+        UNITS_MODULE_INLINE constexpr uint32_t meter{(base_size == 8) ? 8 : 4};
+        UNITS_MODULE_INLINE constexpr uint32_t second{(base_size == 8) ? 8 : 4};
+        UNITS_MODULE_INLINE constexpr uint32_t kilogram{
+            (base_size == 8) ? 6 : 3};
+        UNITS_MODULE_INLINE constexpr uint32_t ampere{(base_size == 8) ? 6 : 3};
+        UNITS_MODULE_INLINE constexpr uint32_t candela{
+            (base_size == 8) ? 4 : 2};
+        UNITS_MODULE_INLINE constexpr uint32_t kelvin{(base_size == 8) ? 6 : 3};
+        UNITS_MODULE_INLINE constexpr uint32_t mole{(base_size == 8) ? 4 : 2};
+        UNITS_MODULE_INLINE constexpr uint32_t radian{(base_size == 8) ? 6 : 3};
+        UNITS_MODULE_INLINE constexpr uint32_t currency{
+            (base_size == 8) ? 6 : 2};
+        UNITS_MODULE_INLINE constexpr uint32_t count{(base_size == 8) ? 6 : 2};
 
         /** verify that the actual sum of bitwidths is the appropriate size
         4 bits for the flags*/
