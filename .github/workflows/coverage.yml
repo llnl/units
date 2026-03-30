@@ -53,7 +53,7 @@ jobs:
           lcov --list coverage.info
         working-directory: build
 
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@v6
         with:
           files: build/coverage.info
           fail_ci_if_error: true
