@@ -150,18 +150,14 @@ jobs:
           containerImage: helics/buildenv:clang18-builder
           units.std: 23
           units.options: -DUSE_LIBCXX=ON -DCMAKE_CXX_FLAGS=-std=c++23
-        clang20_23:
-          containerImage: helics/buildenv:clang20-builder
-          units.std: 23
-          units.options: -DUSE_LIBCXX=ON -DUNITS_BASE_TYPE=uint64_t -DCMAKE_CXX_FLAGS=-std=c++23
         clang21_23:
           containerImage: helics/buildenv:clang21-builder
           units.std: 23
-          units.options: -DUSE_LIBCXX=ON -DCMAKE_CXX_FLAGS=-std=c++23
+          units.options: -DUSE_LIBCXX=ON -DUNITS_BASE_TYPE=uint64_t -DCMAKE_CXX_FLAGS="-std=c++23 -Wshadow-all"
         clang22_26:
           containerImage: helics/buildenv:clang22-builder
           units.std: 26
-          units.options: -DUSE_LIBCXX=ON -DCMAKE_CXX_FLAGS=-std=c++2c
+          units.options: -DUSE_LIBCXX=ON -DCMAKE_CXX_FLAGS="-std=c++2c -Wunsafe-buffer-usage"
     container: $[ variables['containerImage'] ]
     steps:
       - template: .ci/azure-build.yml
