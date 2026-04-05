@@ -525,15 +525,13 @@ namespace detail {
     template<typename X>
     constexpr X power_const(X val, int power)
     {
-        if (power > 1) {
-            return power_const_positive(val, static_cast<unsigned int>(power));
-        }
-        if (power < -1) {
-            const auto magnitude =
-                static_cast<unsigned int>(-(power + 1)) + 1U;
-            return X{1.0} / power_const_positive(val, magnitude);
-        }
-        return power_const_small(val, power);
+        return (power > 1) ?
+                power_const_positive(val, static_cast<unsigned int>(power)) :
+            (power < -1) ?
+                X{1.0} /
+                    power_const_positive(
+                        val, static_cast<unsigned int>(-(power + 1)) + 1U) :
+                power_const_small(val, power);
     }
 
     /// Round the multiplier to the expected level of precision
