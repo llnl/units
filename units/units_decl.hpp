@@ -509,10 +509,9 @@ namespace detail {
     template<typename X>
     constexpr X power_const_positive(X val, unsigned int power)
     {
-        return (power > 1U) ?
-                sqr_power(power_const_positive(val, power / 2U)) *
-                    ((power % 2U == 0U) ? X{1.0} : val) :
-            ((power == 1U) ? val : X{1.0});
+        return (power > 1U) ? sqr_power(power_const_positive(val, power / 2U)) *
+                ((power % 2U == 0U) ? X{1.0} : val) :
+                              ((power == 1U) ? val : X{1.0});
     }
     /// constexpr operator to generate small integer powers of a value(1,0,-1)
     template<typename X>
@@ -529,8 +528,7 @@ namespace detail {
             return power_const_positive(val, static_cast<unsigned int>(power));
         }
         if (power < -1) {
-            const auto magnitude =
-                static_cast<unsigned int>(-(power + 1)) + 1U;
+            const auto magnitude = static_cast<unsigned int>(-(power + 1)) + 1U;
             return X{1.0} / power_const_positive(val, magnitude);
         }
         return power_const_small(val, power);
