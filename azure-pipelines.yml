@@ -121,6 +121,10 @@ jobs:
         gcc13:
           containerImage: gcc:13
           units.std: 20
+        gcc15:
+          containerImage: gcc:15
+          units.std: 23
+          units.options: -DCMAKE_CXX_FLAGS="-Warith-conversion -Wbidi-chars=any"
     container: $[ variables['containerImage'] ]
     steps:
       - template: .ci/azure-cmake.yml
