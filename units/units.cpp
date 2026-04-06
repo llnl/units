@@ -1353,7 +1353,7 @@ static std::string
         mstring.push_back('*');
 
         mstring.append(to_string_internal(un, match_flags));
-        if (mstring.back() == '*') {
+        if (!mstring.empty() && mstring.back() == '*') {
             mstring.pop_back();
         }
         return mstring;

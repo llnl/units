@@ -46,16 +46,22 @@ if(NOT UNITS_USE_EXTERNAL_GTEST AND NOT GTest_FOUND)
 
     if(NOT MSVC)
         target_compile_options(
-            gtest PUBLIC "-Wno-undef" "-Wno-c++17-attribute-extensions"
+            gtest PUBLIC "-Wno-undef"
+                         $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
         )
         target_compile_options(
-            gmock PUBLIC "-Wno-undef" "-Wno-c++17-attribute-extensions"
+            gmock PUBLIC "-Wno-undef"
+                         $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
         )
         target_compile_options(
-            gtest_main PUBLIC "-Wno-undef" "-Wno-c++17-attribute-extensions"
+            gtest_main
+            PUBLIC "-Wno-undef"
+                   $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
         )
         target_compile_options(
-            gmock_main PUBLIC "-Wno-undef" "-Wno-c++17-attribute-extensions"
+            gmock_main
+            PUBLIC "-Wno-undef"
+                   $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
         )
     endif()
 
