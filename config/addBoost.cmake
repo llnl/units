@@ -7,26 +7,39 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-
 macro(HIDE_VARIABLE var)
     if(DEFINED ${var})
-        set(${var} "${${var}}" CACHE INTERNAL "")
+        set(${var}
+            "${${var}}"
+            CACHE INTERNAL ""
+        )
     endif(DEFINED ${var})
 endmacro(HIDE_VARIABLE)
 
 macro(SHOW_VARIABLE var type doc default)
     if(DEFINED ${var})
-        set(${var} "${${var}}" CACHE "${type}" "${doc}" FORCE)
+        set(${var}
+            "${${var}}"
+            CACHE "${type}" "${doc}" FORCE
+        )
     else(DEFINED ${var})
-        set(${var} "${default}" CACHE "${type}" "${doc}")
+        set(${var}
+            "${default}"
+            CACHE "${type}" "${doc}"
+        )
     endif(DEFINED ${var})
 endmacro(SHOW_VARIABLE)
 
 if(DEFINED BOOST_INSTALL_PATH)
-   set(BOOST_INSTALL_PATH "${BOOST_INSTALL_PATH}" CACHE "PATH" "Boost root directory" FORCE)
+    set(BOOST_INSTALL_PATH
+        "${BOOST_INSTALL_PATH}"
+        CACHE "PATH" "Boost root directory" FORCE
+    )
 else()
-    set(BOOST_INSTALL_PATH "${BOOST_INSTALL_PATH}" CACHE "PATH" "Boost root directory")
+    set(BOOST_INSTALL_PATH
+        "${BOOST_INSTALL_PATH}"
+        CACHE "PATH" "Boost root directory"
+    )
 endif()
 
 mark_as_advanced(BOOST_INSTALL_PATH)
@@ -162,7 +175,10 @@ if(NOT BOOST_ROOT)
     message(STATUS "setting BOOST_ROOT ${BOOST_ROOT}")
 endif()
 
-set(BOOST_TEST_PATH "${BOOST_TEST_PATH}" CACHE INTERNAL "")
+set(BOOST_TEST_PATH
+    "${BOOST_TEST_PATH}"
+    CACHE INTERNAL ""
+)
 if(NOT BOOST_REQUIRED_LIBRARIES)
     set(BOOST_REQUIRED_LIBRARIES)
 endif()
