@@ -347,9 +347,9 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {u8"\U0001D70B", precise_unit(constants::pi, one)},
          {u8"\U0001D745", precise_unit(constants::pi, one)},
          {u8"\U0001D6D1", precise_unit(constants::pi, one)},
-         {u8"\u03B5", precise::pu* precise::m},  // strain
-         {u8"\u0190", precise::pu* precise::m},  // strain
-         {"strain", precise::pu* precise::m},  // strain
+         {u8"\u03B5", precise::pu * precise::m},  // strain
+         {u8"\u0190", precise::pu * precise::m},  // strain
+         {"strain", precise::pu * precise::m},  // strain
          {"m", precise::m},
          {"Sm", precise::m},  // standard meter used in oil and gas usually Sm^3
          {"meter", precise::m},
@@ -357,8 +357,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"squaremeter",
           precise::m.pow(2)},  // to simplify some things later in the chain
          {"cubicmeter", precise::m.pow(3)},
-         {"micron", precise::micro* precise::m},
-         {"fermi", precise::femto* precise::m},
+         {"micron", precise::micro * precise::m},
+         {"fermi", precise::femto * precise::m},
          {"xunit", precise::distance::xu},
          {"xu", precise::distance::xu},
          {"X", precise::distance::xu},
@@ -415,8 +415,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"A", precise::A},
          {"amp", precise::A},
          {"amps", precise::A},
-         {"ampturn", precise::A* precise::count},
-         {"At", precise::A* precise::count},
+         {"ampturn", precise::A * precise::count},
+         {"At", precise::A * precise::count},
          {"V", precise::V},
          {"volt", precise::V},
          {"volt_ac", precise::V},
@@ -440,8 +440,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"s", precise::s},
          {"sec", precise::s},
          {"sec_time", precise::s},
-         {"MAS", precise::mega* precise::s},
-         {"mAS", precise::mega* precise::s},
+         {"MAS", precise::mega * precise::s},
+         {"mAS", precise::mega * precise::s},
          {"second", precise::s},
          {"second_time", precise::s},
          {"shake", precise_unit(10.0, precise::ns)},
@@ -450,7 +450,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
                                                      // and clock rate
          {"cd", precise::cd},
          {"mcd",
-          precise::milli* precise::cd},  // prefer milli candela to micro-day
+          precise::milli * precise::cd},  // prefer milli candela to micro-day
          {"CD", precise::cd},
          {"candela", precise::cd},
          {"metercandle", precise::lumen / precise::m.pow(2)},
@@ -465,16 +465,16 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"degK", precise::K},
          {"degsK", precise::K},
          {"N", precise::N},
-         {"Ns", precise::N* precise::s},  // this would not pass through to the
-                                          // separation functions
-         {"Nm", precise::N* precise::m},  // this would not pass through to the
-                                          // separation functions
-         {"As", precise::A* precise::s},  // this would not pass through to the
-                                          // separation functions
-         {"Ah", precise::A* precise::hr},  // this would not pass through to the
+         {"Ns", precise::N * precise::s},  // this would not pass through to the
                                            // separation functions
-         {"Ahr", precise::A* precise::hr},  // this would not pass through to
+         {"Nm", precise::N * precise::m},  // this would not pass through to the
+                                           // separation functions
+         {"As", precise::A * precise::s},  // this would not pass through to the
+                                           // separation functions
+         {"Ah", precise::A * precise::hr},  // this would not pass through to
                                             // the separation functions
+         {"Ahr", precise::A * precise::hr},  // this would not pass through to
+                                             // the separation functions
          {"newton", precise::N},
          {"Pa", precise::Pa},
          {"pa", precise::Pa},
@@ -501,8 +501,10 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"OHM", precise::ohm},
          {"ohm", precise::ohm},
          {"Ohm", precise::ohm},
-         {"kilohm", precise::kilo* precise::ohm},  // special case allowed by SI
-         {"megohm", precise::mega* precise::ohm},  // special case allowed by SI
+         {"kilohm",
+          precise::kilo * precise::ohm},  // special case allowed by SI
+         {"megohm",
+          precise::mega * precise::ohm},  // special case allowed by SI
          {u8"\u03A9", precise::ohm},  // Greek Omega
          {u8"\u2126", precise::ohm},  // Unicode Ohm symbol
          {"abOhm", precise::cgs::abOhm},
@@ -538,7 +540,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"lumen", precise::lm},
          {"lux", precise::lx},
          {"luxes", precise::lx},
-         {"nox", precise::milli* precise::lx},
+         {"nox", precise::milli * precise::lx},
          {"lx", precise::lx},
          {"LX", precise::lx},
          {"Bq", precise::Bq},
@@ -564,14 +566,15 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
           precise_unit(
               1e-26,
               precise::W / precise::m / precise::m / precise::Hz)},
-         {"Mm^3", precise::kilo* precise::energy::scm},  // millum cubic meters
+         {"Mm^3", precise::kilo * precise::energy::scm},  // millum cubic meters
          {"Nm^3", precise::energy::ncm},  // normal cubic meter
          {"Sm^3", precise::energy::scm},  // standard cubic meter
          {"MMm^3",
-          precise::mega* precise::energy::scm},  // million cubic meters
-         {"bm^3", precise::giga* precise::energy::scm},  // billion cubic meters
+          precise::mega * precise::energy::scm},  // million cubic meters
+         {"bm^3",
+          precise::giga * precise::energy::scm},  // billion cubic meters
          {"tm^3",
-          precise::tera* precise::energy::scm},  // trillion cubic meters
+          precise::tera * precise::energy::scm},  // trillion cubic meters
          {"gwp", precise::climate::gwp},  // global warming potential
          {"gtp", precise::climate::gtp},  // global temperature potential
          {"ode", precise::climate::odp},  // ozone depletion equivalent
@@ -605,11 +608,11 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"yearly", precise::time::year.inv()},  // year
          {"annum", precise::time::year},  // year
          {"ANN", precise::time::aj},  // year
-         {"decade", precise::ten* precise::time::aj},  // year
-         {"century", precise::hundred* precise::time::aj},  // year
-         {"centuries", precise::hundred* precise::time::aj},  // year
-         {"millennia", precise::kilo* precise::time::ag},  // year
-         {"millennium", precise::kilo* precise::time::ag},  // year
+         {"decade", precise::ten * precise::time::aj},  // year
+         {"century", precise::hundred * precise::time::aj},  // year
+         {"centuries", precise::hundred * precise::time::aj},  // year
+         {"millennia", precise::kilo * precise::time::ag},  // year
+         {"millennium", precise::kilo * precise::time::ag},  // year
          {"syr", precise::time::syr},  // sidereal year
          {"year_sdr", precise::time::syr},  // sidereal year
          {"yr_sdr", precise::time::syr},  // sidereal year
@@ -697,20 +700,20 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"angulardeg", precise::deg},
          {"deg", precise::deg},
          {"DEG", precise::deg},
-         {"degE", precise::deg* precise::direction::east},
+         {"degE", precise::deg * precise::direction::east},
          {"east", precise::direction::east},
-         {"degsE", precise::deg* precise::direction::east},
-         {"degW", precise::deg* precise::direction::west},
+         {"degsE", precise::deg * precise::direction::east},
+         {"degW", precise::deg * precise::direction::west},
          {"west", precise::direction::west},
-         {"degsW", precise::deg* precise::direction::west},
-         {"degS", precise::deg* precise::direction::south},
+         {"degsW", precise::deg * precise::direction::west},
+         {"degS", precise::deg * precise::direction::south},
          {"south", precise::direction::south},
-         {"degsS", precise::deg* precise::direction::south},
-         {"degN", precise::deg* precise::direction::north},
+         {"degsS", precise::deg * precise::direction::south},
+         {"degN", precise::deg * precise::direction::north},
          {"degsN", precise::direction::north},
          {"north", precise::direction::north},
-         {"degT", precise::deg* precise::direction::north},
-         {"degsT", precise::deg* precise::direction::north},
+         {"degT", precise::deg * precise::direction::north},
+         {"degsT", precise::deg * precise::direction::north},
          {"true", precise::direction::north},
          {"o", precise::deg},
          {u8"\u00B0", precise::deg},  // unicode degree symbol
@@ -1000,8 +1003,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"BI", precise::cgs::biot},
          {"biot", precise::cgs::biot},
          {"abamp", precise::cgs::biot},
-         {"abcoulomb", precise::cgs::biot* precise::s},
-         {"abC", precise::cgs::biot* precise::s},
+         {"abcoulomb", precise::cgs::biot * precise::s},
+         {"abC", precise::cgs::biot * precise::s},
          {"statamp", precise::cgs::statC_charge / precise::s},
          {"stA", precise::cgs::statC_charge / precise::s},
          {"abA", precise::cgs::biot},
@@ -1129,8 +1132,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"IFLAG", precise::iflag},
          {"imaginary", precise::iflag},
          {"sqrt(-1)", precise::iflag},
-         {"puOhm", precise::pu* precise::ohm},
-         {"puohm", precise::pu* precise::ohm},
+         {"puOhm", precise::pu * precise::ohm},
+         {"puohm", precise::pu * precise::ohm},
          {"puHz", precise::electrical::puHz},
          {"puhertz", precise::electrical::puHz},
          {"mps", precise::m / precise::s},
@@ -1149,7 +1152,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"Ha", precise::energy::hartree},
 
          {"fueloilequivalentof1kiloliter",
-          precise::energy::foeb / precise::us::barrel* precise::m.pow(3)},
+          precise::energy::foeb / precise::us::barrel * precise::m.pow(3)},
          {"atm", precise::pressure::atm},
          {"ATM", precise::pressure::atm},
          {"atmos", precise::pressure::atm},
@@ -1161,15 +1164,15 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"mmHg", precise::pressure::mmHg},
          {"mm_Hg", precise::pressure::mmHg},
          {"mM_Hg", precise::pressure::mmHg},
-         {"cm_Hg", precise::ten* precise::pressure::mmHg},
-         {"cM_Hg", precise::ten* precise::pressure::mmHg},
-         {"m_Hg", precise::kilo* precise::pressure::mmHg},
-         {"m[Hg]", precise::kilo* precise::pressure::mmHg},
-         {"m_H2O", precise::kilo* precise::pressure::mmH2O},
-         {"m[H2O]", precise::kilo* precise::pressure::mmH2O},
-         {"cm_H2O", precise::ten* precise::pressure::mmH2O},
-         {"cM_H2O", precise::ten* precise::pressure::mmH2O},
-         {"cmH2O", precise::ten* precise::pressure::mmH2O},
+         {"cm_Hg", precise::ten * precise::pressure::mmHg},
+         {"cM_Hg", precise::ten * precise::pressure::mmHg},
+         {"m_Hg", precise::kilo * precise::pressure::mmHg},
+         {"m[Hg]", precise::kilo * precise::pressure::mmHg},
+         {"m_H2O", precise::kilo * precise::pressure::mmH2O},
+         {"m[H2O]", precise::kilo * precise::pressure::mmH2O},
+         {"cm_H2O", precise::ten * precise::pressure::mmH2O},
+         {"cM_H2O", precise::ten * precise::pressure::mmH2O},
+         {"cmH2O", precise::ten * precise::pressure::mmH2O},
 
          {"mm_H2O", precise::pressure::mmH2O},
          {"mmH2O", precise::pressure::mmH2O},
@@ -1213,8 +1216,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"$/kWh", precise::currency / precise::kWh},
          {"kWh", precise::kWh},
          {"kwh", precise::kWh},
-         {"Wh", precise::W* precise::h},
-         {"Wa", precise::W* precise::yr},
+         {"Wh", precise::W * precise::h},
+         {"Wa", precise::W * precise::yr},
          {"kilowatthour", precise::kWh},
          {"MWh", precise::MWh},
          {"MWhr", precise::MWh},
@@ -1289,33 +1292,33 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"photometriccarat", precise::metric::carat},
          {"g", precise::g},
          {"gm", precise::g},
-         {"gamma", precise::micro* precise::g},
-         {u8"\u1D6FE", precise::micro* precise::g},
-         {"gamma{mass}", precise::micro* precise::g},
-         {"gamma(mass)", precise::micro* precise::g},
-         {"gamma{volume}", precise::micro* precise::L},
-         {"gamma(volume)", precise::micro* precise::L},
-         {"lambda{volume}", precise::micro* precise::L},
-         {"lambda(volume)", precise::micro* precise::L},
+         {"gamma", precise::micro * precise::g},
+         {u8"\u1D6FE", precise::micro * precise::g},
+         {"gamma{mass}", precise::micro * precise::g},
+         {"gamma(mass)", precise::micro * precise::g},
+         {"gamma{volume}", precise::micro * precise::L},
+         {"gamma(volume)", precise::micro * precise::L},
+         {"lambda{volume}", precise::micro * precise::L},
+         {"lambda(volume)", precise::micro * precise::L},
          {"gamma(geo)",
-          precise::nano* precise::T},  // two different uses of gamma
+          precise::nano * precise::T},  // two different uses of gamma
          {"gamma{geo}",
-          precise::nano* precise::T},  // two different uses of gamma
-         {"gf", precise::g* constants::g0.as_unit()},
+          precise::nano * precise::T},  // two different uses of gamma
+         {"gf", precise::g * constants::g0.as_unit()},
          {"gravity", constants::g0.as_unit()},  // force of gravity
          {"geopotential", constants::g0.as_unit()},  // force of gravity
          {"gp", constants::g0.as_unit()},  // force of gravity
          {"force", constants::g0.as_unit()},  // force of gravity
          {"frc", constants::g0.as_unit()},  // force of gravity
-         {"kp", precise::kilo* precise::gm::pond},
+         {"kp", precise::kilo * precise::gm::pond},
          // this is probably more common than kilopoise
-         {"tonforce_m", precise::mass::tonne* constants::g0.as_unit()},
-         {"tf", precise::mass::tonne* constants::g0.as_unit()},
+         {"tonforce_m", precise::mass::tonne * constants::g0.as_unit()},
+         {"tf", precise::mass::tonne * constants::g0.as_unit()},
          {"hyl", precise::gm::hyl},
-         {"GF", precise::g* constants::g0.as_unit()},  // gram-force vs GF
+         {"GF", precise::g * constants::g0.as_unit()},  // gram-force vs GF
          {"gram", precise::g},
          {"mg", precise::mg},
-         {"mcg", precise::micro* precise::g},
+         {"mcg", precise::micro * precise::g},
          {"milligram", precise::mg},
          {"carat", precise::metric::carat},
          {"karat", precise::metric::carat},
@@ -1323,8 +1326,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          // {"kt", precise_unit(200.0, precise::mg)},
          {"EER", precise::energy::EER},
          {"ppv", precise::one},  // parts per volume
-         {"ppth", precise::other::ppm* precise::kilo},
-         {"PPTH", precise::other::ppm* precise::kilo},
+         {"ppth", precise::other::ppm * precise::kilo},
+         {"PPTH", precise::other::ppm * precise::kilo},
          {"ppm", precise::other::ppm},
          {"ppmv", precise::other::ppm},
          {"PPM", precise::other::ppm},
@@ -1335,15 +1338,15 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"PPB", precise::other::ppb},
          {"[PPB]", precise::other::ppb},
          {"partsperbillion", precise::other::ppb},
-         {"ppt", precise::other::ppb* precise::milli},
-         {"pptv", precise::other::ppb* precise::milli},
-         {"pptr", precise::other::ppb* precise::milli},
-         {"PPTR", precise::other::ppb* precise::milli},
-         {"[PPTR]", precise::other::ppb* precise::milli},
-         {"partspertrillion", precise::other::ppb* precise::milli},
-         {"ppq", precise::other::ppb* precise::micro},
-         {"ppqv", precise::other::ppb* precise::micro},
-         {"partsperquadrillion", precise::other::ppb* precise::micro},
+         {"ppt", precise::other::ppb * precise::milli},
+         {"pptv", precise::other::ppb * precise::milli},
+         {"pptr", precise::other::ppb * precise::milli},
+         {"PPTR", precise::other::ppb * precise::milli},
+         {"[PPTR]", precise::other::ppb * precise::milli},
+         {"partspertrillion", precise::other::ppb * precise::milli},
+         {"ppq", precise::other::ppb * precise::micro},
+         {"ppqv", precise::other::ppb * precise::micro},
+         {"partsperquadrillion", precise::other::ppb * precise::micro},
          {"PRU", precise::clinical::pru},
          {"peripheralvascularresistanceunit", precise::clinical::pru},
          {"peripheralresistanceunit", precise::clinical::pru},
@@ -1652,7 +1655,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"MIL_US", precise::us::mil},
          {"inch", precise::in},
          {"thou", precise::imp::thou},
-         {"thousandth", precise::in* precise::milli},
+         {"thousandth", precise::in * precise::milli},
          {"mil", precise::i::mil},
          {"mil_i", precise::i::mil},
          {"MIL_I", precise::i::mil},
@@ -1694,38 +1697,40 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"FT_US", precise::ft},
          {"foot_US", precise::ft},
          {"feet_US", precise::ft},
-         {"ft^2", precise::ft* precise::ft},
-         {"sin", precise::in* precise::in},
-         {"sin_i", precise::in* precise::in},
-         {"SIN_I", precise::in* precise::in},
+         {"ft^2", precise::ft * precise::ft},
+         {"sin", precise::in * precise::in},
+         {"sin_i", precise::in * precise::in},
+         {"SIN_I", precise::in * precise::in},
          {"ci", precise::in.pow(3)},  // cubic inch instead of centiinch
          {"cin", precise::in.pow(3)},  // cubic inch instead of centiinch
          {"cin_i", precise::in.pow(3)},
          {"CIN_I", precise::in.pow(3)},
-         {"sf", precise::ft* precise::ft},
-         {"sft", precise::ft* precise::ft},
-         {"sft_i", precise::ft* precise::ft},
-         {"SFT_I", precise::ft* precise::ft},
+         {"sf", precise::ft * precise::ft},
+         {"sft", precise::ft * precise::ft},
+         {"sft_i", precise::ft * precise::ft},
+         {"SFT_I", precise::ft * precise::ft},
          {"SCF", precise::energy::scf},  // standard cubic foot
          {"standardcubicfoot", precise::energy::scf},  // standard cubic foot
-         {"CCF", precise::hundred* precise::energy::scf},  // centum cubic foot
-         {"MCF", precise::kilo* precise::energy::scf},  // millum cubic foot
-         {"MMCF", precise::mega* precise::energy::scf},  // million cubic foot
-         {"MMSCF", precise::mega* precise::energy::scf},  // million cubic foot
-         {"BCF", precise::giga* precise::energy::scf},  // billion cubic foot
-         {"TCF", precise::tera* precise::energy::scf},  // trillion cubic foot
-         {"QCF", precise::exa* precise::energy::scf},  // quadrillion cubic foot
-         {"Mcf", precise::kilo* precise::energy::scf},  // millum cubic foot
-         {"MMcf", precise::mega* precise::energy::scf},  // million cubic foot
-         {"Bcf", precise::giga* precise::energy::scf},  // billion cubic foot
-         {"Tcf", precise::tera* precise::energy::scf},  // trillion cubic foot
-         {"Qcf", precise::exa* precise::energy::scf},  // quadrillion cubic foot
+         {"CCF", precise::hundred * precise::energy::scf},  // centum cubic foot
+         {"MCF", precise::kilo * precise::energy::scf},  // millum cubic foot
+         {"MMCF", precise::mega * precise::energy::scf},  // million cubic foot
+         {"MMSCF", precise::mega * precise::energy::scf},  // million cubic foot
+         {"BCF", precise::giga * precise::energy::scf},  // billion cubic foot
+         {"TCF", precise::tera * precise::energy::scf},  // trillion cubic foot
+         {"QCF",
+          precise::exa * precise::energy::scf},  // quadrillion cubic foot
+         {"Mcf", precise::kilo * precise::energy::scf},  // millum cubic foot
+         {"MMcf", precise::mega * precise::energy::scf},  // million cubic foot
+         {"Bcf", precise::giga * precise::energy::scf},  // billion cubic foot
+         {"Tcf", precise::tera * precise::energy::scf},  // trillion cubic foot
+         {"Qcf",
+          precise::exa * precise::energy::scf},  // quadrillion cubic foot
          {"cf", precise::energy::scf},
          {"scf", precise::energy::scf},
          {"std", precise::energy::scf},
          {"ncf", precise::energy::ncf},
-         {"mcf", precise::kilo* precise::energy::scf},
-         {"ccf", precise::hundred* precise::energy::scf},
+         {"mcf", precise::kilo * precise::energy::scf},
+         {"ccf", precise::hundred * precise::energy::scf},
          {"cft", precise::ft.pow(3)},
          {"cft_i", precise::ft.pow(3)},
          {"CFT_I", precise::ft.pow(3)},
@@ -1747,10 +1752,10 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"yard_US", precise::us::yard},
          {"yards_US", precise::us::yard},
          {"marathon", {26.2, precise::mile}},
-         {"sy", precise::yd* precise::yd},
-         {"syd", precise::yd* precise::yd},
-         {"syd_i", precise::yd* precise::yd},
-         {"SYD_I", precise::yd* precise::yd},
+         {"sy", precise::yd * precise::yd},
+         {"syd", precise::yd * precise::yd},
+         {"syd_i", precise::yd * precise::yd},
+         {"SYD_I", precise::yd * precise::yd},
          {"cy", precise::yd.pow(3)},
          {"cyd", precise::yd.pow(3)},
          {"cyd_i", precise::yd.pow(3)},
@@ -1888,39 +1893,39 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"fahrenheit", precise::degF},
          {"perm",
           {57.2135,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perm_US",
           {57.2135,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perm_m",
           {86.8127,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perm_[00]",
           {57.2135,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perm_[23]",
           {57.4525,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perms_US",
           {57.2135,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perms_m",
           {86.8127,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perms_[00]",
           {57.2135,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"perms_[23]",
           {57.4525,
-           precise::nano* precise::g /
+           precise::nano * precise::g /
                (precise::s * precise::m.pow(2) * precise::Pa)}},
          {"mi", precise::mile},
          {"mi_i", precise::mile},
@@ -1928,14 +1933,14 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"lea", precise::i::league},
          {"MI_I", precise::mile},
          {"miI", precise::mile},
-         {"smi", precise::mile* precise::mile},
-         {"smi_US", precise::us::mile* precise::us::mile},
-         {"SMI_US", precise::us::mile* precise::us::mile},
+         {"smi", precise::mile * precise::mile},
+         {"smi_US", precise::us::mile * precise::us::mile},
+         {"SMI_US", precise::us::mile * precise::us::mile},
          {"mile", precise::mile},
          {"mile_i", precise::mile},
          {"miles_i", precise::mile},
-         {"srd_US", precise::us::rod* precise::us::rod},
-         {"SRD_US", precise::us::rod* precise::us::rod},
+         {"srd_US", precise::us::rod * precise::us::rod},
+         {"SRD_US", precise::us::rod * precise::us::rod},
          {"sct", precise::us::section},
          {"SCT", precise::us::section},
          {"section", precise::us::section},
@@ -1960,10 +1965,10 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"acre", precise::acre},
          {"acr", precise::acre},
          {"ac", precise::acre},
-         {"acft", precise::acre* precise::us::foot},
-         {"ac*ft", precise::acre* precise::us::foot},
-         {"acre-foot", precise::acre* precise::us::foot},
-         {"acrefoot", precise::acre* precise::us::foot},
+         {"acft", precise::acre * precise::us::foot},
+         {"ac*ft", precise::acre * precise::us::foot},
+         {"acre-foot", precise::acre * precise::us::foot},
+         {"acrefoot", precise::acre * precise::us::foot},
          {"acre_US", precise::acre},
          {"acr_US", precise::acre},
          {"[ACR_US]", precise::acre},
@@ -2110,14 +2115,14 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"cal_th", precise::energy::cal_th},
          {"CAL_TH", precise::energy::cal_th},
          {"calorie_th", precise::energy::cal_th},
-         {"kcal_th", precise::kilo* precise::energy::cal_th},
+         {"kcal_th", precise::kilo * precise::energy::cal_th},
          {"calorie", precise::cal},
          {"kcal", precise::energy::kcal},
          {"kCal", precise::energy::kcal},
          {"KCAL", precise::energy::kcal},
          {"Kcal", precise::energy::kcal},
          {"kilocalorie", precise::energy::kcal},
-         {"kilocalorie_m", precise::kilo* precise::energy::cal_mean},
+         {"kilocalorie_m", precise::kilo * precise::energy::cal_mean},
          {"btu", precise::energy::btu_it},
          {"Btu", precise::energy::btu_it},
          {"BTU", precise::energy::btu_it},
@@ -2178,10 +2183,10 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"kton", precise_unit(1000.0, precise::energy::ton_tnt)},
          {"Mton", precise_unit(1000000.0, precise::energy::ton_tnt)},
          {"Gton", precise_unit(1000000000.0, precise::energy::ton_tnt)},
-         {"gramoftnt", precise::micro* precise::energy::ton_tnt},
-         {"gramsofTNT", precise::micro* precise::energy::ton_tnt},
-         {"gramofTNT", precise::micro* precise::energy::ton_tnt},
-         {"gramsoftnt", precise::micro* precise::energy::ton_tnt},
+         {"gramoftnt", precise::micro * precise::energy::ton_tnt},
+         {"gramsofTNT", precise::micro * precise::energy::ton_tnt},
+         {"gramofTNT", precise::micro * precise::energy::ton_tnt},
+         {"gramsoftnt", precise::micro * precise::energy::ton_tnt},
          // Gigatonne carbon
          {"C90", precise::conventional::coulomb90},
          {"ohm90", precise::conventional::ohm90},
@@ -2259,7 +2264,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"iwg", precise::pressure::inH2O},
          // cgs unit of electric quadrupole
          {"buckingham",
-          {1e-26, precise::cgs::statC_charge* precise::cm.pow(2)}},
+          {1e-26, precise::cgs::statC_charge * precise::cm.pow(2)}},
          {"landauer", {0.0175, precise::energy::eV / precise::data::bit}},
          {"quad", {1e15, precise::energy::btu_it}},
          {"therm", precise::energy::therm_ec},
@@ -2350,10 +2355,10 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"waterton", precise_unit(224.0, precise::imp::gallon)},
          {"lb", precise::lb},
          {"LB", precise::lb},
-         {"kip", precise::kilo* precise::lb},
-         {"kipf", precise::kilo* precise::lbf},
-         {"kipforce", precise::kilo* precise::lbf},
-         {"kilopound", precise::kilo* precise::lb},
+         {"kip", precise::kilo * precise::lb},
+         {"kipf", precise::kilo * precise::lbf},
+         {"kipforce", precise::kilo * precise::lbf},
+         {"kilopound", precise::kilo * precise::lb},
          {"lb_tr", precise::troy::pound},
          {"[LB_TR]", precise::troy::pound},
          {"pound-troy", precise::troy::pound},
@@ -2380,7 +2385,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"RT", precise::energy::tonc},  // ton cooling
          {"TR", precise::energy::tonc},  // ton cooling
          // {"tons", precise::energy::tonc* precise::s},
-         {"tonh", precise::energy::tonc* precise::hr},
+         {"tonh", precise::energy::tonc * precise::hr},
          {"bu", precise::us::dry::bushel},
          {"bushel", precise::us::dry::bushel},
          {"oz fl", precise::us::floz},
@@ -2536,12 +2541,12 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"ounce", precise::oz},
          {"ounce_av", precise::av::ounce},
          {"ounce_i", precise::av::ounce},
-         {"tonforce(long)", precise::av::longton* constants::g0.as_unit()},
-         {"tonforce(short)", precise::av::ton* constants::g0.as_unit()},
-         {"tonforce_US", precise::av::ton* constants::g0.as_unit()},
-         {"tonforce_br", precise::av::longton* constants::g0.as_unit()},
-         {"tonf_US", precise::av::ton* constants::g0.as_unit()},
-         {"tonf_br", precise::av::longton* constants::g0.as_unit()},
+         {"tonforce(long)", precise::av::longton * constants::g0.as_unit()},
+         {"tonforce(short)", precise::av::ton * constants::g0.as_unit()},
+         {"tonforce_US", precise::av::ton * constants::g0.as_unit()},
+         {"tonforce_br", precise::av::longton * constants::g0.as_unit()},
+         {"tonf_US", precise::av::ton * constants::g0.as_unit()},
+         {"tonf_br", precise::av::longton * constants::g0.as_unit()},
          {"sn", precise::MTS::sthene},
          {"sthene", precise::MTS::sthene},
          {"pz", precise::MTS::pieze},
@@ -2553,15 +2558,15 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"ozf", precise::av::ozf},
          {"poundforce_US", precise::lbf},
          // the next four are energy even though the breakdown would be power
-         {"foot-pound", precise::ft* precise::lbf},
-         {"foot-pound of energy", precise::ft* precise::lbf},
-         {"foot-pound of torque", precise::ft* precise::lbf},
-         {"footpound", precise::ft* precise::lbf},
-         {"footpoundforce", precise::ft* precise::lbf},
-         {"foot-pounds of energy", precise::ft* precise::lbf},
-         {"foot-pounds of torque", precise::ft* precise::lbf},
-         {"ft-lb", precise::ft* precise::lbf},
-         {"ftlb", precise::ft* precise::lbf},
+         {"foot-pound", precise::ft * precise::lbf},
+         {"foot-pound of energy", precise::ft * precise::lbf},
+         {"foot-pound of torque", precise::ft * precise::lbf},
+         {"footpound", precise::ft * precise::lbf},
+         {"footpoundforce", precise::ft * precise::lbf},
+         {"foot-pounds of energy", precise::ft * precise::lbf},
+         {"foot-pounds of torque", precise::ft * precise::lbf},
+         {"ft-lb", precise::ft * precise::lbf},
+         {"ftlb", precise::ft * precise::lbf},
          {"slug", precise::av::slug},
          // {"kt", precise_unit(200.0, precise::mg)},
          {"cup", precise::us::cup},
@@ -3336,7 +3341,7 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"work", precise::J},
         {"heat", precise::J},
         {"power", precise::W},
-        {"powerlevel", precise::W* precise::log::neper},
+        {"powerlevel", precise::W * precise::log::neper},
         {"loudness", precise::special::sone},
         {"radiantflux", precise::W},
         {"heatfluxdensity", precise::W / precise::m.pow(2)},
@@ -3351,8 +3356,8 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"electricpotentialdifference", precise::V},
         {"elpot", precise::V},
         {"electricpotential", precise::V},
-        {"electricpotentiallevel", precise::V* precise::log::neper},
-        {"logrtoelp", precise::V* precise::log::neper},
+        {"electricpotentiallevel", precise::V * precise::log::neper},
+        {"logrtoelp", precise::V * precise::log::neper},
         {"emf", precise::V},
         {"electromotiveforce", precise::V},
         {"capacitance", precise::F},
@@ -3361,9 +3366,9 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"impedance", precise::ohm},
         {"reactance", precise::ohm},
         {"conductance", precise::siemens},
-        {"electricdipolemoment", precise::C* precise::m},
+        {"electricdipolemoment", precise::C * precise::m},
         {"electricresistance", precise::ohm},
-        {"electricresistivity", precise::ohm* precise::m},
+        {"electricresistivity", precise::ohm * precise::m},
         {"electricimpedance", precise::ohm},
         {"electricreactance", precise::ohm},
         {"electricalconductance", precise::siemens},
@@ -3408,9 +3413,9 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"specificenergy", precise::J / precise::kg},
         {"specificheat", precise::J / precise::kg / precise::K},
         {"engcnc", precise::J / precise::m.pow(3)},
-        {"torque", precise::N* precise::m / precise::radian},
-        {"momentofforce", precise::N* precise::m / precise::radian},
-        {"moment", precise::N* precise::m / precise::radian},
+        {"torque", precise::N * precise::m / precise::radian},
+        {"momentofforce", precise::N * precise::m / precise::radian},
+        {"moment", precise::N * precise::m / precise::radian},
         {"angularvelocity", precise::rad / precise::s},
         {"rotationalspeed", precise::rad / precise::s},
         {"rotationalvelocity", precise::rad / precise::s},
@@ -3426,10 +3431,10 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"heatcapacity", precise::J / precise::K},
         {"entropy", precise::J / precise::K},
         {"specificentropy", precise::J / precise::kg / precise::K},
-        {"specificgravity", precise::pu* precise::kg / precise::m.pow(3)},
-        {"dynamicviscosity", precise::Pa* precise::s},
-        {"viscosity", precise::Pa* precise::s},
-        {"visc", precise::Pa* precise::s},
+        {"specificgravity", precise::pu * precise::kg / precise::m.pow(3)},
+        {"dynamicviscosity", precise::Pa * precise::s},
+        {"viscosity", precise::Pa * precise::s},
+        {"visc", precise::Pa * precise::s},
         {"fluidity", precise::one / precise::Pa / precise::s},
         {"kinematicviscosity", precise::m.pow(2) / precise::s},
         {"radiantintensity", precise::W / precise::rad.pow(2)},
@@ -3441,9 +3446,9 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"nfr", precise::one},
         {"num", precise::one},
         {"age", precise::time::ag},
-        {"strain", precise::pu* precise::m},
-        {"impulse", precise::N* precise::s},
-        {"imp", precise::N* precise::s},
+        {"strain", precise::pu * precise::m},
+        {"impulse", precise::N * precise::s},
+        {"imp", precise::N * precise::s},
         {"absorbeddoserate", precise::Gy / precise::s},
         {"mcnc", precise::kg / precise::m.pow(3)},
         {"scnc", precise::mol / precise::m.pow(3)},
@@ -3466,7 +3471,7 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"magneticfield", precise::T},
         {"magnetic", precise::T},
         {"fluence", precise::one / precise::m.pow(2)},
-        {"mcnt", precise::pu* precise::m},
+        {"mcnt", precise::pu * precise::m},
         {"ccnt", precise::kat / precise::kg},
         {"ccnc", precise::kat / precise::L},
         {"acnc", precise::one / precise::L},
@@ -3474,10 +3479,10 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"mrat", precise::kg / precise::s},
         {"osmol",
          precise_unit(1.0, precise::mol, commodities::packaging::particle)},
-        {"massfraction", precise::pu* precise::kg},
-        {"mfr", precise::pu* precise::kg},
+        {"massfraction", precise::pu * precise::kg},
+        {"mfr", precise::pu * precise::kg},
         {"amplitudespectraldensity", precise::special::ASD},
-        {"fluidresistance", precise::Pa* precise::s / precise::m.pow(3)},
+        {"fluidresistance", precise::Pa * precise::s / precise::m.pow(3)},
         {"signaltransmissionrate", precise::bit / precise::s},
         {"engmass", precise::J / precise::m.pow(3)},
         {"massicenergy", precise::J / precise::m.pow(3)},
@@ -3492,7 +3497,7 @@ std::array<std::pair<const char*, precise_unit>, 252> defined_measurement_types{
         {"compliance", precise::m / precise::N},
         {"informationcapacity", precise::data::bit},
         {"compli", precise::m / precise::N},
-        {"vascularresistance", precise::Pa* precise::s / precise::m.pow(3)},
+        {"vascularresistance", precise::Pa * precise::s / precise::m.pow(3)},
         {"enzymaticactivity", precise::kat},
         {"catalyticconcentration", precise::kat / precise::m.pow(3)},
         {"molarenergy", precise::J / precise::mol},

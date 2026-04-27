@@ -2186,7 +2186,7 @@ namespace constants {
     /// Planck constant (2019 redefinition)
     constexpr precise_measurement h{
         6.62607015e-34,
-        precise::J* precise::second};
+        precise::J * precise::second};
     /// atomic mass constant
     constexpr precise_measurement mu{1.66053906660e-27, precise::kg};
 
@@ -2196,7 +2196,7 @@ namespace constants {
     /// reduced Planck constant (2019 redefinition)
     constexpr precise_measurement hbar{
         6.62607015e-34 / tau,
-        precise::J* precise::second};
+        precise::J * precise::second};
     /// Boltzman constant (2019 redefinition)
     constexpr precise_measurement k{1.380649e-23, precise::J / precise::K};
     /// Avogadros constant (2019 redefinition)
@@ -2242,7 +2242,7 @@ namespace constants {
     /// Josephson constant
     constexpr precise_measurement Kj{
         483597.8484e9,
-        precise::Hz* precise::V.inv()};
+        precise::Hz * precise::V.inv()};
 
     /// magnetic flux quantum
     constexpr precise_measurement phi0{2.067833848e-15, precise::Wb};
@@ -2272,7 +2272,7 @@ namespace constants {
             precise::J};
         constexpr precise_measurement action{
             1.054571817e-34,
-            precise::J* precise::s};
+            precise::J * precise::s};
     }  // namespace atomic
 
     namespace planetary {
