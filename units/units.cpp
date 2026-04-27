@@ -3007,10 +3007,12 @@ static bool
         // LCOV_EXCL_STOP
     }
     while (index >= 0) {
-        const char current = unit[index];
-        --index;
-        if (index >= 0 && unit[index] == '\\') {
-            --index;
+        const char current = unit[static_cast<size_t>(index)];
+        // Keep the 0 -> -1 transition explicit to avoid -Wstrict-overflow
+        // on compilers that rewrite signed decrement-and-compare patterns.
+        index = (index == 0) ? -1 : index - 1;
+        if (index >= 0 && unit[static_cast<size_t>(index)] == '\\') {
+            index = (index == 0) ? -1 : index - 1;
             continue;
         }
         if (current == closeSegment) {

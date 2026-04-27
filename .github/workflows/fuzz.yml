@@ -1,0 +1,55 @@
+name: Fuzz
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  fuzz:
+    name: Quick Raw Fuzz
+    runs-on: ubuntu-latest
+    container:
+      image: helics/buildenv:clang-builder8
+    env:
+      UBSAN_OPTIONS: "print_stacktrace=1"
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_CXX_COMPILER=clang++
+          -DCMAKE_CXX_COMPILER_FORCED=ON
+          -DUNITS_BUILD_FUZZ_TARGETS=ON
+          -DUNITS_ENABLE_TESTS=OFF
+          -DUNITS_INSTALL=OFF
+          -DUNITS_BASE_TYPE=std::uint64_t
+          -DCMAKE_CXX_FLAGS="-g -O1 -fsanitize=fuzzer,undefined,address"
+
+      - name: Build
+        run: cmake --build build --parallel 4
+
+      - name: Run fuzz target
+        working-directory: build
+        run: cmake --build . --target QUICK_RAW_FUZZ --parallel 4
+
+      - name: Upload fuzz artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuzz-artifacts
+          if-no-files-found: ignore
+          path: |
+            build/FuzzTargets/units_fail_string_artifact.txt
+            build/FuzzTargets/units_fail_measurement_artifact.txt

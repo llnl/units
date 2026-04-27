@@ -1,0 +1,40 @@
+name: Memory Sanitizer
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  msan:
+    name: MSan
+    runs-on: ubuntu-latest
+    container:
+      image: helics/buildenv:sanitizers-19
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_CXX_COMPILER=clang++
+          -DCMAKE_C_COMPILER=clang
+          -DUNITS_ENABLE_ERROR_ON_WARNINGS=ON
+          -DCMAKE_CXX_FLAGS="-fsanitize=memory -fsanitize-ignorelist=$PWD/config/msan_blacklist.txt -nostdinc++ -nostdlib++ -L/root/develop/libcxx_msan/lib -lc++ -lc++abi -I/root/develop/libcxx_msan/include -I/root/develop/libcxx_msan/include/c++/v1 -Wno-unused-command-line-argument -Wno-reserved-identifier -Wno-reserved-macro-identifier -fno-omit-frame-pointer -g -O1 -Wl,-rpath=/root/develop/libcxx_msan/lib"
+
+      - name: Build
+        run: cmake --build build --parallel 4
+
+      - name: Test
+        working-directory: build
+        run: ctest --verbose
