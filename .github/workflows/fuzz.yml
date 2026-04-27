@@ -14,7 +14,7 @@ jobs:
     name: Quick Raw Fuzz
     runs-on: ubuntu-latest
     container:
-      image: helics/buildenv:clang-builder8
+      image: helics/buildenv:clang22-builder
     env:
       UBSAN_OPTIONS: "print_stacktrace=1"
 
