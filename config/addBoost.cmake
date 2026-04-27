@@ -7,13 +7,51 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-show_variable(BOOST_INSTALL_PATH PATH "Boost root directory" "${BOOST_INSTALL_PATH}")
+macro(HIDE_VARIABLE var)
+    if(DEFINED ${var})
+        set(${var}
+            "${${var}}"
+            CACHE INTERNAL ""
+        )
+    endif(DEFINED ${var})
+endmacro(HIDE_VARIABLE)
+
+macro(SHOW_VARIABLE var type doc default)
+    if(DEFINED ${var})
+        set(${var}
+            "${${var}}"
+            CACHE "${type}" "${doc}" FORCE
+        )
+    else(DEFINED ${var})
+        set(${var}
+            "${default}"
+            CACHE "${type}" "${doc}"
+        )
+    endif(DEFINED ${var})
+endmacro(SHOW_VARIABLE)
+
+if(DEFINED BOOST_INSTALL_PATH)
+    set(BOOST_INSTALL_PATH
+        "${BOOST_INSTALL_PATH}"
+        CACHE "PATH" "Boost root directory" FORCE
+    )
+else()
+    set(BOOST_INSTALL_PATH
+        "${BOOST_INSTALL_PATH}"
+        CACHE "PATH" "Boost root directory"
+    )
+endif()
 
 mark_as_advanced(BOOST_INSTALL_PATH)
 
 if(WIN32 AND NOT UNIX_LIKE)
-
-    if(MSVC_VERSION GREATER_EQUAL 1930)
+    if(MSVC_VERSION GREATER_EQUAL 1950)
+        if(CMAKE_SIZE_OF_VOID_P EQUAL 4)
+            set(BOOST_MSVC_LIB_PATH lib32-msvc-14.4)
+        else()
+            set(BOOST_MSVC_LIB_PATH lib64-msvc-14.4)
+        endif()
+    elseif(MSVC_VERSION GREATER_EQUAL 1930)
         if(CMAKE_SIZE_OF_VOID_P EQUAL 4)
             set(BOOST_MSVC_LIB_PATH lib32-msvc-14.3)
         else()
@@ -27,6 +65,9 @@ if(WIN32 AND NOT UNIX_LIKE)
         endif()
     endif()
     set(boost_versions
+        boost_1_90_0
+        boost_1_89_0
+        boost_1_88_0
         boost_1_87_0
         boost_1_86_0
         boost_1_85_0
@@ -88,6 +129,9 @@ if(WIN32 AND NOT UNIX_LIKE)
                 NAMES BoostConfig.cmake
                 PATHS ${BOOST_TEST_PATH}/${BOOST_MSVC_LIB_PATH}/cmake
                 PATH_SUFFIXES
+                    Boost-1.90.0
+                    Boost-1.89.0
+                    Boost-1.88.0
                     Boost-1.87.0
                     Boost-1.86.0
                     Boost-1.85.0
@@ -131,8 +175,10 @@ if(NOT BOOST_ROOT)
     message(STATUS "setting BOOST_ROOT ${BOOST_ROOT}")
 endif()
 
-hide_variable(BOOST_TEST_PATH)
-
+set(BOOST_TEST_PATH
+    "${BOOST_TEST_PATH}"
+    CACHE INTERNAL ""
+)
 if(NOT BOOST_REQUIRED_LIBRARIES)
     set(BOOST_REQUIRED_LIBRARIES)
 endif()
