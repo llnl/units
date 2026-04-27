@@ -231,7 +231,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit dyn{1e-5, N};
         UNITS_MODULE_INLINE constexpr precise_unit barye{0.1, Pa};
         UNITS_MODULE_INLINE constexpr precise_unit gal = cm / s.pow(2);
-        UNITS_MODULE_INLINE constexpr precise_unit poise{0.1, Pa* s};
+        UNITS_MODULE_INLINE constexpr precise_unit poise{0.1, Pa * s};
         UNITS_MODULE_INLINE constexpr precise_unit stokes{1e-4, m.pow(2) / s};
         UNITS_MODULE_INLINE constexpr precise_unit kayser = one / cm;
         UNITS_MODULE_INLINE constexpr precise_unit oersted{
@@ -240,7 +240,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit gauss{1e-4, T};
         UNITS_MODULE_INLINE constexpr precise_unit debye{
             1.0 / (c_const * 1e20),
-            C* m};
+            C * m};
         UNITS_MODULE_INLINE constexpr precise_unit maxwell{1e-8, Wb};
         UNITS_MODULE_INLINE constexpr precise_unit biot{10.0, A};
         UNITS_MODULE_INLINE constexpr precise_unit gilbert = oersted * cm;
@@ -265,7 +265,7 @@ namespace precise {
             C};
         UNITS_MODULE_INLINE constexpr precise_unit statC_flux{
             10.0 / (4.0 * constants::pi * c_const),
-            V* m};
+            V * m};
         UNITS_MODULE_INLINE constexpr precise_unit abOhm{1e-9, ohm};
         UNITS_MODULE_INLINE constexpr precise_unit abFarad{1e9, F};
         UNITS_MODULE_INLINE constexpr precise_unit abHenry{1e-9, H};
@@ -319,7 +319,7 @@ namespace precise {
     namespace MTS {
         UNITS_MODULE_INLINE constexpr precise_unit sthene{1000.0, N};
         UNITS_MODULE_INLINE constexpr precise_unit pieze{1000.0, Pa};
-        UNITS_MODULE_INLINE constexpr precise_unit thermie{4.186, mega* J};
+        UNITS_MODULE_INLINE constexpr precise_unit thermie{4.186, mega * J};
 
     }  // namespace MTS
 
@@ -346,7 +346,7 @@ namespace precise {
             day};  // sidereal year
         UNITS_MODULE_INLINE constexpr precise_unit at{
             365.24219,
-            day* eflag};  // mean tropical year
+            day * eflag};  // mean tropical year
         UNITS_MODULE_INLINE constexpr precise_unit aj{365.25, day};  // julian
                                                                      // year
         UNITS_MODULE_INLINE constexpr precise_unit ag{
@@ -460,7 +460,7 @@ namespace precise {
         // volume
         UNITS_MODULE_INLINE constexpr precise_unit minim{
             61.611519921875,
-            micro* L};
+            micro * L};
         UNITS_MODULE_INLINE constexpr precise_unit dram{60.0, minim};
         UNITS_MODULE_INLINE constexpr precise_unit floz{
             29.5735295625e-6,
@@ -555,7 +555,7 @@ namespace precise {
 
     /// Imperial system units (British)
     namespace imp {
-        UNITS_MODULE_INLINE constexpr precise_unit inch{2.539998, cm* eflag};
+        UNITS_MODULE_INLINE constexpr precise_unit inch{2.539998, cm * eflag};
         UNITS_MODULE_INLINE constexpr precise_unit foot{12.0, inch};
 
         UNITS_MODULE_INLINE constexpr precise_unit thou{0.0254, mm};
@@ -573,8 +573,8 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit acre{4840.0, yard.pow(2)};
 
         // area
-        UNITS_MODULE_INLINE constexpr precise_unit perch{25.29285264, m* m};
-        UNITS_MODULE_INLINE constexpr precise_unit rood{1011.7141056, m* m};
+        UNITS_MODULE_INLINE constexpr precise_unit perch{25.29285264, m * m};
+        UNITS_MODULE_INLINE constexpr precise_unit rood{1011.7141056, m * m};
         // volume
         UNITS_MODULE_INLINE constexpr precise_unit gallon{4546.09, mL};
         UNITS_MODULE_INLINE constexpr precise_unit winegallon{231.0, in.pow(3)};
@@ -607,7 +607,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit floz = imp::floz;
         UNITS_MODULE_INLINE constexpr precise_unit minim{
             59.1938802083333333333,
-            milli* mL};
+            milli * mL};
         UNITS_MODULE_INLINE constexpr precise_unit scruple{20.0, i::grain};
         UNITS_MODULE_INLINE constexpr precise_unit drachm{3.0, scruple};
         UNITS_MODULE_INLINE constexpr precise_unit ounce{8.0, drachm};
@@ -631,7 +631,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit shaku{10.0 / 33.0, m};
         UNITS_MODULE_INLINE constexpr precise_unit sun{0.1, shaku};
         UNITS_MODULE_INLINE constexpr precise_unit ken{1.0 + (9.0 / 11.0), m};
-        UNITS_MODULE_INLINE constexpr precise_unit tsubo{100.0 / 30.25, m* m};
+        UNITS_MODULE_INLINE constexpr precise_unit tsubo{100.0 / 30.25, m * m};
         UNITS_MODULE_INLINE constexpr precise_unit sho{2401.0 / 1331.0, L};
         UNITS_MODULE_INLINE constexpr precise_unit kan{15.0 / 4.0, kg};
         UNITS_MODULE_INLINE constexpr precise_unit go{2401.0 / 13310, L};
@@ -684,7 +684,7 @@ namespace precise {
         }  // namespace french
 
         namespace metric {
-            UNITS_MODULE_INLINE constexpr precise_unit point{375.0, micro* m};
+            UNITS_MODULE_INLINE constexpr precise_unit point{375.0, micro * m};
             UNITS_MODULE_INLINE constexpr precise_unit quart{0.25, mm};
 
         }  // namespace metric
@@ -742,7 +742,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit arpent_fr{71.46466, m};
         UNITS_MODULE_INLINE constexpr precise_unit xu{
             0.1,
-            precise::pico* precise::m};
+            precise::pico * precise::m};
 
     }  // namespace distance
 
@@ -760,9 +760,9 @@ namespace precise {
 
     /// Additional Area units
     namespace area {
-        UNITS_MODULE_INLINE constexpr precise_unit are{100.0, m* m};
+        UNITS_MODULE_INLINE constexpr precise_unit are{100.0, m * m};
         constexpr precise_unit hectare(100.0, are);
-        UNITS_MODULE_INLINE constexpr precise_unit barn{1e-28, m* m};
+        UNITS_MODULE_INLINE constexpr precise_unit barn{1e-28, m * m};
         UNITS_MODULE_INLINE constexpr precise_unit arpent{0.84628, acre};
     }  // namespace area
 
@@ -808,7 +808,7 @@ namespace precise {
 
     /// units related to temperature
     namespace temperature {
-        UNITS_MODULE_INLINE constexpr precise_unit celsius{1.0, K* eflag};
+        UNITS_MODULE_INLINE constexpr precise_unit celsius{1.0, K * eflag};
         UNITS_MODULE_INLINE constexpr precise_unit degC = celsius;
 
         UNITS_MODULE_INLINE constexpr precise_unit fahrenheit{
@@ -838,9 +838,9 @@ namespace precise {
                                                                       // degF
         UNITS_MODULE_INLINE constexpr precise_unit torr{
             1.0 / 760.0,
-            atm* iflag};  // this is really
-                          // close to mmHg and can't use eflag since that means
-                          // guage
+            atm * iflag};  // this is really
+                           // close to mmHg and can't use eflag since that means
+                           // guage
         UNITS_MODULE_INLINE constexpr precise_unit inH2O{
             248.843004,
             Pa};  // at 60 degF
@@ -976,14 +976,14 @@ namespace precise {
 
         UNITS_MODULE_INLINE constexpr precise_unit ton_tnt{
             4.184,
-            precise::giga* precise::J};
+            precise::giga * precise::J};
         UNITS_MODULE_INLINE constexpr precise_unit boe{5.8e6, btu_59};
         UNITS_MODULE_INLINE constexpr precise_unit tce{
             29.308,
-            precise::giga* precise::J};  // tonne of coal equivalent
+            precise::giga * precise::J};  // tonne of coal equivalent
         UNITS_MODULE_INLINE constexpr precise_unit lge{
             33.5,
-            precise::mega* precise::J};  // liter of gasoline equivalent
+            precise::mega * precise::J};  // liter of gasoline equivalent
         UNITS_MODULE_INLINE constexpr precise_unit foeb{6.05e6, btu_59};
         UNITS_MODULE_INLINE constexpr precise_unit hartree{
             4.3597447222060e-18,
@@ -992,9 +992,9 @@ namespace precise {
 
         UNITS_MODULE_INLINE constexpr precise_unit scf_mol{1.1953, mol};
         UNITS_MODULE_INLINE constexpr precise_unit
-            scf{1100.0, btu_it* eflag, commodities::nat_gas};
+            scf{1100.0, btu_it * eflag, commodities::nat_gas};
         UNITS_MODULE_INLINE constexpr precise_unit
-            ncf{1163.0, btu_it* eflag, commodities::nat_gas};
+            ncf{1163.0, btu_it * eflag, commodities::nat_gas};
         UNITS_MODULE_INLINE constexpr precise_unit scm{35.3146667, scf};
         UNITS_MODULE_INLINE constexpr precise_unit scm_mol{35.3146667, scf_mol};
         UNITS_MODULE_INLINE constexpr precise_unit ncm{1.055, scm};
@@ -1261,7 +1261,7 @@ namespace precise {
 
         UNITS_MODULE_INLINE constexpr precise_unit B_SPL{
             2 * 1e-5,
-            precise::Pa* bel};
+            precise::Pa * bel};
         UNITS_MODULE_INLINE constexpr precise_unit B_V = bel * V;
         UNITS_MODULE_INLINE constexpr precise_unit B_mV = bel * electrical::mV;
         UNITS_MODULE_INLINE constexpr precise_unit B_uV =
@@ -1272,7 +1272,7 @@ namespace precise {
         UNITS_MODULE_INLINE constexpr precise_unit B_kW = bel * electrical::kW;
         UNITS_MODULE_INLINE constexpr precise_unit dB_SPL{
             2 * 1e-5,
-            precise::Pa* dB};
+            precise::Pa * dB};
         UNITS_MODULE_INLINE constexpr precise_unit dB_V = dB * V;
         UNITS_MODULE_INLINE constexpr precise_unit dB_mV = dB * electrical::mV;
         UNITS_MODULE_INLINE constexpr precise_unit dB_uV =
@@ -1626,7 +1626,7 @@ namespace precise {
         // others
         UNITS_MODULE_INLINE constexpr precise_unit rpm{
             constants::pi / 30.0,
-            rad* Hz};
+            rad * Hz};
         constexpr precise_unit CFM(ft * ft * ft / minute);
 
         UNITS_MODULE_INLINE constexpr precise_unit MegaBuck{

@@ -3256,7 +3256,7 @@ static const std::unordered_map<std::uint64_t, precise_unit> domainSpecificUnit{
     {hashGen(domains::surveying, u8"\u2033"), precise::us::inch},
     {hashGen(domains::nuclear, "rad"), precise::cgs::RAD},
     {hashGen(domains::nuclear, "rd"), precise::cgs::RAD},
-    {hashGen(domains::climate, "kt"), precise::kilo* precise::t},
+    {hashGen(domains::climate, "kt"), precise::kilo * precise::t},
     {
         hashGen(domains::climate, "Sv"),
         {1e6, precise::m.pow(3) / precise::s},
@@ -3290,7 +3290,7 @@ static const std::unordered_map<std::uint64_t, precise_unit> domainSpecificUnit{
     {hashGen(domains::allDomains, "t"), precise::us::tsp},
     {hashGen(domains::allDomains, "TB"), precise::us::tbsp},
     {hashGen(domains::allDomains, "rad"), precise::cgs::RAD},
-    {hashGen(domains::allDomains, "kt"), precise::kilo* precise::t},
+    {hashGen(domains::allDomains, "kt"), precise::kilo * precise::t},
     {hashGen(domains::allDomains, "rd"), precise::cgs::RAD},
     {hashGen(domains::allDomains, "smi"),
      precise_unit(1.0 / 32.0, precise::us::tsp)},
