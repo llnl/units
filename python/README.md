@@ -2,7 +2,6 @@
 
 [![codecov](https://codecov.io/gh/LLNL/units/branch/main/graph/badge.svg)](https://codecov.io/gh/LLNL/units)
 [![Build Status](https://dev.azure.com/phlptp/units/_apis/build/status/LLNL.units?branchName=main)](https://dev.azure.com/phlptp/units/_build/latest?definitionId=1&branchName=main)
-[![CircleCI](https://circleci.com/gh/LLNL/units.svg?style=svg)](https://circleci.com/gh/LLNL/units)
 [![](https://img.shields.io/badge/License-BSD-blue.svg)](https://github.com/GMLC-TDC/HELICS-src/blob/main/LICENSE)
 [![](https://img.shields.io/pypi/pyversions/units-llnl)](https://pypi.org/project/units-llnl/)
 [![](https://img.shields.io/pypi/v/units-llnl)](https://pypi.org/project/units-llnl/)

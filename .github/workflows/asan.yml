@@ -1,0 +1,44 @@
+name: Address Sanitizer
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  asan:
+    name: ASan
+    runs-on: ubuntu-latest
+    container:
+      image: helics/buildenv:sanitizers-19
+    env:
+      LSAN_OPTIONS: "suppressions=${{ github.workspace }}/config/leak_suppression.txt"
+      UBSAN_OPTIONS: "print_stacktrace=1"
+      ASAN_OPTIONS: "alloc_dealloc_mismatch=0"
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: true
+
+      - name: Mark workspace as safe for git
+        run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_CXX_COMPILER=clang++
+          -DCMAKE_C_COMPILER=clang
+          -DUNITS_ENABLE_ERROR_ON_WARNINGS=ON
+          -DCMAKE_CXX_FLAGS="-fsanitize=undefined,address -lc++ -lc++abi -fsanitize-address-use-after-scope -fsanitize-ignorelist=$PWD/config/asan_suppression.txt -Wno-unused-command-line-argument -Wno-reserved-identifier -Wno-reserved-macro-identifier -fno-omit-frame-pointer -g -O1 -fsanitize-blacklist=$PWD/config/asan_blacklist.txt"
+
+      - name: Build
+        run: cmake --build build --parallel 4
+
+      - name: Test
+        working-directory: build
+        run: ctest --verbose
