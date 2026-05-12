@@ -18,9 +18,7 @@ include(CheckCXXCompilerFlag)
 check_cxx_compiler_flag(
     "-Wno-c++17-attribute-extensions" UNITS_HAS_WNO_CXX17_ATTRIBUTE_EXTENSIONS
 )
-check_cxx_compiler_flag(
-    "-Wno-unknown-attributes" UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES
-)
+check_cxx_compiler_flag("-Wno-unknown-attributes" UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES)
 
 function(units_configure_gtest_warnings target_name)
     if(NOT MSVC)
