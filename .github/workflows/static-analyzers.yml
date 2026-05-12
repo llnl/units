@@ -25,3 +25,31 @@ jobs:
     - uses: actions/checkout@v6
     - name: Run cppcheck
       run: cppcheck --enable=performance,portability --check-level=exhaustive --suppressions-list=config/cppcheck_suppressions.txt --error-exitcode=-4 -i ThirdParty -i FuzzTargets -i docs -i config .
+
+  gcc-strict-overflow:
+    name: GCC strict-overflow
+    runs-on: ubuntu-latest
+    container:
+      image: helics/buildenv:gcc15-builder
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        submodules: true
+
+    - name: Mark workspace as safe for git
+      run: git config --global --add safe.directory "${GITHUB_WORKSPACE}"
+
+    - name: Configure
+      run: >
+        cmake -S . -B build
+        -DCMAKE_CXX_STANDARD=23
+        -DUNITS_ENABLE_ERROR_ON_WARNINGS=ON
+        -DCMAKE_CXX_FLAGS="-Wstrict-overflow=5 -Werror=strict-overflow"
+
+    - name: Build
+      run: cmake --build build --parallel 4
+
+    - name: Test
+      working-directory: build
+      run: ctest --output-on-failure
