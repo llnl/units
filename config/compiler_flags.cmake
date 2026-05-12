@@ -44,17 +44,15 @@ if(${PROJECT_NAME}_ENABLE_EXTRA_COMPILER_WARNINGS)
     target_compile_options(
         compile_flags_target
         INTERFACE $<$<COMPILE_LANGUAGE:CXX>:$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wextra
-                  -Wshadow
-                  -Wstrict-aliasing=1
-                  -Wunreachable-code
-                  -Woverloaded-virtual
+                  -Wshadow -Wstrict-aliasing=1 -Wunreachable-code -Woverloaded-virtual
                   -Wundef>>
     )
 
     if(PROJECT_HAS_WDOUBLE_PROMOTION)
         target_compile_options(
             compile_flags_target
-            INTERFACE $<$<COMPILE_LANGUAGE:CXX>:$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wdouble-promotion>>
+            INTERFACE
+                $<$<COMPILE_LANGUAGE:CXX>:$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wdouble-promotion>>
         )
     endif()
 
