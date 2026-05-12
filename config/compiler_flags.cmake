@@ -7,6 +7,8 @@
 # SPDX-License-Identifier: BSD-3-Clause
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+include(CheckCXXCompilerFlag)
+
 option(${PROJECT_NAME}_ENABLE_EXTRA_COMPILER_WARNINGS
        "disable compiler warning for ${CMAKE_PROJECT_NAME} build" ON
 )
@@ -33,6 +35,8 @@ target_compile_options(
 )
 
 if(${PROJECT_NAME}_ENABLE_EXTRA_COMPILER_WARNINGS)
+    check_cxx_compiler_flag("-Wdouble-promotion" PROJECT_HAS_WDOUBLE_PROMOTION)
+
     target_compile_options(
         compile_flags_target INTERFACE $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall
                                        -pedantic>
@@ -44,9 +48,15 @@ if(${PROJECT_NAME}_ENABLE_EXTRA_COMPILER_WARNINGS)
                   -Wstrict-aliasing=1
                   -Wunreachable-code
                   -Woverloaded-virtual
-                  -Wdouble-promotion
                   -Wundef>>
     )
+
+    if(PROJECT_HAS_WDOUBLE_PROMOTION)
+        target_compile_options(
+            compile_flags_target
+            INTERFACE $<$<COMPILE_LANGUAGE:CXX>:$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wdouble-promotion>>
+        )
+    endif()
 
     target_compile_options(
         compile_flags_target
