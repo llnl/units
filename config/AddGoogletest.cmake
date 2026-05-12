@@ -21,7 +21,7 @@ function(units_configure_gtest_warnings target_name)
             PUBLIC
                 "-Wno-undef"
                 $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-c++17-attribute-extensions
-                 -Wno-unknown-attributes>>
+                -Wno-unknown-attributes>>
         )
     endif()
 endfunction()
