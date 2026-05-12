@@ -13,16 +13,32 @@
 #
 
 include(extraMacros)
+include(CheckCXXCompilerFlag)
+
+check_cxx_compiler_flag(
+    "-Wno-c++17-attribute-extensions" UNITS_HAS_WNO_CXX17_ATTRIBUTE_EXTENSIONS
+)
+check_cxx_compiler_flag(
+    "-Wno-unknown-attributes" UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES
+)
 
 function(units_configure_gtest_warnings target_name)
     if(NOT MSVC)
-        target_compile_options(
-            ${target_name}
-            PUBLIC
-                "-Wno-undef"
-                $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-c++17-attribute-extensions
-                 -Wno-unknown-attributes>>
-        )
+        target_compile_options(${target_name} PUBLIC "-Wno-undef")
+        if(UNITS_HAS_WNO_CXX17_ATTRIBUTE_EXTENSIONS)
+            target_compile_options(
+                ${target_name}
+                PUBLIC
+                    $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-c++17-attribute-extensions>>
+            )
+        endif()
+        if(UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES)
+            target_compile_options(
+                ${target_name}
+                PUBLIC
+                    $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-unknown-attributes>>
+            )
+        endif()
     endif()
 endfunction()
 
