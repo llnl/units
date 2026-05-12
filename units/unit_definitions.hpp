@@ -1830,10 +1830,10 @@ namespace detail {
     template<typename UX, typename UX2>
     double convertTemperature(double val, const UX& start, const UX2& result)
     {
-        static constexpr std::array<double, 30> biasTable{
+        static constexpr std::array<double, 30> biasTable{{
             0.0, 0.0, 0.0, 0.0, 0.0,   0.0,   0.0, 0.0,     0.0, 0.0,
             0.0, 0.0, 0.0, 0.0, 121.0, 0.0,   0.0, 0.0,     0.0, 0.0,
-            0.0, 0.0, 0.0, 0.0, 0.0,   150.0, 0.0, 37.7778, 0.0, 0.0};
+            0.0, 0.0, 0.0, 0.0, 0.0,   150.0, 0.0, 37.7778, 0.0, 0.0}};
 
         if (is_temperature(start)) {
             if (units::degF == unit_cast(start)) {
