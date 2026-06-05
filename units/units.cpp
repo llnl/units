@@ -2999,8 +2999,8 @@ static char getMatchCharacter(char mchar)
 
 // do a segment check in the reverse direction
 #if defined(__GNUC__) && !defined(__clang__)
-#    pragma GCC diagnostic push
-#    pragma GCC diagnostic ignored "-Wstrict-overflow"
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-overflow"
 #endif
 static bool
     segmentcheckReverse(const std::string& unit, char closeSegment, int& index)
@@ -3044,7 +3044,7 @@ static bool
     // LCOV_EXCL_STOP
 }
 #if defined(__GNUC__) && !defined(__clang__)
-#    pragma GCC diagnostic pop
+#pragma GCC diagnostic pop
 #endif
 
 // do a segment check in the forward direction
