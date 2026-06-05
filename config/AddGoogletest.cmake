@@ -13,6 +13,32 @@
 #
 
 include(extraMacros)
+include(CheckCXXCompilerFlag)
+
+check_cxx_compiler_flag(
+    "-Wno-c++17-attribute-extensions" UNITS_HAS_WNO_CXX17_ATTRIBUTE_EXTENSIONS
+)
+check_cxx_compiler_flag("-Wno-unknown-attributes" UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES)
+
+function(units_configure_gtest_warnings target_name)
+    if(NOT MSVC)
+        target_compile_options(${target_name} PUBLIC "-Wno-undef")
+        if(UNITS_HAS_WNO_CXX17_ATTRIBUTE_EXTENSIONS)
+            target_compile_options(
+                ${target_name}
+                PUBLIC
+                    $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-c++17-attribute-extensions>>
+            )
+        endif()
+        if(UNITS_HAS_WNO_UNKNOWN_ATTRIBUTES)
+            target_compile_options(
+                ${target_name}
+                PUBLIC
+                    $<$<COMPILE_LANGUAGE:CXX>:$<$<OR:$<CXX_COMPILER_ID:Clang>,$<CXX_COMPILER_ID:AppleClang>>:-Wno-unknown-attributes>>
+            )
+        endif()
+    endif()
+endfunction()
 
 if(NOT UNITS_USE_EXTERNAL_GTEST AND NOT GTest_FOUND)
 
@@ -44,26 +70,10 @@ if(NOT UNITS_USE_EXTERNAL_GTEST AND NOT GTest_FOUND)
         ${CMAKE_BINARY_DIR}/ThirdParty/googletest EXCLUDE_FROM_ALL
     )
 
-    if(NOT MSVC)
-        target_compile_options(
-            gtest PUBLIC "-Wno-undef"
-                         $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
-        )
-        target_compile_options(
-            gmock PUBLIC "-Wno-undef"
-                         $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
-        )
-        target_compile_options(
-            gtest_main
-            PUBLIC "-Wno-undef"
-                   $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
-        )
-        target_compile_options(
-            gmock_main
-            PUBLIC "-Wno-undef"
-                   $<$<CXX_COMPILER_ID:Clang>:-Wno-c++17-attribute-extensions>
-        )
-    endif()
+    units_configure_gtest_warnings(gtest)
+    units_configure_gtest_warnings(gmock)
+    units_configure_gtest_warnings(gtest_main)
+    units_configure_gtest_warnings(gmock_main)
 
     hide_variable(gmock_build_tests)
     hide_variable(gtest_build_samples)
@@ -104,6 +114,7 @@ function(add_unit_test test_source_file)
     get_filename_component(test_name "${test_source_file}" NAME_WE)
     add_executable("${test_name}" "${test_source_file}")
     target_link_libraries("${test_name}" GTest::gtest GTest::gmock GTest::gtest_main)
+    units_configure_gtest_warnings("${test_name}")
     add_test(NAME ${test_name} COMMAND $<TARGET_FILE:${test_name}>)
     set_target_properties(${test_name} PROPERTIES FOLDER "Tests")
 endfunction()
@@ -113,6 +124,7 @@ macro(add_gtest TESTNAME)
     target_link_libraries(
         ${TESTNAME} PUBLIC GTest::gtest GTest::gmock GTest::gtest_main
     )
+    units_configure_gtest_warnings(${TESTNAME})
 
     if(GOOGLE_TEST_INDIVIDUAL)
         gtest_discover_tests(

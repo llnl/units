@@ -106,6 +106,7 @@ elseif(UNITS_BUILD_OBJECT_LIBRARY)
     target_include_directories(
         units PRIVATE $<BUILD_INTERFACE:${${UNITS_CMAKE_PROJECT_NAME}_SOURCE_DIR}>
     )
+    target_link_libraries(units PRIVATE compile_flags_target)
 
     if(UNITS_NAMESPACE)
         target_compile_definitions(units PUBLIC -DUNITS_NAMESPACE=${UNITS_NAMESPACE})
