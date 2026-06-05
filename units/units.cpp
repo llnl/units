@@ -3006,16 +3006,24 @@ static bool
         return false;
         // LCOV_EXCL_STOP
     }
-    while (index >= 0) {
-        const char current = unit[static_cast<size_t>(index)];
-        // Keep the 0 -> -1 transition explicit to avoid -Wstrict-overflow
-        // on compilers that rewrite signed decrement-and-compare patterns.
-        index = (index == 0) ? -1 : index - 1;
-        if (index >= 0 && unit[static_cast<size_t>(index)] == '\\') {
-            index = (index == 0) ? -1 : index - 1;
+    size_t keyIndex=static_cast<size_t>(index);
+    while (keyIndex >= 0) {
+        const char current = unit[keyIndex];
+        
+        if (keyIndex == 0) {
+            index=static_cast<int>(keyIndex);
+            return (current == closeSegment);
+        }
+        --keyIndex;
+        if (keyIndex >= 0 && unit[keyIndex] == '\\') {
+            if (keyIndex == 0) {
+                break;
+            }
+            --keyIndex;
             continue;
         }
         if (current == closeSegment) {
+			index=static_cast<int>(keyIndex);
             return true;
         }
         switch (current) {
@@ -3025,19 +3033,20 @@ static bool
                 if (!segmentcheckReverse(
                         unit, getMatchCharacter(current), index)) {
                     // LCOV_EXCL_START
-                    return false;
+                    break;
                     // LCOV_EXCL_STOP
                 }
                 break;
             case '{':
             case '(':
             case '[':
-                return false;
+                break;
             default:
                 break;
         }
     }
     // LCOV_EXCL_START
+    index=static_cast<int>(keyIndex);
     return false;
     // LCOV_EXCL_STOP
 }
