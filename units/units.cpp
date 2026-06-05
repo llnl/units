@@ -2998,6 +2998,10 @@ static char getMatchCharacter(char mchar)
 // called so coverage isn't expected or required.
 
 // do a segment check in the reverse direction
+#if defined(__GNUC__) && !defined(__clang__)
+#    pragma GCC diagnostic push
+#    pragma GCC diagnostic ignored "-Wstrict-overflow"
+#endif
 static bool
     segmentcheckReverse(const std::string& unit, char closeSegment, int& index)
 {
@@ -3006,24 +3010,14 @@ static bool
         return false;
         // LCOV_EXCL_STOP
     }
-    size_t keyIndex=static_cast<size_t>(index);
-    while (keyIndex >= 0) {
-        const char current = unit[keyIndex];
-        
-        if (keyIndex == 0) {
-            index=static_cast<int>(keyIndex);
-            return (current == closeSegment);
-        }
-        --keyIndex;
-        if (keyIndex >= 0 && unit[keyIndex] == '\\') {
-            if (keyIndex == 0) {
-                break;
-            }
-            --keyIndex;
+    while (index >= 0) {
+        const char current = unit[index];
+        --index;
+        if (index >= 0 && unit[index] == '\\') {
+            --index;
             continue;
         }
         if (current == closeSegment) {
-			index=static_cast<int>(keyIndex);
             return true;
         }
         switch (current) {
@@ -3033,23 +3027,25 @@ static bool
                 if (!segmentcheckReverse(
                         unit, getMatchCharacter(current), index)) {
                     // LCOV_EXCL_START
-                    break;
+                    return false;
                     // LCOV_EXCL_STOP
                 }
                 break;
             case '{':
             case '(':
             case '[':
-                break;
+                return false;
             default:
                 break;
         }
     }
     // LCOV_EXCL_START
-    index=static_cast<int>(keyIndex);
     return false;
     // LCOV_EXCL_STOP
 }
+#if defined(__GNUC__) && !defined(__clang__)
+#    pragma GCC diagnostic pop
+#endif
 
 // do a segment check in the forward direction
 static bool
