@@ -2998,6 +2998,10 @@ static char getMatchCharacter(char mchar)
 // called so coverage isn't expected or required.
 
 // do a segment check in the reverse direction
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wstrict-overflow"
+#endif
 static bool
     segmentcheckReverse(const std::string& unit, char closeSegment, int& index)
 {
@@ -3007,12 +3011,10 @@ static bool
         // LCOV_EXCL_STOP
     }
     while (index >= 0) {
-        const char current = unit[static_cast<size_t>(index)];
-        // Keep the 0 -> -1 transition explicit to avoid -Wstrict-overflow
-        // on compilers that rewrite signed decrement-and-compare patterns.
-        index = (index == 0) ? -1 : index - 1;
-        if (index >= 0 && unit[static_cast<size_t>(index)] == '\\') {
-            index = (index == 0) ? -1 : index - 1;
+        const char current = unit[index];
+        --index;
+        if (index >= 0 && unit[index] == '\\') {
+            --index;
             continue;
         }
         if (current == closeSegment) {
@@ -3041,6 +3043,9 @@ static bool
     return false;
     // LCOV_EXCL_STOP
 }
+#if defined(__GNUC__) && !defined(__clang__)
+#pragma GCC diagnostic pop
+#endif
 
 // do a segment check in the forward direction
 static bool
