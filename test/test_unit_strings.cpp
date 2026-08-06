@@ -562,13 +562,18 @@ TEST(stringToUnits, decimalPowerExponents)
     EXPECT_EQ(precise::special::rootMeter, unit_from_string("m^0.5"));
     EXPECT_EQ(precise::special::rootMeter, unit_from_string("m**0.5"));
     EXPECT_EQ(precise::special::rootMeter, unit_from_string("m^(0.5)"));
+    EXPECT_EQ(precise::special::rootMeter, unit_from_string("sqrt(m)"));
     EXPECT_EQ(precise::special::rootMeter.inv(), unit_from_string("m^-0.5"));
     EXPECT_EQ(precise::special::rootMeter.inv(), unit_from_string("m^(-0.5)"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.0"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.00"));
     EXPECT_EQ(precise::Hz, unit_from_string("s^-1.0"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2e0"));
+    EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^0.5"));
     EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^(0.5)"));
+    EXPECT_EQ(precise::special::rootHertz.inv(), unit_from_string("sqrt(s)"));
+    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+    EXPECT_EQ(unit_from_string("m/s^2/Hz^0.5"), precise::special::ASD);
 
     const std::vector<std::string> invalidPowers{
         "m^0.25",

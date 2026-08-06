@@ -836,8 +836,6 @@ TEST(specialOps, rootHertz)
     auto asd = precise::m / precise::s.pow(2) / rh;
 
     EXPECT_EQ(asd, precise::special::ASD);
-    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
-    EXPECT_EQ(unit_from_string("m/s^2/Hz^0.5"), precise::special::ASD);
 
     EXPECT_EQ(rh.pow(1), rh);
     EXPECT_EQ(rh.pow(0), precise::one);
@@ -864,10 +862,6 @@ TEST(specialOps, rootMeterAndRootHertzDistinct)
     auto rh = precise::special::rootHertz;
 
     EXPECT_NE(rm, rh);
-    EXPECT_EQ(rm, unit_from_string("m^0.5"));
-    EXPECT_EQ(rm, unit_from_string("sqrt(m)"));
-    EXPECT_EQ(rh, unit_from_string("Hz^0.5"));
-    EXPECT_EQ(rh.inv(), unit_from_string("sqrt(s)"));
 
     EXPECT_EQ(rm.pow(2), precise::m);
     EXPECT_EQ(rh.pow(2), precise::Hz);
