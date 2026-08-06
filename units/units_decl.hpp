@@ -208,9 +208,9 @@ namespace detail {
         /// take a unit_data to some power
         constexpr unit_data pow(int power) const
         {  // the modifier is to handle a few weird operations that operate on
-           // square_root meter and Hz,
+           // square_root Hz,
             return {
-                (meter_ * power) + rootMeterModifier(power),
+                meter_ * power,
                 kilogram_ * power,
                 (second_ * power) + rootHertzModifier(power),
                 ampere_ * power,
@@ -460,18 +460,6 @@ namespace detail {
                 0 :
                 (power / 2) * ((second_ < 0) || (power < 0) ? 9 : -9);
         }
-        constexpr int rootMeterModifier(int power) const
-        {
-            return ((meter_ != -5 && meter_ != 5) ||
-                    ((e_flag_ & i_flag_) == 0U) || power % 2 != 0 ||
-                    second_ != 0 || kilogram_ != 0 || ampere_ != 0 ||
-                    candela_ != 0 || kelvin_ != 0 || mole_ != 0 ||
-                    radians_ != 0 || currency_ != 0 || count_ != 0 ||
-                    equation_ != 0U) ?
-                0 :
-                (power / 2) * ((meter_ < 0) ? 11 : -11);
-        }
-
         // needs to be defined for the full 32 bits(or 64 bits)
         signed int meter_ : bitwidth::meter;
         signed int second_ : bitwidth::second;  // 8
