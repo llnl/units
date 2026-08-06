@@ -483,6 +483,8 @@ TEST(preciseUnitOps, rootMeter)
     auto m1 = precise::m.pow(1);
     EXPECT_EQ(precise::m, root(m1, 1));
     EXPECT_EQ(precise::m.inv(), root(m1, -1));
+    EXPECT_EQ(precise::m, precise::special::rootMeter.pow(2));
+    EXPECT_EQ(precise::m.inv(), precise::special::rootMeter.inv().pow(2));
     auto m2 = pow(precise::m, 2);  // use the alternate free function form
     EXPECT_EQ(precise::m, root(m2, 2));
     EXPECT_EQ(precise::m, sqrt(m2));
@@ -831,6 +833,11 @@ TEST(specialOps, rootHertz)
     EXPECT_FALSE(is_error(precise::special::ASD));
 
     auto rh = precise::special::rootHertz;
+    auto asd = precise::m / precise::s.pow(2) / rh;
+
+    EXPECT_EQ(asd, precise::special::ASD);
+    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+    EXPECT_EQ(unit_from_string("m/s^2/Hz^0.5"), precise::special::ASD);
 
     EXPECT_EQ(rh.pow(1), rh);
     EXPECT_EQ(rh.pow(0), precise::one);
@@ -849,6 +856,26 @@ TEST(specialOps, rootHertz)
     // EXPECT_EQ(rh.pow(-2), s);
     // EXPECT_EQ(rh.pow(-4), s.pow(2));
     // EXPECT_EQ(rh.pow(-6), s.pow(3));
+}
+
+TEST(specialOps, rootMeterAndRootHertzDistinct)
+{
+    auto rm = precise::special::rootMeter;
+    auto rh = precise::special::rootHertz;
+
+    EXPECT_NE(rm, rh);
+    EXPECT_EQ(rm, unit_from_string("m^0.5"));
+    EXPECT_EQ(rm, unit_from_string("sqrt(m)"));
+    EXPECT_EQ(rh, unit_from_string("Hz^0.5"));
+    EXPECT_EQ(rh.inv(), unit_from_string("sqrt(s)"));
+
+    EXPECT_EQ(rm.pow(2), precise::m);
+    EXPECT_EQ(rh.pow(2), precise::Hz);
+    EXPECT_EQ(rm.pow(-2), precise::m.inv());
+    EXPECT_EQ(rh.pow(-2), precise::s);
+
+    EXPECT_NE(rm.pow(2), precise::Hz);
+    EXPECT_NE(rh.pow(2), precise::m);
 }
 
 TEST(specialOps, degC)
