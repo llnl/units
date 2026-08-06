@@ -567,6 +567,10 @@ TEST(stringToUnits, decimalPowerExponents)
     EXPECT_EQ(precise::special::rootMeter.inv(), unit_from_string("m^(-0.5)"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.0"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.00"));
+    EXPECT_EQ(precise::kg / precise::m.pow(2), unit_from_string("kg/(m^2)"));
+    EXPECT_EQ(
+        precise::kg / precise::m.pow(2),
+        unit_from_string("kg/(m<sup>2</sup>)"));
     EXPECT_EQ(precise::Hz, unit_from_string("s^-1.0"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2e0"));
     EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^0.5"));

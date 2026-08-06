@@ -4006,7 +4006,9 @@ static bool checkExponentOperations(const std::string& unit_string)
             }
         } else if (
             cx < unit_string.size() && unit_string[cx] != '*' &&
-            unit_string[cx] != '/' && unit_string[cx] != '^') {
+            unit_string[cx] != '/' && unit_string[cx] != '^' &&
+            unit_string[cx] != ')' && unit_string[cx] != ']' &&
+            unit_string[cx] != '}') {
             return false;
         } else {
             --cx;

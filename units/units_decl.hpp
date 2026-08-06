@@ -462,8 +462,12 @@ namespace detail {
         }
         constexpr int rootMeterModifier(int power) const
         {
-            return (meter_ * power == 0 || ((e_flag_ & i_flag_) == 0U) ||
-                    power % 2 != 0) ?
+            return ((meter_ != -5 && meter_ != 5) ||
+                    ((e_flag_ & i_flag_) == 0U) || power % 2 != 0 ||
+                    second_ != 0 || kilogram_ != 0 || ampere_ != 0 ||
+                    candela_ != 0 || kelvin_ != 0 || mole_ != 0 ||
+                    radians_ != 0 || currency_ != 0 || count_ != 0 ||
+                    equation_ != 0U) ?
                 0 :
                 (power / 2) * ((meter_ < 0) ? 11 : -11);
         }
