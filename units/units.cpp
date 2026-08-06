@@ -3959,6 +3959,28 @@ static bool checkExponentOperations(const std::string& unit_string)
     auto cx = unit_string.find_first_of('^');
     while (cx != std::string::npos) {
         const bool ndigit = isDigitCharacter(unit_string[cx - 1]);
+        if (unit_string[cx - 1] == ']') {
+            int index = static_cast<int>(cx) - 2;
+            if (segmentcheckReverse(unit_string, '[', index)) {
+                const auto openBracket = static_cast<std::size_t>(index + 1);
+                auto contentStart = openBracket + 1;
+                auto contentLength = cx - contentStart - 1;
+                if (contentLength >= 2 &&
+                    unit_string[contentStart] == '(' &&
+                    unit_string[contentStart + contentLength - 1] == ')') {
+                    ++contentStart;
+                    contentLength -= 2;
+                }
+                char* eptr{nullptr};
+                const auto content =
+                    unit_string.substr(contentStart, contentLength);
+                std::strtod(content.c_str(), &eptr);
+                if (!content.empty() &&
+                    eptr == content.c_str() + content.size()) {
+                    return false;
+                }
+            }
+        }
         ++cx;
         const bool parenthesized = (unit_string[cx] == '(');
         if (parenthesized) {
@@ -4110,9 +4132,10 @@ static bool checkValidUnitString(
                     break;
             }
         }
-        if (!checkExponentOperations(unit_string)) {
-            return false;
-        }
+    }
+
+    if (!checkExponentOperations(unit_string)) {
+        return false;
     }
 
     return true;

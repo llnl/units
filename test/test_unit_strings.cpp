@@ -589,7 +589,14 @@ TEST(stringToUnits, decimalPowerExponents)
     EXPECT_EQ(unit_from_string("m/s^2/Hz^0.5"), precise::special::ASD);
 
     const std::vector<std::string> invalidPowers{
-        "m^0.25", "m^(0.25)", "m^1.5", "m^2.25", "m^2.5", "m^-2.5", "m^2e"};
+        "m^0.25",
+        "m^(0.25)",
+        "m^1.5",
+        "m^2.25",
+        "m^2.5",
+        "m^-2.5",
+        "m^2e",
+        "[(0.5)]^34s"};
 
     for (const auto& powerString : invalidPowers) {
         EXPECT_TRUE(is_error(unit_from_string(powerString))) << powerString;
