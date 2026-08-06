@@ -4004,9 +4004,9 @@ static bool checkExponentOperations(const std::string& unit_string)
             if (cx >= unit_string.size() || unit_string[cx] != ')') {
                 return false;
             }
-        } else if (cx < unit_string.size() &&
-                   unit_string[cx] != '*' && unit_string[cx] != '/' &&
-                   unit_string[cx] != '^') {
+        } else if (
+            cx < unit_string.size() && unit_string[cx] != '*' &&
+            unit_string[cx] != '/' && unit_string[cx] != '^') {
             return false;
         } else {
             --cx;
@@ -5320,9 +5320,8 @@ static precise_unit unit_to_the_power_of(
     return precise::defunit;
 }
 
-static bool string_power_to_twice_power(
-    const std::string& powerString,
-    int& twicePower)
+static bool
+    string_power_to_twice_power(const std::string& powerString, int& twicePower)
 {
     char* eptr{nullptr};
     const auto power = std::strtod(powerString.c_str(), &eptr);
@@ -5354,9 +5353,8 @@ static precise_unit root_with_special_units(const precise_unit& un)
             (meterPower > 0) ? un / precise::m : un * precise::m;
         retunit = root(adjusted, 2);
         if (!is_error(retunit)) {
-            return (meterPower > 0) ?
-                retunit * precise::special::rootMeter :
-                retunit / precise::special::rootMeter;
+            return (meterPower > 0) ? retunit * precise::special::rootMeter :
+                                      retunit / precise::special::rootMeter;
         }
     }
 
@@ -5366,9 +5364,8 @@ static precise_unit root_with_special_units(const precise_unit& un)
             (secondPower < 0) ? un / precise::Hz : un * precise::Hz;
         retunit = root(adjusted, 2);
         if (!is_error(retunit)) {
-            return (secondPower < 0) ?
-                retunit * precise::special::rootHertz :
-                retunit / precise::special::rootHertz;
+            return (secondPower < 0) ? retunit * precise::special::rootHertz :
+                                       retunit / precise::special::rootHertz;
         }
     }
 
@@ -5397,8 +5394,7 @@ static precise_unit unit_to_the_half_power_of(
     if (is_error(rootUnit)) {
         return precise::invalid;
     }
-    if (wholePower != 0 &&
-        (rootUnit.has_i_flag() || rootUnit.has_e_flag())) {
+    if (wholePower != 0 && (rootUnit.has_i_flag() || rootUnit.has_e_flag())) {
         return precise::invalid;
     }
     return retunit * rootUnit;
