@@ -3965,9 +3965,11 @@ static bool checkExponentOperations(const std::string& unit_string)
                 const auto openBracket = static_cast<std::size_t>(index + 1);
                 auto contentStart = openBracket + 1;
                 auto contentLength = cx - contentStart - 1;
+                bool parenthesizedContent = false;
                 if (contentLength >= 2 &&
                     unit_string[contentStart] == '(' &&
                     unit_string[contentStart + contentLength - 1] == ')') {
+                    parenthesizedContent = true;
                     ++contentStart;
                     contentLength -= 2;
                 }
@@ -3975,7 +3977,7 @@ static bool checkExponentOperations(const std::string& unit_string)
                 const auto content =
                     unit_string.substr(contentStart, contentLength);
                 std::strtod(content.c_str(), &eptr);
-                if (!content.empty() &&
+                if (parenthesizedContent && !content.empty() &&
                     eptr == content.c_str() + content.size()) {
                     return false;
                 }
