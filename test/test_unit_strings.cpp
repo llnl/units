@@ -573,6 +573,15 @@ TEST(stringToUnits, decimalPowerExponents)
         unit_from_string("kg/(m<sup>2</sup>)"));
     EXPECT_EQ(precise::Hz, unit_from_string("s^-1.0"));
     EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2e0"));
+#ifdef UNITS_CONSTEXPR_IF_SUPPORTED
+    if constexpr (detail::bitwidth::base_size == sizeof(std::uint64_t)) {
+#else
+    if (detail::bitwidth::base_size == sizeof(std::uint64_t)) {
+#endif
+        EXPECT_EQ(precise::m.pow(200), unit_from_string("m^2e2"));
+    } else {
+        EXPECT_TRUE(is_error(unit_from_string("m^2e2")));
+    }
     EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^0.5"));
     EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^(0.5)"));
     EXPECT_EQ(precise::special::rootHertz.inv(), unit_from_string("sqrt(s)"));
@@ -586,8 +595,7 @@ TEST(stringToUnits, decimalPowerExponents)
         "m^2.25",
         "m^2.5",
         "m^-2.5",
-        "m^2e",
-        "m^2e2"};
+        "m^2e"};
 
     for (const auto& powerString : invalidPowers) {
         EXPECT_TRUE(is_error(unit_from_string(powerString))) << powerString;
