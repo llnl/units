@@ -3966,8 +3966,7 @@ static bool checkExponentOperations(const std::string& unit_string)
                 auto contentStart = openBracket + 1;
                 auto contentLength = cx - contentStart - 1;
                 bool parenthesizedContent = false;
-                if (contentLength >= 2 &&
-                    unit_string[contentStart] == '(' &&
+                if (contentLength >= 2 && unit_string[contentStart] == '(' &&
                     unit_string[contentStart + contentLength - 1] == ')') {
                     parenthesizedContent = true;
                     ++contentStart;
