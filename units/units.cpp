@@ -1173,6 +1173,20 @@ static std::string
 
 static const std::pair<const unit, std::string> nullret{invalid, std::string{}};
 
+/** Look up only the user defined output names, ignoring the built in ones. */
+static std::string findUserDefinedUnitName(unit un)
+{
+    if (allowUserDefinedUnits.load(std::memory_order_acquire)) {
+        if (!user_defined_unit_names.empty()) {
+            auto fndud = user_defined_unit_names.find(un);
+            if (fndud != user_defined_unit_names.end()) {
+                return fndud->second;
+            }
+        }
+    }
+    return std::string{};
+}
+
 static std::pair<unit, std::string> find_unit_pair(unit un)
 {  // cppcheck suppression active
     if (allowUserDefinedUnits.load(std::memory_order_acquire)) {
@@ -1348,6 +1362,16 @@ static std::string
     // deal with situations where the cast unit is not normal but the precise
     // one is
     if (std::fpclassify(llunit.multiplier_f()) != FP_NORMAL) {
+        // A user defined name is stored against the same unit_cast, so it is
+        // still a match here even though the multiplier no longer survives as
+        // a float. Checking before falling back to the numeric form is what
+        // lets a name like "meV^2" be used: squaring a unit that is already
+        // small enough underflows float, so this branch is taken and the
+        // lookup further down is never reached.
+        auto udefName = findUserDefinedUnitName(llunit);
+        if (!udefName.empty()) {
+            return udefName;
+        }
         auto mstring = getMultiplierString(un.multiplier(), true);
         un = precise_unit(un.base_units());
         mstring.push_back('*');
