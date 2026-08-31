@@ -3164,7 +3164,7 @@ static precise_unit
                     {"mercury_[32]", precise::pressure::bases::Hg_32},
                     {"mercury_[60]", precise::pressure::bases::Hg_60},
                     {"water_[60]", precise::pressure::bases::water_60},
-                };
+            };
             auto tunit = commUnits.find(cstring);
             if (tunit != commUnits.end()) {
                 return bunit * tunit->second;
