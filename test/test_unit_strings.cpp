@@ -1383,6 +1383,42 @@ TEST(stringToUnits, partitionMinimumDefault)
     EXPECT_EQ(prev, minimum_partition_size3);
 }
 
+TEST(userDefinedUnits, multiplierOutsideFloatRange)
+{
+    // Squaring a unit that is already small enough drives the multiplier below
+    // what a float can hold as a normal value, and to_string used to fall
+    // straight through to the numeric form without ever consulting the user
+    // defined names.
+    auto meV = unit_from_string("meV");
+    ASSERT_FALSE(is_error(meV));
+
+    auto meV2 = meV * meV;
+    addUserDefinedUnit("meV^2", meV2);
+    EXPECT_EQ(to_string(meV2), "meV^2");
+
+    // The same on the other side of the range, where the multiplier overflows
+    // a float instead of underflowing it.
+    auto invmeV2 = meV2.inv();
+    addUserDefinedUnit("1/meV^2", invmeV2);
+    EXPECT_EQ(to_string(invmeV2), "1/meV^2");
+
+    auto barn = unit_from_string("barn");
+    ASSERT_FALSE(is_error(barn));
+    auto barn2 = barn * barn;
+    addUserDefinedUnit("barn^2", barn2);
+    EXPECT_EQ(to_string(barn2), "barn^2");
+
+    // A unit whose multiplier is still a normal float keeps working, and one
+    // that was never named still renders numerically.
+    addUserDefinedUnit("myEnergy", meV);
+    EXPECT_EQ(to_string(meV), "myEnergy");
+
+    auto unnamed = barn2 * barn;
+    EXPECT_NE(to_string(unnamed).find('*'), std::string::npos);
+
+    clearUserDefinedUnits();
+}
+
 TEST(userDefinedUnits, definitions)
 {
     precise_unit clucks(19.3, precise::m * precise::A);
