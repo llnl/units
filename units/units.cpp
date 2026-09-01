@@ -3962,7 +3962,7 @@ static bool checkExponentOperations(const std::string& unit_string)
         if (unit_string[cx - 1] == ']') {
             int index = static_cast<int>(cx) - 2;
             if (segmentcheckReverse(unit_string, '[', index)) {
-                const auto openBracket = static_cast<std::size_t>(index + 1);
+                const auto openBracket = static_cast<std::size_t>(index) + 1;
                 auto contentStart = openBracket + 1;
                 auto contentLength = cx - contentStart - 1;
                 bool parenthesizedContent = false;
@@ -3975,7 +3975,8 @@ static bool checkExponentOperations(const std::string& unit_string)
                 char* eptr{nullptr};
                 const auto content =
                     unit_string.substr(contentStart, contentLength);
-                std::strtod(content.c_str(), &eptr);
+                const auto parsedValue = std::strtod(content.c_str(), &eptr);
+                (void)parsedValue;
                 if (parenthesizedContent && !content.empty() &&
                     eptr == content.c_str() + content.size()) {
                     return false;
