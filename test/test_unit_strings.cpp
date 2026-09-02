@@ -603,6 +603,43 @@ TEST(stringToUnits, decimalPowerExponents)
     }
 }
 
+TEST(stringToUnits, bracketParenthesizedExponents)
+{
+    // The modified code specifically handles the case where:
+    // - There's a ']' before '^'
+    // - The content between brackets is parenthesized
+    // - That content parses as a pure number
+    // This pattern is invalid and should be rejected
+
+    // Test that these invalid patterns are properly rejected
+    // (This exercises the strtod-based validation we modified)
+    EXPECT_TRUE(is_error(unit_from_string("[(0.5)]^34s")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2)]^3m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(1)]^5kg")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2.0)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e0)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e+1)]^1m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e-1)]^1m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(+2)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(-1)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(-0.5)]^3m")));
+
+    // These should be valid because the content is not purely numeric
+    // (the strtod parsing doesn't consume the entire string)
+    EXPECT_NE(unit_from_string("[(m)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(m/s)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(kg*m)]"), precise::error);
+
+    // Partially numeric content - parsing stops before end
+    EXPECT_NE(unit_from_string("[(2m)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(1.5kg)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(0.5x)]"), precise::error);
+
+    // Valid complex bracket notation that was already tested
+    EXPECT_EQ(
+        unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+}
+
 TEST(stringToUnits, specialUnits)
 {
     EXPECT_EQ(
