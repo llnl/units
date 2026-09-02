@@ -3984,9 +3984,15 @@ static bool checkExponentOperations(const std::string& unit_string)
             }
         }
         ++cx;
+        if (cx >= unit_string.size()) {
+            return false;
+        }
         const bool parenthesized = (unit_string[cx] == '(');
         if (parenthesized) {
             ++cx;
+            if (cx >= unit_string.size()) {
+                return false;
+            }
         }
         if (unit_string[cx] == '-' || unit_string[cx] == '+') {
             ++cx;
