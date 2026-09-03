@@ -3984,17 +3984,17 @@ static bool checkExponentOperations(const std::string& unit_string)
             }
         }
         ++cx;
+        // Check bounds before accessing unit_string[cx]
         if (cx >= unit_string.size()) {
             return false;
         }
         const bool parenthesized = (unit_string[cx] == '(');
         if (parenthesized) {
             ++cx;
-            if (cx >= unit_string.size()) {
-                return false;
-            }
+            // Continue even if at bounds; digit validation will catch it
         }
-        if (unit_string[cx] == '-' || unit_string[cx] == '+') {
+        if (cx < unit_string.size() &&
+            (unit_string[cx] == '-' || unit_string[cx] == '+')) {
             ++cx;
         }
         const auto startDigit = cx;
