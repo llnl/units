@@ -636,8 +636,7 @@ TEST(stringToUnits, bracketParenthesizedExponents)
     EXPECT_NE(unit_from_string("[(0.5x)]"), precise::error);
 
     // Valid complex bracket notation that was already tested
-    EXPECT_EQ(
-        unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
 }
 
 TEST(stringToUnits, specialUnits)
