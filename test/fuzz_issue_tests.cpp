@@ -264,8 +264,9 @@ TEST(fuzzFailures, rtripSingleProblems)
     auto u1 = unit_from_string(cdata);
     std::cerr << "rtrip input (hex): ";
     for (const auto byte : cdata) {
-        std::cerr << std::hex << std::setw(2) << std::setfill('0')
-                  << static_cast<unsigned int>(static_cast<unsigned char>(byte));
+        std::cerr
+            << std::hex << std::setw(2) << std::setfill('0')
+            << static_cast<unsigned int>(static_cast<unsigned char>(byte));
     }
     std::cerr << std::dec << "\n";
     std::cerr << "u1 error: " << std::boolalpha << is_error(u1)
@@ -283,19 +284,19 @@ TEST(fuzzFailures, rtripSingleProblems)
         std::cerr << "u2 error: " << is_error(u2)
                   << ", multiplier: " << u2.multiplier() << "\n";
         std::cerr << "precise root1 error: " << is_error(preciseRoot1)
-              << ", multiplier: " << preciseRoot1.multiplier()
-              << ", e flag: " << preciseRoot1.base_units().has_e_flag()
-              << "\n";
+                  << ", multiplier: " << preciseRoot1.multiplier()
+                  << ", e flag: " << preciseRoot1.base_units().has_e_flag()
+                  << "\n";
         std::cerr << "precise root2 error: " << is_error(preciseRoot2)
-              << ", multiplier: " << preciseRoot2.multiplier()
-              << ", e flag: " << preciseRoot2.base_units().has_e_flag()
-              << "\n";
+                  << ", multiplier: " << preciseRoot2.multiplier()
+                  << ", e flag: " << preciseRoot2.base_units().has_e_flag()
+                  << "\n";
         std::cerr << "root1 error: " << is_error(root1)
-              << ", multiplier: " << root1.multiplier()
-              << ", e flag: " << root1.base_units().has_e_flag() << "\n";
+                  << ", multiplier: " << root1.multiplier()
+                  << ", e flag: " << root1.base_units().has_e_flag() << "\n";
         std::cerr << "root2 error: " << is_error(root2)
-              << ", multiplier: " << root2.multiplier()
-              << ", e flag: " << root2.base_units().has_e_flag() << "\n";
+                  << ", multiplier: " << root2.multiplier()
+                  << ", e flag: " << root2.base_units().has_e_flag() << "\n";
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
             EXPECT_EQ(u2, u1);
