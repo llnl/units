@@ -260,7 +260,8 @@ INSTANTIATE_TEST_SUITE_P(rtripFiles, rtripProblems, ::testing::Range(1, 39));
 
 TEST(fuzzFailures, rtripSingleProblems)
 {
-    const std::string cdata("\x00\xBDTh+TTh\x00", 9);
+    auto cdata = loadFailureFile("rtrip_fail", 38);
+    ASSERT_FALSE(cdata.empty());
     auto u1 = unit_from_string(cdata);
     std::cerr << "rtrip input (hex): ";
     for (const auto byte : cdata) {
@@ -269,6 +270,7 @@ TEST(fuzzFailures, rtripSingleProblems)
             << static_cast<unsigned int>(static_cast<unsigned char>(byte));
     }
     std::cerr << std::dec << "\n";
+    std::cerr << "input length: " << cdata.size() << "\n";
     std::cerr << "u1 error: " << std::boolalpha << is_error(u1)
               << ", multiplier: " << u1.multiplier() << "\n";
     if (is_error(u1)) {
@@ -303,14 +305,17 @@ TEST(fuzzFailures, rtripSingleProblems)
             EXPECT_EQ(unit_cast(u2), unit_cast(u1));
             EXPECT_FALSE(units::unit_cast(u2) != units::unit_cast(u1));
         } else if (!is_error(root(u2, 2))) {
+            std::cerr << "selected branch: square root\n";
             EXPECT_EQ(root(unit_cast(u2), 2), root(unit_cast(u1), 2));
             EXPECT_FALSE(
                 root(units::unit_cast(u2), 2) != root(units::unit_cast(u1), 2));
         } else if (!is_error(root(u2, 3))) {
+            std::cerr << "selected branch: cube root\n";
             EXPECT_EQ(root(unit_cast(u2), 3), root(unit_cast(u1), 3));
             EXPECT_FALSE(
                 root(units::unit_cast(u2), 3) != root(units::unit_cast(u1), 3));
         } else {
+            std::cerr << "selected branch: direct unit comparison\n";
             auto uc1 = unit_cast(u1);
             auto uc2 = unit_cast(u2);
             EXPECT_EQ(uc2, uc1);
