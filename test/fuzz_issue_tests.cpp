@@ -260,9 +260,7 @@ INSTANTIATE_TEST_SUITE_P(rtripFiles, rtripProblems, ::testing::Range(1, 39));
 
 TEST(fuzzFailures, rtripSingleProblems)
 {
-    // This is rtrip_fail37; Google Test displays it as parameter 38 because
-    // the parametrized range starts at 1 and the displayed index is zero-based.
-    auto cdata = loadFailureFile("rtrip_fail", 37);
+    const std::string cdata("\x00\xBDTh+TTh\x00", 9);
     auto u1 = unit_from_string(cdata);
     std::cerr << "rtrip input (hex): ";
     for (const auto byte : cdata) {
