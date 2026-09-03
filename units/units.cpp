@@ -3958,6 +3958,9 @@ static bool checkExponentOperations(const std::string& unit_string)
     // check all power operations
     auto cx = unit_string.find_first_of('^');
     while (cx != std::string::npos) {
+        if (cx == 0) {
+            return false;
+        }
         const bool ndigit = isDigitCharacter(unit_string[cx - 1]);
         if (unit_string[cx - 1] == ']') {
             int index = static_cast<int>(cx) - 2;
@@ -3984,17 +3987,17 @@ static bool checkExponentOperations(const std::string& unit_string)
             }
         }
         ++cx;
-        // Check bounds before accessing unit_string[cx]
         if (cx >= unit_string.size()) {
             return false;
         }
         const bool parenthesized = (unit_string[cx] == '(');
         if (parenthesized) {
             ++cx;
-            // Continue even if at bounds; digit validation will catch it
+            if (cx >= unit_string.size()) {
+                return false;
+            }
         }
-        if (cx < unit_string.size() &&
-            (unit_string[cx] == '-' || unit_string[cx] == '+')) {
+        if (unit_string[cx] == '-' || unit_string[cx] == '+') {
             ++cx;
         }
         const auto startDigit = cx;
