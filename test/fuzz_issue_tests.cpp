@@ -10,6 +10,7 @@ SPDX-License-Identifier: BSD-3-Clause
 
 #include <cstring>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -259,12 +260,44 @@ INSTANTIATE_TEST_SUITE_P(rtripFiles, rtripProblems, ::testing::Range(1, 39));
 
 TEST(fuzzFailures, rtripSingleProblems)
 {
-    auto cdata = loadFailureFile("rtrip_fail", 38);
+    // This is rtrip_fail37; Google Test displays it as parameter 38 because
+    // the parametrized range starts at 1 and the displayed index is zero-based.
+    auto cdata = loadFailureFile("rtrip_fail", 37);
     auto u1 = unit_from_string(cdata);
-    if (!is_error(u1)) {
+    std::cerr << "rtrip input (hex): ";
+    for (const auto byte : cdata) {
+        std::cerr << std::hex << std::setw(2) << std::setfill('0')
+                  << static_cast<unsigned int>(static_cast<unsigned char>(byte));
+    }
+    std::cerr << std::dec << "\n";
+    std::cerr << "u1 error: " << std::boolalpha << is_error(u1)
+              << ", multiplier: " << u1.multiplier() << "\n";
+    if (is_error(u1)) {
+        std::cerr << "u1 was rejected; no round-trip values available\n";
+    } else {
         auto str = to_string(u1);
-        std::cout << str << '\n';
         auto u2 = unit_from_string(str);
+        auto preciseRoot1 = root(u1, 2);
+        auto preciseRoot2 = root(u2, 2);
+        auto root1 = root(unit_cast(u1), 2);
+        auto root2 = root(unit_cast(u2), 2);
+        std::cerr << "serialized: [" << str << "]\n";
+        std::cerr << "u2 error: " << is_error(u2)
+                  << ", multiplier: " << u2.multiplier() << "\n";
+        std::cerr << "precise root1 error: " << is_error(preciseRoot1)
+              << ", multiplier: " << preciseRoot1.multiplier()
+              << ", e flag: " << preciseRoot1.base_units().has_e_flag()
+              << "\n";
+        std::cerr << "precise root2 error: " << is_error(preciseRoot2)
+              << ", multiplier: " << preciseRoot2.multiplier()
+              << ", e flag: " << preciseRoot2.base_units().has_e_flag()
+              << "\n";
+        std::cerr << "root1 error: " << is_error(root1)
+              << ", multiplier: " << root1.multiplier()
+              << ", e flag: " << root1.base_units().has_e_flag() << "\n";
+        std::cerr << "root2 error: " << is_error(root2)
+              << ", multiplier: " << root2.multiplier()
+              << ", e flag: " << root2.base_units().has_e_flag() << "\n";
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
             EXPECT_EQ(u2, u1);
