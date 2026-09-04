@@ -298,16 +298,13 @@ std::string getCommodityName(std::uint32_t commodity)
             if (fnd2 != customCommodityNames.end()) {
                 const auto& name = fnd2->second;
                 const auto printable = std::all_of(
-                    name.begin(),
-                    name.end(),
-                    [](unsigned char character) {
+                    name.begin(), name.end(), [](unsigned char character) {
                         return character >= 0x20U && character <= 0x7EU;
                     });
                 if (printable) {
                     return name;
                 }
-                return std::string("CXCOMM[") + std::to_string(commodity) +
-                    "]";
+                return std::string("CXCOMM[") + std::to_string(commodity) + "]";
             }
         }
     }
