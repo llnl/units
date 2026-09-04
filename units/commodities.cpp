@@ -243,7 +243,13 @@ static void removeEscapeSequences(std::string& str)
 uint32_t getCommodity(std::string comm)
 {
     removeEscapeSequences(comm);
-    std::transform(comm.begin(), comm.end(), comm.begin(), ::tolower);
+    std::transform(
+        comm.begin(),
+        comm.end(),
+        comm.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     if (allowCustomCommodities.load(std::memory_order_acquire)) {
         if (!customCommodityCodes.empty()) {
             auto fnd2 = customCommodityCodes.find(comm);
