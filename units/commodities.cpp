@@ -199,7 +199,8 @@ static uint32_t stringHash(const std::string& str)
     std::uint32_t hash{hashcodes::firstH};
     for (auto c : str) {
         hash = (hash * hashcodes::Ac) ^
-            (static_cast<std::uint32_t>(c) * hashcodes::Bc);
+            (static_cast<std::uint32_t>(static_cast<unsigned char>(c)) *
+             hashcodes::Bc);
     }
     return hash;  // or return h % C;
 }
