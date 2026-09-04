@@ -341,11 +341,10 @@ TEST(fuzzFailures, rtripSingleProblems)
         std::cerr << "EQXUN[8]: error=" << is_error(equationUnit)
                   << ", equation=" << equationUnit.base_units().is_equation()
                   << ", e=" << equationUnit.base_units().has_e_flag() << "\n";
-        std::cerr << "0*EQXUN[8]: error=" << is_error(zeroEquationUnit)
-                  << ", equation="
-                  << zeroEquationUnit.base_units().is_equation()
-                  << ", e=" << zeroEquationUnit.base_units().has_e_flag()
-                  << "\n";
+        std::cerr
+            << "0*EQXUN[8]: error=" << is_error(zeroEquationUnit)
+            << ", equation=" << zeroEquationUnit.base_units().is_equation()
+            << ", e=" << zeroEquationUnit.base_units().has_e_flag() << "\n";
         const auto equationPos = str.rfind("EQXUN[8]");
         if (equationPos != std::string::npos) {
             const auto serializedTail = str.substr(equationPos);
@@ -365,11 +364,10 @@ TEST(fuzzFailures, rtripSingleProblems)
                       << zeroPrefixTailUnit.base_units().is_equation()
                       << ", e=" << zeroPrefixTailUnit.base_units().has_e_flag()
                       << "\n";
-            std::cerr << "zero-prefix parse: error=" << is_error(zeroPrefixUnit)
-                      << ", equation="
-                      << zeroPrefixUnit.base_units().is_equation()
-                      << ", e=" << zeroPrefixUnit.base_units().has_e_flag()
-                      << "\n";
+            std::cerr
+                << "zero-prefix parse: error=" << is_error(zeroPrefixUnit)
+                << ", equation=" << zeroPrefixUnit.base_units().is_equation()
+                << ", e=" << zeroPrefixUnit.base_units().has_e_flag() << "\n";
         }
         printUnitData("u1", u1);
         printUnitData("u2", u2);
