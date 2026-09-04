@@ -233,9 +233,36 @@ TEST_P(rtripProblems, rtripFiles)
 {
     auto cdata = loadFailureFile("rtrip_fail", GetParam());
     auto u1 = unit_from_string(cdata);
+    if (GetParam() == 38) {
+        std::cerr << "rtrip parametrized input length: " << cdata.size()
+                  << "\n";
+        std::cerr << "rtrip parametrized input (hex): ";
+        for (const auto byte : cdata) {
+            std::cerr << std::hex << std::setw(2) << std::setfill('0')
+                      << static_cast<unsigned int>(
+                             static_cast<unsigned char>(byte));
+        }
+        std::cerr << std::dec << "\n";
+        std::cerr << "rtrip parametrized u1 error: " << std::boolalpha
+                  << is_error(u1) << ", multiplier: " << u1.multiplier()
+                  << "\n";
+    }
     if (!is_error(u1)) {
         auto str = to_string(u1);
         auto u2 = unit_from_string(str);
+        if (GetParam() == 38) {
+            std::cerr << "rtrip parametrized serialized: [" << str << "]\n";
+            std::cerr << "rtrip parametrized u2 error: " << is_error(u2)
+                      << ", multiplier: " << u2.multiplier() << "\n";
+            std::cerr << "rtrip parametrized root1 error: "
+                      << is_error(root(u1, 2))
+                      << ", e flag: "
+                      << root(u1, 2).base_units().has_e_flag() << "\n";
+            std::cerr << "rtrip parametrized root2 error: "
+                      << is_error(root(u2, 2))
+                      << ", e flag: "
+                      << root(u2, 2).base_units().has_e_flag() << "\n";
+        }
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
             EXPECT_EQ(u2, u1);
@@ -282,9 +309,26 @@ TEST(fuzzFailures, rtripSingleProblems)
         auto preciseRoot2 = root(u2, 2);
         auto root1 = root(unit_cast(u1), 2);
         auto root2 = root(unit_cast(u2), 2);
+        const auto printUnitData = [](const char* name, const precise_unit& unit) {
+            const auto base = unit.base_units();
+            std::cerr << name << " base: m=" << base.meter()
+                      << ", kg=" << base.kg() << ", s=" << base.second()
+                      << ", A=" << base.ampere() << ", K=" << base.kelvin()
+                      << ", mol=" << base.mole() << ", cd=" << base.candela()
+                      << ", rad=" << base.radian()
+                      << ", currency=" << base.currency()
+                      << ", count=" << base.count()
+                      << ", i=" << base.has_i_flag()
+                      << ", e=" << base.has_e_flag()
+                      << ", equation=" << base.is_equation() << "\n";
+        };
         std::cerr << "serialized: [" << str << "]\n";
         std::cerr << "u2 error: " << is_error(u2)
                   << ", multiplier: " << u2.multiplier() << "\n";
+        printUnitData("u1", u1);
+        printUnitData("u2", u2);
+        printUnitData("precise root1", preciseRoot1);
+        printUnitData("precise root2", preciseRoot2);
         std::cerr << "precise root1 error: " << is_error(preciseRoot1)
                   << ", multiplier: " << preciseRoot1.multiplier()
                   << ", e flag: " << preciseRoot1.base_units().has_e_flag()
