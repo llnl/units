@@ -253,7 +253,14 @@ TEST_P(rtripProblems, rtripFiles)
         if (GetParam() == 38) {
             std::cerr << "rtrip parametrized serialized: [" << str << "]\n";
             std::cerr << "rtrip parametrized u2 error: " << is_error(u2)
-                      << ", multiplier: " << u2.multiplier() << "\n";
+                          << ", multiplier: " << u2.multiplier()
+                          << ", e flag: " << u2.base_units().has_e_flag()
+                          << ", equation: " << u2.base_units().is_equation()
+                          << "\n";
+                std::cerr << "rtrip parametrized u1 flags: e="
+                          << u1.base_units().has_e_flag()
+                          << ", equation=" << u1.base_units().is_equation()
+                          << "\n";
             std::cerr << "rtrip parametrized root1 error: "
                       << is_error(root(u1, 2))
                       << ", e flag: "
@@ -324,7 +331,11 @@ TEST(fuzzFailures, rtripSingleProblems)
         };
         std::cerr << "serialized: [" << str << "]\n";
         std::cerr << "u2 error: " << is_error(u2)
-                  << ", multiplier: " << u2.multiplier() << "\n";
+                  << ", multiplier: " << u2.multiplier()
+                  << ", e flag: " << u2.base_units().has_e_flag()
+                  << ", equation: " << u2.base_units().is_equation() << "\n";
+        std::cerr << "u1 flags: e=" << u1.base_units().has_e_flag()
+                  << ", equation=" << u1.base_units().is_equation() << "\n";
         printUnitData("u1", u1);
         printUnitData("u2", u2);
         printUnitData("precise root1", preciseRoot1);
