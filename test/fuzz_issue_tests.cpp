@@ -238,9 +238,9 @@ TEST_P(rtripProblems, rtripFiles)
                   << "\n";
         std::cerr << "rtrip parametrized input (hex): ";
         for (const auto byte : cdata) {
-            std::cerr << std::hex << std::setw(2) << std::setfill('0')
-                      << static_cast<unsigned int>(
-                             static_cast<unsigned char>(byte));
+            std::cerr
+                << std::hex << std::setw(2) << std::setfill('0')
+                << static_cast<unsigned int>(static_cast<unsigned char>(byte));
         }
         std::cerr << std::dec << "\n";
         std::cerr << "rtrip parametrized u1 error: " << std::boolalpha
@@ -253,22 +253,21 @@ TEST_P(rtripProblems, rtripFiles)
         if (GetParam() == 38) {
             std::cerr << "rtrip parametrized serialized: [" << str << "]\n";
             std::cerr << "rtrip parametrized u2 error: " << is_error(u2)
-                          << ", multiplier: " << u2.multiplier()
-                          << ", e flag: " << u2.base_units().has_e_flag()
-                          << ", equation: " << u2.base_units().is_equation()
-                          << "\n";
-                std::cerr << "rtrip parametrized u1 flags: e="
-                          << u1.base_units().has_e_flag()
-                          << ", equation=" << u1.base_units().is_equation()
-                          << "\n";
+                      << ", multiplier: " << u2.multiplier()
+                      << ", e flag: " << u2.base_units().has_e_flag()
+                      << ", equation: " << u2.base_units().is_equation()
+                      << "\n";
+            std::cerr << "rtrip parametrized u1 flags: e="
+                      << u1.base_units().has_e_flag()
+                      << ", equation=" << u1.base_units().is_equation() << "\n";
             std::cerr << "rtrip parametrized root1 error: "
                       << is_error(root(u1, 2))
-                      << ", e flag: "
-                      << root(u1, 2).base_units().has_e_flag() << "\n";
+                      << ", e flag: " << root(u1, 2).base_units().has_e_flag()
+                      << "\n";
             std::cerr << "rtrip parametrized root2 error: "
                       << is_error(root(u2, 2))
-                      << ", e flag: "
-                      << root(u2, 2).base_units().has_e_flag() << "\n";
+                      << ", e flag: " << root(u2, 2).base_units().has_e_flag()
+                      << "\n";
         }
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
@@ -316,7 +315,8 @@ TEST(fuzzFailures, rtripSingleProblems)
         auto preciseRoot2 = root(u2, 2);
         auto root1 = root(unit_cast(u1), 2);
         auto root2 = root(unit_cast(u2), 2);
-        const auto printUnitData = [](const char* name, const precise_unit& unit) {
+        const auto printUnitData = [](const char* name,
+                                      const precise_unit& unit) {
             const auto base = unit.base_units();
             std::cerr << name << " base: m=" << base.meter()
                       << ", kg=" << base.kg() << ", s=" << base.second()
