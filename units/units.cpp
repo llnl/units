@@ -1159,7 +1159,14 @@ static std::string
                 propUnitString.push_back('/');
                 propUnitString.append(cString);
             } else {
-                auto locp = propUnitString.find_last_of("^*");
+                // Stop at the next multiplication separator.  In particular,
+                // an equation-unit suffix ("*EQXUN[...]") must not cause the
+                // commodity to be appended after the powered denominator.
+                auto end = propUnitString.find('*', loc + 1);
+                if (end != std::string::npos && end > 0) {
+                    --end;
+                }
+                auto locp = propUnitString.find_last_of("^*", end);
                 if (locp == std::string::npos || locp < loc) {
                     propUnitString.append(cString);
                 } else {
@@ -5727,6 +5734,13 @@ static precise_unit unit_from_string_internal(
                     if (is_valid(retunit)) {
                         return front_unit * retunit;
                     }
+                    // A failed expression with unit operators is not an
+                    // unbraced commodity.  In particular, do not discard its
+                    // dimensions when a zero multiplier precedes it.
+                    if (unit_string.substr(index).find_first_of("*/^{}") !=
+                        std::string::npos) {
+                        return precise::invalid;
+                    }
                     auto commodity = getCommodity(unit_string.substr(index));
                     front_unit.commodity(commodity);
                     return front_unit;
@@ -5791,6 +5805,15 @@ static precise_unit unit_from_string_internal(
     const bool containsPer =
         (findWordOperatorSep(unit_string, "per") != std::string::npos);
 
+    // A commodity following a power is accepted for backwards compatibility
+    // with strings emitted before commodities were placed before exponents.
+    // Handle it before parsing '^', otherwise the commodity text is mistaken
+    // for part of the exponent.
+    if ((match_flags & no_commodities) == 0 && unit_string.back() == '}' &&
+        unit_string.find('{') != std::string::npos) {
+        return commoditizedUnit(unit_string, match_flags);
+    }
+
     sep = findOperatorSep(unit_string, "^");
     if (sep != std::string::npos) {
         auto pchar = sep - 1;
@@ -5831,10 +5854,6 @@ static precise_unit unit_from_string_internal(
         if (retunit != precise::defunit) {
             return retunit;
         }
-    }
-    if ((match_flags & no_commodities) == 0 && unit_string.back() == '}' &&
-        unit_string.find('{') != std::string::npos) {
-        return commoditizedUnit(unit_string, match_flags);
     }
     retunit = checkSIprefix(unit_string, match_flags);
     if (is_valid(retunit)) {
@@ -5901,7 +5920,12 @@ static precise_unit unit_from_string_internal(
                 return retunit;
             }
             std::transform(
-                ustring.begin(), ustring.end(), ustring.begin(), ::toupper);
+                ustring.begin(),
+                ustring.end(),
+                ustring.begin(),
+                [](unsigned char character) {
+                    return static_cast<char>(std::toupper(character));
+                });
 
             retunit = get_unit(ustring, match_flags);
             if (is_valid(retunit)) {

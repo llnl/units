@@ -2035,6 +2035,33 @@ TEST(stringCleanup, withCommodities)
 
     res = detail::testing::testCleanUpString("1/m^2", ~commodities::aluminum);
     EXPECT_EQ(res, "1/m{aluminum}^2");
+
+    res = detail::testing::testCleanUpString(
+        "$/item^(32)*EQXUN[8]", ~commodities::aluminum);
+    EXPECT_EQ(res, "$/item{aluminum}^(32)*EQXUN[8]");
+}
+
+TEST(stringToUnits, trailingCommodityAfterPower)
+{
+    if (sizeof(UNITS_BASE_TYPE) != 8) {
+        return;
+    }
+
+    const auto canonical =
+        unit_from_string("0*$/item{aluminum}^(32)*EQXUN[8]");
+    const auto legacy =
+        unit_from_string("0*$/item^(32){aluminum}*EQXUN[8]");
+    ASSERT_FALSE(is_error(canonical));
+    ASSERT_FALSE(is_error(legacy));
+    EXPECT_EQ(legacy, canonical);
+
+    const auto serialized = to_string(canonical);
+    EXPECT_EQ(serialized, "0*$/item{aluminum}^(32)*EQXUN[8]");
+    const auto reparsed = unit_from_string(serialized);
+    ASSERT_FALSE(is_error(reparsed));
+    EXPECT_EQ(reparsed, canonical);
+
+    EXPECT_TRUE(is_error(unit_from_string("0*item^(not_an_exponent)")));
 }
 
 TEST(stringGeneration, addPowerString)
