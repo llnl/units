@@ -244,10 +244,7 @@ uint32_t getCommodity(std::string comm)
 {
     removeEscapeSequences(comm);
     std::transform(
-        comm.begin(),
-        comm.end(),
-        comm.begin(),
-        [](unsigned char character) {
+        comm.begin(), comm.end(), comm.begin(), [](unsigned char character) {
             return static_cast<char>(std::tolower(character));
         });
     if (allowCustomCommodities.load(std::memory_order_acquire)) {
