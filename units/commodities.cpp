@@ -324,7 +324,13 @@ std::string getCommodityName(std::uint32_t commodity)
 void addCustomCommodity(std::string comm, std::uint32_t code)
 {
     if (allowCustomCommodities.load()) {
-        std::transform(comm.begin(), comm.end(), comm.begin(), ::tolower);
+        std::transform(
+            comm.begin(),
+            comm.end(),
+            comm.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         customCommodityNames.emplace(code, comm);
         customCommodityCodes.emplace(comm, code);
     }

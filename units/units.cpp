@@ -2251,7 +2251,12 @@ static double readNumericalWords(const std::string& ustring, size_t& index)
     std::string lcstring{ustring};
     // make the string lower case for consistency
     std::transform(
-        lcstring.begin(), lcstring.end(), lcstring.begin(), ::tolower);
+        lcstring.begin(),
+        lcstring.end(),
+        lcstring.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     for (const auto& wp : groupNumericalWords) {
         auto loc = lcstring.find(std::get<0>(wp));
         if (loc != std::string::npos) {
@@ -2850,10 +2855,13 @@ static precise_unit
                     continue;
                 }
             }
-            if (unit[1] > 0 && (std::isupper(unit[1]) != 0) &&
-                (std::toupper(unit[0]) == irep.first[0]) &&
+            if (static_cast<unsigned char>(unit[1]) > 0 &&
+                (std::isupper(static_cast<unsigned char>(unit[1])) != 0) &&
+                (std::toupper(static_cast<unsigned char>(unit[0])) ==
+                 irep.first[0]) &&
                 (unit[1] == irep.first[1])) {
-                unit[0] = std::toupper(unit[0]);
+                unit[0] = static_cast<char>(
+                    std::toupper(static_cast<unsigned char>(unit[0])));
             }
         }
         auto fnd = unit.find(irep.first);
@@ -3923,7 +3931,12 @@ static void ciConversion(std::string& unit_string)
     };
     // transform to upper case so we have a common starting point
     std::transform(
-        unit_string.begin(), unit_string.end(), unit_string.begin(), ::toupper);
+        unit_string.begin(),
+        unit_string.end(),
+        unit_string.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::toupper(character));
+        });
     auto fnd = ciConversions.find(unit_string);
     if (fnd != ciConversions.end()) {
         unit_string = fnd->second;
@@ -4855,7 +4868,9 @@ static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
                     unit_string.begin() + bloc + 1,
                     unit_string.begin() + ind - 1,
                     unit_string.begin() + bloc + 1,
-                    ::tolower);
+                    [](unsigned char character) {
+                        return static_cast<char>(std::tolower(character));
+                    });
                 bloc = unit_string.find_first_of('{', ind);
             } else {
                 bloc = std::string::npos;
@@ -5058,7 +5073,9 @@ static precise_unit checkNamedUnitCode(
             codeString.begin(),
             codeString.end(),
             codeString.begin(),
-            ::toupper);
+            [](unsigned char character) {
+                return static_cast<char>(std::toupper(character));
+            });
     }
     if (codeString.compare(0, 4, "X12:") == 0) {
         return x12_unit(codeString.substr(4));
@@ -5255,7 +5272,13 @@ static precise_unit checkForCustomUnit(const std::string& unit_string)
             return {1.0, precise::generate_custom_count_unit(0), hcode};
         }
 
-        std::transform(csub.begin(), csub.end(), csub.begin(), ::tolower);
+        std::transform(
+            csub.begin(),
+            csub.end(),
+            csub.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         auto custcode = std::hash<std::string>{}(csub);
         return precise::generate_custom_unit(custcode & 0x3FU);
     }
@@ -6064,7 +6087,12 @@ static precise_unit unit_from_string_internal(
     {
         ustring = unit_string;
         std::transform(
-            ustring.begin(), ustring.end(), ustring.begin(), ::tolower);
+            ustring.begin(),
+            ustring.end(),
+            ustring.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         if (ustring != unit_string) {
             retunit = unit_quick_match(ustring, match_flags);
             if (!is_error(retunit)) {
@@ -6297,7 +6325,12 @@ precise_unit default_unit(std::string unit_type)
         }
     }
     std::transform(
-        unit_type.begin(), unit_type.end(), unit_type.begin(), ::tolower);
+        unit_type.begin(),
+        unit_type.end(),
+        unit_type.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     unit_type.erase(
         std::remove(unit_type.begin(), unit_type.end(), ' '), unit_type.end());
     auto fnd = measurement_types.find(unit_type);
