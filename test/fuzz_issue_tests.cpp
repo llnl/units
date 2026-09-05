@@ -10,6 +10,7 @@ SPDX-License-Identifier: BSD-3-Clause
 
 #include <cstring>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -232,9 +233,42 @@ TEST_P(rtripProblems, rtripFiles)
 {
     auto cdata = loadFailureFile("rtrip_fail", GetParam());
     auto u1 = unit_from_string(cdata);
+    if (GetParam() == 38) {
+        std::cerr << "rtrip parametrized input length: " << cdata.size()
+                  << "\n";
+        std::cerr << "rtrip parametrized input (hex): ";
+        for (const auto byte : cdata) {
+            std::cerr
+                << std::hex << std::setw(2) << std::setfill('0')
+                << static_cast<unsigned int>(static_cast<unsigned char>(byte));
+        }
+        std::cerr << std::dec << "\n";
+        std::cerr << "rtrip parametrized u1 error: " << std::boolalpha
+                  << is_error(u1) << ", multiplier: " << u1.multiplier()
+                  << "\n";
+    }
     if (!is_error(u1)) {
         auto str = to_string(u1);
         auto u2 = unit_from_string(str);
+        if (GetParam() == 38) {
+            std::cerr << "rtrip parametrized serialized: [" << str << "]\n";
+            std::cerr << "rtrip parametrized u2 error: " << is_error(u2)
+                      << ", multiplier: " << u2.multiplier()
+                      << ", e flag: " << u2.base_units().has_e_flag()
+                      << ", equation: " << u2.base_units().is_equation()
+                      << "\n";
+            std::cerr << "rtrip parametrized u1 flags: e="
+                      << u1.base_units().has_e_flag()
+                      << ", equation=" << u1.base_units().is_equation() << "\n";
+            std::cerr << "rtrip parametrized root1 error: "
+                      << is_error(root(u1, 2))
+                      << ", e flag: " << root(u1, 2).base_units().has_e_flag()
+                      << "\n";
+            std::cerr << "rtrip parametrized root2 error: "
+                      << is_error(root(u2, 2))
+                      << ", e flag: " << root(u2, 2).base_units().has_e_flag()
+                      << "\n";
+        }
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
             EXPECT_EQ(u2, u1);
@@ -255,30 +289,121 @@ TEST_P(rtripProblems, rtripFiles)
     }
 }
 
-INSTANTIATE_TEST_SUITE_P(rtripFiles, rtripProblems, ::testing::Range(1, 38));
+INSTANTIATE_TEST_SUITE_P(rtripFiles, rtripProblems, ::testing::Range(1, 39));
 
 TEST(fuzzFailures, rtripSingleProblems)
 {
-    auto cdata = loadFailureFile("rtrip_fail", 37);
+    auto cdata = loadFailureFile("rtrip_fail", 38);
+    ASSERT_FALSE(cdata.empty());
     auto u1 = unit_from_string(cdata);
-    if (!is_error(u1)) {
+    std::cerr << "rtrip input (hex): ";
+    for (const auto byte : cdata) {
+        std::cerr
+            << std::hex << std::setw(2) << std::setfill('0')
+            << static_cast<unsigned int>(static_cast<unsigned char>(byte));
+    }
+    std::cerr << std::dec << "\n";
+    std::cerr << "input length: " << cdata.size() << "\n";
+    std::cerr << "u1 error: " << std::boolalpha << is_error(u1)
+              << ", multiplier: " << u1.multiplier() << "\n";
+    if (is_error(u1)) {
+        std::cerr << "u1 was rejected; no round-trip values available\n";
+    } else {
         auto str = to_string(u1);
-        std::cout << str << '\n';
         auto u2 = unit_from_string(str);
+        auto preciseRoot1 = root(u1, 2);
+        auto preciseRoot2 = root(u2, 2);
+        auto root1 = root(unit_cast(u1), 2);
+        auto root2 = root(unit_cast(u2), 2);
+        const auto printUnitData = [](const char* name,
+                                      const precise_unit& unit) {
+            const auto base = unit.base_units();
+            std::cerr << name << " base: m=" << base.meter()
+                      << ", kg=" << base.kg() << ", s=" << base.second()
+                      << ", A=" << base.ampere() << ", K=" << base.kelvin()
+                      << ", mol=" << base.mole() << ", cd=" << base.candela()
+                      << ", rad=" << base.radian()
+                      << ", currency=" << base.currency()
+                      << ", count=" << base.count()
+                      << ", i=" << base.has_i_flag()
+                      << ", e=" << base.has_e_flag()
+                      << ", equation=" << base.is_equation() << "\n";
+        };
+        std::cerr << "serialized: [" << str << "]\n";
+        std::cerr << "u2 error: " << is_error(u2)
+                  << ", multiplier: " << u2.multiplier()
+                  << ", e flag: " << u2.base_units().has_e_flag()
+                  << ", equation: " << u2.base_units().is_equation() << "\n";
+        std::cerr << "u1 flags: e=" << u1.base_units().has_e_flag()
+                  << ", equation=" << u1.base_units().is_equation() << "\n";
+        const auto equationUnit = unit_from_string("EQXUN[8]");
+        const auto zeroEquationUnit = unit_from_string("0*EQXUN[8]");
+        std::cerr << "EQXUN[8]: error=" << is_error(equationUnit)
+                  << ", equation=" << equationUnit.base_units().is_equation()
+                  << ", e=" << equationUnit.base_units().has_e_flag() << "\n";
+        std::cerr
+            << "0*EQXUN[8]: error=" << is_error(zeroEquationUnit)
+            << ", equation=" << zeroEquationUnit.base_units().is_equation()
+            << ", e=" << zeroEquationUnit.base_units().has_e_flag() << "\n";
+        const auto equationPos = str.rfind("EQXUN[8]");
+        if (equationPos != std::string::npos) {
+            const auto serializedTail = str.substr(equationPos);
+            const auto tailUnit = unit_from_string(serializedTail);
+            std::cerr << "serialized tail: [" << serializedTail
+                      << "], error=" << is_error(tailUnit)
+                      << ", equation=" << tailUnit.base_units().is_equation()
+                      << ", e=" << tailUnit.base_units().has_e_flag() << "\n";
+        }
+        if (str.size() > 2 && str[0] == '0' && str[1] == '*') {
+            const auto zeroPrefixTail = str.substr(2);
+            const auto zeroPrefixTailUnit = unit_from_string(zeroPrefixTail);
+            const auto zeroPrefixUnit = unit_from_string("0*" + zeroPrefixTail);
+            std::cerr << "zero-prefix tail: [" << zeroPrefixTail
+                      << "], error=" << is_error(zeroPrefixTailUnit)
+                      << ", equation="
+                      << zeroPrefixTailUnit.base_units().is_equation()
+                      << ", e=" << zeroPrefixTailUnit.base_units().has_e_flag()
+                      << "\n";
+            std::cerr
+                << "zero-prefix parse: error=" << is_error(zeroPrefixUnit)
+                << ", equation=" << zeroPrefixUnit.base_units().is_equation()
+                << ", e=" << zeroPrefixUnit.base_units().has_e_flag() << "\n";
+        }
+        printUnitData("u1", u1);
+        printUnitData("u2", u2);
+        printUnitData("precise root1", preciseRoot1);
+        printUnitData("precise root2", preciseRoot2);
+        std::cerr << "precise root1 error: " << is_error(preciseRoot1)
+                  << ", multiplier: " << preciseRoot1.multiplier()
+                  << ", e flag: " << preciseRoot1.base_units().has_e_flag()
+                  << "\n";
+        std::cerr << "precise root2 error: " << is_error(preciseRoot2)
+                  << ", multiplier: " << preciseRoot2.multiplier()
+                  << ", e flag: " << preciseRoot2.base_units().has_e_flag()
+                  << "\n";
+        std::cerr << "root1 error: " << is_error(root1)
+                  << ", multiplier: " << root1.multiplier()
+                  << ", e flag: " << root1.base_units().has_e_flag() << "\n";
+        std::cerr << "root2 error: " << is_error(root2)
+                  << ", multiplier: " << root2.multiplier()
+                  << ", e flag: " << root2.base_units().has_e_flag() << "\n";
         EXPECT_FALSE(is_error(u2));
         if (u2 == u1) {
             EXPECT_EQ(u2, u1);
             EXPECT_EQ(unit_cast(u2), unit_cast(u1));
             EXPECT_FALSE(units::unit_cast(u2) != units::unit_cast(u1));
         } else if (!is_error(root(u2, 2))) {
+            std::cerr << "selected branch: square root\n";
             EXPECT_EQ(root(unit_cast(u2), 2), root(unit_cast(u1), 2));
             EXPECT_FALSE(
                 root(units::unit_cast(u2), 2) != root(units::unit_cast(u1), 2));
         } else if (!is_error(root(u2, 3))) {
+            std::cerr << "selected branch: cube root\n";
             EXPECT_EQ(root(unit_cast(u2), 3), root(unit_cast(u1), 3));
             EXPECT_FALSE(
                 root(units::unit_cast(u2), 3) != root(units::unit_cast(u1), 3));
         } else {
+            std::cerr << "selected branch: direct unit comparison\n";
             auto uc1 = unit_cast(u1);
             auto uc2 = unit_cast(u2);
             EXPECT_EQ(uc2, uc1);

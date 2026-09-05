@@ -557,6 +557,88 @@ TEST(stringToUnits, morePower)
     EXPECT_EQ(precise::us::mile.pow(2), unit_from_string("mi(USA)^(2)"));
 }
 
+TEST(stringToUnits, decimalPowerExponents)
+{
+    EXPECT_EQ(precise::special::rootMeter, unit_from_string("m^0.5"));
+    EXPECT_EQ(precise::special::rootMeter, unit_from_string("m**0.5"));
+    EXPECT_EQ(precise::special::rootMeter, unit_from_string("m^(0.5)"));
+    EXPECT_EQ(precise::special::rootMeter, unit_from_string("sqrt(m)"));
+    EXPECT_EQ(precise::special::rootMeter.inv(), unit_from_string("m^-0.5"));
+    EXPECT_EQ(precise::special::rootMeter.inv(), unit_from_string("m^(-0.5)"));
+    EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.0"));
+    EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2.00"));
+    EXPECT_EQ(precise::kg / precise::m.pow(2), unit_from_string("kg/(m^2)"));
+    EXPECT_EQ(
+        precise::kg / precise::m.pow(2),
+        unit_from_string("kg/(m<sup>2</sup>)"));
+    EXPECT_EQ(precise::Hz, unit_from_string("s^-1.0"));
+    EXPECT_EQ(precise::m.pow(2), unit_from_string("m^2e0"));
+#ifdef UNITS_CONSTEXPR_IF_SUPPORTED
+    if constexpr (detail::bitwidth::base_size == sizeof(std::uint64_t)) {
+#else
+    if (detail::bitwidth::base_size == sizeof(std::uint64_t)) {
+#endif
+        EXPECT_EQ(precise::m.pow(200), unit_from_string("m^2e2"));
+    } else {
+        EXPECT_TRUE(is_error(unit_from_string("m^2e2")));
+    }
+    EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^0.5"));
+    EXPECT_EQ(precise::special::rootHertz, unit_from_string("Hz^(0.5)"));
+    EXPECT_EQ(precise::special::rootHertz.inv(), unit_from_string("sqrt(s)"));
+    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+    EXPECT_EQ(unit_from_string("m/s^2/Hz^0.5"), precise::special::ASD);
+
+    const std::vector<std::string> invalidPowers{
+        "m^0.25",
+        "m^(0.25)",
+        "m^1.5",
+        "m^2.25",
+        "m^2.5",
+        "m^-2.5",
+        "m^2e",
+        "[(0.5)]^34s"};
+
+    for (const auto& powerString : invalidPowers) {
+        EXPECT_TRUE(is_error(unit_from_string(powerString))) << powerString;
+    }
+}
+
+TEST(stringToUnits, bracketParenthesizedExponents)
+{
+    // The modified code specifically handles the case where:
+    // - There's a ']' before '^'
+    // - The content between brackets is parenthesized
+    // - That content parses as a pure number
+    // This pattern is invalid and should be rejected
+
+    // Test that these invalid patterns are properly rejected
+    // (This exercises the strtod-based validation we modified)
+    EXPECT_TRUE(is_error(unit_from_string("[(0.5)]^34s")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2)]^3m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(1)]^5kg")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2.0)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e0)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e+1)]^1m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(2e-1)]^1m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(+2)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(-1)]^2m")));
+    EXPECT_TRUE(is_error(unit_from_string("[(-0.5)]^3m")));
+
+    // These should be valid because the content is not purely numeric
+    // (the strtod parsing doesn't consume the entire string)
+    EXPECT_NE(unit_from_string("[(m)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(m/s)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(kg*m)]"), precise::error);
+
+    // Partially numeric content - parsing stops before end
+    EXPECT_NE(unit_from_string("[(2m)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(1.5kg)]"), precise::error);
+    EXPECT_NE(unit_from_string("[(0.5x)]"), precise::error);
+
+    // Valid complex bracket notation that was already tested
+    EXPECT_EQ(unit_from_string("[m/s2/Hz^(1/2)]"), precise::special::ASD);
+}
+
 TEST(stringToUnits, specialUnits)
 {
     EXPECT_EQ(
@@ -1989,6 +2071,31 @@ TEST(stringCleanup, withCommodities)
 
     res = detail::testing::testCleanUpString("1/m^2", ~commodities::aluminum);
     EXPECT_EQ(res, "1/m{aluminum}^2");
+
+    res = detail::testing::testCleanUpString(
+        "$/item^(32)*EQXUN[8]", ~commodities::aluminum);
+    EXPECT_EQ(res, "$/item{aluminum}^(32)*EQXUN[8]");
+}
+
+TEST(stringToUnits, trailingCommodityAfterPower)
+{
+    if (sizeof(UNITS_BASE_TYPE) != 8) {
+        return;
+    }
+
+    const auto canonical = unit_from_string("0*$/item{aluminum}^(32)*EQXUN[8]");
+    const auto legacy = unit_from_string("0*$/item^(32){aluminum}*EQXUN[8]");
+    ASSERT_FALSE(is_error(canonical));
+    ASSERT_FALSE(is_error(legacy));
+    EXPECT_EQ(legacy, canonical);
+
+    const auto serialized = to_string(canonical);
+    EXPECT_EQ(serialized, "0*$/item{aluminum}^(32)*EQXUN[8]");
+    const auto reparsed = unit_from_string(serialized);
+    ASSERT_FALSE(is_error(reparsed));
+    EXPECT_EQ(reparsed, canonical);
+
+    EXPECT_TRUE(is_error(unit_from_string("0*item^(not_an_exponent)")));
 }
 
 TEST(stringGeneration, addPowerString)

@@ -1141,6 +1141,14 @@ static std::string
                 }
             }
         } else {  // inverse commodity
+            const auto multloc = propUnitString.find('*', 2);
+            if (propUnitString.compare(0, 2, "1/") == 0 &&
+                multloc != std::string::npos &&
+                (propUnitString.compare(multloc + 1, 5, "CXUN[") == 0 ||
+                 propUnitString.compare(multloc + 1, 6, "CXCUN[") == 0)) {
+                return propUnitString.substr(multloc + 1) + "/" +
+                    propUnitString.substr(2, multloc - 2) + cString;
+            }
             auto loc = propUnitString.find_last_of('/');
             if (loc == std::string::npos) {
                 auto rs = checkForCustomUnit(cString);
@@ -1159,7 +1167,14 @@ static std::string
                 propUnitString.push_back('/');
                 propUnitString.append(cString);
             } else {
-                auto locp = propUnitString.find_last_of("^*");
+                // Stop at the next multiplication separator.  In particular,
+                // an equation-unit suffix ("*EQXUN[...]") must not cause the
+                // commodity to be appended after the powered denominator.
+                auto end = propUnitString.find('*', loc + 1);
+                if (end != std::string::npos && end > 0) {
+                    --end;
+                }
+                auto locp = propUnitString.find_last_of("^*", end);
                 if (locp == std::string::npos || locp < loc) {
                     propUnitString.append(cString);
                 } else {
@@ -2275,7 +2290,12 @@ static double readNumericalWords(const std::string& ustring, size_t& index)
     std::string lcstring{ustring};
     // make the string lower case for consistency
     std::transform(
-        lcstring.begin(), lcstring.end(), lcstring.begin(), ::tolower);
+        lcstring.begin(),
+        lcstring.end(),
+        lcstring.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     for (const auto& wp : groupNumericalWords) {
         auto loc = lcstring.find(std::get<0>(wp));
         if (loc != std::string::npos) {
@@ -2874,10 +2894,13 @@ static precise_unit
                     continue;
                 }
             }
-            if (unit[1] > 0 && (std::isupper(unit[1]) != 0) &&
-                (std::toupper(unit[0]) == irep.first[0]) &&
+            if (static_cast<unsigned char>(unit[1]) > 0 &&
+                (std::isupper(static_cast<unsigned char>(unit[1])) != 0) &&
+                (std::toupper(static_cast<unsigned char>(unit[0])) ==
+                 irep.first[0]) &&
                 (unit[1] == irep.first[1])) {
-                unit[0] = std::toupper(unit[0]);
+                unit[0] = static_cast<char>(
+                    std::toupper(static_cast<unsigned char>(unit[0])));
             }
         }
         auto fnd = unit.find(irep.first);
@@ -3947,7 +3970,12 @@ static void ciConversion(std::string& unit_string)
     };
     // transform to upper case so we have a common starting point
     std::transform(
-        unit_string.begin(), unit_string.end(), unit_string.begin(), ::toupper);
+        unit_string.begin(),
+        unit_string.end(),
+        unit_string.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::toupper(character));
+        });
     auto fnd = ciConversions.find(unit_string);
     if (fnd != ciConversions.end()) {
         unit_string = fnd->second;
@@ -3982,42 +4010,100 @@ static bool checkExponentOperations(const std::string& unit_string)
     // check all power operations
     auto cx = unit_string.find_first_of('^');
     while (cx != std::string::npos) {
+        if (cx == 0) {
+            return false;
+        }
         const bool ndigit = isDigitCharacter(unit_string[cx - 1]);
-        ++cx;
-        const char c = unit_string[cx];
-        if (!isDigitCharacter(c)) {
-            if (c == '-') {
-                if (!isDigitCharacter(unit_string[cx + 1])) {
+        if (unit_string[cx - 1] == ']') {
+            int index = static_cast<int>(cx) - 2;
+            if (segmentcheckReverse(unit_string, '[', index)) {
+                const auto openBracket = static_cast<std::size_t>(index) + 1;
+                auto contentStart = openBracket + 1;
+                auto contentLength = cx - contentStart - 1;
+                bool parenthesizedContent = false;
+                if (contentLength >= 2 && unit_string[contentStart] == '(' &&
+                    unit_string[contentStart + contentLength - 1] == ')') {
+                    parenthesizedContent = true;
+                    ++contentStart;
+                    contentLength -= 2;
+                }
+                char* eptr{nullptr};
+                const auto content =
+                    unit_string.substr(contentStart, contentLength);
+                const auto parsedValue = std::strtod(content.c_str(), &eptr);
+                (void)parsedValue;
+                if (parenthesizedContent && !content.empty() &&
+                    eptr == content.c_str() + content.size()) {
                     return false;
                 }
-                ++cx;
-            } else if (c == '(') {
-                ++cx;
-                if (unit_string[cx] == '-') {
-                    ++cx;
-                }
-                bool dpoint_encountered = false;
-                while (unit_string[cx] != ')') {
-                    if (!isDigitCharacter(unit_string[cx])) {
-                        if (unit_string[cx] == '.' && !dpoint_encountered) {
-                            dpoint_encountered = true;
-                        } else {
-                            return false;
-                        }
-                    }
-                    ++cx;
-                }
-            } else {
+            }
+        }
+        ++cx;
+        if (cx >= unit_string.size()) {
+            return false;
+        }
+        const bool parenthesized = (unit_string[cx] == '(');
+        if (parenthesized) {
+            ++cx;
+            if (cx >= unit_string.size()) {
                 return false;
             }
+        }
+        if (unit_string[cx] == '-' || unit_string[cx] == '+') {
+            ++cx;
+        }
+        const auto startDigit = cx;
+        bool dpoint_encountered = false;
+        while (cx < unit_string.size() && isDigitCharacter(unit_string[cx])) {
+            ++cx;
+        }
+        const auto wholeDigitCount = cx - startDigit;
+        if (cx < unit_string.size() && unit_string[cx] == '.') {
+            dpoint_encountered = true;
+            ++cx;
+            while (cx < unit_string.size() &&
+                   isDigitCharacter(unit_string[cx])) {
+                ++cx;
+            }
+        }
+        if (wholeDigitCount == 0 && !dpoint_encountered) {
+            return false;
+        }
+        if (cx < unit_string.size() &&
+            (unit_string[cx] == 'e' || unit_string[cx] == 'E')) {
+            ++cx;
+            if (cx < unit_string.size() &&
+                (unit_string[cx] == '-' || unit_string[cx] == '+')) {
+                ++cx;
+            }
+            const auto exponentDigitStart = cx;
+            while (cx < unit_string.size() &&
+                   isDigitCharacter(unit_string[cx])) {
+                ++cx;
+            }
+            if (cx == exponentDigitStart) {
+                return false;
+            }
+        }
+        if (parenthesized) {
+            if (cx >= unit_string.size() || unit_string[cx] != ')') {
+                return false;
+            }
+        } else if (
+            cx < unit_string.size() && unit_string[cx] != '*' &&
+            unit_string[cx] != '/' && unit_string[cx] != '^' &&
+            unit_string[cx] != ')' && unit_string[cx] != ']' &&
+            unit_string[cx] != '}') {
+            return false;
+        } else {
+            --cx;
         }
 #ifdef UNITS_CONSTEXPR_IF_SUPPORTED
         if constexpr (detail::bitwidth::base_size == sizeof(std::uint32_t)) {
 #else
         if (detail::bitwidth::base_size == sizeof(std::uint32_t)) {
 #endif
-            if (unit_string.size() > cx + 1 &&
-                isDigitCharacter(unit_string[cx + 1]) && !ndigit) {
+            if (wholeDigitCount > 1 && !ndigit) {
                 // non representable unit power
                 return false;
             }
@@ -4109,9 +4195,10 @@ static bool checkValidUnitString(
                     break;
             }
         }
-        if (!checkExponentOperations(unit_string)) {
-            return false;
-        }
+    }
+
+    if (!checkExponentOperations(unit_string)) {
+        return false;
     }
 
     return true;
@@ -4798,7 +4885,7 @@ static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
             if (seq > 1) {
                 auto c2 = unit_string[fnd + seq];
                 if (c2 != '\0' && c2 != '*' && c2 != '/' && c2 != '^' &&
-                    c2 != 'e' && c2 != 'E') {
+                    c2 != 'e' && c2 != 'E' && c2 != '.') {
                     unit_string.insert(fnd + seq, 1, '*');
                 }
             }
@@ -4820,7 +4907,9 @@ static bool cleanUnitString(std::string& unit_string, std::uint64_t match_flags)
                     unit_string.begin() + bloc + 1,
                     unit_string.begin() + ind - 1,
                     unit_string.begin() + bloc + 1,
-                    ::tolower);
+                    [](unsigned char character) {
+                        return static_cast<char>(std::tolower(character));
+                    });
                 bloc = unit_string.find_first_of('{', ind);
             } else {
                 bloc = std::string::npos;
@@ -5023,7 +5112,9 @@ static precise_unit checkNamedUnitCode(
             codeString.begin(),
             codeString.end(),
             codeString.begin(),
-            ::toupper);
+            [](unsigned char character) {
+                return static_cast<char>(std::toupper(character));
+            });
     }
     if (codeString.compare(0, 4, "X12:") == 0) {
         return x12_unit(codeString.substr(4));
@@ -5220,7 +5311,13 @@ static precise_unit checkForCustomUnit(const std::string& unit_string)
             return {1.0, precise::generate_custom_count_unit(0), hcode};
         }
 
-        std::transform(csub.begin(), csub.end(), csub.begin(), ::tolower);
+        std::transform(
+            csub.begin(),
+            csub.end(),
+            csub.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         auto custcode = std::hash<std::string>{}(csub);
         return precise::generate_custom_unit(custcode & 0x3FU);
     }
@@ -5319,6 +5416,86 @@ static precise_unit unit_to_the_power_of(
         return retunit.pow(power);
     }
     return precise::defunit;
+}
+
+static bool
+    string_power_to_twice_power(const std::string& powerString, int& twicePower)
+{
+    char* eptr{nullptr};
+    const auto power = std::strtod(powerString.c_str(), &eptr);
+    if (eptr != powerString.c_str() + powerString.size() ||
+        !std::isfinite(power)) {
+        return false;
+    }
+    const auto scaledPower = 2.0 * power;
+    const auto roundedPower = std::round(scaledPower);
+    if (std::abs(scaledPower - roundedPower) > 1e-12 ||
+        roundedPower > static_cast<double>(std::numeric_limits<int>::max()) ||
+        roundedPower < static_cast<double>(std::numeric_limits<int>::min())) {
+        return false;
+    }
+    twicePower = static_cast<int>(roundedPower);
+    return true;
+}
+
+static precise_unit root_with_special_units(const precise_unit& un)
+{
+    auto retunit = root(un, 2);
+    if (!is_error(retunit)) {
+        return retunit;
+    }
+
+    const auto meterPower = un.base_units().meter();
+    if (meterPower % 2 != 0) {
+        const auto adjusted =
+            (meterPower > 0) ? un / precise::m : un * precise::m;
+        retunit = root(adjusted, 2);
+        if (!is_error(retunit)) {
+            return (meterPower > 0) ? retunit * precise::special::rootMeter :
+                                      retunit / precise::special::rootMeter;
+        }
+    }
+
+    const auto secondPower = un.base_units().second();
+    if (secondPower % 2 != 0) {
+        const auto adjusted =
+            (secondPower < 0) ? un / precise::Hz : un * precise::Hz;
+        retunit = root(adjusted, 2);
+        if (!is_error(retunit)) {
+            return (secondPower < 0) ? retunit * precise::special::rootHertz :
+                                       retunit / precise::special::rootHertz;
+        }
+    }
+
+    return precise::invalid;
+}
+
+static precise_unit unit_to_the_half_power_of(
+    const std::string& unit_string,
+    int twicePower,
+    std::uint64_t match_flags)
+{
+    const auto wholePower = twicePower / 2;
+    auto retunit = (wholePower == 0) ?
+        precise::one :
+        unit_to_the_power_of(unit_string, wholePower, match_flags);
+    if (is_error(retunit)) {
+        return precise::invalid;
+    }
+
+    auto rootUnit = unit_to_the_power_of(
+        unit_string, (twicePower > 0) ? 1 : -1, match_flags);
+    if (is_error(rootUnit)) {
+        return precise::invalid;
+    }
+    rootUnit = root_with_special_units(rootUnit);
+    if (is_error(rootUnit)) {
+        return precise::invalid;
+    }
+    if (wholePower != 0 && (rootUnit.has_i_flag() || rootUnit.has_e_flag())) {
+        return precise::invalid;
+    }
+    return retunit * rootUnit;
 }
 
 static precise_unit
@@ -5589,6 +5766,13 @@ static precise_unit unit_from_string_internal(
                     if (is_valid(retunit)) {
                         return front_unit * retunit;
                     }
+                    // A failed expression with unit operators is not an
+                    // unbraced commodity.  In particular, do not discard its
+                    // dimensions when a zero multiplier precedes it.
+                    if (unit_string.substr(index).find_first_of("*/^{}") !=
+                        std::string::npos) {
+                        return precise::invalid;
+                    }
                     auto commodity = getCommodity(unit_string.substr(index));
                     front_unit.commodity(commodity);
                     return front_unit;
@@ -5653,70 +5837,55 @@ static precise_unit unit_from_string_internal(
     const bool containsPer =
         (findWordOperatorSep(unit_string, "per") != std::string::npos);
 
-    sep = findOperatorSep(unit_string, "^");
-    if (sep != std::string::npos) {
-        auto pchar = sep - 1;
-        if (unit_string[sep + 1] == '(') {
-            ++sep;
-        }
-        const char c1 = unit_string[sep + 1];
-        int power{+1};
-        if (c1 == '-' || c1 == '+') {
-            ++sep;
-            if (unit_string.length() < sep + 2) {
-                // this should have been caught as an invalid sequence
-                // earlier
-                return precise::invalid;  // LCOV_EXCL_LINE
-            }
-            // the - ',' is a +/- sign
-            power = -(c1 - ',');
-        }
-        if (isDigitCharacter(unit_string[sep + 1])) {
-#ifdef UNITS_CONSTEXPR_IF_SUPPORTED
-            if constexpr (sizeof(UNITS_BASE_TYPE) == 8) {
-#else
-            if (sizeof(UNITS_BASE_TYPE) == 8) {
-#endif
-                size_t end = sep + 2;
-                for (; end < unit_string.size() &&
-                     isDigitCharacter(unit_string[end]);
-                     ++end) {
-                }
-                auto powerStringLength = end - sep - 1;
-                if (powerStringLength > 1) {
-                    auto pstring =
-                        unit_string.substr(sep + 1, powerStringLength);
-                    char* eptr{nullptr};
-                    auto mpower = strtoul(pstring.c_str(), &eptr, 10);
-                    if (eptr - pstring.c_str() ==
-                        static_cast<std::ptrdiff_t>(powerStringLength)) {
-                        power *= mpower;
-                    } else {
-                        return precise::invalid;  // LCOV_EXCL_LINE
-                    }
-                } else {
-                    power *= (unit_string[sep + 1] - '0');
-                }
-
-            } else {
-                power *= (unit_string[sep + 1] - '0');
-            }
-        } else {
-            // the check functions should catch this but it would be
-            // problematic if not caught
-            return precise::invalid;  // LCOV_EXCL_LINE
-        }
-        retunit = unit_to_the_power_of(
-            unit_string.substr(0, (pchar > 0) ? pchar + 1 : 1),
-            power,
-            match_flags);
-        if (retunit != precise::defunit) {
-            return retunit;
-        }
-    }
+    // A commodity following a power is accepted for backwards compatibility
+    // with strings emitted before commodities were placed before exponents.
+    // Handle it before parsing '^', otherwise the commodity text is mistaken
+    // for part of the exponent.
     if ((match_flags & no_commodities) == 0 && unit_string.back() == '}' &&
         unit_string.find('{') != std::string::npos) {
         return commoditizedUnit(unit_string, match_flags);
+    }
+
+    sep = findOperatorSep(unit_string, "^");
+    if (sep != std::string::npos) {
+        auto pchar = sep - 1;
+        const bool parenthesizedPower = (unit_string[sep + 1] == '(');
+        const auto powerStart = sep + (parenthesizedPower ? 2 : 1);
+        auto powerLength = unit_string.size() - powerStart;
+        if (parenthesizedPower) {
+            if (unit_string.back() != ')' || powerLength < 2) {
+                return precise::invalid;
+            }
+            --powerLength;
+        }
+        int twicePower{0};
+        if (!string_power_to_twice_power(
+                unit_string.substr(powerStart, powerLength), twicePower)) {
+            return precise::invalid;
+        }
+#ifdef UNITS_CONSTEXPR_IF_SUPPORTED
+        if constexpr (sizeof(UNITS_BASE_TYPE) != 8) {
+#else
+        if (sizeof(UNITS_BASE_TYPE) != 8) {
+#endif
+            if (!isDigitCharacter(unit_string[pchar]) &&
+                (twicePower > 18 || twicePower < -18)) {
+                return precise::invalid;
+            }
+        }
+
+        const auto powerUnitString =
+            unit_string.substr(0, (pchar > 0) ? pchar + 1 : 1);
+        if (twicePower % 2 == 0) {
+            retunit = unit_to_the_power_of(
+                powerUnitString, twicePower / 2, match_flags);
+        } else {
+            retunit = unit_to_the_half_power_of(
+                powerUnitString, twicePower, match_flags);
+        }
+        if (retunit != precise::defunit) {
+            return retunit;
+        }
     }
     retunit = checkSIprefix(unit_string, match_flags);
     if (is_valid(retunit)) {
@@ -5783,7 +5952,12 @@ static precise_unit unit_from_string_internal(
                 return retunit;
             }
             std::transform(
-                ustring.begin(), ustring.end(), ustring.begin(), ::toupper);
+                ustring.begin(),
+                ustring.end(),
+                ustring.begin(),
+                [](unsigned char character) {
+                    return static_cast<char>(std::toupper(character));
+                });
 
             retunit = get_unit(ustring, match_flags);
             if (is_valid(retunit)) {
@@ -5969,7 +6143,12 @@ static precise_unit unit_from_string_internal(
     {
         ustring = unit_string;
         std::transform(
-            ustring.begin(), ustring.end(), ustring.begin(), ::tolower);
+            ustring.begin(),
+            ustring.end(),
+            ustring.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         if (ustring != unit_string) {
             retunit = unit_quick_match(ustring, match_flags);
             if (!is_error(retunit)) {
@@ -6202,7 +6381,12 @@ precise_unit default_unit(std::string unit_type)
         }
     }
     std::transform(
-        unit_type.begin(), unit_type.end(), unit_type.begin(), ::tolower);
+        unit_type.begin(),
+        unit_type.end(),
+        unit_type.begin(),
+        [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     unit_type.erase(
         std::remove(unit_type.begin(), unit_type.end(), ' '), unit_type.end());
     auto fnd = measurement_types.find(unit_type);

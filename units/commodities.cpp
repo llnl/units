@@ -199,7 +199,8 @@ static uint32_t stringHash(const std::string& str)
     std::uint32_t hash{hashcodes::firstH};
     for (auto c : str) {
         hash = (hash * hashcodes::Ac) ^
-            (static_cast<std::uint32_t>(c) * hashcodes::Bc);
+            (static_cast<std::uint32_t>(static_cast<unsigned char>(c)) *
+             hashcodes::Bc);
     }
     return hash;  // or return h % C;
 }
@@ -243,7 +244,10 @@ static void removeEscapeSequences(std::string& str)
 uint32_t getCommodity(std::string comm)
 {
     removeEscapeSequences(comm);
-    std::transform(comm.begin(), comm.end(), comm.begin(), ::tolower);
+    std::transform(
+        comm.begin(), comm.end(), comm.begin(), [](unsigned char character) {
+            return static_cast<char>(std::tolower(character));
+        });
     if (allowCustomCommodities.load(std::memory_order_acquire)) {
         if (!customCommodityCodes.empty()) {
             auto fnd2 = customCommodityCodes.find(comm);
@@ -292,7 +296,15 @@ std::string getCommodityName(std::uint32_t commodity)
         if (!customCommodityNames.empty()) {
             auto fnd2 = customCommodityNames.find(commodity);
             if (fnd2 != customCommodityNames.end()) {
-                return fnd2->second;
+                const auto& name = fnd2->second;
+                const auto printable = std::all_of(
+                    name.begin(), name.end(), [](unsigned char character) {
+                        return character >= 0x20U && character <= 0x7EU;
+                    });
+                if (printable) {
+                    return name;
+                }
+                return std::string("CXCOMM[") + std::to_string(commodity) + "]";
             }
         }
     }
@@ -320,7 +332,13 @@ std::string getCommodityName(std::uint32_t commodity)
 void addCustomCommodity(std::string comm, std::uint32_t code)
 {
     if (allowCustomCommodities.load()) {
-        std::transform(comm.begin(), comm.end(), comm.begin(), ::tolower);
+        std::transform(
+            comm.begin(),
+            comm.end(),
+            comm.begin(),
+            [](unsigned char character) {
+                return static_cast<char>(std::tolower(character));
+            });
         customCommodityNames.emplace(code, comm);
         customCommodityCodes.emplace(comm, code);
     }

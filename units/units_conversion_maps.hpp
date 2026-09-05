@@ -13,7 +13,7 @@ SPDX-License-Identifier: BSD-3-Clause
 
 namespace UNITS_NAMESPACE {
 
-UNITS_CPP14_CONSTEXPR_OBJECT std::array<std::pair<unit, const char*>, 113>
+UNITS_CPP14_CONSTEXPR_OBJECT std::array<std::pair<unit, const char*>, 114>
     defined_unit_names_si{
         {{m, "m"},
          {m * m, "m^2"},
@@ -81,6 +81,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<std::pair<unit, const char*>, 113>
          {percent, "%"},
          {unit_cast(precise::special::ASD), "ASD"},
          {unit_cast(precise::special::rootHertz), "rootHertz"},
+         {unit_cast(precise::special::rootMeter), "rootMeter"},
          {currency, "$"},
          {count, "count"},
          {ratio, ""},
@@ -204,7 +205,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<std::pair<unit, const char*>, 55>
 /// definitions for the default units for specific types of measurmeents
 UNITS_CPP14_CONSTEXPR_OBJECT std::array<
     std::pair<const char*, precise_unit>,
-    1216>
+    1219>
     defined_unit_strings_si{
         {{"", precise::defunit},
          {"[]", precise::defunit},
@@ -1409,6 +1410,8 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"ASD", precise::special::ASD},
          {"[m/s2/Hz^(1/2)]", precise::special::ASD},
          {"[M/s2/HZ^(1/2)]", precise::special::ASD},
+         {"sqrt(m)", precise::special::rootMeter},
+         {"sqrt(s)", precise::special::rootHertz.inv()},
          {"Hz^(1/2)", precise::special::rootHertz},
          {"HZ^(1/2)", precise::special::rootHertz},
          {"squarerootofhertz", precise::special::rootHertz},
@@ -1416,6 +1419,7 @@ UNITS_CPP14_CONSTEXPR_OBJECT std::array<
          {"roothertz", precise::special::rootHertz},
          // capitalized version is needed since this is also a generated unit
          {"rootHertz", precise::special::rootHertz},
+         {"rootmeter", precise::special::rootMeter},
          {"B", precise::data::byte},
          {"bel", precise::log::bel},
          {"dB", precise::log::dB},

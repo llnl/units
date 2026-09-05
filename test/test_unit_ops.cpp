@@ -831,6 +831,9 @@ TEST(specialOps, rootHertz)
     EXPECT_FALSE(is_error(precise::special::ASD));
 
     auto rh = precise::special::rootHertz;
+    auto asd = precise::m / precise::s.pow(2) / rh;
+
+    EXPECT_EQ(asd, precise::special::ASD);
 
     EXPECT_EQ(rh.pow(1), rh);
     EXPECT_EQ(rh.pow(0), precise::one);
@@ -849,6 +852,19 @@ TEST(specialOps, rootHertz)
     // EXPECT_EQ(rh.pow(-2), s);
     // EXPECT_EQ(rh.pow(-4), s.pow(2));
     // EXPECT_EQ(rh.pow(-6), s.pow(3));
+}
+
+TEST(specialOps, rootMeterAndRootHertzDistinct)
+{
+    auto rm = precise::special::rootMeter;
+    auto rh = precise::special::rootHertz;
+
+    EXPECT_NE(rm, rh);
+
+    EXPECT_EQ(rh.pow(2), precise::Hz);
+    EXPECT_EQ(rh.pow(-2), precise::s);
+
+    EXPECT_NE(rh.pow(2), precise::m);
 }
 
 TEST(specialOps, degC)

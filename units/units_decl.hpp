@@ -460,7 +460,6 @@ namespace detail {
                 0 :
                 (power / 2) * ((second_ < 0) || (power < 0) ? 9 : -9);
         }
-
         // needs to be defined for the full 32 bits(or 64 bits)
         signed int meter_ : bitwidth::meter;
         signed int second_ : bitwidth::second;  // 8
