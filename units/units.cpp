@@ -1141,6 +1141,14 @@ static std::string
                 }
             }
         } else {  // inverse commodity
+            const auto multloc = propUnitString.find('*', 2);
+            if (propUnitString.compare(0, 2, "1/") == 0 &&
+                multloc != std::string::npos &&
+                (propUnitString.compare(multloc + 1, 5, "CXUN[") == 0 ||
+                 propUnitString.compare(multloc + 1, 6, "CXCUN[") == 0)) {
+                return propUnitString.substr(multloc + 1) + "/" +
+                    propUnitString.substr(2, multloc - 2) + cString;
+            }
             auto loc = propUnitString.find_last_of('/');
             if (loc == std::string::npos) {
                 auto rs = checkForCustomUnit(cString);
