@@ -2047,10 +2047,8 @@ TEST(stringToUnits, trailingCommodityAfterPower)
         return;
     }
 
-    const auto canonical =
-        unit_from_string("0*$/item{aluminum}^(32)*EQXUN[8]");
-    const auto legacy =
-        unit_from_string("0*$/item^(32){aluminum}*EQXUN[8]");
+    const auto canonical = unit_from_string("0*$/item{aluminum}^(32)*EQXUN[8]");
+    const auto legacy = unit_from_string("0*$/item^(32){aluminum}*EQXUN[8]");
     ASSERT_FALSE(is_error(canonical));
     ASSERT_FALSE(is_error(legacy));
     EXPECT_EQ(legacy, canonical);
