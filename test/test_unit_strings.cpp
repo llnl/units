@@ -1501,6 +1501,40 @@ TEST(userDefinedUnits, multiplierOutsideFloatRange)
     clearUserDefinedUnits();
 }
 
+TEST(userDefinedUnits, compoundNamePowers)
+{
+    const precise_unit velocity(19.3, precise::m / precise::s);
+    for (const std::string name :
+         {"m/s", "custom*velocity", "custom/velocity", "custom^2"}) {
+        SCOPED_TRACE(name);
+        clearUserDefinedUnits();
+        addUserDefinedUnit(name, velocity);
+
+        // A direct lookup must continue to return the registered name verbatim.
+        EXPECT_EQ(to_string(velocity), name);
+        for (int power : {-3, -2, -1, 2, 3}) {
+            SCOPED_TRACE(power);
+            const auto original = velocity.pow(power);
+            const auto text = to_string(original);
+            EXPECT_EQ(unit_from_string(text), original) << text;
+        }
+    }
+    clearUserDefinedUnits();
+}
+
+TEST(userDefinedUnits, atomicNamePowers)
+{
+    const precise_unit velocity(19.3, precise::m / precise::s);
+    addUserDefinedUnit("customVelocity", velocity);
+    EXPECT_EQ(to_string(velocity), "customVelocity");
+    EXPECT_EQ(to_string(velocity.inv()), "1/customVelocity");
+    EXPECT_EQ(to_string(velocity.pow(2)), "customVelocity^2");
+    EXPECT_EQ(to_string(velocity.pow(-2)), "1/customVelocity^2");
+    EXPECT_EQ(to_string(velocity.pow(3)), "customVelocity^3");
+    EXPECT_EQ(to_string(velocity.pow(-3)), "1/customVelocity^3");
+    clearUserDefinedUnits();
+}
+
 TEST(userDefinedUnits, definitions)
 {
     precise_unit clucks(19.3, precise::m * precise::A);

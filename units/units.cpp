@@ -1202,13 +1202,26 @@ static std::string findUserDefinedUnitName(unit un)
     return std::string{};
 }
 
-static std::pair<unit, std::string> find_unit_pair(unit un)
+// A compound user name must be one operand when inverted or raised to a power.
+static std::string groupUserDefinedUnitName(const std::string& name)
+{
+    if (name.find_first_of("*/^") != std::string::npos) {
+        return '(' + name + ')';
+    }
+    return name;
+}
+
+static std::pair<unit, std::string>
+    find_unit_pair(unit un, bool groupUserName = false)
 {  // cppcheck suppression active
     if (allowUserDefinedUnits.load(std::memory_order_acquire)) {
         if (!user_defined_unit_names.empty()) {
             auto fndud = user_defined_unit_names.find(un);
             if (fndud != user_defined_unit_names.end()) {
-                return {fndud->first, fndud->second};
+                return {
+                    fndud->first,
+                    groupUserName ? groupUserDefinedUnitName(fndud->second) :
+                                    fndud->second};
             }
         }
     }
@@ -1219,13 +1232,14 @@ static std::pair<unit, std::string> find_unit_pair(unit un)
     return nullret;
 }
 
-static std::string find_unit(unit un)
+static std::string find_unit(unit un, bool groupUserName = false)
 {  // cppcheck suppression active
     if (allowUserDefinedUnits.load(std::memory_order_acquire)) {
         if (!user_defined_unit_names.empty()) {
             auto fndud = user_defined_unit_names.find(un);
             if (fndud != user_defined_unit_names.end()) {
-                return fndud->second;
+                return groupUserName ? groupUserDefinedUnitName(fndud->second) :
+                                       fndud->second;
             }
         }
     }
@@ -1403,7 +1417,7 @@ static std::string
     }
 
     // lets try inverting it
-    fnd = find_unit(llunit.inv());
+    fnd = find_unit(llunit.inv(), true);
     if (!fnd.empty()) {
         return std::string("1/") + fnd;
     }
@@ -1427,7 +1441,7 @@ static std::string
     if (!un.base_units().root(2).has_e_flag() &&
         !un.base_units().has_i_flag() && un.multiplier() > 0.0) {
         auto squ = root(llunit, 2);
-        auto fndp = find_unit_pair(squ);
+        auto fndp = find_unit_pair(squ, true);
         if (!fndp.second.empty()) {
             if (fndp.first.pow(2) != llunit) {
                 // this is symmetric to the other sections where we have test
@@ -1442,7 +1456,7 @@ static std::string
             }
             return fndp.second + "^2";
         }
-        auto fndpi = find_unit_pair(squ.inv());
+        auto fndpi = find_unit_pair(squ.inv(), true);
         if (!fndpi.second.empty()) {
             if (fndpi.first.pow(2) != llunit.inv()) {
                 return getMultiplierString(
@@ -1458,11 +1472,11 @@ static std::string
     if (!un.base_units().root(3).has_e_flag() &&
         !un.base_units().has_i_flag()) {
         auto cub = root(llunit, 3);
-        fnd = find_unit(cub);
+        fnd = find_unit(cub, true);
         if (!fnd.empty()) {
             return fnd + "^3";
         }
-        fnd = find_unit(cub.inv());
+        fnd = find_unit(cub.inv(), true);
         if (!fnd.empty()) {
             return std::string("1/") + fnd + "^3";
         }
