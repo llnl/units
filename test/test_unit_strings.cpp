@@ -1406,6 +1406,25 @@ TEST(stringToUnits, addition)
     EXPECT_EQ(u1, precise::m * precise::kg);
 }
 
+TEST(stringToUnits, additionWithLeadingNumbers)
+{
+    auto u1 = unit_from_string("3 ft + 2 in");
+    EXPECT_DOUBLE_EQ(convert(1.0, u1, precise::in), 38.0);
+    EXPECT_EQ(u1, unit_from_string("(3ft)+(2in)"));
+
+    u1 = unit_from_string("2 m + 1 m");
+    EXPECT_EQ(u1, precise_unit(3.0, precise::m));
+    u1 = unit_from_string("2 m + 1 m + 4 m");
+    EXPECT_EQ(u1, precise_unit(7.0, precise::m));
+
+    u1 = unit_from_string("2(m + m)");
+    EXPECT_EQ(u1, precise_unit(4.0, precise::m));
+    u1 = unit_from_string("2e+1 m");
+    EXPECT_EQ(u1, precise_unit(20.0, precise::m));
+    u1 = unit_from_string("2e+1 m + 1 m");
+    EXPECT_EQ(u1, precise_unit(21.0, precise::m));
+}
+
 TEST(stringToUnits, cleanPhase2)
 {
     auto u1 = unit_from_string("tech-nical-at-mosphere");
