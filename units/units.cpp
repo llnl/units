@@ -5722,6 +5722,15 @@ static precise_unit unit_from_string_internal(
             return commoditizedUnit(unit_string, precise::one, index);
         }
     }
+    // Split addition before applying a leading numerical multiplier.
+    if (((match_flags & no_addition) == 0) &&
+        unit_string.find_first_of('+') != std::string::npos) {
+        retunit = checkUnitAddition(unit_string, match_flags);
+        if (is_valid(retunit)) {
+            return retunit;
+        }
+    }
+
     std::string ustring = unit_string;
     // catch a preceding number on the unit
     if (looksLikeNumber(unit_string)) {
@@ -5796,12 +5805,7 @@ static precise_unit unit_from_string_internal(
         }
     }
 
-    if (((match_flags & no_addition) == 0) &&
-        unit_string.find_first_of('+') != std::string::npos) {
-        retunit = checkUnitAddition(unit_string, match_flags);
-        if (is_valid(retunit)) {
-            return retunit;
-        }
+    if (unit_string.find_first_of('+') != std::string::npos) {
         // don't allow recursive addition after this point
         match_flags |= no_addition;
     }
