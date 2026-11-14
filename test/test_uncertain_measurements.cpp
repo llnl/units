@@ -417,6 +417,78 @@ TEST(uncertainOps, testHeight)
     EXPECT_EQ(ys.units(), m);
 }
 
+TEST(uncertainOps, negativeValues)
+{
+    uncertain_measurement x(-2.0, 0.1, m);
+    uncertain_measurement y(3.0, 0.2, m);
+
+    auto z1 = x * y;
+    EXPECT_FLOAT_EQ(z1.value(), -6.0F);
+    EXPECT_FLOAT_EQ(z1.uncertainty(), 0.5F);
+    EXPECT_TRUE(z1 == measurement(-6.0, m * m));
+
+    auto z2 = x / y;
+    EXPECT_FLOAT_EQ(z2.value(), -2.0F / 3.0F);
+    EXPECT_FLOAT_EQ(z2.uncertainty(), 0.5F / 9.0F);
+
+    auto zs1 = x.simple_product(y);
+    EXPECT_FLOAT_EQ(zs1.value(), -6.0F);
+    EXPECT_FLOAT_EQ(zs1.uncertainty(), 0.7F);
+
+    auto zs2 = x.simple_divide(y);
+    EXPECT_FLOAT_EQ(zs2.value(), -2.0F / 3.0F);
+    EXPECT_FLOAT_EQ(zs2.uncertainty(), 0.7F / 9.0F);
+
+    EXPECT_FLOAT_EQ((y * -2.0).uncertainty(), 0.4F);
+    EXPECT_FLOAT_EQ((y * -2.0F).uncertainty(), 0.4F);
+    EXPECT_FLOAT_EQ((-2.0 * y).uncertainty(), 0.4F);
+    EXPECT_FLOAT_EQ((y * measurement(-2.0, m)).uncertainty(), 0.4F);
+    EXPECT_FLOAT_EQ((y / -2.0).uncertainty(), 0.1F);
+    EXPECT_FLOAT_EQ((y / -2.0F).uncertainty(), 0.1F);
+    EXPECT_FLOAT_EQ((y / measurement(-2.0, m)).uncertainty(), 0.1F);
+    EXPECT_FLOAT_EQ((-6.0 / y).uncertainty(), 0.4F / 3.0F);
+    EXPECT_FLOAT_EQ((-6.0F / y).uncertainty(), 0.4F / 3.0F);
+    EXPECT_FLOAT_EQ((-6 / y).uncertainty(), 0.4F / 3.0F);
+    EXPECT_FLOAT_EQ((measurement(-6.0, m) / y).uncertainty(), 0.4F / 3.0F);
+
+    auto p2 = pow(x, 2);
+    EXPECT_FLOAT_EQ(p2.value(), 4.0F);
+    EXPECT_FLOAT_EQ(p2.uncertainty(), 0.4F);
+    auto pm1 = pow(x, -1);
+    EXPECT_FLOAT_EQ(pm1.value(), -0.5F);
+    EXPECT_FLOAT_EQ(pm1.uncertainty(), 0.025F);
+}
+
+TEST(uncertainOps, zeroValue)
+{
+    uncertain_measurement x(0.0, 0.1, m);
+    uncertain_measurement y(3.0, 0.2, m);
+
+    auto z1 = x * y;
+    EXPECT_FLOAT_EQ(z1.value(), 0.0F);
+    EXPECT_FLOAT_EQ(z1.uncertainty(), 0.3F);
+
+    auto z2 = y * x;
+    EXPECT_FLOAT_EQ(z2.value(), 0.0F);
+    EXPECT_FLOAT_EQ(z2.uncertainty(), 0.3F);
+
+    auto z3 = x / y;
+    EXPECT_FLOAT_EQ(z3.value(), 0.0F);
+    EXPECT_FLOAT_EQ(z3.uncertainty(), 0.1F / 3.0F);
+
+    auto zs1 = x.simple_product(y);
+    EXPECT_FLOAT_EQ(zs1.uncertainty(), 0.3F);
+    auto zs2 = x.simple_divide(y);
+    EXPECT_FLOAT_EQ(zs2.uncertainty(), 0.1F / 3.0F);
+
+    auto p1 = pow(x, 1);
+    EXPECT_FLOAT_EQ(p1.value(), 0.0F);
+    EXPECT_FLOAT_EQ(p1.uncertainty(), 0.1F);
+    auto p2 = pow(x, 2);
+    EXPECT_FLOAT_EQ(p2.value(), 0.0F);
+    EXPECT_FLOAT_EQ(p2.uncertainty(), 0.0F);
+}
+
 #ifndef UNITS_HEADER_ONLY
 TEST(uncertainStrings, fromString)
 {
