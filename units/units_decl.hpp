@@ -505,6 +505,12 @@ namespace detail {
     {
         return a * a;
     }
+    /// constexpr absolute value
+    template<typename T>
+    constexpr T absolute_value(T a)
+    {
+        return (a < T{0}) ? -a : a;
+    }
     template<typename X>
     constexpr X power_const_positive(X val, unsigned int power)
     {
